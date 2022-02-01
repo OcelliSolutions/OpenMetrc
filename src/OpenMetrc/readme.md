@@ -1,0 +1,3 @@
+# OpenMETRC
+
+**TODO: Create documentation

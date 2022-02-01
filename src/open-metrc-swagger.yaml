@@ -2649,7 +2649,7 @@ paths:
       tags:
         - Patient
       summary: Get active patients
-      description: '<b>Permissions Required</b>: Lookup Patients</br><b>Available In</b>: dc, md, mi, mo, mt, wv'
+      description: '<b>Permissions Required</b>: Lookup Patients</br><b>Available In</b>: co, dc, md, mi, mo, mt, wv'
       operationId: GetActivePatients
       parameters:
         - name: patientLicenseNumber

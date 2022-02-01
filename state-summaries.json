@@ -470,6 +470,12 @@
         ]
       },
       {
+        "Name": "PatientsStatus",
+        "Endpoints": [
+          "get_patients_v1_statuses_patientLicenseNumber"
+        ]
+      },
+      {
         "Name": "Patients",
         "Endpoints": [
           "get_patients_v1_id",

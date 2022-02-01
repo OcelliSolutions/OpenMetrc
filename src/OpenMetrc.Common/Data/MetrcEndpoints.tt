@@ -1,0 +1,57 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#"  #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ assembly name="Newtonsoft.Json" #>
+<#@ import namespace="Newtonsoft.Json" #>
+<#@ import namespace="Newtonsoft.Json.Linq" #>
+<#@ output extension=".cs" #>
+namespace OpenMetrc.Common.Data;
+// ReSharper disable InconsistentNaming
+
+<#
+//Debugger.Launch();
+var file = this.Host.ResolvePath(@"../../../state-summaries.json");
+var stateSummaries = JArray.Parse(File.ReadAllText(file));
+
+if (stateSummaries == null) #> //TODO: state-summaries.json was not found 
+<# #>
+public enum MetrcEndpoint
+{
+<#
+    var endpoints = GetDistinctEndpoints();#>
+    <#= string.Join(",\r\n\t", endpoints) #>
+}
+public static class MetrcEndpointExtensions
+{
+    public static IEnumerable<string> GetStates(MetrcEndpoint endpoint)
+    {
+        return endpoint switch
+        {
+    <#
+        foreach(var endpoint in endpoints)
+        {
+            var states = GetStatesObject(endpoint);
+    #>
+        MetrcEndpoint.<#= endpoint #> => new[] <#=states#>,
+    <#}#>
+        _ => throw new ArgumentOutOfRangeException(nameof(endpoint), endpoint, null)
+        };
+    }
+}<#
+
+
+IEnumerable<string> GetDistinctEndpoints(){
+    return (from ss in stateSummaries
+            from s in ss["Sections"]
+            from e in s["Endpoints"]
+            select e.ToString()).Distinct().OrderBy(e => e);
+}
+string GetStatesObject(JToken endpoint){
+    var states = stateSummaries.Where(ss => ss["Sections"].Any(s => s["Endpoints"].Any(e => e.ToString() == endpoint.ToString()))).Select(ss => ss["State"]);
+    return JsonConvert.SerializeObject(states).Replace("[","{").Replace("]","}");
+}
+#>
