@@ -24,12 +24,15 @@ public class Package
     public DateTime? LabTestingStateDate { get; set; }
     public bool IsProductionBatch { get; set; }
     [MaxLength(100)] public string? ProductionBatchNumber { get; set; }
+    [MaxLength(100)] public string? SourceProductionBatchNumbers { get; set; }
     public bool? IsTradeSample { get; set; }
     public bool? IsDonation { get; set; }
     public bool? IsDonationPersistent { get; set; }
     public bool? SourcePackageIsDonation { get; set; }
+    public bool? SourcePackageIsTradeSample { get; set; }
     public bool? IsTestingSample { get; set; }
     public bool? IsProcessValidationTestingSample { get; set; }
+    public bool? IsTradeSamplePersistent { get; set; }
     public bool? ProductRequiresRemediation { get; set; }
     public bool? ContainsRemediatedProduct { get; set; }
     public DateTime? RemediationDate { get; set; }

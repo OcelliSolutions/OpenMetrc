@@ -7,7 +7,7 @@
   </PropertyGroup>
 <Target Name="PostBuild" AfterTargets="PostBuildEvent">
 	<Exec Command="dotnet tool restore" />
-	<Exec Command="dotnet swagger tofile --output ../open-metrc-swagger.yaml --yaml $(OutputPath)/$(AssemblyName).dll v1 " />
+	<Exec Command="dotnet swagger tofile --output ../../open-metrc-swagger.yaml --yaml $(OutputPath)/$(AssemblyName).dll v1 " />
 </Target>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1701;1702;CS1591;IDE0060</NoWarn>

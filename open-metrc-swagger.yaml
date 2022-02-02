@@ -370,6 +370,7 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/CreateHarvestPackageRequest'
+        required: true
       responses:
         '404':
           description: Not Found
@@ -424,6 +425,7 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/CreateHarvestPackageRequest'
+        required: true
       responses:
         '404':
           description: Not Found
@@ -1937,6 +1939,13 @@ paths:
       summary: Get package adjust reasons
       description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
       operationId: GetPackageAdjustReasons
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return the list of inactive packages.
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -2649,7 +2658,7 @@ paths:
       tags:
         - Patient
       summary: Get active patients
-      description: '<b>Permissions Required</b>: Lookup Patients</br><b>Available In</b>: dc, md, mi, mo, mt, wv'
+      description: '<b>Permissions Required</b>: Lookup Patients</br><b>Available In</b>: co, dc, md, mi, mo, mt, wv'
       operationId: GetActivePatients
       parameters:
         - name: patientLicenseNumber
@@ -8371,6 +8380,10 @@ components:
           maxLength: 100
           type: string
           nullable: true
+        sourceProductionBatchNumbers:
+          maxLength: 100
+          type: string
+          nullable: true
         isTradeSample:
           type: boolean
           nullable: true
@@ -8383,10 +8396,16 @@ components:
         sourcePackageIsDonation:
           type: boolean
           nullable: true
+        sourcePackageIsTradeSample:
+          type: boolean
+          nullable: true
         isTestingSample:
           type: boolean
           nullable: true
         isProcessValidationTestingSample:
+          type: boolean
+          nullable: true
+        isTradeSamplePersistent:
           type: boolean
           nullable: true
         productRequiresRemediation:

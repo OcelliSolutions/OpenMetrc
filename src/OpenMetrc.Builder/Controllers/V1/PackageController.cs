@@ -97,7 +97,11 @@ public class PackageController : ControllerBase
     [ApiAuthorizationFilter]
     [ProducesResponseType(typeof(IEnumerable<PackageAdjustReason>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get package adjust reasons")]
-    public ActionResult GetPackageAdjustReasons() => Ok();
+    public ActionResult GetPackageAdjustReasons(
+        [Required]
+        [SwaggerParameter(Description =
+            "The license number of the facility for which to return the list of inactive packages.")]
+        string licenseNumber) => Ok();
 
     [HttpPost("create")]
     [MapsToApi(MetrcEndpoint.post_packages_v1_create)]
