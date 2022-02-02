@@ -2,7 +2,6 @@ using System;
 
 namespace OpenMetrc.Tests;
 
-//[Collection("Api Key collection")]
 public class HarvestTests : IAssemblyFixture<SharedFixture>
 {
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;

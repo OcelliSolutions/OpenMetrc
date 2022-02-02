@@ -8699,6 +8699,14 @@ components:
           maxLength: 100
           type: string
           nullable: true
+        plantBatchTypeId:
+          type: integer
+          format: int32
+          nullable: true
+        plantBatchTypeName:
+          maxLength: 100
+          type: string
+          nullable: true
         type:
           maxLength: 100
           type: string
@@ -8718,6 +8726,7 @@ components:
         roomId:
           type: integer
           format: int32
+          nullable: true
         roomName:
           maxLength: 100
           type: string
@@ -8725,6 +8734,7 @@ components:
         strainId:
           type: integer
           format: int32
+          nullable: true
         strainName:
           maxLength: 100
           type: string
@@ -8736,27 +8746,35 @@ components:
         count:
           type: integer
           format: int32
+          nullable: true
         untrackedCount:
           type: integer
           format: int32
+          nullable: true
         trackedCount:
           type: integer
           format: int32
+          nullable: true
         liveCount:
           type: integer
           format: int32
+          nullable: true
         packagedCount:
           type: integer
           format: int32
+          nullable: true
         harvestedCount:
           type: integer
           format: int32
+          nullable: true
         destroyedCount:
           type: integer
           format: int32
+          nullable: true
         sourcePackageId:
           type: integer
           format: int32
+          nullable: true
         sourcePackageLabel:
           maxLength: 100
           type: string
@@ -8764,6 +8782,7 @@ components:
         sourcePlantId:
           type: integer
           format: int32
+          nullable: true
         sourcePlantLabel:
           maxLength: 100
           type: string
@@ -8771,6 +8790,7 @@ components:
         sourcePlantBatchId:
           type: integer
           format: int32
+          nullable: true
         sourcePlantBatchName:
           maxLength: 100
           type: string

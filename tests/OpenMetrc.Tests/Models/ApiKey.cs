@@ -1,6 +1,4 @@
-﻿using OpenMetrc.Common.Handlers;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 
 namespace OpenMetrc.Tests.Models;

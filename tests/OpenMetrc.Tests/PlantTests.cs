@@ -2,7 +2,6 @@
 
 namespace OpenMetrc.Tests;
 
-//[Collection("Api Key collection")]
 public class PlantTests : IAssemblyFixture<SharedFixture>
 {
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;

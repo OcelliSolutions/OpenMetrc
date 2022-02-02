@@ -1,6 +1,5 @@
 ﻿namespace OpenMetrc.Tests;
 
-//[Collection("Api Key collection")]
 public class MetrcServiceTests : IAssemblyFixture<SharedFixture>
 {
     public MetrcServiceTests(SharedFixture sharedFixture)
