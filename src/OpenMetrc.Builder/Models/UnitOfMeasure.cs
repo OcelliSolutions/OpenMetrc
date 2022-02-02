@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace OpenMetrc.Builder.Models;
+﻿namespace OpenMetrc.Builder.Models;
 
 public class UnitOfMeasure
 {
@@ -10,6 +8,7 @@ public class UnitOfMeasure
         QuantityType = string.Empty;
         Abbreviation = string.Empty;
     }
+
     [MaxLength(100)] public string Name { get; set; }
     [MaxLength(100)] public string QuantityType { get; set; }
     [MaxLength(100)] public string Abbreviation { get; set; }

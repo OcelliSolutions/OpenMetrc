@@ -6,6 +6,7 @@ public class TransferType
     {
         Name = string.Empty;
     }
+
     public string Name { get; set; }
     public bool ForLicensedShipments { get; set; }
     public bool ForExternalIncomingShipments { get; set; }

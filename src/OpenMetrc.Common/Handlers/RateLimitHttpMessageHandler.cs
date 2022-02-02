@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace OpenMetrc.Tests.Handlers;
+﻿namespace OpenMetrc.Common.Handlers;
 
 public class RateLimitHttpMessageHandler : DelegatingHandler
 {
-    private readonly List<DateTimeOffset> _callLog =
-        new List<DateTimeOffset>();
-    private readonly TimeSpan _limitTime;
+    private readonly List<DateTimeOffset> _callLog = new();
     private readonly int _limitCount;
+    private readonly TimeSpan _limitTime;
 
     public RateLimitHttpMessageHandler(int limitCount, TimeSpan limitTime)
     {
@@ -56,8 +47,8 @@ public class RateLimitHttpMessageHandler : DelegatingHandler
             shouldLock = _callLog.Count(x => x >= limit) >= _limitCount;
         }
 
-        var delayTime = shouldLock && (lastCall > DateTimeOffset.MinValue)
-            ? (limit - lastCall)
+        var delayTime = shouldLock && lastCall > DateTimeOffset.MinValue
+            ? limit - lastCall
             : TimeSpan.Zero;
 
         if (delayTime > TimeSpan.Zero)

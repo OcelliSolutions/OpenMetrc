@@ -7,6 +7,7 @@ public class UpdatePatientRequest
         LicenseNumber = string.Empty;
         NewLicenseNumber = string.Empty;
     }
+
     public string LicenseNumber { get; set; }
     public string NewLicenseNumber { get; set; }
     public DateTime LicenseEffectiveStartDate { get; set; }

@@ -6,5 +6,6 @@ public class UnfinishPackageRequest
     {
         Label = string.Empty;
     }
+
     public string Label { get; set; }
 }

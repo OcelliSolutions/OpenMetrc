@@ -14,41 +14,30 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
     public void OnProvidersExecuting(ApplicationModelProviderContext context)
     {
         foreach (var controller in context.Result.Controllers)
+        foreach (var action in controller.Actions)
         {
-            foreach (var action in controller.Actions)
+            var returnType = typeof(ErrorResponse);
+            if (action.ActionMethod.ReturnType.GenericTypeArguments.Any())
             {
-                var returnType = typeof(ErrorResponse);
-                if (action.ActionMethod.ReturnType.GenericTypeArguments.Any())
-                {
-                    if (action.ActionMethod.ReturnType.GenericTypeArguments[0].GetGenericArguments().Any())
-                    {
-                        returnType = action.ActionMethod.ReturnType.GenericTypeArguments[0].GetGenericArguments()[0];
-                    }
-                }
-
-                var methodVerbs = action.Attributes.OfType<HttpMethodAttribute>().SelectMany(x => x.HttpMethods).Distinct();
-
-                AddUniversalStatusCodes(action, returnType);
-                AddHeaderOnlyStatusCodes(action);
-
-                if (!methodVerbs.Contains("GET")) //POST, PUT, DELETE all have these.
-                {
-                    AddPostStatusCodes(action, returnType);
-                }
+                if (action.ActionMethod.ReturnType.GenericTypeArguments[0].GetGenericArguments().Any())
+                    returnType = action.ActionMethod.ReturnType.GenericTypeArguments[0].GetGenericArguments()[0];
             }
+
+            var methodVerbs = action.Attributes.OfType<HttpMethodAttribute>().SelectMany(x => x.HttpMethods).Distinct();
+
+            AddUniversalStatusCodes(action, returnType);
+            AddHeaderOnlyStatusCodes(action);
+
+            if (!methodVerbs.Contains("GET")) //POST, PUT, DELETE all have these.
+                AddPostStatusCodes(action, returnType);
         }
     }
 
     public void AddProducesResponseTypeAttribute(ActionModel action, Type? returnType, int statusCodeResult)
     {
         if (returnType != null)
-        {
             action.Filters.Add(new ProducesResponseTypeAttribute(returnType, statusCodeResult));
-        }
-        else if (returnType == null)
-        {
-            action.Filters.Add(new ProducesResponseTypeAttribute(statusCodeResult));
-        }
+        else if (returnType == null) action.Filters.Add(new ProducesResponseTypeAttribute(statusCodeResult));
     }
 
     public void AddUniversalStatusCodes(ActionModel action, Type returnType)
@@ -57,10 +46,9 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
         AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status429TooManyRequests);
         AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status500InternalServerError);
     }
-    public void AddHeaderOnlyStatusCodes(ActionModel action)
-    {
+
+    public void AddHeaderOnlyStatusCodes(ActionModel action) =>
         AddProducesResponseTypeAttribute(action, null, StatusCodes.Status401Unauthorized);
-    }
 
     public void AddPostStatusCodes(ActionModel action, Type returnType)
     {
@@ -69,4 +57,3 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
         AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status404NotFound);
     }
 }
-

@@ -7,6 +7,7 @@ public class CreateStrainRequest
         Name = string.Empty;
         TestingStatus = string.Empty;
     }
+
     public string Name { get; set; }
     public string TestingStatus { get; set; }
     public double ThcLevel { get; set; }

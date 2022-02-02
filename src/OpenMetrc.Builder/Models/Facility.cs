@@ -33,7 +33,11 @@ public class Facility
     [JsonPropertyName("SupportLastPaidDate")]
     public DateTime? SupportLastPaidDate { get; set; }
 
-    [JsonPropertyName("FacilityType"), Required] public FacilityType FacilityType { get; set; }
+    [JsonPropertyName("FacilityType")]
+    [Required]
+    public FacilityType FacilityType { get; set; }
 
-    [JsonPropertyName("License"), Required] public License License { get; set; }
+    [JsonPropertyName("License")]
+    [Required]
+    public License License { get; set; }
 }

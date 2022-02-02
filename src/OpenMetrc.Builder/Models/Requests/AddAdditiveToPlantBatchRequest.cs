@@ -12,6 +12,7 @@ public class AddAdditiveToPlantBatchRequest
         ActiveIngredients = new List<ActiveIngredient>();
         PlantBatchName = string.Empty;
     }
+
     public string AdditiveType { get; set; }
     public string ProductTradeName { get; set; }
     public string? EpaRegistrationNumber { get; set; }

@@ -8,6 +8,7 @@ public class ManicurePlantRequest
         UnitOfWeight = string.Empty;
         DryingLocation = string.Empty;
     }
+
     public string Plant { get; set; }
     public double Weight { get; set; }
     public string UnitOfWeight { get; set; }

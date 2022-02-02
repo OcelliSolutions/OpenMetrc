@@ -7,6 +7,7 @@ public class ChangePackageLocationRequest
         Label = string.Empty;
         Location = string.Empty;
     }
+
     public string Label { get; set; }
     public string Location { get; set; }
     public DateTime MoveDate { get; set; }

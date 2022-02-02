@@ -370,6 +370,7 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/CreateHarvestPackageRequest'
+        required: true
       responses:
         '404':
           description: Not Found
@@ -424,6 +425,7 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/CreateHarvestPackageRequest'
+        required: true
       responses:
         '404':
           description: Not Found

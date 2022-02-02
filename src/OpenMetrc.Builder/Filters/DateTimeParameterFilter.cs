@@ -5,7 +5,9 @@ namespace OpenMetrc.Builder.Filters;
 
 public class DateTimeParameterFilter : IParameterFilter
 {
-    private readonly IList<string> timestampParameters = new List<string> { "lastModifiedStart", "lastModifiedEnd" }.AsReadOnly();
+    private readonly IList<string> timestampParameters =
+        new List<string> { "lastModifiedStart", "lastModifiedEnd" }.AsReadOnly();
+
     public void Apply(OpenApiParameter parameter, ParameterFilterContext context)
     {
         if (timestampParameters.Contains(parameter.Name))

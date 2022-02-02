@@ -7,6 +7,7 @@ public class DestroyPlantBatchRequest
         PlantBatch = string.Empty;
         ReasonNote = string.Empty;
     }
+
     public string PlantBatch { get; set; }
     public int Count { get; set; }
     public string ReasonNote { get; set; }

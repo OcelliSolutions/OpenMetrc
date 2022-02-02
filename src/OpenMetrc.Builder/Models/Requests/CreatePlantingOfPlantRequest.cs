@@ -9,6 +9,7 @@ public class CreatePlantingOfPlantRequest
         PlantBatchType = string.Empty;
         StrainName = string.Empty;
     }
+
     public string PlantLabel { get; set; }
     public string PlantBatchName { get; set; }
     public string PlantBatchType { get; set; }

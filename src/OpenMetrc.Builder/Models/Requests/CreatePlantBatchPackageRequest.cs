@@ -8,6 +8,7 @@ public class CreatePlantBatchPackageRequest
         Tag = string.Empty;
         Note = string.Empty;
     }
+
     public int? Id { get; set; }
     public string? PlantBatch { get; set; }
     public int Count { get; set; }

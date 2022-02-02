@@ -10,6 +10,7 @@ public class CreatePlantBatchFromPlantPackageRequest
         Item = string.Empty;
         Location = string.Empty;
     }
+
     public string PlantLabel { get; set; }
     public string PackageTag { get; set; }
     public string PlantBatchType { get; set; }

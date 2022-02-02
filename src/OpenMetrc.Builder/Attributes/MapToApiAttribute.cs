@@ -9,6 +9,7 @@ public class MapsToApiAttribute : ActionFilterAttribute
     {
         Endpoint = endpoint;
     }
+
     public MetrcEndpoint Endpoint { get; set; }
     public IEnumerable<string> States => MetrcEndpointExtensions.GetStates(Endpoint);
 }

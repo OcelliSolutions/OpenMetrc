@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace OpenMetrc.Builder.Models;
+﻿namespace OpenMetrc.Builder.Models;
 
 public class Plant
 {

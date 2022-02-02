@@ -8,6 +8,7 @@ public class CreatePlantBatchPlantingRequest
         Type = string.Empty;
         Strain = string.Empty;
     }
+
     public string Name { get; set; }
     public string Type { get; set; }
     public int Count { get; set; }

@@ -9,6 +9,7 @@ public class ChangeGrowthPhaseForPlantBatchRequest
         GrowthPhase = string.Empty;
         NewLocation = string.Empty;
     }
+
     public string Name { get; set; }
     public int Count { get; set; }
     public string StartingTag { get; set; }

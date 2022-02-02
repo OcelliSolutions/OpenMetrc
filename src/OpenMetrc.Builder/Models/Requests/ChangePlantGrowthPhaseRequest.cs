@@ -8,6 +8,7 @@ public class ChangePlantGrowthPhaseRequest
         GrowthPhase = string.Empty;
         NewLocation = string.Empty;
     }
+
     public int? Id { get; set; }
     public string? Label { get; set; }
     public string NewTag { get; set; }

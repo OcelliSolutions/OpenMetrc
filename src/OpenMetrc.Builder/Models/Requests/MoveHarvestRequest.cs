@@ -7,6 +7,7 @@ public class MoveHarvestRequest
         HarvestName = string.Empty;
         DryingLocation = string.Empty;
     }
+
     public int Id { get; set; }
     public string HarvestName { get; set; }
     public string DryingLocation { get; set; }

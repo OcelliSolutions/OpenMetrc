@@ -7,11 +7,13 @@ public class ApiAuthorizationFilter : ActionFilterAttribute
 {
     private readonly List<ApiPermission>? _apiPermissions;
     public ApiAuthorizationFilter() { }
+
     public ApiAuthorizationFilter(ApiPermission[] permissions)
     {
         _apiPermissions = new List<ApiPermission>();
         _apiPermissions.AddRange(permissions);
     }
+
     //public string PermissionDescription { get { return string.Join("U+0020U+2022U+0020", _apiPermissions); } }
     public string PermissionDescription
     {

@@ -5,7 +5,6 @@ namespace OpenMetrc.Builder.Filters;
 
 public class DateTimeSchemaFilter : ISchemaFilter
 {
-
     public void Apply(OpenApiSchema schema, SchemaFilterContext context)
     {
         if (schema.Format == "date-time-offset")
@@ -21,4 +20,3 @@ public class DateTimeSchemaFilter : ISchemaFilter
         }
     }
 }
-

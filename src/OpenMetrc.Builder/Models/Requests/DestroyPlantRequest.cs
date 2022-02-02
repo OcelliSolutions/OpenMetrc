@@ -10,6 +10,7 @@ public class DestroyPlantRequest
         WasteReasonName = string.Empty;
         ReasonNote = string.Empty;
     }
+
     public int? Id { get; set; }
     public string? Label { get; set; }
     public string WasteMethodName { get; set; }

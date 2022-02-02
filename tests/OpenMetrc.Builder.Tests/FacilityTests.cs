@@ -1,18 +1,20 @@
-using OpenMetrc.Common.Data;
-using OpenMetrc.Tests.Fixtures;
 using System.Threading.Tasks;
+using OpenMetrc.Builder.Tests.Fixtures;
+using OpenMetrc.Builder.Tests.Helpers;
+using OpenMetrc.Common.Data;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace OpenMetrc.Tests;
+namespace OpenMetrc.Builder.Tests;
 
 public class FacilityTests : IClassFixture<SharedFixture>
 {
-    private readonly Helpers.AdditionalPropertiesHelper _additionalPropertiesHelper;
+    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
+
     public FacilityTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
     {
         Fixture = sharedFixture;
-        _additionalPropertiesHelper = new Helpers.AdditionalPropertiesHelper(testOutputHelper);
+        _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
         Task.Run(() => Fixture.LoadFacilities()).Wait();
     }
 
@@ -27,9 +29,7 @@ public class FacilityTests : IClassFixture<SharedFixture>
             if (!Fixture.CheckEndpointAvailability(MetrcEndpoint.get_facilities_v1_, apiKey)) continue;
             Assert.NotEmpty(apiKey.Facilities);
             foreach (var facility in apiKey.Facilities)
-            {
                 _additionalPropertiesHelper.CheckAdditionalProperties(facility, facility.License.Number);
-            }
         }
     }
 }

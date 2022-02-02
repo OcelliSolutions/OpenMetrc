@@ -7,6 +7,7 @@ public class CreateTransferRequest
         ShipperLicenseNumber = string.Empty;
         ShipperName = string.Empty;
     }
+
     public string ShipperLicenseNumber { get; set; }
     public string ShipperName { get; set; }
     public string? ShipperMainPhoneNumber { get; set; }
@@ -37,6 +38,7 @@ public class CreateTransferRequest
         public List<ExternalTransporter>? Transporters { get; set; }
         public List<Package>? Packages { get; set; }
     }
+
     public class ExternalTransporter
     {
         public string? TransporterFacilityLicenseNumber { get; set; }
@@ -52,6 +54,7 @@ public class CreateTransferRequest
         public DateTimeOffset EstimatedArrivalDateTime { get; set; }
         public TransferDeliveryTransporterDetail? TransporterDetails { get; set; }
     }
+
     public class ExternalPackage
     {
         public string? ItemName { get; set; }

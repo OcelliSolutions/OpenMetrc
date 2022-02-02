@@ -12,6 +12,7 @@ public class AddAdditiveToPlantByLocationRequest
         ActiveIngredients = new List<ActiveIngredient>();
         LocationName = string.Empty;
     }
+
     public string AdditiveType { get; set; }
     public string ProductTradeName { get; set; }
     public string? EpaRegistrationNumber { get; set; }

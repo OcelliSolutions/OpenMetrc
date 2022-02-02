@@ -6,6 +6,7 @@ public class PatientStatus
     {
         PatientLicenseNumber = string.Empty;
     }
+
     public string PatientLicenseNumber { get; set; }
     public bool Active { get; set; }
     public double FlowerOuncesAvailable { get; set; }

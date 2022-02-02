@@ -6,5 +6,6 @@ public class PlantWasteMethod
     {
         Name = string.Empty;
     }
+
     public string Name { get; set; }
 }

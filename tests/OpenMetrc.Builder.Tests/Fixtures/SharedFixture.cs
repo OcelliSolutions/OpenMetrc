@@ -1,18 +1,17 @@
-﻿using OpenMetrc.Common.Data;
-using OpenMetrc.Tests.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using OpenMetrc.Builder.Tests.Models;
+using OpenMetrc.Common.Data;
 
-namespace OpenMetrc.Tests.Fixtures;
+namespace OpenMetrc.Builder.Tests.Fixtures;
 
 public class SharedFixture : IDisposable
 {
-    public List<ApiKey> ApiKeys { get; set; }
     public SharedFixture()
     {
         var apiKeysJson = File.ReadAllText("api_keys.json");
@@ -21,6 +20,15 @@ public class SharedFixture : IDisposable
         Debug.Assert(apiKeys != null, "Please specify some api keys in `api_keys.json` before testing");
         ApiKeys = apiKeys.ToList();
     }
+
+    public List<ApiKey> ApiKeys { get; set; }
+
+    public void Dispose()
+    {
+        ApiKeys.Clear();
+        GC.SuppressFinalize(this);
+    }
+
     public async Task LoadFacilities()
     {
         foreach (var key in ApiKeys)
@@ -29,14 +37,10 @@ public class SharedFixture : IDisposable
             key.Facilities = facilities;
         }
     }
+
     public bool CheckEndpointAvailability(MetrcEndpoint metrcEndpoint, ApiKey apiKey)
     {
         var states = MetrcEndpointExtensions.GetStates(metrcEndpoint);
         return states.Contains(apiKey.State);
-    }
-    public void Dispose()
-    {
-        ApiKeys.Clear();
-        GC.SuppressFinalize(this);
     }
 }

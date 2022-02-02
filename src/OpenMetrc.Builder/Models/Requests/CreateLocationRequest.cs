@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace OpenMetrc.Builder.Models.Requests;
+﻿namespace OpenMetrc.Builder.Models.Requests;
 
 public class CreateLocationRequest
 {
@@ -9,8 +7,8 @@ public class CreateLocationRequest
         Name = string.Empty;
         LocationTypeName = string.Empty;
     }
-    [Required]
-    public string Name { get; set; }
-    [Required]
-    public string LocationTypeName { get; set; }
+
+    [Required] public string Name { get; set; }
+
+    [Required] public string LocationTypeName { get; set; }
 }

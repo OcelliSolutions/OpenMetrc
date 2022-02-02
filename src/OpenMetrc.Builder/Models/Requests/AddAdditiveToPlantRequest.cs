@@ -12,6 +12,7 @@ public class AddAdditiveToPlantRequest
         ActiveIngredients = new List<ActiveIngredient>();
         PlantLabels = new List<string>();
     }
+
     public string AdditiveType { get; set; }
     public string ProductTradeName { get; set; }
     public string? EpaRegistrationNumber { get; set; }

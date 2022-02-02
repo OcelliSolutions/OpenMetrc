@@ -8,6 +8,7 @@ public class RemediatePackageRequest
         RemediationMethodName = string.Empty;
         RemediationSteps = string.Empty;
     }
+
     public string PackageLabel { get; set; }
     public string RemediationMethodName { get; set; }
     public DateTime RemediationDate { get; set; }

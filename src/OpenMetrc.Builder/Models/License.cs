@@ -7,15 +7,13 @@ public class License
         Number = number;
     }
 
-    [JsonPropertyName("Number"), Required]
+    [JsonPropertyName("Number")]
+    [Required]
     public string Number { get; set; }
 
-    [JsonPropertyName("StartDate")]
-    public DateTime? StartDate { get; set; }
+    [JsonPropertyName("StartDate")] public DateTime? StartDate { get; set; }
 
-    [JsonPropertyName("EndDate")]
-    public DateTime? EndDate { get; set; }
+    [JsonPropertyName("EndDate")] public DateTime? EndDate { get; set; }
 
-    [JsonPropertyName("LicenseType")]
-    public string? LicenseType { get; set; }
+    [JsonPropertyName("LicenseType")] public string? LicenseType { get; set; }
 }

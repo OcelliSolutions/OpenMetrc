@@ -6,6 +6,7 @@ public class MovePlantRequest
     {
         Location = string.Empty;
     }
+
     public int? Id { get; set; }
     public string? Label { get; set; }
     public string Location { get; set; }

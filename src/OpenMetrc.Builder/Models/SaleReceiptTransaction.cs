@@ -7,6 +7,7 @@ public class SaleReceiptTransaction
         PackageLabel = string.Empty;
         UnitOfMeasure = string.Empty;
     }
+
     public string PackageLabel { get; set; }
     public double Quantity { get; set; }
     public string UnitOfMeasure { get; set; }

@@ -11,6 +11,7 @@ public class TransferDeliveryTransporterDetail
         VehicleModel = string.Empty;
         VehicleLicensePlateNumber = string.Empty;
     }
+
     public string DriverName { get; set; }
     public string DriverOccupationalLicenseNumber { get; set; }
     public string DriverVehicleLicenseNumber { get; set; }

@@ -1,7 +1,7 @@
+using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
-using System.Net.Mime;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,17 +15,19 @@ builder.Services.AddControllers(options =>
     {
         options.SuppressMapClientErrors = true;
     });
-builder.Services.TryAddEnumerable(ServiceDescriptor.Transient<IApplicationModelProvider, ProduceResponseTypeModelProvider>());
+builder.Services.TryAddEnumerable(ServiceDescriptor
+    .Transient<IApplicationModelProvider, ProduceResponseTypeModelProvider>());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "METRC API",
-        Version = "v1",
-        Description = "This document is created and maintained by the community and is designed to be a non-state specific specification. Please refer to your regions documentation for specific details and deviations. https://api-<state/province code>.metrc.com/documentation." +
-        "Please keep in mind that there are rate limits and other terms of use enforced by Franwell (METRC). This document is only designed to give developers a standard used for code generation and testing."
-    }
+        {
+            Title = "METRC API",
+            Version = "v1",
+            Description =
+                "This document is created and maintained by the community and is designed to be a non-state specific specification. Please refer to your regions documentation for specific details and deviations. https://api-<state/province code>.metrc.com/documentation." +
+                "Please keep in mind that there are rate limits and other terms of use enforced by Franwell (METRC). This document is only designed to give developers a standard used for code generation and testing."
+        }
     );
     /*
     c.AddServer(new OpenApiServer { Url = "https://api-ak.metrc.com" });
@@ -155,7 +157,8 @@ builder.Services.AddSwaggerGen(c =>
         Type = SecuritySchemeType.Http,
         Scheme = "basic",
         In = ParameterLocation.Header,
-        Description = "Username = software_api_key = Software vendor's API key</br>Password = user_api_key = User's API key"
+        Description =
+            "Username = software_api_key = Software vendor's API key</br>Password = user_api_key = User's API key"
     });
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
@@ -180,6 +183,7 @@ if (builder.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "METRC API v1"));
 }
+
 app.UseAuthorization();
 app.MapControllers();
 

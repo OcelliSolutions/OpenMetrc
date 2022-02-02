@@ -7,6 +7,7 @@ public class MapsToApiAttribute : Attribute
     {
         Endpoint = endpoint;
     }
+
     public MetrcEndpoint Endpoint { get; set; }
     public IEnumerable<string> States => MetrcEndpointExtensions.GetStates(Endpoint);
 }

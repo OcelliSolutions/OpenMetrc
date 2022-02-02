@@ -1,10 +1,14 @@
-﻿using HtmlAgilityPack;
+﻿using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using HtmlAgilityPack;
 
-var states = new List<string>() { "al", "ak", "az", "ar", "ca", "cz", "co", "ct", "de", "dc", "fl", "ga", "gu", "hi", "id", "il", "in", "ia",
-    "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "ms", "mo", "mt", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd", "oh", "ok", "or", "pa",
-    "pr", "ri", "sc", "sd", "tn", "tx", "ut", "vt", "vi", "va", "wa", "wv", "wi", "wy" };
+var states = new List<string>
+{
+    "al", "ak", "az", "ar", "ca", "cz", "co", "ct", "de", "dc", "fl", "ga", "gu", "hi", "id", "il", "in", "ia",
+    "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "ms", "mo", "mt", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd",
+    "oh", "ok", "or", "pa", "pr", "ri", "sc", "sd", "tn", "tx", "ut", "vt", "vi", "va", "wa", "wv", "wi", "wy"
+};
 var stateSummaries = new List<StateSummary>();
 var stateCounter = 0.0;
 foreach (var state in states)
@@ -17,7 +21,8 @@ foreach (var state in states)
 
     var htmlDoc = new HtmlDocument();
     htmlDoc.LoadHtml(content);
-    var r = new Regex("(?:[^a-z0-9_]|(?<=['\"])s)", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Compiled);
+    var r = new Regex("(?:[^a-z0-9_]|(?<=['\"])s)",
+        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Compiled);
     foreach (var link in htmlDoc.GetElementbyId("version-1-collapse").Descendants("a"))
     {
         var hrefValue = link.GetAttributeValue("href", string.Empty);
@@ -31,8 +36,10 @@ foreach (var state in states)
             section = new Section(sectionName);
             stateSummary.Sections.Add(section);
         }
+
         section.Endpoints.Add(endpoint);
     }
+
     stateSummaries.Add(stateSummary);
 }
 
@@ -52,7 +59,6 @@ Console.ResetColor();
 
 static async Task<string?> ApiContentAsync(string state)
 {
-
     var client = new HttpClient();
     try
     {
@@ -89,7 +95,8 @@ static string FormatJsonText(string jsonString)
     {
         doc.WriteTo(utf8JsonWriter);
     }
-    return new System.Text.UTF8Encoding()
+
+    return new UTF8Encoding()
         .GetString(memoryStream.ToArray());
 }
 
@@ -104,6 +111,7 @@ internal class Section
         Name = name;
         Endpoints = new List<string>();
     }
+
     public string Name { get; set; }
     public ICollection<string> Endpoints { get; set; }
 }
@@ -115,6 +123,7 @@ internal class StateSummary
         State = state;
         Sections = new List<Section>();
     }
+
     public string State { get; set; }
     public ICollection<Section> Sections { get; set; }
 }

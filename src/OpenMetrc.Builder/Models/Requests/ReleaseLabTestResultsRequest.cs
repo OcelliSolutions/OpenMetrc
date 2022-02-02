@@ -6,5 +6,6 @@ public class ReleaseLabTestResultsRequest
     {
         PackageLabel = string.Empty;
     }
+
     public string PackageLabel { get; set; }
 }

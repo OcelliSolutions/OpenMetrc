@@ -8,6 +8,7 @@ public class SplitPlantBatchRequest
         GroupName = string.Empty;
         Strain = string.Empty;
     }
+
     public string PlantBatch { get; set; }
     public string GroupName { get; set; }
     public int Count { get; set; }

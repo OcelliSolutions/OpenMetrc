@@ -7,9 +7,10 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
+
 	<ItemGroup>
-		<OpenApiReference Include="../../open-metrc-swagger.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenMetrc.Client" ClassName="{controller}Client" Link="OpenAPIs/open-metrc-swagger.yaml" OutputPath="MetrcClient.cs">
-			<Options>/OperationGenerationMode:MultipleClientsFromFirstTagAndOperationId /GenerateClientInterfaces:true /GenerateOptionalPropertiesAsNullable:true /GenerateNullableReferenceTypes:true </Options>
+		<OpenApiReference Include="../../open-metrc-swagger.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenMetrc.Builder.Tests" ClassName="{controller}Client" Link="OpenAPIs/open-metrc-swagger.yaml" OutputPath="MetrcClient.cs">
+			<Options>/OperationGenerationMode:MultipleClientsFromOperationId  /GenerateClientInterfaces:true /GenerateOptionalPropertiesAsNullable:true /GenerateNullableReferenceTypes:true /ClientBaseClass:MetrcBaseClient /ClientBaseInterface:IMetrcBaseClient</Options>
 		</OpenApiReference>
 	</ItemGroup>
   <ItemGroup>

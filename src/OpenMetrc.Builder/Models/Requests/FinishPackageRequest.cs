@@ -6,6 +6,7 @@ public class FinishPackageRequest
     {
         Label = string.Empty;
     }
+
     public string Label { get; set; }
     public DateTime ActualDate { get; set; }
 }

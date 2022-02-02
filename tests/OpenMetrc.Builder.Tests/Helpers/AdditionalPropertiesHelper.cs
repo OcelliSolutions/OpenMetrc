@@ -1,19 +1,20 @@
-﻿using OpenMetrc.Client;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace OpenMetrc.Tests.Helpers;
+namespace OpenMetrc.Builder.Tests.Helpers;
 
 public class AdditionalPropertiesHelper
 {
+    private readonly ITestOutputHelper _testOutputHelper;
+
     public AdditionalPropertiesHelper(ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
     }
-    private readonly ITestOutputHelper _testOutputHelper;
+
     public void CheckAdditionalProperties(object? obj, string path)
     {
         if (obj == null) return;
@@ -23,7 +24,8 @@ public class AdditionalPropertiesHelper
         {
             var currentPath = $@"{path}.{property.Name}";
             var propValue = property.GetValue(obj, null);
-            if (property.PropertyType.Assembly == objType.Assembly && property.Name != nameof(Facility.AdditionalProperties))
+            if (property.PropertyType.Assembly == objType.Assembly &&
+                property.Name != nameof(Facility.AdditionalProperties))
             {
                 //_testOutputHelper.WriteLine(currentPath);
                 CheckAdditionalProperties(propValue, currentPath);

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace OpenMetrc.Builder.Models.Requests;
+﻿namespace OpenMetrc.Builder.Models.Requests;
 
 public class CreateHarvestPackageRequest
 {
@@ -8,8 +6,9 @@ public class CreateHarvestPackageRequest
     {
         Tag = string.Empty;
     }
-    [Required]
-    public string Tag { get; set; }
+
+    [Required] public string Tag { get; set; }
+
     public string? Location { get; set; }
     public string? Item { get; set; }
     public string? UnitOfWeight { get; set; }

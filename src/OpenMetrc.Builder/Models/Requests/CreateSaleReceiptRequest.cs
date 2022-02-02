@@ -7,6 +7,7 @@ public class CreateSaleReceiptRequest
         SalesCustomerType = string.Empty;
         Transactions = new List<SaleReceiptTransaction>();
     }
+
     public DateTimeOffset SalesDateTime { get; set; }
     public string SalesCustomerType { get; set; }
     public string? PatientLicenseNumber { get; set; }

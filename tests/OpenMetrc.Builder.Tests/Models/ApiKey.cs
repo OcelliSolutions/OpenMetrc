@@ -1,11 +1,11 @@
-﻿using OpenMetrc.Client;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Microsoft.VisualBasic;
+using System.Text;
+using OpenMetrc.Common.Handlers;
 
-namespace OpenMetrc.Tests.Models;
+namespace OpenMetrc.Builder.Tests.Models;
 
 public class ApiKey
 {
@@ -17,19 +17,19 @@ public class ApiKey
         IsReadOnly = isReadOnly;
         Facilities = new HashSet<Facility>();
 
-        Client = HttpClientFactory.Create(new Handlers.RateLimitHttpMessageHandler(
-                    limitCount: 50,
-                    limitTime: TimeSpan.FromSeconds(1)));
+        Client = HttpClientFactory.Create(new RateLimitHttpMessageHandler(
+            50,
+            TimeSpan.FromSeconds(1)));
 
         Client.DefaultRequestHeaders.Authorization =
             new AuthenticationHeaderValue(
-                "Basic", Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($"{VendorKey}:{ClientKey}")));
+                "Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{VendorKey}:{ClientKey}")));
 
         var baseUrl = $@"https://{Domain}.metrc.com";
-        EmployeeClient = new EmployeeClient(Client) { BaseUrl = baseUrl, ReadResponseAsString = true};
+        EmployeeClient = new EmployeeClient(Client) { BaseUrl = baseUrl, ReadResponseAsString = true };
         FacilityClient = new FacilityClient(Client) { BaseUrl = baseUrl, ReadResponseAsString = true };
         HarvestClient = new HarvestClient(Client) { BaseUrl = baseUrl, ReadResponseAsString = true };
-        ItemClient = new ItemClient(Client) { BaseUrl= baseUrl, ReadResponseAsString = true };
+        ItemClient = new ItemClient(Client) { BaseUrl = baseUrl, ReadResponseAsString = true };
         LabTestClient = new LabTestClient(Client) { BaseUrl = baseUrl, ReadResponseAsString = true };
         LocationClient = new LocationClient(Client) { BaseUrl = baseUrl, ReadResponseAsString = true };
         PackageClient = new PackageClient(Client) { BaseUrl = baseUrl, ReadResponseAsString = true };
@@ -40,8 +40,8 @@ public class ApiKey
         StrainClient = new StrainClient(Client) { BaseUrl = baseUrl, ReadResponseAsString = true };
         TransferClient = new TransferClient(Client) { BaseUrl = baseUrl, ReadResponseAsString = true };
         UnitOfMeasureClient = new UnitOfMeasureClient(Client) { BaseUrl = baseUrl, ReadResponseAsString = true };
-        
     }
+
     public string Domain { get; set; }
     public string VendorKey { get; set; }
     public string ClientKey { get; set; }
