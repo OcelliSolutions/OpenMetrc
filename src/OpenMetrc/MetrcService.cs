@@ -11,6 +11,7 @@ public partial class MetrcService
         bool returnEmptyOnNotSupported = false)
     {
         MetrcClient = metrcClient;
+        MetrcClient.ConfigureClient(softwareApiKey, userApiKey);
         ReturnEmptyOnNotSupported = returnEmptyOnNotSupported;
         State = state;
         SoftwareApiKey = softwareApiKey;

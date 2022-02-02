@@ -1,33 +1,33 @@
-﻿using System.Threading.Tasks;
-using OpenMetrc.Tests.Fixtures;
-using Xunit;
-using Xunit.Abstractions;
+﻿namespace OpenMetrc.Tests;
 
-namespace OpenMetrc.Tests;
-
+[Collection("Api Key collection")]
 public class MetrcServiceTests
 {
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    public MetrcServiceTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
+    public MetrcServiceTests(SharedFixture sharedFixture)
     {
         Fixture = sharedFixture;
-        _testOutputHelper = testOutputHelper;
-        Task.Run(() => Fixture.LoadFacilities()).Wait();
     }
 
     private SharedFixture Fixture { get; }
 
-    [Fact]
-    public void MetrcClient_ChangeCredentials_ShouldCascade()
+    [SkippableFact]
+    public async Task MetrcClient_ChangeCredentials_ShouldCascade()
     {
-        //Arrange
-        //var client = new MetrcService(new Client(new HttpClient()), "co", "software", "user", false, true);
-        //client.State = "ak";
-        //_testOutputHelper.WriteLine(client.State);
-        //var f = client.Facilities.GetFacilitiesAsync().Result;
-        //Act 
-        //_testOutputHelper.WriteLine(f.Count.ToString());
-        //Assert
+        Skip.If(Fixture.ApiKeys.Count < 2, "WARN: At least two sample API Keys are required for this test.");
+
+        var client0 = Fixture.ApiKeys[0];
+        var client1 = Fixture.ApiKeys[1];
+        var facilities0 = await client0.MetrcService.Facilities.GetFacilitiesAsync();
+
+        client0.ClientKey = client1.ClientKey;
+        client0.VendorKey = client1.VendorKey;
+        client0.Domain = client1.Domain;
+
+        //call the same client again with the new credentials
+        var facilities1 = await client0.MetrcService.Facilities.GetFacilitiesAsync();
+
+        //join all the license numbers together and ensure that you got separate results. 
+        Assert.NotEqual(string.Join(",", facilities0.Select(f => f.License.Number).OrderBy(f => f)),
+            string.Join(",", facilities1.Select(f => f.License.Number).OrderBy(f => f)));
     }
 }

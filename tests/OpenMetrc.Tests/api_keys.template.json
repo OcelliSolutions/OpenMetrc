@@ -1,5 +1,8 @@
-{
-  "api_keys": [
-    ["domain/state", "vendor-key", "client-key", "is-read-only"]
-  ]
-}
+[
+  {
+    "ClientKey": "value",
+    "Domain": "sandbox-api-ca",
+    "IsReadOnly": false,
+    "VendorKey": "value"
+  }
+]

@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		state-summaries.json = state-summaries.json
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMetrc.Builder.Tests", "tests\OpenMetrc.Builder.Tests\OpenMetrc.Builder.Tests.csproj", "{06FB782C-5F0C-40F2-8315-6BF7967D1677}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMetrc.Tests", "tests\OpenMetrc.Tests\OpenMetrc.Tests.csproj", "{2C04B302-5720-4405-B59E-B6FF7A6C1B60}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMetrc.Scraper", "src\OpenMetrc.Scraper\OpenMetrc.Scraper.csproj", "{74DF786A-D258-4EAE-8CF7-976B221D51B7}"
@@ -32,10 +30,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{06FB782C-5F0C-40F2-8315-6BF7967D1677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06FB782C-5F0C-40F2-8315-6BF7967D1677}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06FB782C-5F0C-40F2-8315-6BF7967D1677}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06FB782C-5F0C-40F2-8315-6BF7967D1677}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C04B302-5720-4405-B59E-B6FF7A6C1B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C04B302-5720-4405-B59E-B6FF7A6C1B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C04B302-5720-4405-B59E-B6FF7A6C1B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,7 +55,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{06FB782C-5F0C-40F2-8315-6BF7967D1677} = {E37BB4F9-72AA-4FCB-9C98-0C3E0271B6E0}
 		{2C04B302-5720-4405-B59E-B6FF7A6C1B60} = {E37BB4F9-72AA-4FCB-9C98-0C3E0271B6E0}
 		{74DF786A-D258-4EAE-8CF7-976B221D51B7} = {370EDA4D-7212-4E49-A5CC-B777F71ACAB8}
 		{1C226D35-A36B-4376-B12F-658DDCF54FE7} = {370EDA4D-7212-4E49-A5CC-B777F71ACAB8}

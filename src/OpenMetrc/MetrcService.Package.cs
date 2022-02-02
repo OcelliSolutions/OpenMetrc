@@ -86,16 +86,16 @@ public partial class MetrcService : IPackage
             : MetrcClient.GetPackageTypesAsync(cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_packages_v1_adjust_reasons)]
-    Task<ICollection<PackageAdjustReason>> IPackage.GetPackageAdjustReasonsAsync() =>
+    Task<ICollection<PackageAdjustReason>> IPackage.GetPackageAdjustReasonsAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<PackageAdjustReason>>(new List<PackageAdjustReason>())
-            : MetrcClient.GetPackageAdjustReasonsAsync();
+            : MetrcClient.GetPackageAdjustReasonsAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_packages_v1_adjust_reasons)]
-    Task<ICollection<PackageAdjustReason>> IPackage.GetPackageAdjustReasonsAsync(CancellationToken cancellationToken) =>
+    Task<ICollection<PackageAdjustReason>> IPackage.GetPackageAdjustReasonsAsync(string licenseNumber, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<PackageAdjustReason>>(new List<PackageAdjustReason>())
-            : MetrcClient.GetPackageAdjustReasonsAsync(cancellationToken);
+            : MetrcClient.GetPackageAdjustReasonsAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_packages_v1_create)]
     Task IPackage.CreatePackageAsync(string licenseNumber, IEnumerable<CreatePackageRequest> body) =>

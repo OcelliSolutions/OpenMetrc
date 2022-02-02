@@ -1,26 +1,39 @@
-using System.Threading.Tasks;
-using OpenMetrc.Tests.Fixtures;
-using Xunit;
-using Xunit.Abstractions;
-
 namespace OpenMetrc.Tests;
 
-public class FacilityTests : IClassFixture<SharedFixture>
+[Collection("Api Key collection")]
+public class FacilityTests
 {
-    private readonly ITestOutputHelper _testOutputHelper;
+
+    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
 
     public FacilityTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
     {
-        _testOutputHelper = testOutputHelper;
         Fixture = sharedFixture;
-        Task.Run(() => Fixture.LoadFacilities()).Wait();
+        _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
     }
 
     private SharedFixture Fixture { get; }
 
-    [Fact]
-    public void GetFacilitiesAsync_ShouldPass()
+    [SkippableFact]
+    public void GetFacilitiesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        foreach (var apiKey in Fixture.ApiKeys) Assert.NotEmpty(apiKey.Facilities);
+        var wasTested = false;
+        var unauthorized = 0;
+        foreach (var apiKey in Fixture.ApiKeys)
+            try
+            {
+                Assert.NotEmpty(apiKey.Facilities);
+                wasTested = wasTested || apiKey.Facilities.Any();
+                foreach (var facility in apiKey.Facilities)
+                    _additionalPropertiesHelper.CheckAdditionalProperties(facility, facility.License.Number);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                unauthorized++;
+            }
+
+        Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
+        Skip.IfNot(wasTested, "WARN: No facilities were returned.");
     }
 }

@@ -2,34 +2,27 @@
 using System.Security.Authentication;
 using System.Text;
 
-namespace OpenMetrc.Common;
+namespace OpenMetrc;
 
 public interface IMetrcBaseClient
 {
-    public void ConfigureClient(string state, string softwareApiKey, string userApiKey, bool isSandbox);
+    public void ConfigureClient(string softwareApiKey, string userApiKey);
 }
 
 public abstract class MetrcBaseClient : IMetrcBaseClient
 {
-    private bool _isSandbox;
     private string? _softwareApiKey;
-    private string? _state;
     private string? _userApiKey;
 
-    protected string Domain => $@"{(_isSandbox ? "sandbox-" : "")}api-{_state}";
-
-    public void ConfigureClient(string state, string softwareApiKey, string userApiKey, bool isSandbox)
+    public void ConfigureClient(string softwareApiKey, string userApiKey)
     {
-        _isSandbox = isSandbox;
-        _state = state;
         _softwareApiKey = softwareApiKey;
         _userApiKey = userApiKey;
     }
 
     protected Task<HttpRequestMessage> CreateHttpRequestMessageAsync(CancellationToken cancellationToken)
     {
-        if (string.IsNullOrWhiteSpace(_state) || string.IsNullOrWhiteSpace(_softwareApiKey) ||
-            string.IsNullOrWhiteSpace(_userApiKey))
+        if (string.IsNullOrWhiteSpace(_softwareApiKey) || string.IsNullOrWhiteSpace(_userApiKey))
             throw new InvalidCredentialException("Configure using `ConfigureClient` with credentials before use");
         var msg = new HttpRequestMessage();
 
