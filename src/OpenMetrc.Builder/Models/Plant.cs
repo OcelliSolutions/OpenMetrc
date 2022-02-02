@@ -8,6 +8,7 @@ public class Plant
     [MaxLength(100)] public string? GrowthPhase { get; set; }
     public int? PlantBatchId { get; set; }
     [MaxLength(100)] public string? PlantBatchName { get; set; }
+    public int? PlantBatchTypeId { get; set; }
     [MaxLength(100)] public string? PlantBatchTypeName { get; set; }
     public int? StrainId { get; set; }
     [MaxLength(100)] public string? StrainName { get; set; }

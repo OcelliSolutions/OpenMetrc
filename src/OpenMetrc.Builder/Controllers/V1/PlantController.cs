@@ -122,7 +122,10 @@ public class PlantController : ControllerBase
     [ApiAuthorizationFilter]
     [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get plant growth phases")]
-    public ActionResult GetPlantGrowthPhases() => Ok();
+    public ActionResult GetPlantGrowthPhases(
+        [Required]
+        [SwaggerParameter(Description = "The license number of the facility for plant growth phases.")]
+        string licenseNumber) => Ok();
 
     [HttpGet("additives/types")]
     [MapsToApi(MetrcEndpoint.get_plants_v1_additives_types)]
@@ -146,7 +149,10 @@ public class PlantController : ControllerBase
     [ApiAuthorizationFilter]
     [ProducesResponseType(typeof(IEnumerable<PlantWasteReason>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get plant waste reasons")]
-    public ActionResult GetPlantWasteReasons() => Ok();
+    public ActionResult GetPlantWasteReasons(
+        [Required]
+        [SwaggerParameter(Description = "The license number of the facility for plant waste reasons.")]
+        string licenseNumber) => Ok();
 
     [HttpPost("moveplants")]
     [MapsToApi(MetrcEndpoint.post_plants_v1_moveplants)]

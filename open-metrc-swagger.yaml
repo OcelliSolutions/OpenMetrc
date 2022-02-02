@@ -3257,6 +3257,13 @@ paths:
       summary: Get plant growth phases
       description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
       operationId: GetPlantGrowthPhases
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for plant growth phases.
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -3365,6 +3372,13 @@ paths:
       summary: Get plant waste reasons
       description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
       operationId: GetPlantWasteReasons
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for plant waste reasons.
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -8531,6 +8545,10 @@ components:
         plantBatchName:
           maxLength: 100
           type: string
+          nullable: true
+        plantBatchTypeId:
+          type: integer
+          format: int32
           nullable: true
         plantBatchTypeName:
           maxLength: 100

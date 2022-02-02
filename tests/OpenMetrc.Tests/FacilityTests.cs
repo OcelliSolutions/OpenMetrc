@@ -1,9 +1,8 @@
 namespace OpenMetrc.Tests;
 
-[Collection("Api Key collection")]
-public class FacilityTests
+//[Collection("Api Key collection")]
+public class FacilityTests : IAssemblyFixture<SharedFixture>
 {
-
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
 
     public FacilityTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
@@ -22,7 +21,6 @@ public class FacilityTests
         foreach (var apiKey in Fixture.ApiKeys)
             try
             {
-                Assert.NotEmpty(apiKey.Facilities);
                 wasTested = wasTested || apiKey.Facilities.Any();
                 foreach (var facility in apiKey.Facilities)
                     _additionalPropertiesHelper.CheckAdditionalProperties(facility, facility.License.Number);

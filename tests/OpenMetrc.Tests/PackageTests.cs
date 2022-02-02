@@ -2,11 +2,11 @@
 
 namespace OpenMetrc.Tests;
 
-[Collection("Api Key collection")]
-public class PackageTests
+//[Collection("Api Key collection")]
+public class PackageTests : IAssemblyFixture<SharedFixture>
 {
-    private readonly ITestOutputHelper _testOutputHelper;
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
+    private readonly ITestOutputHelper _testOutputHelper;
 
     public PackageTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
     {
@@ -24,27 +24,25 @@ public class PackageTests
         var unauthorized = 0;
         var timeout = 0;
         foreach (var apiKey in Fixture.ApiKeys)
-        {
-            Assert.NotEmpty(apiKey.Facilities);
-            foreach (var facility in apiKey.Facilities)
-                try
-                {
-                    var packages = await apiKey.MetrcService.Packages.GetActivePackagesAsync(facility.License.Number, DateTimeOffset.UtcNow.AddDays(-1), null);
-                    wasTested = wasTested || packages.Any();
-                    foreach (var package in packages)
-                        _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
-                }
-                catch (ApiException ex)
-                {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine($@"{apiKey.Domain}: {facility.License.Number}: Timeout");
-                    timeout++;
-                }
-        }
+        foreach (var facility in apiKey.Facilities)
+            try
+            {
+                var packages = await apiKey.MetrcService.Packages.GetActivePackagesAsync(facility.License.Number,
+                    DateTimeOffset.UtcNow.AddDays(-1), null);
+                wasTested = wasTested || packages.Any();
+                foreach (var package in packages)
+                    _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                unauthorized++;
+            }
+            catch (TimeoutException)
+            {
+                _testOutputHelper.WriteLine($@"{apiKey.Domain}: {facility.License.Number}: Timeout");
+                timeout++;
+            }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
         Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
@@ -58,27 +56,25 @@ public class PackageTests
         var unauthorized = 0;
         var timeout = 0;
         foreach (var apiKey in Fixture.ApiKeys)
-        {
-            Assert.NotEmpty(apiKey.Facilities);
-            foreach (var facility in apiKey.Facilities)
-                try
-                {
-                    var packages = await apiKey.MetrcService.Packages.GetInactivePackagesAsync(facility.License.Number, DateTimeOffset.UtcNow.AddDays(-1), null);
-                    wasTested = wasTested || packages.Any();
-                    foreach (var package in packages)
-                        _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
-                }
-                catch (ApiException ex)
-                {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine($@"{apiKey.Domain}: {facility.License.Number}: Timeout");
-                    timeout++;
-                }
-        }
+        foreach (var facility in apiKey.Facilities)
+            try
+            {
+                var packages = await apiKey.MetrcService.Packages.GetInactivePackagesAsync(facility.License.Number,
+                    DateTimeOffset.UtcNow.AddDays(-1), null);
+                wasTested = wasTested || packages.Any();
+                foreach (var package in packages)
+                    _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                unauthorized++;
+            }
+            catch (TimeoutException)
+            {
+                _testOutputHelper.WriteLine($@"{apiKey.Domain}: {facility.License.Number}: Timeout");
+                timeout++;
+            }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
         Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
@@ -92,27 +88,25 @@ public class PackageTests
         var unauthorized = 0;
         var timeout = 0;
         foreach (var apiKey in Fixture.ApiKeys)
-        {
-            Assert.NotEmpty(apiKey.Facilities);
-            foreach (var facility in apiKey.Facilities)
-                try
-                {
-                    var packages = await apiKey.MetrcService.Packages.GetOnHoldPackagesAsync(facility.License.Number, DateTimeOffset.UtcNow.AddDays(-1), null);
-                    wasTested = wasTested || packages.Any();
-                    foreach (var package in packages)
-                        _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
-                }
-                catch (ApiException ex)
-                {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine($@"{apiKey.Domain}: {facility.License.Number}: Timeout");
-                    timeout++;
-                }
-        }
+        foreach (var facility in apiKey.Facilities)
+            try
+            {
+                var packages = await apiKey.MetrcService.Packages.GetOnHoldPackagesAsync(facility.License.Number,
+                    DateTimeOffset.UtcNow.AddDays(-1), null);
+                wasTested = wasTested || packages.Any();
+                foreach (var package in packages)
+                    _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                unauthorized++;
+            }
+            catch (TimeoutException)
+            {
+                _testOutputHelper.WriteLine($@"{apiKey.Domain}: {facility.License.Number}: Timeout");
+                timeout++;
+            }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
         Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
@@ -127,27 +121,24 @@ public class PackageTests
         var unauthorized = 0;
         var timeout = 0;
         foreach (var apiKey in Fixture.ApiKeys)
-        {
-            Assert.NotEmpty(apiKey.Facilities);
-            foreach (var facility in apiKey.Facilities)
-                try
-                {
-                    var packages = await apiKey.MetrcService.Packages.GetPackageAdjustReasonsAsync(facility.License.Number);
-                    wasTested = wasTested || packages.Any();
-                    foreach (var package in packages)
-                        _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
-                }
-                catch (ApiException ex)
-                {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine($@"{apiKey.Domain}: {facility.License.Number}: Timeout");
-                    timeout++;
-                }
-        }
+        foreach (var facility in apiKey.Facilities)
+            try
+            {
+                var packages = await apiKey.MetrcService.Packages.GetPackageAdjustReasonsAsync(facility.License.Number);
+                wasTested = wasTested || packages.Any();
+                foreach (var package in packages)
+                    _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                unauthorized++;
+            }
+            catch (TimeoutException)
+            {
+                _testOutputHelper.WriteLine($@"{apiKey.Domain}: {facility.License.Number}: Timeout");
+                timeout++;
+            }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
         Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
@@ -162,8 +153,6 @@ public class PackageTests
         var unauthorized = 0;
         var timeout = 0;
         foreach (var apiKey in Fixture.ApiKeys)
-        {
-            Assert.NotEmpty(apiKey.Facilities);
             try
             {
                 var packages = await apiKey.MetrcService.Packages.GetPackageTypesAsync();
@@ -179,11 +168,9 @@ public class PackageTests
                 _testOutputHelper.WriteLine($@"{apiKey.Domain}: Timeout");
                 timeout++;
             }
-        }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
         Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
         Skip.IfNot(wasTested, "WARN: There were no testable Packages for any license");
     }
-
 }

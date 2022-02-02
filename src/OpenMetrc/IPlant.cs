@@ -173,6 +173,7 @@ public interface IPlant
     ///     A cancellation token that can be used by other objects or threads to receive notice of
     ///     cancellation.
     /// </param>
+    /// <param name="licenseNumber">The license number of the facility for plant growth phases</param>
     /// <summary>Add additives to a plant</summary>
     /// <returns>Success</returns>
     /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -182,16 +183,17 @@ public interface IPlant
     /// <summary>Get plant growth phases</summary>
     /// <returns>Success</returns>
     /// <exception cref="ApiException">A server side error occurred.</exception>
-    Task<ICollection<string>> GetPlantGrowthPhasesAsync();
+    Task<ICollection<string>> GetPlantGrowthPhasesAsync(string licenseNumber);
 
     /// <param name="cancellationToken">
     ///     A cancellation token that can be used by other objects or threads to receive notice of
     ///     cancellation.
     /// </param>
     /// <summary>Get plant growth phases</summary>
+    /// <param name="licenseNumber">The license number of the facility for plant growth phases</param>
     /// <returns>Success</returns>
     /// <exception cref="ApiException">A server side error occurred.</exception>
-    Task<ICollection<string>> GetPlantGrowthPhasesAsync(CancellationToken cancellationToken);
+    Task<ICollection<string>> GetPlantGrowthPhasesAsync(string licenseNumber, CancellationToken cancellationToken);
 
     /// <summary>Get plant additive types</summary>
     /// <returns>Success</returns>
@@ -223,9 +225,11 @@ public interface IPlant
 
     /// <summary>Get plant waste reasons</summary>
     /// <returns>Success</returns>
+    /// <param name="licenseNumber">The license number of the facility for plant waste reasons</param>
     /// <exception cref="ApiException">A server side error occurred.</exception>
-    Task<ICollection<PlantWasteReason>> GetPlantWasteReasonsAsync();
+    Task<ICollection<PlantWasteReason>> GetPlantWasteReasonsAsync(string licenseNumber);
 
+    /// <param name="licenseNumber">The license number of the facility for plant waste reasons</param>
     /// <param name="cancellationToken">
     ///     A cancellation token that can be used by other objects or threads to receive notice of
     ///     cancellation.
@@ -233,7 +237,7 @@ public interface IPlant
     /// <summary>Get plant waste reasons</summary>
     /// <returns>Success</returns>
     /// <exception cref="ApiException">A server side error occurred.</exception>
-    Task<ICollection<PlantWasteReason>> GetPlantWasteReasonsAsync(CancellationToken cancellationToken);
+    Task<ICollection<PlantWasteReason>> GetPlantWasteReasonsAsync(string licenseNumber, CancellationToken cancellationToken);
 
     /// <summary>Move a plant</summary>
     /// <returns>Success</returns>
