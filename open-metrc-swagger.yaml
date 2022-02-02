@@ -8928,6 +8928,11 @@ components:
         totalPrice:
           type: number
           format: double
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SaleReceiptTransaction'
+          nullable: true
         isFinal:
           type: boolean
         archivedDate:
