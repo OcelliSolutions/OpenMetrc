@@ -10,17 +10,18 @@
     <Authors>Jason Cooper</Authors>
   </PropertyGroup>
 
+
+	<ItemGroup>
+		<OpenApiReference Include="../../open-metrc-swagger.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenMetrc" ClassName="MetrcClient" Link="OpenAPIs/open-metrc-swagger.yaml" OutputPath="MetrcClient.cs">
+			<Options>/OperationGenerationMode:SingleClientFromOperationId  /GenerateClientInterfaces:true /GenerateOptionalPropertiesAsNullable:true /GenerateNullableReferenceTypes:true /ClientBaseClass:MetrcBaseClient /ClientBaseInterface:IMetrcBaseClient</Options>
+		</OpenApiReference>
+	</ItemGroup>
   <ItemGroup>
     <None Include="..\..\readme.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
-	<ItemGroup>
-		<OpenApiReference Include="../../open-metrc-swagger.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenMetrc.Client" ClassName="{controller}Client" Link="OpenAPIs\open-metrc-swagger.yaml" OutputPath="MetrcClient.cs">
-			<Options>/OperationGenerationMode:MultipleClientsFromFirstTagAndOperationId /GenerateClientInterfaces:true /GenerateOptionalPropertiesAsNullable:true /GenerateNullableReferenceTypes:true </Options>
-		</OpenApiReference>
-	</ItemGroup>
 
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />

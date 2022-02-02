@@ -1,0 +1,5 @@
+{
+  "api_keys": [
+    ["domain/state", "vendor-key", "client-key", "is-read-only"]
+  ]
+}
