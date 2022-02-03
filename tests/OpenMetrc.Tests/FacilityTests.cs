@@ -1,6 +1,6 @@
 namespace OpenMetrc.Tests;
 
-public class FacilityTests : IAssemblyFixture<SharedFixture>
+public class FacilityTests : IClassFixture<SharedFixture>
 {
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
 

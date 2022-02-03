@@ -1,6 +1,6 @@
 ﻿namespace OpenMetrc.Tests;
 
-public class MetrcServiceTests : IAssemblyFixture<SharedFixture>
+public class MetrcServiceTests : IClassFixture<SharedFixture>
 {
     public MetrcServiceTests(SharedFixture sharedFixture)
     {

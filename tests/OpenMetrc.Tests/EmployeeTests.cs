@@ -2,7 +2,7 @@ using System;
 
 namespace OpenMetrc.Tests;
 
-public class EmployeeTests : IAssemblyFixture<SharedFixture>
+public class EmployeeTests : IClassFixture<SharedFixture>
 {
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
     private readonly ITestOutputHelper _testOutputHelper;
@@ -16,7 +16,7 @@ public class EmployeeTests : IAssemblyFixture<SharedFixture>
 
     private SharedFixture Fixture { get; }
 
-    [Fact]
+    [SkippableFact]
     public async void GetEmployeesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;

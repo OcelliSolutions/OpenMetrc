@@ -2,6 +2,7 @@
 
 public class Harvest
 {
+    [Required]
     public int Id { get; set; }
     [MaxLength(100)] public string? Name { get; set; }
     [MaxLength(100)] public string? HarvestType { get; set; }

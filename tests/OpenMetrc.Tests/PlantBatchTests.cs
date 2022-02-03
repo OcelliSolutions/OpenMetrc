@@ -2,7 +2,7 @@
 
 namespace OpenMetrc.Tests;
 
-public class PlantBatchTests : IAssemblyFixture<SharedFixture>
+public class PlantBatchTests : IClassFixture<SharedFixture>
 {
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
     private readonly ITestOutputHelper _testOutputHelper;

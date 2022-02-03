@@ -2,6 +2,7 @@
 
 public class PlantBatch
 {
+    [Required]
     public int Id { get; set; }
     [MaxLength(100)] public string? Name { get; set; }
     public int? PlantBatchTypeId { get; set; }

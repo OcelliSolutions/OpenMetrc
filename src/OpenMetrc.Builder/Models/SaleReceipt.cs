@@ -2,6 +2,7 @@
 
 public class SaleReceipt
 {
+    [Required]
     public int Id { get; set; }
     [MaxLength(100)] public string? ReceiptNumber { get; set; }
     public DateTimeOffset SalesDateTime { get; set; }

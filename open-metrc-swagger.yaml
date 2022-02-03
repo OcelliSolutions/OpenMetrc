@@ -7626,6 +7626,8 @@ components:
           format: date
       additionalProperties: { }
     Harvest:
+      required:
+        - id
       type: object
       properties:
         id:
@@ -7793,6 +7795,8 @@ components:
           nullable: true
       additionalProperties: { }
     Item:
+      required:
+        - id
       type: object
       properties:
         name:
@@ -8124,6 +8128,8 @@ components:
           type: string
       additionalProperties: { }
     LabTestType:
+      required:
+        - id
       type: object
       properties:
         id:
@@ -8179,6 +8185,8 @@ components:
           nullable: true
       additionalProperties: { }
     Location:
+      required:
+        - id
       type: object
       properties:
         id:
@@ -8209,6 +8217,8 @@ components:
           nullable: true
       additionalProperties: { }
     LocationType:
+      required:
+        - id
       type: object
       properties:
         id:
@@ -8307,6 +8317,8 @@ components:
           format: date
       additionalProperties: { }
     Package:
+      required:
+        - id
       type: object
       properties:
         id:
@@ -8480,6 +8492,8 @@ components:
           type: boolean
       additionalProperties: { }
     Patient:
+      required:
+        - patientId
       type: object
       properties:
         patientId:
@@ -8521,6 +8535,8 @@ components:
           nullable: true
       additionalProperties: { }
     Plant:
+      required:
+        - id
       type: object
       properties:
         id:
@@ -8690,6 +8706,8 @@ components:
           nullable: true
       additionalProperties: { }
     PlantBatch:
+      required:
+        - id
       type: object
       properties:
         id:
@@ -8893,6 +8911,8 @@ components:
           nullable: true
       additionalProperties: { }
     SaleReceipt:
+      required:
+        - id
       type: object
       properties:
         id:
@@ -9101,6 +9121,8 @@ components:
           format: date
       additionalProperties: { }
     SaleTransactionSummary:
+      required:
+        - salesDate
       type: object
       properties:
         salesDate:
@@ -9147,6 +9169,8 @@ components:
           format: date
       additionalProperties: { }
     Strain:
+      required:
+        - id
       type: object
       properties:
         id:
@@ -9181,6 +9205,8 @@ components:
           nullable: true
       additionalProperties: { }
     Transfer:
+      required:
+        - id
       type: object
       properties:
         id:
@@ -9360,6 +9386,8 @@ components:
           nullable: true
       additionalProperties: { }
     TransferDelivery:
+      required:
+        - id
       type: object
       properties:
         id:
@@ -9452,6 +9480,8 @@ components:
           nullable: true
       additionalProperties: { }
     TransferDeliveryPackage:
+      required:
+        - packageId
       type: object
       properties:
         packageId:
@@ -9565,9 +9595,13 @@ components:
           nullable: true
         isTradeSample:
           type: boolean
+        isTradeSamplePersistent:
+          type: boolean
         isDonation:
           type: boolean
         sourcePackageIsDonation:
+          type: boolean
+        sourcePackageIsTradeSample:
           type: boolean
         isTestingSample:
           type: boolean
@@ -9605,6 +9639,8 @@ components:
           nullable: true
       additionalProperties: { }
     TransferDeliveryPackageWholesale:
+      required:
+        - packageId
       type: object
       properties:
         packageId:
@@ -9662,11 +9698,12 @@ components:
           nullable: true
       additionalProperties: { }
     TransferType:
+      required:
+        - name
       type: object
       properties:
         name:
           type: string
-          nullable: true
         forLicensedShipments:
           type: boolean
         forExternalIncomingShipments:
@@ -9693,12 +9730,13 @@ components:
           nullable: true
       additionalProperties: { }
     UnitOfMeasure:
+      required:
+        - name
       type: object
       properties:
         name:
           maxLength: 100
           type: string
-          nullable: true
         quantityType:
           maxLength: 100
           type: string

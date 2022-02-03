@@ -2,6 +2,7 @@
 
 public class TransferDelivery
 {
+    [Required]
     public int Id { get; set; }
     [MaxLength(100)] public string? RecipientFacilityLicenseNumber { get; set; }
     [MaxLength(100)] public string? RecipientFacilityName { get; set; }

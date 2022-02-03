@@ -2,7 +2,7 @@
 
 namespace OpenMetrc.Tests;
 
-public class PatientTests : IAssemblyFixture<SharedFixture>
+public class PatientTests : IClassFixture<SharedFixture>
 {
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
     private readonly ITestOutputHelper _testOutputHelper;

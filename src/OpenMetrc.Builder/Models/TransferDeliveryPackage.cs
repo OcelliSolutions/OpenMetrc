@@ -2,6 +2,7 @@
 
 public class TransferDeliveryPackage
 {
+    [Required]
     public int PackageId { get; set; }
     [MaxLength(100)] public string? PackageLabel { get; set; }
     [MaxLength(100)] public string? PackageType { get; set; }
@@ -31,8 +32,10 @@ public class TransferDeliveryPackage
     [MaxLength(100)] public string? LabTestingState { get; set; }
     [MaxLength(100)] public string? ProductionBatchNumber { get; set; }
     public bool IsTradeSample { get; set; }
+    public bool IsTradeSamplePersistent { get; set; }
     public bool IsDonation { get; set; }
     public bool SourcePackageIsDonation { get; set; }
+    public bool SourcePackageIsTradeSample { get; set; }
     public bool IsTestingSample { get; set; }
     public bool ProductRequiresRemediation { get; set; }
     public bool ContainsRemediatedProduct { get; set; }

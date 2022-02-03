@@ -12,6 +12,9 @@ public class ApiKey
         ClientKey = clientKey;
         IsReadOnly = isReadOnly;
         Facilities = new HashSet<Facility>();
+        Transfers = new List<Transfer>();
+        TransferDeliveries = new List<TransferDelivery>();
+        TransferTemplates = new List<Transfer>();
     }
 
     public string Domain { get; set; }
@@ -19,6 +22,10 @@ public class ApiKey
     public string ClientKey { get; set; }
     public bool IsReadOnly { get; set; }
     public ICollection<Facility> Facilities { get; set; }
+    public ICollection<Transfer> Transfers { get; set; }
+    public ICollection<TransferDelivery> TransferDeliveries { get; set; }
+    public ICollection<Transfer> TransferTemplates { get; set; }
+    public ICollection<TransferDelivery> TransferDeliveryTemplates { get; set; }
     public HttpClient HttpClient { get; set; }
 
     internal MetrcClient MetrcClient => new(HttpClient)

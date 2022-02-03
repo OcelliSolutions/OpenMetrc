@@ -2,7 +2,7 @@ using System;
 
 namespace OpenMetrc.Tests;
 
-public class ItemTests : IAssemblyFixture<SharedFixture>
+public class ItemTests : IClassFixture<SharedFixture>
 {
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
     private readonly ITestOutputHelper _testOutputHelper;

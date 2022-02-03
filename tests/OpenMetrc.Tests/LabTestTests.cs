@@ -2,7 +2,7 @@
 
 namespace OpenMetrc.Tests;
 
-public class LabTestTests : IAssemblyFixture<SharedFixture>
+public class LabTestTests : IClassFixture<SharedFixture>
 {
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
     private readonly ITestOutputHelper _testOutputHelper;

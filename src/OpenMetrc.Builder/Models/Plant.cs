@@ -2,6 +2,7 @@
 
 public class Plant
 {
+    [Required]
     public int Id { get; set; }
     [MaxLength(100)] public string? Label { get; set; }
     [MaxLength(100)] public string? State { get; set; }

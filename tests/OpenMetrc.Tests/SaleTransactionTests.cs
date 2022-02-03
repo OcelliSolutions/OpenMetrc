@@ -2,7 +2,7 @@
 
 namespace OpenMetrc.Tests;
 
-public class SaleTransactionTests : IAssemblyFixture<SharedFixture>
+public class SaleTransactionTests : IClassFixture<SharedFixture>
 {
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
     private readonly ITestOutputHelper _testOutputHelper;
@@ -26,7 +26,8 @@ public class SaleTransactionTests : IAssemblyFixture<SharedFixture>
         foreach (var facility in apiKey.Facilities)
             try
             {
-                var saleTransactions = await apiKey.MetrcService.SaleTransactions.GetTransactionsAsync(facility.License.Number);
+                var saleTransactions =
+                    await apiKey.MetrcService.SaleTransactions.GetTransactionsAsync(facility.License.Number);
                 wasTested = wasTested || saleTransactions.Any();
                 foreach (var saleTransaction in saleTransactions)
                     _additionalPropertiesHelper.CheckAdditionalProperties(saleTransaction, facility.License.Number);
@@ -57,7 +58,8 @@ public class SaleTransactionTests : IAssemblyFixture<SharedFixture>
         foreach (var facility in apiKey.Facilities)
             try
             {
-                var saleTransactions = await apiKey.MetrcService.SaleTransactions.GetInactiveSaleTransactionsAsync(facility.License.Number, DateTimeOffset.UtcNow.AddDays(-2), DateTimeOffset.UtcNow.AddDays(-1));
+                var saleTransactions = await apiKey.MetrcService.SaleTransactions.GetInactiveSaleTransactionsAsync(
+                    facility.License.Number, DateTimeOffset.UtcNow.AddDays(-2), DateTimeOffset.UtcNow.AddDays(-1));
                 wasTested = wasTested || saleTransactions.Any();
                 foreach (var saleTransaction in saleTransactions)
                     _additionalPropertiesHelper.CheckAdditionalProperties(saleTransaction, facility.License.Number);

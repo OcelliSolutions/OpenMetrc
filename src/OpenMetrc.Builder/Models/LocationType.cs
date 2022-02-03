@@ -2,6 +2,7 @@
 
 public class LocationType
 {
+    [Required]
     public int Id { get; set; }
     [MaxLength(100)] public string? Name { get; set; }
     public bool? ForPlantBatches { get; set; }

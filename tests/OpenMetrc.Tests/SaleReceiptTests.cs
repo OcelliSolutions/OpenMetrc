@@ -1,9 +1,9 @@
 ﻿using System;
-using JsonSerializer = System.Text.Json.JsonSerializer;
+using System.Text.Json;
 
 namespace OpenMetrc.Tests;
 
-public class SaleReceiptTests : IAssemblyFixture<SharedFixture>
+public class SaleReceiptTests : IClassFixture<SharedFixture>
 {
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
     private readonly ITestOutputHelper _testOutputHelper;
@@ -27,7 +27,9 @@ public class SaleReceiptTests : IAssemblyFixture<SharedFixture>
         foreach (var facility in apiKey.Facilities)
             try
             {
-                var saleReceipts = await apiKey.MetrcService.SaleReceipts.GetActiveSaleReceiptsAsync(facility.License.Number, DateTimeOffset.UtcNow.AddDays(-1), null, null, null);
+                var saleReceipts =
+                    await apiKey.MetrcService.SaleReceipts.GetActiveSaleReceiptsAsync(facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(-1), null, null, null);
                 wasTested = wasTested || saleReceipts.Any();
                 foreach (var saleReceipt in saleReceipts)
                 {
@@ -65,7 +67,9 @@ public class SaleReceiptTests : IAssemblyFixture<SharedFixture>
         foreach (var facility in apiKey.Facilities)
             try
             {
-                var saleReceipts = await apiKey.MetrcService.SaleReceipts.GetInactiveSaleReceiptsAllAsync(facility.License.Number, DateTimeOffset.UtcNow.AddDays(-1), null, null, null);
+                var saleReceipts =
+                    await apiKey.MetrcService.SaleReceipts.GetInactiveSaleReceiptsAllAsync(facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(-1), null, null, null);
                 wasTested = wasTested || saleReceipts.Any();
                 foreach (var saleReceipt in saleReceipts)
                 {

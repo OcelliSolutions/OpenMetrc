@@ -2,6 +2,7 @@
 
 public class Package
 {
+    [Required]
     public int Id { get; set; }
     [MaxLength(100)] public string? Label { get; set; }
     [MaxLength(100)] public string? PackageType { get; set; }
