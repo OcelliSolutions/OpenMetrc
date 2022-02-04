@@ -26,14 +26,10 @@ public class ApiKey
     public ICollection<TransferDelivery> TransferDeliveries { get; set; }
     public ICollection<Transfer> TransferTemplates { get; set; }
     public ICollection<TransferDelivery> TransferDeliveryTemplates { get; set; }
-    public HttpClient HttpClient { get; set; }
-
-    internal MetrcClient MetrcClient => new(HttpClient)
-        { BaseUrl = $@"https://{Domain}.metrc.com", ReadResponseAsString = true };
 
     internal string State => Domain.Substring(Domain.Length - 2);
     internal bool IsSandbox => Domain.Length > 2;
 
-    internal MetrcService MetrcService => new(MetrcClient, State, VendorKey, ClientKey, IsSandbox)
+    internal MetrcService MetrcService => new(State, VendorKey, ClientKey, IsSandbox)
         { ReturnEmptyOnNotSupported = true };
 }

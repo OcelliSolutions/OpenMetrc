@@ -237,7 +237,8 @@ public interface IPlant
     /// <summary>Get plant waste reasons</summary>
     /// <returns>Success</returns>
     /// <exception cref="ApiException">A server side error occurred.</exception>
-    Task<ICollection<PlantWasteReason>> GetPlantWasteReasonsAsync(string licenseNumber, CancellationToken cancellationToken);
+    Task<ICollection<PlantWasteReason>> GetPlantWasteReasonsAsync(string licenseNumber,
+        CancellationToken cancellationToken);
 
     /// <summary>Move a plant</summary>
     /// <returns>Success</returns>

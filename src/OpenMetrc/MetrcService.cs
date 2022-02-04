@@ -1,23 +1,36 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace OpenMetrc;
 
-public partial class MetrcService
+public partial class MetrcService : IMetrcService
 {
-    protected IMetrcClient MetrcClient;
+    protected static ConcurrentDictionary<string, IMetrcClient> MetrcClients = new();
 
-    public MetrcService(IMetrcClient metrcClient, string state, string softwareApiKey, string userApiKey,
-        bool isSandbox,
-        bool returnEmptyOnNotSupported = false)
+    public MetrcService(string state = "xx", string softwareApiKey = "xx", string userApiKey = "xx",
+        bool isSandbox = false, bool returnEmptyOnNotSupported = true)
     {
-        MetrcClient = metrcClient;
-        MetrcClient.ConfigureClient(softwareApiKey, userApiKey);
         ReturnEmptyOnNotSupported = returnEmptyOnNotSupported;
         State = state;
         SoftwareApiKey = softwareApiKey;
         UserApiKey = userApiKey;
         IsSandbox = isSandbox;
+
+        if (MetrcClients.Any(c => c.Key == MetrcClientKey)) return;
+
+        var baseUrl = $@"https://{(IsSandbox ? "sandbox-" : "")}api-{state}.metrc.com";
+        var client = new HttpClient(new RateLimitHttpMessageHandler { InnerHandler = new HttpClientHandler() });
+        var byteArray = Encoding.ASCII.GetBytes($"{softwareApiKey}:{userApiKey}");
+        client.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+        MetrcClients.TryAdd(MetrcClientKey,
+            new MetrcClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
     }
+
+    protected string MetrcClientKey => $@"{SoftwareApiKey}:{UserApiKey}";
+    protected IMetrcClient UserMetrcClient => MetrcClients[MetrcClientKey];
 
     /// <summary>
     ///     METRC is not in all states and not all states have the same endpoint. If this value is true, an empty result will

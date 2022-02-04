@@ -6,11 +6,11 @@ public partial class MetrcService : IUnitOfMeasure
     Task<ICollection<UnitOfMeasure>> IUnitOfMeasure.GetUnitsOfMeasureAsync() =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<UnitOfMeasure>>(new List<UnitOfMeasure>())
-            : MetrcClient.GetUnitsOfMeasureAsync();
+            : UserMetrcClient.GetUnitsOfMeasureAsync();
 
     [MapsToApi(MetrcEndpoint.get_unitsofmeasure_v1_active)]
     Task<ICollection<UnitOfMeasure>> IUnitOfMeasure.GetUnitsOfMeasureAsync(CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<UnitOfMeasure>>(new List<UnitOfMeasure>())
-            : MetrcClient.GetUnitsOfMeasureAsync(cancellationToken);
+            : UserMetrcClient.GetUnitsOfMeasureAsync(cancellationToken);
 }

@@ -1,6 +1,11 @@
-﻿namespace OpenMetrc.Common.Handlers;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading;
 
-public class RateLimitHttpMessageHandler : DelegatingHandler
+namespace OpenMetrc.Tests.Handlers;
+
+internal class RateLimitHttpMessageHandler : DelegatingHandler
 {
     private readonly List<DateTimeOffset> _callLog = new();
     private readonly int _limitCount;
@@ -26,7 +31,7 @@ public class RateLimitHttpMessageHandler : DelegatingHandler
                 _callLog.RemoveAt(0);
         }
 
-        await LimitDelay(now);
+        await this.LimitDelay(now);
 
         return await base.SendAsync(request, cancellationToken);
     }

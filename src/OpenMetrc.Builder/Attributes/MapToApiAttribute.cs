@@ -3,13 +3,13 @@
 namespace OpenMetrc.Builder.Attributes;
 
 [AttributeUsage(AttributeTargets.Method)]
-public class MapsToApiAttribute : ActionFilterAttribute
+internal class MapsToApiAttribute : ActionFilterAttribute
 {
-    public MapsToApiAttribute(MetrcEndpoint endpoint)
+    internal MapsToApiAttribute(MetrcEndpoint endpoint)
     {
         Endpoint = endpoint;
     }
 
-    public MetrcEndpoint Endpoint { get; set; }
-    public IEnumerable<string> States => MetrcEndpointExtensions.GetStates(Endpoint);
+    internal MetrcEndpoint Endpoint { get; set; }
+    internal IEnumerable<string> States => MetrcEndpointExtensions.GetStates(Endpoint);
 }

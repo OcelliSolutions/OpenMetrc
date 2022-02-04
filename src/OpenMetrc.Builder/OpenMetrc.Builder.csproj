@@ -16,30 +16,28 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <NoWarn>1701;1702;CS1591;IDE0060</NoWarn>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Data\EndpointEnums - Copy.cs" />
-  </ItemGroup>
-
   <ItemGroup>
 	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
 	  <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\OpenMetrc.Common\OpenMetrc.Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
+	<ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Data\TestEndpoint.cs">
+    <Compile Update="Data\MetrcEndpoints.cs">
+      <DependentUpon>MetrcEndpoints.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>TestEndpoint.tt</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\MetrcEndpoints.tt">
+      <LastGenOutput>MetrcEndpoints.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
   </ItemGroup>
 
 </Project>

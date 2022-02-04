@@ -4,7 +4,38 @@ info:
   description: This document is created and maintained by the community and is designed to be a non-state specific specification. Please refer to your regions documentation for specific details and deviations. https://api-<state/province code>.metrc.com/documentation.Please keep in mind that there are rate limits and other terms of use enforced by Franwell (METRC). This document is only designed to give developers a standard used for code generation and testing.
   version: v1
 servers:
+  - url: https://api-ak.metrc.com
+  - url: https://api-ca.metrc.com
+  - url: https://api-co.metrc.com
+  - url: https://api-dc.metrc.com
+  - url: https://api-la.metrc.com
+  - url: https://api-ma.metrc.com
+  - url: https://api-md.metrc.com
+  - url: https://api-me.metrc.com
+  - url: https://api-mi.metrc.com
+  - url: https://api-mo.metrc.com
+  - url: https://api-mt.metrc.com
+  - url: https://api-nv.metrc.com
+  - url: https://api-oh.metrc.com
+  - url: https://api-ok.metrc.com
+  - url: https://api-or.metrc.com
+  - url: https://api-wv.metrc.com
+  - url: https://sandbox-api-ak.metrc.com
   - url: https://sandbox-api-ca.metrc.com
+  - url: https://sandbox-api-co.metrc.com
+  - url: https://sandbox-api-dc.metrc.com
+  - url: https://sandbox-api-la.metrc.com
+  - url: https://sandbox-api-ma.metrc.com
+  - url: https://sandbox-api-md.metrc.com
+  - url: https://sandbox-api-me.metrc.com
+  - url: https://sandbox-api-mi.metrc.com
+  - url: https://sandbox-api-mo.metrc.com
+  - url: https://sandbox-api-mt.metrc.com
+  - url: https://sandbox-api-nv.metrc.com
+  - url: https://sandbox-api-oh.metrc.com
+  - url: https://sandbox-api-ok.metrc.com
+  - url: https://sandbox-api-or.metrc.com
+  - url: https://sandbox-api-wv.metrc.com
 paths:
   /employees/v1:
     get:

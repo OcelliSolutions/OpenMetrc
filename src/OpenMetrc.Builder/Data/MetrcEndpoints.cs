@@ -1,7 +1,7 @@
-﻿namespace OpenMetrc.Common.Data;
+﻿namespace OpenMetrc.Builder;
 // ReSharper disable InconsistentNaming
 
-public enum MetrcEndpoint
+internal enum MetrcEndpoint
 {
     delete_items_v1_id,
 	delete_locations_v1_id,
@@ -139,7 +139,7 @@ public enum MetrcEndpoint
 	put_transfers_v1_external_incoming,
 	put_transfers_v1_templates
 }
-public static class MetrcEndpointExtensions
+internal static class MetrcEndpointExtensions
 {
     public static IEnumerable<string> GetStates(MetrcEndpoint endpoint)
     {

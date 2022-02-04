@@ -146,7 +146,8 @@ public interface IPackage
     /// <summary>Get package adjust reasons</summary>
     /// <returns>Success</returns>
     /// <exception cref="ApiException">A server side error occurred.</exception>
-    Task<ICollection<PackageAdjustReason>> GetPackageAdjustReasonsAsync(string licenseNumber, CancellationToken cancellationToken);
+    Task<ICollection<PackageAdjustReason>> GetPackageAdjustReasonsAsync(string licenseNumber,
+        CancellationToken cancellationToken);
 
     /// <summary>Create packages</summary>
     /// <returns>Success</returns>

@@ -6,11 +6,11 @@ public partial class MetrcService : IFacility
     Task<ICollection<Facility>> IFacility.GetFacilitiesAsync() =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Facility>>(new List<Facility>())
-            : MetrcClient.GetFacilitiesAsync();
+            : UserMetrcClient.GetFacilitiesAsync();
 
     [MapsToApi(MetrcEndpoint.get_facilities_v1_)]
     Task<ICollection<Facility>> IFacility.GetFacilitiesAsync(CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Facility>>(new List<Facility>())
-            : MetrcClient.GetFacilitiesAsync(cancellationToken);
+            : UserMetrcClient.GetFacilitiesAsync(cancellationToken);
 }

@@ -1,13 +1,15 @@
-﻿namespace OpenMetrc.Attributes;
+﻿// ReSharper disable once CheckNamespace
+
+namespace OpenMetrc;
 
 [AttributeUsage(AttributeTargets.Method)]
-public class MapsToApiAttribute : Attribute
+class MapsToApiAttribute : Attribute
 {
-    public MapsToApiAttribute(MetrcEndpoint endpoint)
+    internal MapsToApiAttribute(MetrcEndpoint endpoint)
     {
         Endpoint = endpoint;
     }
 
-    public MetrcEndpoint Endpoint { get; set; }
-    public IEnumerable<string> States => MetrcEndpointExtensions.GetStates(Endpoint);
+    internal MetrcEndpoint Endpoint { get; set; }
+    internal IEnumerable<string> States => MetrcEndpointExtensions.GetStates(Endpoint);
 }
