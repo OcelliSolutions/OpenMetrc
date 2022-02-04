@@ -8,8 +8,9 @@
 <#@ assembly name="Newtonsoft.Json" #>
 <#@ import namespace="Newtonsoft.Json" #>
 <#@ import namespace="Newtonsoft.Json.Linq" #>
+
 <#@ output extension=".cs" #>
-namespace OpenMetrc.Builder;
+namespace OpenMetrc.Builder.Data;
 // ReSharper disable InconsistentNaming
 
 <#
@@ -17,12 +18,13 @@ namespace OpenMetrc.Builder;
 var file = this.Host.ResolvePath(@"../../../state-summaries.json");
 var stateSummaries = JArray.Parse(File.ReadAllText(file));
 
-if (stateSummaries == null) #> //TODO: state-summaries.json was not found 
-<# #>
+if (stateSummaries == null) {#> //TODO: state-summaries.json was not found 
+<#}
+var endpoints = GetDistinctEndpoints();
+    
+#>
 internal enum MetrcEndpoint
 {
-<#
-    var endpoints = GetDistinctEndpoints();#>
     <#= string.Join(",\r\n\t", endpoints) #>
 }
 internal static class MetrcEndpointExtensions

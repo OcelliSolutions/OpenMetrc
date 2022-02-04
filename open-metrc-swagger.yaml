@@ -5114,6 +5114,442 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /sales/v1/deliveries/active:
+    get:
+      tags:
+        - Sale
+      summary: Get active sales deliveries
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: co, dc, md, ma, mi, mo, mt, nv, or'
+      operationId: GetActiveSaleDeliveries
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: salesDateStart
+          in: query
+          description: 'The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: salesDateEnd
+          in: query
+          description: 'The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: lastModifiedStart
+          in: query
+          description: 'The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+            type: string
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
+        - name: lastModifiedEnd
+          in: query
+          description: 'The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+            type: string
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SaleDelivery'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+  /sales/v1/deliveries/inactive:
+    get:
+      tags:
+        - Sale
+      summary: Get inactive sales deliveries
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: co, dc, md, ma, mi, mo, mt, nv, or'
+      operationId: GetInactiveSaleDeliveries
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: salesDateStart
+          in: query
+          description: 'The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: salesDateEnd
+          in: query
+          description: 'The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            type: string
+            format: date
+        - name: lastModifiedStart
+          in: query
+          description: 'The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+            type: string
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
+        - name: lastModifiedEnd
+          in: query
+          description: 'The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.'
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+            type: string
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SaleDelivery'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+  '/sales/v1/delivery/{id}':
+    get:
+      tags:
+        - Sale
+      summary: Get a sales delivery by id
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: co, dc, md, ma, mi, mo, mt, nv, or'
+      operationId: GetSaleDeliveryById
+      parameters:
+        - name: id
+          in: path
+          description: Delivery ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: licenseNumber
+          in: query
+          description: 'If specified, the Sales Delivery will be validated against the specified License Number. If not specified, the Sales Delivery will be validated against all of the User''s current Facilities. Please note that if the Sales Delivery is not valid for the specified License Number, a 401 Unauthorized status will be returned'
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaleDelivery'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+    delete:
+      tags:
+        - Sale
+      summary: Delete an sale delivery
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: co, dc, md, ma, mi, mo, mt, nv, or'
+      operationId: DeleteDelivery
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: Sale Delivery ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /sales/v1/deliveries:
+    post:
+      tags:
+        - Sale
+      summary: Create a new sale delivery
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: co, dc, md, ma, mi, mo, mt, nv, or'
+      operationId: CreateSaleDelivery
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateSaleDeliveryRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateSaleDeliveryRequest'
+      responses:
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - Sale
+      summary: Create a new sale delivery
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: co, dc, md, ma, mi, mo, mt, nv, or'
+      operationId: UpdateSaleDelivery
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateSaleDeliveryRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateSaleDeliveryRequest'
+      responses:
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /sales/v1/deliveries/complete:
+    put:
+      tags:
+        - Sale
+      summary: Update a sale delivery to complete
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: co, dc, md, ma, mi, mo, mt, nv, or'
+      operationId: UpdateSaleDeliveryComplete
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateSaleDeliveryCompleteRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateSaleDeliveryCompleteRequest'
+      responses:
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /sales/v1/delivery/returnreasons:
+    get:
+      tags:
+        - Sale
+      summary: Get delivery return reasons
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: co, dc, md, ma, mi, mo, mt, nv, or'
+      operationId: GetDeliveryReturnReasons
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeliveryReturnReason'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
   '/strains/v1/{id}':
     get:
       tags:
@@ -7161,6 +7597,83 @@ components:
           type: string
           format: date
       additionalProperties: { }
+    CreateSaleDeliveryRequest:
+      type: object
+      properties:
+        salesDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+        salesCustomerType:
+          type: string
+          nullable: true
+        patientLicenseNumber:
+          type: string
+          nullable: true
+        consumerId:
+          type: string
+          nullable: true
+        driverEmployeeId:
+          type: string
+          nullable: true
+        driverName:
+          type: string
+          nullable: true
+        driversLicenseNumber:
+          type: string
+          nullable: true
+        phoneNumberForQuestions:
+          type: string
+          nullable: true
+        vehicleMake:
+          type: string
+          nullable: true
+        vehicleModel:
+          type: string
+          nullable: true
+        vehicleLicensePlateNumber:
+          type: string
+          nullable: true
+        recipientName:
+          type: string
+          nullable: true
+        recipientAddressStreet1:
+          type: string
+          nullable: true
+        recipientAddressStreet2:
+          type: string
+          nullable: true
+        recipientAddressCity:
+          type: string
+          nullable: true
+        recipientAddressCounty:
+          type: string
+          nullable: true
+        recipientAddressState:
+          type: string
+          nullable: true
+        recipientAddressPostalCode:
+          type: string
+          nullable: true
+        plannedRoute:
+          type: string
+          nullable: true
+        estimatedDepartureDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        estimatedArrivalDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SaleTransaction'
+          nullable: true
+      additionalProperties: { }
     CreateSaleReceiptRequest:
       type: object
       properties:
@@ -7264,6 +7777,15 @@ components:
           items:
             $ref: '#/components/schemas/ExternalDestination'
           nullable: true
+      additionalProperties: { }
+    DeliveryReturnReason:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        requiresNote:
+          type: boolean
       additionalProperties: { }
     DestroyPlantBatchRequest:
       type: object
@@ -8941,6 +9463,177 @@ components:
           type: string
           nullable: true
       additionalProperties: { }
+    ReturnedPackage:
+      type: object
+      properties:
+        label:
+          type: string
+          nullable: true
+        returnQuantityVerified:
+          type: number
+          format: double
+        returnUnitOfMeasure:
+          type: string
+          nullable: true
+        returnReason:
+          type: string
+          nullable: true
+        returnReasonNote:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    SaleDelivery:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        deliveryNumber:
+          type: string
+          nullable: true
+        facilityLicenseNumber:
+          type: string
+          nullable: true
+        facilityName:
+          type: string
+          nullable: true
+        transporterFacilityId:
+          type: string
+          nullable: true
+        transporterFacilityLicenseNumber:
+          type: string
+          nullable: true
+        transporterFacilityName:
+          type: string
+          nullable: true
+        salesDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        salesCustomerType:
+          type: string
+          nullable: true
+        patientLicenseNumber:
+          type: string
+          nullable: true
+        consumerId:
+          type: string
+          nullable: true
+        driverEmployeeId:
+          type: string
+          nullable: true
+        driverName:
+          type: string
+          nullable: true
+        driversLicenseNumber:
+          type: string
+          nullable: true
+        vehicleMake:
+          type: string
+          nullable: true
+        vehicleModel:
+          type: string
+          nullable: true
+        vehicleLicensePlateNumber:
+          type: string
+          nullable: true
+        recipientName:
+          type: string
+          nullable: true
+        plannedRoute:
+          type: string
+          nullable: true
+        direction:
+          type: integer
+          format: int32
+          nullable: true
+        estimatedDepartureDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        actualDepartureDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        estimatedArrivalDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        actualArrivalDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        estimatedReturnDepartureDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        actualReturnDepartureDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        estimatedReturnArrivalDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        actualReturnArrivalDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        totalPackages:
+          type: integer
+          format: int32
+          nullable: true
+        totalPrice:
+          type: number
+          format: double
+        acceptedDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SaleTransaction'
+          nullable: true
+        completedDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        salesDeliveryState:
+          type: integer
+          format: int32
+        voidedDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        recordedDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        recordedByUserName:
+          type: string
+          nullable: true
+        lastModified:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+      additionalProperties: { }
     SaleReceipt:
       required:
         - id
@@ -9832,6 +10525,108 @@ components:
           pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
           type: string
           format: date
+      additionalProperties: { }
+    UpdateSaleDeliveryCompleteRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        actualArrivalDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        acceptedPackages:
+          type: array
+          items:
+            type: string
+          nullable: true
+        returnedPackages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReturnedPackage'
+          nullable: true
+      additionalProperties: { }
+    UpdateSaleDeliveryRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        salesDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+        salesCustomerType:
+          type: string
+          nullable: true
+        patientLicenseNumber:
+          type: string
+          nullable: true
+        consumerId:
+          type: string
+          nullable: true
+        driverEmployeeId:
+          type: string
+          nullable: true
+        driverName:
+          type: string
+          nullable: true
+        driversLicenseNumber:
+          type: string
+          nullable: true
+        phoneNumberForQuestions:
+          type: string
+          nullable: true
+        vehicleMake:
+          type: string
+          nullable: true
+        vehicleModel:
+          type: string
+          nullable: true
+        vehicleLicensePlateNumber:
+          type: string
+          nullable: true
+        recipientName:
+          type: string
+          nullable: true
+        recipientAddressStreet1:
+          type: string
+          nullable: true
+        recipientAddressStreet2:
+          type: string
+          nullable: true
+        recipientAddressCity:
+          type: string
+          nullable: true
+        recipientAddressCounty:
+          type: string
+          nullable: true
+        recipientAddressState:
+          type: string
+          nullable: true
+        recipientAddressPostalCode:
+          type: string
+          nullable: true
+        plannedRoute:
+          type: string
+          nullable: true
+        estimatedDepartureDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        estimatedArrivalDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SaleTransaction'
+          nullable: true
       additionalProperties: { }
     UpdateSaleReceiptRequest:
       type: object

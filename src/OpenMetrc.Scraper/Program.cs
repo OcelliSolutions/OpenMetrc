@@ -59,7 +59,7 @@ Console.ResetColor();
 
 static async Task<string?> ApiContentAsync(string state)
 {
-    var client = new HttpClient();
+    var client = new HttpClient(){Timeout = new TimeSpan(0,0,0,10)};
     try
     {
         var url = $@"https://api-{state}.metrc.com/documentation";
@@ -69,6 +69,10 @@ static async Task<string?> ApiContentAsync(string state)
     catch (HttpRequestException)
     {
         // many of these sites do not exist.
+        return null;
+    }
+    catch (TaskCanceledException)
+    {
         return null;
     }
 }

@@ -1,8 +1,8 @@
-using System.Net.Mime;
-using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
+using System.Net.Mime;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -72,7 +72,6 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-
 var app = builder.Build();
 
 if (builder.Environment.IsDevelopment())
@@ -85,7 +84,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
 
 IOrderedEnumerable<string?> DistinctStates()
 {

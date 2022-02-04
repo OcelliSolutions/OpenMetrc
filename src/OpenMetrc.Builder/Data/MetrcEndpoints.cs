@@ -1,4 +1,5 @@
-﻿namespace OpenMetrc.Builder;
+﻿
+namespace OpenMetrc.Builder.Data;
 // ReSharper disable InconsistentNaming
 
 internal enum MetrcEndpoint
