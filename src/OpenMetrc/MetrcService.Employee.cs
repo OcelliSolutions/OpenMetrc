@@ -1,17 +1,17 @@
 ﻿namespace OpenMetrc;
 
-public partial class MetrcService : IEmployee
+public partial class MetrcService : IEmployeeClient
 {
     [MapsToApi(MetrcEndpoint.get_employees_v1_)]
-    Task<ICollection<Employee>> IEmployee.GetEmployeesAsync(string licenseNumber) =>
+    Task<ICollection<Employee>> IEmployeeClient.GetEmployeesAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Employee>>(new List<Employee>())
-            : UserMetrcClient.GetEmployeesAsync(licenseNumber);
+            : EmployeeClient.GetEmployeesAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_employees_v1_)]
-    Task<ICollection<Employee>> IEmployee.GetEmployeesAsync(string licenseNumber,
+    Task<ICollection<Employee>> IEmployeeClient.GetEmployeesAsync(string licenseNumber,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Employee>>(new List<Employee>())
-            : UserMetrcClient.GetEmployeesAsync(licenseNumber, cancellationToken);
+            : EmployeeClient.GetEmployeesAsync(licenseNumber, cancellationToken);
 }

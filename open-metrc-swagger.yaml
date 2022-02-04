@@ -382,7 +382,7 @@ paths:
         - Harvest
       summary: Create packages for one or more harvests
       description: '<b>Permissions Required</b>: View Harvests • Manage Harvests • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
-      operationId: CreatePackage
+      operationId: CreateHarvestPackage
       parameters:
         - name: licenseNumber
           in: query
@@ -437,7 +437,7 @@ paths:
         - Harvest
       summary: Create packages for one or more harvests for testing
       description: '<b>Permissions Required</b>: View Harvests • Manage Harvests • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
-      operationId: CreatePackageTesting
+      operationId: CreateHarvestPackageTesting
       parameters:
         - name: licenseNumber
           in: query
@@ -546,7 +546,7 @@ paths:
         - Harvest
       summary: Remove waste from a harvest
       description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
-      operationId: RemoveWaste
+      operationId: RemoveHarvestWaste
       parameters:
         - name: licenseNumber
           in: query
@@ -904,7 +904,7 @@ paths:
       parameters:
         - name: licenseNumber
           in: query
-          description: 'If specified, the Categories will be retrived for the specified License Number. If not specified, the all Item Categories will be returned.'
+          description: 'If specified, the Categories will be retrieved for the specified License Number. If not specified, the all Item Categories will be returned.'
           schema:
             type: string
       responses:
@@ -2688,9 +2688,9 @@ paths:
     get:
       tags:
         - Patient
-      summary: Get active patients
+      summary: Get patient status. Data returned by this endpoint is cached for up to one minute
       description: '<b>Permissions Required</b>: Lookup Patients</br><b>Available In</b>: co, dc, md, mi, mo, mt, wv'
-      operationId: GetActivePatients
+      operationId: GetPatientStatus
       parameters:
         - name: patientLicenseNumber
           in: path
@@ -4938,9 +4938,9 @@ paths:
     get:
       tags:
         - Sale
-      summary: Get a detail of all sales between a date range
+      summary: Get a detail of all sales transactions between a date range
       description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
-      operationId: GetInactiveSaleReceipts
+      operationId: GetTransactionsByDateRange
       parameters:
         - name: licenseNumber
           in: query

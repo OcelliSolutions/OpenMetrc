@@ -8,10 +8,10 @@ class RateLimitHttpMessageHandler : DelegatingHandler
 {
     const int FacilityLimitCount = 50;
     const int IntegratorLimitCount = 150;
-    static readonly ConcurrentDictionary<string, SemaphoreSlim> _facilitySemaphore = new();
-    static readonly ConcurrentDictionary<string, SemaphoreSlim> _integratorSemaphore = new();
-    static readonly ConcurrentDictionary<string, List<DateTimeOffset>> _facilityCallLog = new();
-    static readonly ConcurrentDictionary<string, List<DateTimeOffset>> _integratorCallLog = new();
+    static readonly ConcurrentDictionary<string, SemaphoreSlim> FacilitySemaphore = new();
+    static readonly ConcurrentDictionary<string, SemaphoreSlim> IntegratorSemaphore = new();
+    static readonly ConcurrentDictionary<string, List<DateTimeOffset>> FacilityCallLog = new();
+    static readonly ConcurrentDictionary<string, List<DateTimeOffset>> IntegratorCallLog = new();
     readonly TimeSpan _limitTime = TimeSpan.FromSeconds(1);
 
     protected override async Task<HttpResponseMessage> SendAsync(
@@ -24,24 +24,30 @@ class RateLimitHttpMessageHandler : DelegatingHandler
         var integrator = request.RequestUri.Host;
         var facility = HttpUtility.ParseQueryString(request.RequestUri.Query).Get("licenseNumber") ?? integrator;
 
-        _facilitySemaphore.TryAdd(facility, new SemaphoreSlim(10));
-        _facilityCallLog.TryAdd(facility, new List<DateTimeOffset>());
-
-        _integratorSemaphore.TryAdd(integrator, new SemaphoreSlim(30));
-        _integratorCallLog.TryAdd(integrator, new List<DateTimeOffset>());
-
-
-        lock (_facilityCallLog)
+        FacilitySemaphore.TryAdd(facility, new SemaphoreSlim(10));
+        lock (FacilityCallLog)
         {
-            lock (_integratorCallLog)
-            {
-                _facilityCallLog[facility].Add(now);
-                while (_facilityCallLog[facility].Count > FacilityLimitCount)
-                    _facilityCallLog[facility].RemoveAt(0);
+            FacilityCallLog.TryAdd(facility, new List<DateTimeOffset>());
+        }
 
-                _integratorCallLog[integrator].Add(now);
-                while (_integratorCallLog[integrator].Count > IntegratorLimitCount)
-                    _integratorCallLog[integrator].RemoveAt(0);
+        IntegratorSemaphore.TryAdd(integrator, new SemaphoreSlim(30));
+        lock (IntegratorCallLog)
+        {
+            IntegratorCallLog.TryAdd(integrator, new List<DateTimeOffset>());
+        }
+
+
+        lock (FacilityCallLog)
+        {
+            lock (IntegratorCallLog)
+            {
+                FacilityCallLog[facility].Add(now);
+                while (FacilityCallLog[facility].Count > FacilityLimitCount)
+                    FacilityCallLog[facility].RemoveAt(0);
+
+                IntegratorCallLog[integrator].Add(now);
+                while (IntegratorCallLog[integrator].Count > IntegratorLimitCount)
+                    IntegratorCallLog[integrator].RemoveAt(0);
             }
         }
 
@@ -49,11 +55,11 @@ class RateLimitHttpMessageHandler : DelegatingHandler
         var result = new HttpResponseMessage();
         try
         {
-            await _facilitySemaphore[facility].WaitAsync(cancellationToken);
-            await _integratorSemaphore[integrator].WaitAsync(cancellationToken);
+            await FacilitySemaphore[facility].WaitAsync(cancellationToken);
+            await IntegratorSemaphore[integrator].WaitAsync(cancellationToken);
             result = await base.SendAsync(request, cancellationToken);
-            _facilitySemaphore[facility].Release();
-            _integratorSemaphore[integrator].Release();
+            FacilitySemaphore[facility].Release();
+            IntegratorSemaphore[integrator].Release();
         }
         catch (Exception ex)
         {
@@ -65,24 +71,27 @@ class RateLimitHttpMessageHandler : DelegatingHandler
 
     async Task LimitDelay(string facility, string integrator, DateTimeOffset now)
     {
-        if (_facilityCallLog.Count < FacilityLimitCount && _integratorCallLog.Count < IntegratorLimitCount) return;
+        lock (FacilityCallLog)
+        {
+            if (FacilityCallLog.Count < FacilityLimitCount && IntegratorCallLog.Count < IntegratorLimitCount) return;
+        }
 
         var limit = now.Add(-_limitTime);
 
-        var facilityLastCall = DateTimeOffset.MinValue;
-        var facilityShouldLock = false;
-        var integratorLastCall = DateTimeOffset.MinValue;
-        var integratorShouldLock = false;
+        DateTimeOffset facilityLastCall;
+        bool facilityShouldLock;
+        DateTimeOffset integratorLastCall;
+        bool integratorShouldLock;
 
-        lock (_facilityCallLog)
+        lock (FacilityCallLog)
         {
-            lock (_integratorCallLog)
+            lock (IntegratorCallLog)
             {
-                facilityLastCall = _facilityCallLog[facility].FirstOrDefault();
-                facilityShouldLock = _facilityCallLog[facility].Count(x => x >= limit) >= FacilityLimitCount;
+                facilityLastCall = FacilityCallLog[facility].FirstOrDefault();
+                facilityShouldLock = FacilityCallLog[facility].Count(x => x >= limit) >= FacilityLimitCount;
 
-                integratorLastCall = _integratorCallLog[integrator].FirstOrDefault();
-                integratorShouldLock = _integratorCallLog[integrator].Count(x => x >= limit) >= IntegratorLimitCount;
+                integratorLastCall = IntegratorCallLog[integrator].FirstOrDefault();
+                integratorShouldLock = IntegratorCallLog[integrator].Count(x => x >= limit) >= IntegratorLimitCount;
             }
         }
 

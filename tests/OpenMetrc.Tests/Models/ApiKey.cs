@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Net.Http;
 
 namespace OpenMetrc.Tests.Models;
 
@@ -24,10 +23,11 @@ public class ApiKey
     public ICollection<Facility> Facilities { get; set; }
     public ICollection<Transfer> Transfers { get; set; }
     public ICollection<TransferDelivery> TransferDeliveries { get; set; }
-    public ICollection<Transfer> TransferTemplates { get; set; }
-    public ICollection<TransferDelivery> TransferDeliveryTemplates { get; set; }
 
-    internal string State => Domain.Substring(Domain.Length - 2);
+    public ICollection<Transfer> TransferTemplates { get; set; }
+    //public ICollection<TransferDelivery> TransferDeliveryTemplates { get; set; }
+
+    internal string State => Domain[^2..];
     internal bool IsSandbox => Domain.Length > 2;
 
     internal MetrcService MetrcService => new(State, VendorKey, ClientKey, IsSandbox)

@@ -14,13 +14,13 @@
 		<PackageTags>openapi swagger metrc</PackageTags>
 		<PackageReleaseNotes>Initial release</PackageReleaseNotes>
 		<Version>0.0.2-alpha</Version>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 
 
 	<ItemGroup>
-		<OpenApiReference Include="../../open-metrc-swagger.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenMetrc"
-		                  ClassName="MetrcClient" Link="OpenAPIs/open-metrc-swagger.yaml" OutputPath="MetrcClient.cs">
-			<Options>/OperationGenerationMode:SingleClientFromOperationId  /GenerateClientInterfaces:true /GenerateOptionalPropertiesAsNullable:true /GenerateNullableReferenceTypes:true /GenerateNullableReferenceTypes:true </Options>
+		<OpenApiReference Include="../../open-metrc-swagger.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenMetrc" ClassName="{controller}Client" Link="OpenAPIs/open-metrc-swagger.yaml" OutputPath="MetrcClient.cs">
+			<Options>/OperationGenerationMode:MultipleClientsFromFirstTagAndOperationId   /GenerateClientInterfaces:true /GenerateOptionalPropertiesAsNullable:true /GenerateNullableReferenceTypes:true /GenerateNullableReferenceTypes:true </Options>
 		</OpenApiReference>
 	</ItemGroup>
 

@@ -86,7 +86,7 @@ public class HarvestController : ControllerBase
         ApiPermission.CreateSubmitDiscontinuePackages
     })]
     [SwaggerOperation(Summary = "Create packages for one or more harvests")]
-    public ActionResult CreatePackage([Required] string licenseNumber,
+    public ActionResult CreateHarvestPackage([Required] string licenseNumber,
         [Required] List<CreateHarvestPackageRequest> createHarvestPackageRequests) => Ok();
 
     [HttpPost("create/packages/testing")]
@@ -98,7 +98,7 @@ public class HarvestController : ControllerBase
         ApiPermission.CreateSubmitDiscontinuePackages
     })]
     [SwaggerOperation(Summary = "Create packages for one or more harvests for testing")]
-    public ActionResult CreatePackageTesting([Required] string licenseNumber,
+    public ActionResult CreateHarvestPackageTesting([Required] string licenseNumber,
         [Required] List<CreateHarvestPackageRequest> createHarvestPackageRequests) => Ok();
 
     [HttpPut("move")]
@@ -114,7 +114,8 @@ public class HarvestController : ControllerBase
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewHarvests, ApiPermission.ManageHarvests })]
     [SwaggerOperation(Summary = "Remove waste from a harvest")]
-    public ActionResult RemoveWaste([Required] string licenseNumber, List<RemoveWasteRequest> removeWasteRequests) =>
+    public ActionResult RemoveHarvestWaste([Required] string licenseNumber,
+        List<RemoveWasteRequest> removeWasteRequests) =>
         Ok();
 
     [HttpPut("rename")]

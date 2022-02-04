@@ -1,8 +1,8 @@
+using System.Net.Mime;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
-using System.Net.Mime;
-using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,14 +32,9 @@ builder.Services.AddSwaggerGen(c =>
     );
 
     var availableStates = DistinctStates().ToList();
+    foreach (var state in availableStates) c.AddServer(new OpenApiServer { Url = $@"https://api-{state}.metrc.com" });
     foreach (var state in availableStates)
-    {
-        c.AddServer(new OpenApiServer { Url = $@"https://api-{state}.metrc.com" });
-    }
-    foreach (var state in availableStates)
-    {
         c.AddServer(new OpenApiServer { Url = $@"https://sandbox-api-{state}.metrc.com" });
-    }
     c.EnableAnnotations();
     c.DocumentFilter<AdditionalPropertiesDocumentFilter>();
     c.SchemaFilter<DateTimeSchemaFilter>();
@@ -85,10 +80,10 @@ app.MapControllers();
 
 app.Run();
 
-IOrderedEnumerable<string?> DistinctStates()
+static IEnumerable<string?> DistinctStates()
 {
-    string fileName = "../../state-summaries.json";
-    string jsonString = File.ReadAllText(fileName);
+    const string fileName = "../../state-summaries.json";
+    var jsonString = File.ReadAllText(fileName);
     var stateSummaries = JsonSerializer.Deserialize<List<StateSummary>>(jsonString)!;
 
     return (from ss in stateSummaries

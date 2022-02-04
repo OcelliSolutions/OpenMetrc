@@ -2,6 +2,5 @@
 
 public class Item : ItemBase
 {
-    [Required]
-    public int Id { get; set; }
+    [Required] public int Id { get; set; }
 }

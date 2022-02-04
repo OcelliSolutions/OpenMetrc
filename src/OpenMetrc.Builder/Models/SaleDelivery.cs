@@ -2,8 +2,8 @@
 
 public class SaleDelivery
 {
-    [Required]
-    public int Id { get; set; }
+    [Required] public int Id { get; set; }
+
     public string? DeliveryNumber { get; set; }
     public string? FacilityLicenseNumber { get; set; }
     public string? FacilityName { get; set; }

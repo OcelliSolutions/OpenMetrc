@@ -2,8 +2,8 @@
 
 public class Strain
 {
-    [Required]
-    public int Id { get; set; }
+    [Required] public int Id { get; set; }
+
     [MaxLength(100)] public string? Name { get; set; }
     [MaxLength(100)] public string? TestingStatus { get; set; }
     public double? ThcLevel { get; set; }

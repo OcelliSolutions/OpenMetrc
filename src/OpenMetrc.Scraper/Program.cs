@@ -59,7 +59,7 @@ Console.ResetColor();
 
 static async Task<string?> ApiContentAsync(string state)
 {
-    var client = new HttpClient(){Timeout = new TimeSpan(0,0,0,10)};
+    var client = new HttpClient { Timeout = new TimeSpan(0, 0, 0, 10) };
     try
     {
         var url = $@"https://api-{state}.metrc.com/documentation";

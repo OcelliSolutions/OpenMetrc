@@ -1,67 +1,68 @@
 ﻿namespace OpenMetrc;
 
-public partial class MetrcService : IStrain
+public partial class MetrcService : IStrainClient
 {
     [MapsToApi(MetrcEndpoint.get_strains_v1_id)]
-    Task<Strain> IStrain.GetStrainByIdAsync(long id, string licenseNumber) =>
+    Task<Strain> IStrainClient.GetStrainByIdAsync(long id, string? licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new Strain())
-            : UserMetrcClient.GetStrainByIdAsync(id, licenseNumber);
+            : StrainClient.GetStrainByIdAsync(id, licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_strains_v1_id)]
-    Task<Strain> IStrain.GetStrainByIdAsync(long id, string licenseNumber, CancellationToken cancellationToken) =>
+    Task<Strain> IStrainClient.
+        GetStrainByIdAsync(long id, string? licenseNumber, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new Strain())
-            : UserMetrcClient.GetStrainByIdAsync(id, licenseNumber, cancellationToken);
+            : StrainClient.GetStrainByIdAsync(id, licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.delete_strains_v1_id)]
-    Task IStrain.DeleteStrainAsync(string licenseNumber, long id) =>
+    Task IStrainClient.DeleteStrainAsync(string licenseNumber, long id) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.DeleteStrainAsync(licenseNumber, id);
+            : StrainClient.DeleteStrainAsync(licenseNumber, id);
 
     [MapsToApi(MetrcEndpoint.delete_strains_v1_id)]
-    Task IStrain.DeleteStrainAsync(string licenseNumber, long id, CancellationToken cancellationToken) =>
+    Task IStrainClient.DeleteStrainAsync(string licenseNumber, long id, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.DeleteStrainAsync(licenseNumber, id, cancellationToken);
+            : StrainClient.DeleteStrainAsync(licenseNumber, id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_strains_v1_active)]
-    Task<ICollection<Strain>> IStrain.GetActiveStrainsAsync(string licenseNumber) =>
+    Task<ICollection<Strain>> IStrainClient.GetActiveStrainsAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Strain>>(new List<Strain>())
-            : UserMetrcClient.GetActiveStrainsAsync(licenseNumber);
+            : StrainClient.GetActiveStrainsAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_strains_v1_active)]
-    Task<ICollection<Strain>> IStrain.
+    Task<ICollection<Strain>> IStrainClient.
         GetActiveStrainsAsync(string licenseNumber, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Strain>>(new List<Strain>())
-            : UserMetrcClient.GetActiveStrainsAsync(licenseNumber, cancellationToken);
+            : StrainClient.GetActiveStrainsAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_strains_v1_create)]
-    Task IStrain.CreateStrainAsync(string licenseNumber, IEnumerable<CreateStrainRequest> body) =>
+    Task IStrainClient.CreateStrainAsync(string licenseNumber, IEnumerable<CreateStrainRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.CreateStrainAsync(licenseNumber, body);
+            : StrainClient.CreateStrainAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_strains_v1_create)]
-    Task IStrain.CreateStrainAsync(string licenseNumber, IEnumerable<CreateStrainRequest> body,
+    Task IStrainClient.CreateStrainAsync(string licenseNumber, IEnumerable<CreateStrainRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.CreateStrainAsync(licenseNumber, body, cancellationToken);
+            : StrainClient.CreateStrainAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_strains_v1_update)]
-    Task IStrain.UpdateStrainAsync(string licenseNumber, IEnumerable<UpdateStrainRequest> body) =>
+    Task IStrainClient.UpdateStrainAsync(string licenseNumber, IEnumerable<UpdateStrainRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.UpdateStrainAsync(licenseNumber, body);
+            : StrainClient.UpdateStrainAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_strains_v1_update)]
-    Task IStrain.UpdateStrainAsync(string licenseNumber, IEnumerable<UpdateStrainRequest> body,
+    Task IStrainClient.UpdateStrainAsync(string licenseNumber, IEnumerable<UpdateStrainRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.UpdateStrainAsync(licenseNumber, body, cancellationToken);
+            : StrainClient.UpdateStrainAsync(licenseNumber, body, cancellationToken);
 }

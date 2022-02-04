@@ -2,8 +2,8 @@
 
 public class Transfer
 {
-    [Required]
-    public int Id { get; set; }
+    [Required] public int Id { get; set; }
+
     [MaxLength(100)] public string? ManifestNumber { get; set; }
     [MaxLength(100)] public string? ShipmentLicenseType { get; set; }
     [MaxLength(100)] public string? ShipperFacilityLicenseNumber { get; set; }

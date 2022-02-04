@@ -1,272 +1,282 @@
 ﻿namespace OpenMetrc;
 
-public partial class MetrcService : IPlant
+public partial class MetrcService : IPlantClient
 {
     [MapsToApi(MetrcEndpoint.get_plants_v1_id)]
-    Task<Plant> IPlant.GetPlantByIdAsync(long id, string licenseNumber) =>
+    Task<Plant> IPlantClient.GetPlantByIdAsync(long id, string? licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new Plant())
-            : UserMetrcClient.GetPlantByIdAsync(id, licenseNumber);
+            : PlantClient.GetPlantByIdAsync(id, licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_id)]
-    Task<Plant> IPlant.GetPlantByIdAsync(long id, string licenseNumber, CancellationToken cancellationToken) =>
+    Task<Plant> IPlantClient.GetPlantByIdAsync(long id, string? licenseNumber, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new Plant())
-            : UserMetrcClient.GetPlantByIdAsync(id, licenseNumber, cancellationToken);
+            : PlantClient.GetPlantByIdAsync(id, licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_label)]
-    Task<Plant> IPlant.GetPlantByLabelAsync(string label, string licenseNumber) =>
+    Task<Plant> IPlantClient.GetPlantByLabelAsync(string label, string? licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new Plant())
-            : UserMetrcClient.GetPlantByLabelAsync(label, licenseNumber);
+            : PlantClient.GetPlantByLabelAsync(label, licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_label)]
-    Task<Plant> IPlant.GetPlantByLabelAsync(string label, string licenseNumber, CancellationToken cancellationToken) =>
+    Task<Plant> IPlantClient.GetPlantByLabelAsync(string label, string? licenseNumber,
+        CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new Plant())
-            : UserMetrcClient.GetPlantByLabelAsync(label, licenseNumber, cancellationToken);
+            : PlantClient.GetPlantByLabelAsync(label, licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_vegetative)]
-    Task<ICollection<Plant>> IPlant.GetVegetativePlantsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
+    Task<ICollection<Plant>> IPlantClient.GetVegetativePlantsAsync(string licenseNumber,
+        DateTimeOffset? lastModifiedStart,
         DateTimeOffset? lastModifiedEnd) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Plant>>(new List<Plant>())
-            : UserMetrcClient.GetVegetativePlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
+            : PlantClient.GetVegetativePlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_vegetative)]
-    Task<ICollection<Plant>> IPlant.GetVegetativePlantsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
+    Task<ICollection<Plant>> IPlantClient.GetVegetativePlantsAsync(string licenseNumber,
+        DateTimeOffset? lastModifiedStart,
         DateTimeOffset? lastModifiedEnd, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Plant>>(new List<Plant>())
-            : UserMetrcClient.GetVegetativePlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
+            : PlantClient.GetVegetativePlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
                 cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_flowering)]
-    Task<ICollection<Plant>> IPlant.GetFloweringPlantsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
+    Task<ICollection<Plant>> IPlantClient.GetFloweringPlantsAsync(string licenseNumber,
+        DateTimeOffset? lastModifiedStart,
         DateTimeOffset? lastModifiedEnd) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Plant>>(new List<Plant>())
-            : UserMetrcClient.GetFloweringPlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
+            : PlantClient.GetFloweringPlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_flowering)]
-    Task<ICollection<Plant>> IPlant.GetFloweringPlantsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
+    Task<ICollection<Plant>> IPlantClient.GetFloweringPlantsAsync(string licenseNumber,
+        DateTimeOffset? lastModifiedStart,
         DateTimeOffset? lastModifiedEnd, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Plant>>(new List<Plant>())
-            : UserMetrcClient.GetFloweringPlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
+            : PlantClient.GetFloweringPlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
                 cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_onhold)]
-    Task<ICollection<Plant>> IPlant.GetOnHoldPlantsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
+    Task<ICollection<Plant>> IPlantClient.GetOnHoldPlantsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
         DateTimeOffset? lastModifiedEnd) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Plant>>(new List<Plant>())
-            : UserMetrcClient.GetOnHoldPlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
+            : PlantClient.GetOnHoldPlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_onhold)]
-    Task<ICollection<Plant>> IPlant.GetOnHoldPlantsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
+    Task<ICollection<Plant>> IPlantClient.GetOnHoldPlantsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
         DateTimeOffset? lastModifiedEnd, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Plant>>(new List<Plant>())
-            : UserMetrcClient.GetOnHoldPlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
+            : PlantClient.GetOnHoldPlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
                 cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_inactive)]
-    Task<ICollection<Plant>> IPlant.GetInactivePlantsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
+    Task<ICollection<Plant>> IPlantClient.GetInactivePlantsAsync(string licenseNumber,
+        DateTimeOffset? lastModifiedStart,
         DateTimeOffset? lastModifiedEnd) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Plant>>(new List<Plant>())
-            : UserMetrcClient.GetInactivePlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
+            : PlantClient.GetInactivePlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_inactive)]
-    Task<ICollection<Plant>> IPlant.GetInactivePlantsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
+    Task<ICollection<Plant>> IPlantClient.GetInactivePlantsAsync(string licenseNumber,
+        DateTimeOffset? lastModifiedStart,
         DateTimeOffset? lastModifiedEnd, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Plant>>(new List<Plant>())
-            : UserMetrcClient.GetInactivePlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
+            : PlantClient.GetInactivePlantsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
                 cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_additives)]
-    Task<ICollection<PlantAdditive>> IPlant.GetPlantAdditivesAsync(string licenseNumber,
+    Task<ICollection<PlantAdditive>> IPlantClient.GetPlantAdditivesAsync(string licenseNumber,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<PlantAdditive>>(new List<PlantAdditive>())
-            : UserMetrcClient.GetPlantAdditivesAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
+            : PlantClient.GetPlantAdditivesAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_additives)]
-    Task<ICollection<PlantAdditive>> IPlant.GetPlantAdditivesAsync(string licenseNumber,
+    Task<ICollection<PlantAdditive>> IPlantClient.GetPlantAdditivesAsync(string licenseNumber,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<PlantAdditive>>(new List<PlantAdditive>())
-            : UserMetrcClient.GetPlantAdditivesAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
+            : PlantClient.GetPlantAdditivesAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
                 cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_additives)]
-    Task IPlant.AddAdditiveToPlantAsync(string licenseNumber, IEnumerable<AddAdditiveToPlantRequest> body) =>
+    Task IPlantClient.AddAdditiveToPlantAsync(string licenseNumber, IEnumerable<AddAdditiveToPlantRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.AddAdditiveToPlantAsync(licenseNumber, body);
+            : PlantClient.AddAdditiveToPlantAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_additives)]
-    Task IPlant.AddAdditiveToPlantAsync(string licenseNumber, IEnumerable<AddAdditiveToPlantRequest> body,
+    Task IPlantClient.AddAdditiveToPlantAsync(string licenseNumber, IEnumerable<AddAdditiveToPlantRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.AddAdditiveToPlantAsync(licenseNumber, body, cancellationToken);
+            : PlantClient.AddAdditiveToPlantAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_growthphases)]
-    Task<ICollection<string>> IPlant.GetPlantGrowthPhasesAsync(string licenseNumber) =>
+    Task<ICollection<string>> IPlantClient.GetPlantGrowthPhasesAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<string>>(new List<string>())
-            : UserMetrcClient.GetPlantGrowthPhasesAsync(licenseNumber);
+            : PlantClient.GetPlantGrowthPhasesAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_growthphases)]
-    Task<ICollection<string>> IPlant.GetPlantGrowthPhasesAsync(string licenseNumber,
+    Task<ICollection<string>> IPlantClient.GetPlantGrowthPhasesAsync(string licenseNumber,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<string>>(new List<string>())
-            : UserMetrcClient.GetPlantGrowthPhasesAsync(licenseNumber, cancellationToken);
+            : PlantClient.GetPlantGrowthPhasesAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_additives_types)]
-    Task<ICollection<string>> IPlant.GetPlantAdditivesTypesAsync() =>
+    Task<ICollection<string>> IPlantClient.GetPlantAdditivesTypesAsync() =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<string>>(new List<string>())
-            : UserMetrcClient.GetPlantAdditivesTypesAsync();
+            : PlantClient.GetPlantAdditivesTypesAsync();
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_additives_types)]
-    Task<ICollection<string>> IPlant.GetPlantAdditivesTypesAsync(CancellationToken cancellationToken) =>
+    Task<ICollection<string>> IPlantClient.GetPlantAdditivesTypesAsync(CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<string>>(new List<string>())
-            : UserMetrcClient.GetPlantAdditivesTypesAsync(cancellationToken);
+            : PlantClient.GetPlantAdditivesTypesAsync(cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_waste_methods)]
-    Task<ICollection<PlantWasteMethod>> IPlant.GetPlantWasteMethodsAsync() =>
+    Task<ICollection<PlantWasteMethod>> IPlantClient.GetPlantWasteMethodsAsync() =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<PlantWasteMethod>>(new List<PlantWasteMethod>())
-            : UserMetrcClient.GetPlantWasteMethodsAsync();
+            : PlantClient.GetPlantWasteMethodsAsync();
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_waste_methods)]
-    Task<ICollection<PlantWasteMethod>> IPlant.GetPlantWasteMethodsAsync(CancellationToken cancellationToken) =>
+    Task<ICollection<PlantWasteMethod>> IPlantClient.GetPlantWasteMethodsAsync(CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<PlantWasteMethod>>(new List<PlantWasteMethod>())
-            : UserMetrcClient.GetPlantWasteMethodsAsync(cancellationToken);
+            : PlantClient.GetPlantWasteMethodsAsync(cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_waste_reasons)]
-    Task<ICollection<PlantWasteReason>> IPlant.GetPlantWasteReasonsAsync(string licenseNumber) =>
+    Task<ICollection<PlantWasteReason>> IPlantClient.GetPlantWasteReasonsAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<PlantWasteReason>>(new List<PlantWasteReason>())
-            : UserMetrcClient.GetPlantWasteReasonsAsync(licenseNumber);
+            : PlantClient.GetPlantWasteReasonsAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_plants_v1_waste_reasons)]
-    Task<ICollection<PlantWasteReason>> IPlant.GetPlantWasteReasonsAsync(string licenseNumber,
+    Task<ICollection<PlantWasteReason>> IPlantClient.GetPlantWasteReasonsAsync(string licenseNumber,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<PlantWasteReason>>(new List<PlantWasteReason>())
-            : UserMetrcClient.GetPlantWasteReasonsAsync(licenseNumber, cancellationToken);
+            : PlantClient.GetPlantWasteReasonsAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_moveplants)]
-    Task IPlant.MovePlantAsync(string licenseNumber, IEnumerable<MovePlantRequest> body) =>
+    Task IPlantClient.MovePlantAsync(string licenseNumber, IEnumerable<MovePlantRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.MovePlantAsync(licenseNumber, body);
+            : PlantClient.MovePlantAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_moveplants)]
-    Task IPlant.MovePlantAsync(string licenseNumber, IEnumerable<MovePlantRequest> body,
+    Task IPlantClient.MovePlantAsync(string licenseNumber, IEnumerable<MovePlantRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.MovePlantAsync(licenseNumber, body, cancellationToken);
+            : PlantClient.MovePlantAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_changegrowthphases)]
-    Task IPlant.ChangePlantGrowthPhaseAsync(string licenseNumber, IEnumerable<ChangePlantGrowthPhaseRequest> body) =>
+    Task IPlantClient.ChangePlantGrowthPhaseAsync(string licenseNumber,
+        IEnumerable<ChangePlantGrowthPhaseRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.ChangePlantGrowthPhaseAsync(licenseNumber, body);
+            : PlantClient.ChangePlantGrowthPhaseAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_changegrowthphases)]
-    Task IPlant.ChangePlantGrowthPhaseAsync(string licenseNumber, IEnumerable<ChangePlantGrowthPhaseRequest> body,
+    Task IPlantClient.ChangePlantGrowthPhaseAsync(string licenseNumber,
+        IEnumerable<ChangePlantGrowthPhaseRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.ChangePlantGrowthPhaseAsync(licenseNumber, body, cancellationToken);
+            : PlantClient.ChangePlantGrowthPhaseAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_destroyplants)]
-    Task IPlant.DestroyPlantAsync(string licenseNumber, IEnumerable<DestroyPlantRequest> body) =>
+    Task IPlantClient.DestroyPlantAsync(string licenseNumber, IEnumerable<DestroyPlantRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.DestroyPlantAsync(licenseNumber, body);
+            : PlantClient.DestroyPlantAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_destroyplants)]
-    Task IPlant.DestroyPlantAsync(string licenseNumber, IEnumerable<DestroyPlantRequest> body,
+    Task IPlantClient.DestroyPlantAsync(string licenseNumber, IEnumerable<DestroyPlantRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.DestroyPlantAsync(licenseNumber, body, cancellationToken);
+            : PlantClient.DestroyPlantAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_additives_bylocation)]
-    Task IPlant.AddAdditiveToPlantByLocationAsync(string licenseNumber,
-        IEnumerable<AddAdditiveToPlantByLocationRequest> body) =>
+    Task IPlantClient.AddAdditiveToPlantByLocationAsync(string licenseNumber,
+        IEnumerable<AddAdditiveToPlantByLocationRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.AddAdditiveToPlantByLocationAsync(licenseNumber, body);
+            : PlantClient.AddAdditiveToPlantByLocationAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_additives_bylocation)]
-    Task IPlant.AddAdditiveToPlantByLocationAsync(string licenseNumber,
-        IEnumerable<AddAdditiveToPlantByLocationRequest> body, CancellationToken cancellationToken) =>
+    Task IPlantClient.AddAdditiveToPlantByLocationAsync(string licenseNumber,
+        IEnumerable<AddAdditiveToPlantByLocationRequest>? body, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.AddAdditiveToPlantByLocationAsync(licenseNumber, body, cancellationToken);
+            : PlantClient.AddAdditiveToPlantByLocationAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_create_plantings)]
-    Task IPlant.CreatePlantingOfPlantAsync(string licenseNumber, IEnumerable<CreatePlantingOfPlantRequest> body) =>
+    Task IPlantClient.
+        CreatePlantingOfPlantAsync(string licenseNumber, IEnumerable<CreatePlantingOfPlantRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.CreatePlantingOfPlantAsync(licenseNumber, body);
+            : PlantClient.CreatePlantingOfPlantAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_create_plantings)]
-    Task IPlant.CreatePlantingOfPlantAsync(string licenseNumber, IEnumerable<CreatePlantingOfPlantRequest> body,
+    Task IPlantClient.CreatePlantingOfPlantAsync(string licenseNumber, IEnumerable<CreatePlantingOfPlantRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.CreatePlantingOfPlantAsync(licenseNumber, body, cancellationToken);
+            : PlantClient.CreatePlantingOfPlantAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_create_plantbatch_packages)]
-    Task IPlant.CreatePlantBatchFromPlantPackageAsync(string licenseNumber,
-        IEnumerable<CreatePlantBatchFromPlantPackageRequest> body) =>
+    Task IPlantClient.CreatePlantBatchFromPlantPackageAsync(string licenseNumber,
+        IEnumerable<CreatePlantBatchFromPlantPackageRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.CreatePlantBatchFromPlantPackageAsync(licenseNumber, body);
+            : PlantClient.CreatePlantBatchFromPlantPackageAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_create_plantbatch_packages)]
-    Task IPlant.CreatePlantBatchFromPlantPackageAsync(string licenseNumber,
-        IEnumerable<CreatePlantBatchFromPlantPackageRequest> body, CancellationToken cancellationToken) =>
+    Task IPlantClient.CreatePlantBatchFromPlantPackageAsync(string licenseNumber,
+        IEnumerable<CreatePlantBatchFromPlantPackageRequest>? body, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.CreatePlantBatchFromPlantPackageAsync(licenseNumber, body, cancellationToken);
+            : PlantClient.CreatePlantBatchFromPlantPackageAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_harvestplants)]
-    Task IPlant.HarvestPlantAsync(string licenseNumber, IEnumerable<HarvestPlantRequest> body) =>
+    Task IPlantClient.HarvestPlantAsync(string licenseNumber, IEnumerable<HarvestPlantRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.HarvestPlantAsync(licenseNumber, body);
+            : PlantClient.HarvestPlantAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_harvestplants)]
-    Task IPlant.HarvestPlantAsync(string licenseNumber, IEnumerable<HarvestPlantRequest> body,
+    Task IPlantClient.HarvestPlantAsync(string licenseNumber, IEnumerable<HarvestPlantRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.HarvestPlantAsync(licenseNumber, body, cancellationToken);
+            : PlantClient.HarvestPlantAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_manicureplants)]
-    Task IPlant.ManicurePlantAsync(string licenseNumber, IEnumerable<ManicurePlantRequest> body) =>
+    Task IPlantClient.ManicurePlantAsync(string licenseNumber, IEnumerable<ManicurePlantRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.ManicurePlantAsync(licenseNumber, body);
+            : PlantClient.ManicurePlantAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_plants_v1_manicureplants)]
-    Task IPlant.ManicurePlantAsync(string licenseNumber, IEnumerable<ManicurePlantRequest> body,
+    Task IPlantClient.ManicurePlantAsync(string licenseNumber, IEnumerable<ManicurePlantRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.ManicurePlantAsync(licenseNumber, body, cancellationToken);
+            : PlantClient.ManicurePlantAsync(licenseNumber, body, cancellationToken);
 }

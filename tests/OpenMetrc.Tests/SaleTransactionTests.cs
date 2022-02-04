@@ -27,7 +27,7 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
             try
             {
                 var saleTransactions =
-                    await apiKey.MetrcService.SaleTransactions.GetTransactionsAsync(facility.License.Number);
+                    await apiKey.MetrcService.Sales.GetTransactionsAsync(facility.License.Number);
                 wasTested = wasTested || saleTransactions.Any();
                 foreach (var saleTransaction in saleTransactions)
                     _additionalPropertiesHelper.CheckAdditionalProperties(saleTransaction, facility.License.Number);
@@ -58,7 +58,7 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
         foreach (var facility in apiKey.Facilities)
             try
             {
-                var saleTransactions = await apiKey.MetrcService.SaleTransactions.GetInactiveSaleTransactionsAsync(
+                var saleTransactions = await apiKey.MetrcService.Sales.GetTransactionsByDateRangeAsync(
                     facility.License.Number, DateTimeOffset.UtcNow.AddDays(-2), DateTimeOffset.UtcNow.AddDays(-1));
                 wasTested = wasTested || saleTransactions.Any();
                 foreach (var saleTransaction in saleTransactions)

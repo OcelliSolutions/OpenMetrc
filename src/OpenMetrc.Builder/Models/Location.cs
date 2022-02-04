@@ -2,8 +2,8 @@
 
 public class Location
 {
-    [Required]
-    public int Id { get; set; }
+    [Required] public int Id { get; set; }
+
     [MaxLength(100)] public string? Name { get; set; }
     public int LocationTypeId { get; set; }
     [MaxLength(100)] public string? LocationTypeName { get; set; }

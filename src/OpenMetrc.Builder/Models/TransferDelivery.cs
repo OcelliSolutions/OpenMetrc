@@ -2,8 +2,8 @@
 
 public class TransferDelivery
 {
-    [Required]
-    public int Id { get; set; }
+    [Required] public int Id { get; set; }
+
     [MaxLength(100)] public string? RecipientFacilityLicenseNumber { get; set; }
     [MaxLength(100)] public string? RecipientFacilityName { get; set; }
     [MaxLength(100)] public string? ShipmentTypeName { get; set; }

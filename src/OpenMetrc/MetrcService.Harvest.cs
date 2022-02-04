@@ -1,166 +1,174 @@
 ﻿namespace OpenMetrc;
 
-public partial class MetrcService : IHarvest
+public partial class MetrcService : IHarvestClient
 {
     [MapsToApi(MetrcEndpoint.get_harvests_v1_id)]
-    Task<Harvest> IHarvest.GetHarvestByIdAsync(long id, string licenseNumber) =>
+    Task<Harvest> IHarvestClient.GetHarvestByIdAsync(long id, string? licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new Harvest())
-            : UserMetrcClient.GetHarvestByIdAsync(id, licenseNumber);
+            : HarvestClient.GetHarvestByIdAsync(id, licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_harvests_v1_id)]
-    Task<Harvest> IHarvest.GetHarvestByIdAsync(long id, string licenseNumber, CancellationToken cancellationToken) =>
+    Task<Harvest> IHarvestClient.GetHarvestByIdAsync(long id, string? licenseNumber,
+        CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new Harvest())
-            : UserMetrcClient.GetHarvestByIdAsync(id, licenseNumber, cancellationToken);
+            : HarvestClient.GetHarvestByIdAsync(id, licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_harvests_v1_active)]
-    Task<ICollection<Harvest>> IHarvest.GetActiveHarvestsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
+    Task<ICollection<Harvest>> IHarvestClient.GetActiveHarvestsAsync(string licenseNumber,
+        DateTimeOffset? lastModifiedStart,
         DateTimeOffset? lastModifiedEnd) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Harvest>>(new List<Harvest>())
-            : UserMetrcClient.GetActiveHarvestsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
+            : HarvestClient.GetActiveHarvestsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
 
     [MapsToApi(MetrcEndpoint.get_harvests_v1_active)]
-    Task<ICollection<Harvest>> IHarvest.GetActiveHarvestsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
+    Task<ICollection<Harvest>> IHarvestClient.GetActiveHarvestsAsync(string licenseNumber,
+        DateTimeOffset? lastModifiedStart,
         DateTimeOffset? lastModifiedEnd, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Harvest>>(new List<Harvest>())
-            : UserMetrcClient.GetActiveHarvestsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
+            : HarvestClient.GetActiveHarvestsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
                 cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_harvests_v1_onhold)]
-    Task<ICollection<Harvest>> IHarvest.GetOnHoldHarvestsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
+    Task<ICollection<Harvest>> IHarvestClient.GetOnHoldHarvestsAsync(string licenseNumber,
+        DateTimeOffset? lastModifiedStart,
         DateTimeOffset? lastModifiedEnd) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Harvest>>(new List<Harvest>())
-            : UserMetrcClient.GetOnHoldHarvestsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
+            : HarvestClient.GetOnHoldHarvestsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
 
     [MapsToApi(MetrcEndpoint.get_harvests_v1_onhold)]
-    Task<ICollection<Harvest>> IHarvest.GetOnHoldHarvestsAsync(string licenseNumber, DateTimeOffset? lastModifiedStart,
+    Task<ICollection<Harvest>> IHarvestClient.GetOnHoldHarvestsAsync(string licenseNumber,
+        DateTimeOffset? lastModifiedStart,
         DateTimeOffset? lastModifiedEnd,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Harvest>>(new List<Harvest>())
-            : UserMetrcClient.GetOnHoldHarvestsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
+            : HarvestClient.GetOnHoldHarvestsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
                 cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_harvests_v1_inactive)]
-    Task<ICollection<Harvest>> IHarvest.GetInactiveHarvestsAsync(string licenseNumber,
+    Task<ICollection<Harvest>> IHarvestClient.GetInactiveHarvestsAsync(string licenseNumber,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Harvest>>(new List<Harvest>())
-            : UserMetrcClient.GetInactiveHarvestsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
+            : HarvestClient.GetInactiveHarvestsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
 
     [MapsToApi(MetrcEndpoint.get_harvests_v1_inactive)]
-    Task<ICollection<Harvest>> IHarvest.GetInactiveHarvestsAsync(string licenseNumber,
+    Task<ICollection<Harvest>> IHarvestClient.GetInactiveHarvestsAsync(string licenseNumber,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<Harvest>>(new List<Harvest>())
-            : UserMetrcClient.GetInactiveHarvestsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
+            : HarvestClient.GetInactiveHarvestsAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
                 cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_harvests_v1_waste_types)]
-    Task<ICollection<HarvestWasteType>> IHarvest.GetHarvestWasteTypesAsync() =>
+    Task<ICollection<HarvestWasteType>> IHarvestClient.GetHarvestWasteTypesAsync() =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<HarvestWasteType>>(new List<HarvestWasteType>())
-            : UserMetrcClient.GetHarvestWasteTypesAsync();
+            : HarvestClient.GetHarvestWasteTypesAsync();
 
     [MapsToApi(MetrcEndpoint.get_harvests_v1_waste_types)]
-    Task<ICollection<HarvestWasteType>> IHarvest.GetHarvestWasteTypesAsync(CancellationToken cancellationToken) =>
+    Task<ICollection<HarvestWasteType>> IHarvestClient.GetHarvestWasteTypesAsync(CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<HarvestWasteType>>(new List<HarvestWasteType>())
-            : UserMetrcClient.GetHarvestWasteTypesAsync(cancellationToken);
+            : HarvestClient.GetHarvestWasteTypesAsync(cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_harvests_v1_create_packages)]
-    Task IHarvest.CreatePackageAsync(string licenseNumber, IEnumerable<CreateHarvestPackageRequest> body) =>
+    Task IHarvestClient.
+        CreateHarvestPackageAsync(string licenseNumber, IEnumerable<CreateHarvestPackageRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.CreatePackageAsync(licenseNumber, body);
+            : HarvestClient.CreateHarvestPackageAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_harvests_v1_create_packages)]
-    Task IHarvest.CreatePackageAsync(string licenseNumber, IEnumerable<CreateHarvestPackageRequest> body,
+    Task IHarvestClient.CreateHarvestPackageAsync(string licenseNumber, IEnumerable<CreateHarvestPackageRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.CreatePackageAsync(licenseNumber, body, cancellationToken);
+            : HarvestClient.CreateHarvestPackageAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_harvests_v1_create_packages_testing)]
-    Task IHarvest.CreatePackageTestingAsync(string licenseNumber, IEnumerable<CreateHarvestPackageRequest> body) =>
+    Task IHarvestClient.CreateHarvestPackageTestingAsync(string licenseNumber,
+        IEnumerable<CreateHarvestPackageRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.CreatePackageTestingAsync(licenseNumber, body);
+            : HarvestClient.CreateHarvestPackageTestingAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_harvests_v1_create_packages_testing)]
-    Task IHarvest.CreatePackageTestingAsync(string licenseNumber, IEnumerable<CreateHarvestPackageRequest> body,
+    Task IHarvestClient.CreateHarvestPackageTestingAsync(string licenseNumber,
+        IEnumerable<CreateHarvestPackageRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.CreatePackageTestingAsync(licenseNumber, body, cancellationToken);
+            : HarvestClient.CreateHarvestPackageTestingAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.put_harvests_v1_move)]
-    Task IHarvest.MoveHarvestAsync(string licenseNumber, IEnumerable<MoveHarvestRequest> body) =>
+    Task IHarvestClient.MoveHarvestAsync(string licenseNumber, IEnumerable<MoveHarvestRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.MoveHarvestAsync(licenseNumber, body);
+            : HarvestClient.MoveHarvestAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.put_harvests_v1_move)]
-    Task IHarvest.MoveHarvestAsync(string licenseNumber, IEnumerable<MoveHarvestRequest> body,
+    Task IHarvestClient.MoveHarvestAsync(string licenseNumber, IEnumerable<MoveHarvestRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.MoveHarvestAsync(licenseNumber, body, cancellationToken);
+            : HarvestClient.MoveHarvestAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_harvests_v1_removewaste)]
-    Task IHarvest.RemoveWasteAsync(string licenseNumber, IEnumerable<RemoveWasteRequest> body) =>
+    Task IHarvestClient.RemoveHarvestWasteAsync(string licenseNumber, IEnumerable<RemoveWasteRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.RemoveWasteAsync(licenseNumber, body);
+            : HarvestClient.RemoveHarvestWasteAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_harvests_v1_removewaste)]
-    Task IHarvest.RemoveWasteAsync(string licenseNumber, IEnumerable<RemoveWasteRequest> body,
+    Task IHarvestClient.RemoveHarvestWasteAsync(string licenseNumber, IEnumerable<RemoveWasteRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.RemoveWasteAsync(licenseNumber, body, cancellationToken);
+            : HarvestClient.RemoveHarvestWasteAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.put_harvests_v1_rename)]
-    Task IHarvest.RenameHarvestAsync(string licenseNumber, IEnumerable<RenameHarvestRequest> body) =>
+    Task IHarvestClient.RenameHarvestAsync(string licenseNumber, IEnumerable<RenameHarvestRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.RenameHarvestAsync(licenseNumber, body);
+            : HarvestClient.RenameHarvestAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.put_harvests_v1_rename)]
-    Task IHarvest.RenameHarvestAsync(string licenseNumber, IEnumerable<RenameHarvestRequest> body,
+    Task IHarvestClient.RenameHarvestAsync(string licenseNumber, IEnumerable<RenameHarvestRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.RenameHarvestAsync(licenseNumber, body, cancellationToken);
+            : HarvestClient.RenameHarvestAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_harvests_v1_finish)]
-    Task IHarvest.FinishHarvestAsync(string licenseNumber, IEnumerable<FinishHarvestRequest> body) =>
+    Task IHarvestClient.FinishHarvestAsync(string licenseNumber, IEnumerable<FinishHarvestRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.FinishHarvestAsync(licenseNumber, body);
+            : HarvestClient.FinishHarvestAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_harvests_v1_finish)]
-    Task IHarvest.FinishHarvestAsync(string licenseNumber, IEnumerable<FinishHarvestRequest> body,
+    Task IHarvestClient.FinishHarvestAsync(string licenseNumber, IEnumerable<FinishHarvestRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.FinishHarvestAsync(licenseNumber, body, cancellationToken);
+            : HarvestClient.FinishHarvestAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_harvests_v1_unfinish)]
-    Task IHarvest.UnfinishHarvestAsync(string licenseNumber, IEnumerable<UnfinishHarvestRequest> body) =>
+    Task IHarvestClient.UnfinishHarvestAsync(string licenseNumber, IEnumerable<UnfinishHarvestRequest>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.UnfinishHarvestAsync(licenseNumber, body);
+            : HarvestClient.UnfinishHarvestAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_harvests_v1_unfinish)]
-    Task IHarvest.UnfinishHarvestAsync(string licenseNumber, IEnumerable<UnfinishHarvestRequest> body,
+    Task IHarvestClient.UnfinishHarvestAsync(string licenseNumber, IEnumerable<UnfinishHarvestRequest>? body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
-            : UserMetrcClient.UnfinishHarvestAsync(licenseNumber, body, cancellationToken);
+            : HarvestClient.UnfinishHarvestAsync(licenseNumber, body, cancellationToken);
 }

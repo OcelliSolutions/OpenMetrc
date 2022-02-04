@@ -1,4 +1,5 @@
 ﻿namespace OpenMetrc.Builder.Models;
+
 internal class StateSummary
 {
     public StateSummary(string state, Section[] sections)
@@ -22,4 +23,3 @@ internal class Section
     public string Name { get; set; }
     public string[] Endpoints { get; set; }
 }
-

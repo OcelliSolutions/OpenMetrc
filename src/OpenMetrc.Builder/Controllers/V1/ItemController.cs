@@ -39,7 +39,7 @@ public class ItemController : ControllerBase
     [SwaggerOperation(Summary = "Get item categories")]
     public ActionResult GetItemCategories(
         [SwaggerParameter(Description =
-            "If specified, the Categories will be retrived for the specified License Number. If not specified, the all Item Categories will be returned.")]
+            "If specified, the Categories will be retrieved for the specified License Number. If not specified, the all Item Categories will be returned.")]
         string licenseNumber
     ) => Ok();
 

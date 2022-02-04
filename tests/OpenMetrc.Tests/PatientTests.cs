@@ -26,7 +26,7 @@ public class PatientTests : IClassFixture<SharedFixture>
         foreach (var facility in apiKey.Facilities)
             try
             {
-                var patients = await apiKey.MetrcService.Patients.GetActivePatientsAllAsync(facility.License.Number);
+                var patients = await apiKey.MetrcService.Patients.GetActivePatientsAsync(facility.License.Number);
                 wasTested = wasTested || patients.Any();
                 foreach (var patient in patients)
                     _additionalPropertiesHelper.CheckAdditionalProperties(patient, facility.License.Number);

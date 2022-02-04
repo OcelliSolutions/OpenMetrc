@@ -7,8 +7,8 @@ public class TransferType
         Name = string.Empty;
     }
 
-    [Required]
-    public string Name { get; set; }
+    [Required] public string Name { get; set; }
+
     public bool ForLicensedShipments { get; set; }
     public bool ForExternalIncomingShipments { get; set; }
     public bool ForExternalOutgoingShipments { get; set; }

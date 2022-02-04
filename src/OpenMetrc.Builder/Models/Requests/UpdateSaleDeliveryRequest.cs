@@ -26,4 +26,3 @@ public class UpdateSaleDeliveryRequest
     public DateTime? EstimatedArrivalDateTime { get; set; }
     public List<SaleTransaction>? Transactions { get; set; }
 }
-

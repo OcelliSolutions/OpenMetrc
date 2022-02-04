@@ -121,8 +121,8 @@ public class SaleController : ControllerBase
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.Sales })]
     [ProducesResponseType(typeof(IEnumerable<SaleTransaction>), StatusCodes.Status200OK)]
-    [SwaggerOperation(Summary = "Get a detail of all sales between a date range")]
-    public ActionResult GetInactiveSaleReceipts(
+    [SwaggerOperation(Summary = "Get a detail of all sales transactions between a date range")]
+    public ActionResult GetTransactionsByDateRange(
         [Required]
         [SwaggerParameter(
             "The license number of the facility for which to return the list of sales transactions for the specified date range")]
@@ -156,12 +156,6 @@ public class SaleController : ControllerBase
         string licenseNumber,
         [Required] DateTime date,
         IEnumerable<SaleTransactionSummary> saleTransactionSummaries) => Ok();
-
-
-
-
-
-
 
 
     [HttpGet("deliveries/active")]

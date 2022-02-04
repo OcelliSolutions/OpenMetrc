@@ -81,7 +81,8 @@ public class TransferController : ControllerBase
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryPackageWholesale>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get transfer delivery packages for wholesale")]
     public ActionResult GetTransferDeliveryPackagesWholesale(
-        [Required] [SwaggerParameter("Transfer Delivery ID")] int id) => Ok();
+        [Required] [SwaggerParameter("Transfer Delivery ID")]
+        int id) => Ok();
 
     [HttpGet("delivery/package/{id:int}/requiredlabtestbatches")]
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_package_id_requiredlabtestbatches)]
@@ -92,7 +93,8 @@ public class TransferController : ControllerBase
         Description =
             "Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.")]
     public ActionResult GetTransferDeliveryPackagesThatRequireLabTest(
-        [Required] [SwaggerParameter("Transfer Delivery Package ID")] int id) => Ok();
+        [Required] [SwaggerParameter("Transfer Delivery Package ID")]
+        int id) => Ok();
 
     [HttpGet("delivery/packages/states")]
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_packages_states)]
@@ -174,7 +176,8 @@ public class TransferController : ControllerBase
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryTransporter>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get transfer delivery transporter templates")]
     public ActionResult GetTransferDeliveryTransporterTemplates(
-        [Required] [SwaggerParameter("Template Delivery ID")] int id) => Ok();
+        [Required] [SwaggerParameter("Template Delivery ID")]
+        int id) => Ok();
 
     [HttpGet("templates/delivery/{id:int}/transporters/details")]
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_delivery_id_transporters_details)]
@@ -183,7 +186,8 @@ public class TransferController : ControllerBase
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryTransporterDetail>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get transfer delivery transporters (detail) templates")]
     public ActionResult GetTransferDeliveryTransportersDetailTemplates(
-        [Required] [SwaggerParameter("Template Delivery ID")] int id) => Ok();
+        [Required] [SwaggerParameter("Template Delivery ID")]
+        int id) => Ok();
 
     [HttpGet("templates/delivery/{id:int}/packages")]
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_delivery_id_packages)]
@@ -192,7 +196,8 @@ public class TransferController : ControllerBase
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryPackage>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get transfer delivery package templates")]
     public ActionResult GetTransferDeliveryPackagesTemplate(
-        [Required] [SwaggerParameter("Template Transfer Delivery ID")] int id) => Ok();
+        [Required] [SwaggerParameter("Template Transfer Delivery ID")]
+        int id) => Ok();
 
     [HttpPost("templates")]
     [MapsToApi(MetrcEndpoint.post_transfers_v1_templates)]

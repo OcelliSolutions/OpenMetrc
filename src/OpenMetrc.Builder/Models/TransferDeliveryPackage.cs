@@ -2,8 +2,8 @@
 
 public class TransferDeliveryPackage
 {
-    [Required]
-    public int PackageId { get; set; }
+    [Required] public int PackageId { get; set; }
+
     [MaxLength(100)] public string? PackageLabel { get; set; }
     [MaxLength(100)] public string? PackageType { get; set; }
     public string? SourceHarvestNames { get; set; }

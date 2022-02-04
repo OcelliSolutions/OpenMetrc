@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.Json;
 
 namespace OpenMetrc.Tests.Helpers;
@@ -29,7 +30,9 @@ public class AdditionalPropertiesHelper
             {
                 if (propValue != null && ((IDictionary<string, object>)propValue).Count == 0) continue;
 
-                var nonNullProperties = ((IDictionary<string, object?>)propValue).Where(kvp => kvp.Value != null)
+                var nonNullProperties =
+                    ((IDictionary<string, object?>)propValue! ?? throw new InvalidOperationException())
+                    .Where(kvp => kvp.Value != null)
                     .ToList();
 
                 if (nonNullProperties.Count == 0) continue;

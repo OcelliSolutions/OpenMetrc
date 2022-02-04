@@ -123,8 +123,7 @@ public class PlantController : ControllerBase
     [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get plant growth phases")]
     public ActionResult GetPlantGrowthPhases(
-        [Required]
-        [SwaggerParameter(Description = "The license number of the facility for plant growth phases.")]
+        [Required] [SwaggerParameter(Description = "The license number of the facility for plant growth phases.")]
         string licenseNumber) => Ok();
 
     [HttpGet("additives/types")]
@@ -150,8 +149,7 @@ public class PlantController : ControllerBase
     [ProducesResponseType(typeof(IEnumerable<PlantWasteReason>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get plant waste reasons")]
     public ActionResult GetPlantWasteReasons(
-        [Required]
-        [SwaggerParameter(Description = "The license number of the facility for plant waste reasons.")]
+        [Required] [SwaggerParameter(Description = "The license number of the facility for plant waste reasons.")]
         string licenseNumber) => Ok();
 
     [HttpPost("moveplants")]

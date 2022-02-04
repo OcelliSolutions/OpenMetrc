@@ -28,7 +28,7 @@ public class SaleReceiptTests : IClassFixture<SharedFixture>
             try
             {
                 var saleReceipts =
-                    await apiKey.MetrcService.SaleReceipts.GetActiveSaleReceiptsAsync(facility.License.Number,
+                    await apiKey.MetrcService.Sales.GetActiveSaleReceiptsAsync(facility.License.Number,
                         DateTimeOffset.UtcNow.AddDays(-1), null, null, null);
                 wasTested = wasTested || saleReceipts.Any();
                 foreach (var saleReceipt in saleReceipts)
@@ -58,7 +58,7 @@ public class SaleReceiptTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetInactiveSaleReceiptsAllAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public async void GetInactiveSaleReceiptsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -68,7 +68,7 @@ public class SaleReceiptTests : IClassFixture<SharedFixture>
             try
             {
                 var saleReceipts =
-                    await apiKey.MetrcService.SaleReceipts.GetInactiveSaleReceiptsAllAsync(facility.License.Number,
+                    await apiKey.MetrcService.Sales.GetInactiveSaleReceiptsAsync(facility.License.Number,
                         DateTimeOffset.UtcNow.AddDays(-1), null, null, null);
                 wasTested = wasTested || saleReceipts.Any();
                 foreach (var saleReceipt in saleReceipts)
@@ -106,7 +106,7 @@ public class SaleReceiptTests : IClassFixture<SharedFixture>
         foreach (var apiKey in Fixture.ApiKeys)
             try
             {
-                var saleReceipts = await apiKey.MetrcService.SaleReceipts.GetSaleCustomerTypesAsync();
+                var saleReceipts = await apiKey.MetrcService.Sales.GetSaleCustomerTypesAsync();
                 wasTested = wasTested || saleReceipts.Any();
             }
             catch (ApiException ex)
