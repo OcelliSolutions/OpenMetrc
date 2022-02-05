@@ -1,0 +1,60 @@
+﻿namespace OpenMetrc.Builder.Models;
+
+public class FacilityType
+{
+    public bool? IsMedical { get; set; }
+    public bool? IsRetail { get; set; }
+    public bool? IsHemp { get; set; }
+    public bool? IsSalesDeliveryHub { get; set; }
+    public int? RestrictHarvestPlantRestoreTimeHours { get; set; }
+    public int? TotalMemberPatientsAllowed { get; set; }
+    public bool? CanGrowPlants { get; set; }
+    public bool? CanCreateOpeningBalancePlantBatches { get; set; }
+    public bool? CanTagPlantBatches { get; set; }
+    public bool? CanAssignLocationsToPlantBatches { get; set; }
+    public bool? PlantsRequirePatientAffiliation { get; set; }
+    public bool? PlantBatchesCanContainMotherPlants { get; set; }
+    public bool? CanUpdatePlantStrains { get; set; }
+    public bool? CanTrackVegetativePlants { get; set; }
+    public bool? CanCreateImmaturePlantPackagesFromPlants { get; set; }
+    public bool? CanPackageVegetativePlants { get; set; }
+    public bool? CanPackageWaste { get; set; }
+    public bool? CanReportHarvestSchedules { get; set; }
+    public bool? CanSubmitHarvestsForTesting { get; set; }
+    public bool? CanRequireHarvestSampleLabTestBatches { get; set; }
+    public bool? CanCreateOpeningBalancePackages { get; set; }
+    public bool? CanCreateDerivedPackages { get; set; }
+    public bool? CanAssignLocationsToPackages { get; set; }
+    public bool? CanUpdateLocationsOnPackages { get; set; }
+    public bool? PackagesRequirePatientAffiliation { get; set; }
+    public bool? CanCreateTradeSamplePackages { get; set; }
+    public bool? CanDonatePackages { get; set; }
+    public bool? CanSubmitPackagesForTesting { get; set; }
+    public bool? CanCreateProcessValidationPackages { get; set; }
+    public bool? CanRequirePackageSampleLabTestBatches { get; set; }
+    public bool? CanRequestProductRemediation { get; set; }
+    public bool? CanRemediatePackagesWithFailedLabResults { get; set; }
+    public bool? CanInfuseProducts { get; set; }
+    public bool? CanTestPackages { get; set; }
+    public bool? CanTransferFromExternalFacilities { get; set; }
+    public bool? CanSellToConsumers { get; set; }
+    public bool? CanSellToPatients { get; set; }
+    public bool? CanSellToExternalPatients { get; set; }
+    public bool? CanSellToCaregivers { get; set; }
+    public bool? AdvancedSales { get; set; }
+    public bool? SalesRequirePatientNumber { get; set; }
+    public bool? SalesRequireExternalPatientNumber { get; set; }
+    public bool? SalesRequireExternalPatientIdentificationMethod { get; set; }
+    public bool? SalesRequireCaregiverNumber { get; set; }
+    public bool? SalesRequireCaregiverPatientNumber { get; set; }
+    public bool? CanDeliverSalesToConsumers { get; set; }
+    public bool? SalesDeliveryRequireConsumerId { get; set; }
+    public bool? CanDeliverSalesToPatients { get; set; }
+    public bool? SalesDeliveryRequirePatientNumber { get; set; }
+    public bool? SalesDeliveryRequireRecipientName { get; set; }
+    public bool? CanHaveMemberPatients { get; set; }
+    public bool? CanReportPatientCheckIns { get; set; }
+    public bool? CanSpecifyPatientSalesLimitExemption { get; set; }
+    public bool? CanReportPatientsAdverseResponses { get; set; }
+    public bool? CanReportStrainProperties { get; set; }
+}

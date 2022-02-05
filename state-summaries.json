@@ -1,0 +1,3242 @@
+[
+  {
+    "State": "ak",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "ca",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "co",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "PatientsStatus",
+        "Endpoints": [
+          "get_patients_v1_statuses_patientLicenseNumber"
+        ]
+      },
+      {
+        "Name": "Patients",
+        "Endpoints": [
+          "get_patients_v1_id",
+          "get_patients_v1_active",
+          "post_patients_v1_add",
+          "post_patients_v1_update",
+          "delete_patients_v1_id"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_deliveries_active",
+          "get_sales_v1_deliveries_inactive",
+          "get_sales_v1_delivery_id",
+          "get_sales_v1_delivery_returnreasons",
+          "post_sales_v1_deliveries",
+          "put_sales_v1_deliveries",
+          "put_sales_v1_deliveries_complete",
+          "delete_sales_v1_delivery_id",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "dc",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "PatientsStatus",
+        "Endpoints": [
+          "get_patients_v1_statuses_patientLicenseNumber"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_deliveries_active",
+          "get_sales_v1_deliveries_inactive",
+          "get_sales_v1_delivery_id",
+          "get_sales_v1_delivery_returnreasons",
+          "post_sales_v1_deliveries",
+          "put_sales_v1_deliveries",
+          "put_sales_v1_deliveries_complete",
+          "delete_sales_v1_delivery_id",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "la",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "Patients",
+        "Endpoints": [
+          "get_patients_v1_id",
+          "get_patients_v1_active",
+          "post_patients_v1_add",
+          "post_patients_v1_update",
+          "delete_patients_v1_id"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "me",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "md",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "PatientsStatus",
+        "Endpoints": [
+          "get_patients_v1_statuses_patientLicenseNumber"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_deliveries_active",
+          "get_sales_v1_deliveries_inactive",
+          "get_sales_v1_delivery_id",
+          "get_sales_v1_delivery_returnreasons",
+          "post_sales_v1_deliveries",
+          "put_sales_v1_deliveries",
+          "put_sales_v1_deliveries_complete",
+          "delete_sales_v1_delivery_id",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "ma",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "Patients",
+        "Endpoints": [
+          "get_patients_v1_id",
+          "get_patients_v1_active",
+          "post_patients_v1_add",
+          "post_patients_v1_update",
+          "delete_patients_v1_id"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_deliveries_active",
+          "get_sales_v1_deliveries_inactive",
+          "get_sales_v1_delivery_id",
+          "get_sales_v1_delivery_returnreasons",
+          "post_sales_v1_deliveries",
+          "put_sales_v1_deliveries",
+          "put_sales_v1_deliveries_complete",
+          "delete_sales_v1_delivery_id",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "mi",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "PatientsStatus",
+        "Endpoints": [
+          "get_patients_v1_statuses_patientLicenseNumber"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_deliveries_active",
+          "get_sales_v1_deliveries_inactive",
+          "get_sales_v1_delivery_id",
+          "get_sales_v1_delivery_returnreasons",
+          "post_sales_v1_deliveries",
+          "put_sales_v1_deliveries",
+          "put_sales_v1_deliveries_complete",
+          "delete_sales_v1_delivery_id",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "mo",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "PatientsStatus",
+        "Endpoints": [
+          "get_patients_v1_statuses_patientLicenseNumber"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_deliveries_active",
+          "get_sales_v1_deliveries_inactive",
+          "get_sales_v1_delivery_id",
+          "get_sales_v1_delivery_returnreasons",
+          "post_sales_v1_deliveries",
+          "put_sales_v1_deliveries",
+          "put_sales_v1_deliveries_complete",
+          "delete_sales_v1_delivery_id",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "mt",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "PatientsStatus",
+        "Endpoints": [
+          "get_patients_v1_statuses_patientLicenseNumber"
+        ]
+      },
+      {
+        "Name": "Patients",
+        "Endpoints": [
+          "get_patients_v1_id",
+          "get_patients_v1_active",
+          "post_patients_v1_add",
+          "post_patients_v1_update",
+          "delete_patients_v1_id"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_deliveries_active",
+          "get_sales_v1_deliveries_inactive",
+          "get_sales_v1_delivery_id",
+          "get_sales_v1_delivery_returnreasons",
+          "post_sales_v1_deliveries",
+          "put_sales_v1_deliveries",
+          "put_sales_v1_deliveries_complete",
+          "delete_sales_v1_delivery_id",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "nv",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "Patients",
+        "Endpoints": [
+          "get_patients_v1_id",
+          "get_patients_v1_active",
+          "post_patients_v1_add",
+          "post_patients_v1_update",
+          "delete_patients_v1_id"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_deliveries_active",
+          "get_sales_v1_deliveries_inactive",
+          "get_sales_v1_delivery_id",
+          "get_sales_v1_delivery_returnreasons",
+          "post_sales_v1_deliveries",
+          "put_sales_v1_deliveries",
+          "put_sales_v1_deliveries_complete",
+          "delete_sales_v1_delivery_id",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "oh",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "ok",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "Patients",
+        "Endpoints": [
+          "get_patients_v1_id",
+          "get_patients_v1_active",
+          "post_patients_v1_add",
+          "post_patients_v1_update",
+          "delete_patients_v1_id"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "or",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_deliveries_active",
+          "get_sales_v1_deliveries_inactive",
+          "get_sales_v1_delivery_id",
+          "get_sales_v1_delivery_returnreasons",
+          "post_sales_v1_deliveries",
+          "put_sales_v1_deliveries",
+          "put_sales_v1_deliveries_complete",
+          "delete_sales_v1_delivery_id",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "wv",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1_"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1_"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "delete_items_v1_id"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate"
+        ]
+      },
+      {
+        "Name": "PatientsStatus",
+        "Endpoints": [
+          "get_patients_v1_statuses_patientLicenseNumber"
+        ]
+      },
+      {
+        "Name": "Patients",
+        "Endpoints": [
+          "get_patients_v1_id",
+          "get_patients_v1_active",
+          "post_patients_v1_add",
+          "post_patients_v1_update",
+          "delete_patients_v1_id"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_destroy"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "post_plants_v1_destroyplants",
+          "post_plants_v1_additives",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_delivery_id_transporters",
+          "get_transfers_v1_delivery_id_transporters_details",
+          "get_transfers_v1_delivery_id_packages",
+          "get_transfers_v1_delivery_id_packages_wholesale",
+          "get_transfers_v1_delivery_package_id_requiredlabtestbatches",
+          "get_transfers_v1_delivery_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_delivery_id_transporters",
+          "get_transfers_v1_templates_delivery_id_transporters_details",
+          "get_transfers_v1_templates_delivery_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  }
+]

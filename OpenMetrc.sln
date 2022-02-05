@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.31903.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{370EDA4D-7212-4E49-A5CC-B777F71ACAB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E37BB4F9-72AA-4FCB-9C98-0C3E0271B6E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{23CD652A-0A69-48B3-B497-A20DEB311EE2}"
+	ProjectSection(SolutionItems) = preProject
+		open-metrc-swagger.yaml = open-metrc-swagger.yaml
+		readme.md = readme.md
+		state-summaries.json = state-summaries.json
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMetrc.Tests", "tests\OpenMetrc.Tests\OpenMetrc.Tests.csproj", "{2C04B302-5720-4405-B59E-B6FF7A6C1B60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMetrc.Scraper", "src\OpenMetrc.Scraper\OpenMetrc.Scraper.csproj", "{74DF786A-D258-4EAE-8CF7-976B221D51B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMetrc.Builder", "src\OpenMetrc.Builder\OpenMetrc.Builder.csproj", "{3EB00E68-D233-4C03-96E5-39747F4F3DBA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMetrc", "src\OpenMetrc\OpenMetrc.csproj", "{065E44CA-D985-42CD-A3B5-062C568C2A6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C04B302-5720-4405-B59E-B6FF7A6C1B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C04B302-5720-4405-B59E-B6FF7A6C1B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C04B302-5720-4405-B59E-B6FF7A6C1B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C04B302-5720-4405-B59E-B6FF7A6C1B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74DF786A-D258-4EAE-8CF7-976B221D51B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74DF786A-D258-4EAE-8CF7-976B221D51B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74DF786A-D258-4EAE-8CF7-976B221D51B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74DF786A-D258-4EAE-8CF7-976B221D51B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EB00E68-D233-4C03-96E5-39747F4F3DBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EB00E68-D233-4C03-96E5-39747F4F3DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EB00E68-D233-4C03-96E5-39747F4F3DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EB00E68-D233-4C03-96E5-39747F4F3DBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{065E44CA-D985-42CD-A3B5-062C568C2A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{065E44CA-D985-42CD-A3B5-062C568C2A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{065E44CA-D985-42CD-A3B5-062C568C2A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{065E44CA-D985-42CD-A3B5-062C568C2A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2C04B302-5720-4405-B59E-B6FF7A6C1B60} = {E37BB4F9-72AA-4FCB-9C98-0C3E0271B6E0}
+		{74DF786A-D258-4EAE-8CF7-976B221D51B7} = {370EDA4D-7212-4E49-A5CC-B777F71ACAB8}
+		{3EB00E68-D233-4C03-96E5-39747F4F3DBA} = {370EDA4D-7212-4E49-A5CC-B777F71ACAB8}
+		{065E44CA-D985-42CD-A3B5-062C568C2A6C} = {370EDA4D-7212-4E49-A5CC-B777F71ACAB8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3548B3D4-7A70-411F-958C-009102D16D19}
+	EndGlobalSection
+EndGlobal
