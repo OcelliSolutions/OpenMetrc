@@ -4,22 +4,20 @@ namespace OpenMetrc.Tests.Models;
 
 public class ApiKey
 {
-    public ApiKey(string domain, string vendorKey, string clientKey, bool isReadOnly)
+    public ApiKey(string subDomain, string softwareApiKey, string userApiKey)
     {
-        Domain = domain;
-        VendorKey = vendorKey;
-        ClientKey = clientKey;
-        IsReadOnly = isReadOnly;
+        SubDomain = subDomain;
+        SoftwareApiKey = softwareApiKey;
+        UserApiKey = userApiKey;
         Facilities = new HashSet<Facility>();
         Transfers = new List<Transfer>();
         TransferDeliveries = new List<TransferDelivery>();
         TransferTemplates = new List<Transfer>();
     }
 
-    public string Domain { get; set; }
-    public string VendorKey { get; set; }
-    public string ClientKey { get; set; }
-    public bool IsReadOnly { get; set; }
+    public string SubDomain { get; set; }
+    public string SoftwareApiKey { get; set; }
+    public string UserApiKey { get; set; }
     public ICollection<Facility> Facilities { get; set; }
     public ICollection<Transfer> Transfers { get; set; }
     public ICollection<TransferDelivery> TransferDeliveries { get; set; }
@@ -27,9 +25,9 @@ public class ApiKey
     public ICollection<Transfer> TransferTemplates { get; set; }
     //public ICollection<TransferDelivery> TransferDeliveryTemplates { get; set; }
 
-    internal string State => Domain[^2..];
-    internal bool IsSandbox => Domain.Length > 2;
-
-    internal MetrcService MetrcService => new(State, VendorKey, ClientKey, IsSandbox)
+    internal string State => SubDomain[^2..];
+    internal bool IsSandbox => SubDomain.StartsWith("sandbox");
+    public bool IsReadOnly => !IsSandbox; //only the sandbox will be written to when doing integration testing
+    internal MetrcService MetrcService => new(State, SoftwareApiKey, UserApiKey, IsSandbox)
         { ReturnEmptyOnNotSupported = true };
 }

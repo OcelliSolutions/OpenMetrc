@@ -1,5 +1,6 @@
 ﻿namespace OpenMetrc.Builder.Data;
 
+//The API permissions are not stored on the credentials or on a token. They are managed in METRC at user key creation.
 public enum ApiPermission
 {
     [Display(Name = "Manage Employees")] ManageEmployees,

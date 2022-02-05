@@ -1,8 +1,7 @@
 [
   {
-    "ClientKey": "value",
-    "Domain": "sandbox-api-ca",
-    "IsReadOnly": false,
-    "VendorKey": "value"
+    "UserApiKey": "value",
+    "SubDomain": "sandbox-api-ca",
+    "SoftwareApiKey": "value"
   }
 ]

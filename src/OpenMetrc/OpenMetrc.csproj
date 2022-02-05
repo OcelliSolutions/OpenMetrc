@@ -4,16 +4,15 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+        <PackageId>OpenMETRC</PackageId>
 		<Company>Code Cooper LLC</Company>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
-		<RepositoryUrl>https://github.com/codecooper/OpenMetrc</RepositoryUrl>
 		<Authors>Jason Cooper</Authors>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Description>Using OpenAPI standards, create an interface for the METRC platform's APIs.</Description>
 		<PackageProjectUrl>https://github.com/codecooper/OpenMetrc</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/codecooper/OpenMetrc</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
 		<PackageTags>openapi swagger metrc</PackageTags>
-		<PackageReleaseNotes>Initial release</PackageReleaseNotes>
-		<Version>0.0.2-alpha</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 

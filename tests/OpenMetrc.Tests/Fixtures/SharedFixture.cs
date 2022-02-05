@@ -42,11 +42,11 @@ public class SharedFixture : IDisposable
             }
             catch (ApiException<ErrorResponse> ex)
             {
-                Console.WriteLine($@"domain: {key.Domain} - {ex.Message}");
+                Console.WriteLine($@"SubDomain: {key.SubDomain} - {ex.Message}");
             }
             catch (ApiException ex)
             {
-                Console.WriteLine($@"domain: {key.Domain} - {ex.Message}");
+                Console.WriteLine($@"SubDomain: {key.SubDomain} - {ex.Message}");
             }
             catch (Exception ex)
             {

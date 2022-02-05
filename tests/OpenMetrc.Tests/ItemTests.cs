@@ -6,6 +6,8 @@ public class ItemTests : IClassFixture<SharedFixture>
 {
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
     private readonly ITestOutputHelper _testOutputHelper;
+    private const string NewItemName = "OpenMETRC Test Item";
+    private int NewItemId = 0;
 
     public ItemTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
     {
@@ -38,7 +40,7 @@ public class ItemTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.Domain}: {facility.License.Number}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: {facility.License.Number}: Timeout");
                 timeout++;
             }
 
@@ -69,7 +71,7 @@ public class ItemTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.Domain}: {facility.License.Number}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: {facility.License.Number}: Timeout");
                 timeout++;
             }
 
@@ -100,7 +102,7 @@ public class ItemTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.Domain}: {facility.License.Number}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: {facility.License.Number}: Timeout");
                 timeout++;
             }
 

@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace OpenMetrc.Builder.Filters;
-
+/// <summary>
+/// There are some general rules as far as what the response types for any given endpoint can be. These are centrally managed here.
+/// </summary>
 public class ProduceResponseTypeModelProvider : IApplicationModelProvider
 {
     public int Order => 3;
@@ -14,22 +16,24 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
     public void OnProvidersExecuting(ApplicationModelProviderContext context)
     {
         foreach (var controller in context.Result.Controllers)
-        foreach (var action in controller.Actions)
         {
-            var returnType = typeof(ErrorResponse);
-            if (action.ActionMethod.ReturnType.GenericTypeArguments.Any())
+            foreach (var action in controller.Actions)
             {
-                if (action.ActionMethod.ReturnType.GenericTypeArguments[0].GetGenericArguments().Any())
-                    returnType = action.ActionMethod.ReturnType.GenericTypeArguments[0].GetGenericArguments()[0];
+                var returnType = typeof(ErrorResponse);
+                if (action.ActionMethod.ReturnType.GenericTypeArguments.Any())
+                {
+                    if (action.ActionMethod.ReturnType.GenericTypeArguments[0].GetGenericArguments().Any())
+                        returnType = action.ActionMethod.ReturnType.GenericTypeArguments[0].GetGenericArguments()[0];
+                }
+
+                var methodVerbs = action.Attributes.OfType<HttpMethodAttribute>().SelectMany(x => x.HttpMethods).Distinct();
+
+                AddUniversalStatusCodes(action, returnType);
+                AddHeaderOnlyStatusCodes(action);
+
+                if (!methodVerbs.Contains("GET")) //POST, PUT, DELETE all have these.
+                    AddPostStatusCodes(action, returnType);
             }
-
-            var methodVerbs = action.Attributes.OfType<HttpMethodAttribute>().SelectMany(x => x.HttpMethods).Distinct();
-
-            AddUniversalStatusCodes(action, returnType);
-            AddHeaderOnlyStatusCodes(action);
-
-            if (!methodVerbs.Contains("GET")) //POST, PUT, DELETE all have these.
-                AddPostStatusCodes(action, returnType);
         }
     }
 

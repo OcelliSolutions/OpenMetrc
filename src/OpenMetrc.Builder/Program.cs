@@ -8,12 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers(options =>
     {
+        //ensure all endpoints report that they only work with JSON
         options.Filters.Clear();
         options.Filters.Add(new ProducesAttribute(MediaTypeNames.Application.Json));
         options.Filters.Add(new ConsumesAttribute(MediaTypeNames.Application.Json));
     })
     .ConfigureApiBehaviorOptions(options =>
     {
+        //MapClientErrors is a .NET6 feature that automatically wraps error responses if a structure is not specified. METRC does not do this so it needs to be disabled.
         options.SuppressMapClientErrors = true;
     });
 builder.Services.TryAddEnumerable(ServiceDescriptor
@@ -31,18 +33,23 @@ builder.Services.AddSwaggerGen(c =>
         }
     );
 
+    //get all the available states that were detected by the scraper and add them as possible servers.
     var availableStates = DistinctStates().ToList();
-    foreach (var state in availableStates) c.AddServer(new OpenApiServer { Url = $@"https://api-{state}.metrc.com" });
+    foreach (var state in availableStates) 
+        c.AddServer(new OpenApiServer { Url = $@"https://api-{state}.metrc.com" });
     foreach (var state in availableStates)
         c.AddServer(new OpenApiServer { Url = $@"https://sandbox-api-{state}.metrc.com" });
+
     c.EnableAnnotations();
     c.DocumentFilter<AdditionalPropertiesDocumentFilter>();
     c.SchemaFilter<DateTimeSchemaFilter>();
     c.ParameterFilter<DateTimeParameterFilter>();
     c.OperationFilter<AuthorizationOperationFilter>();
 
+    //Set the OperationIds for the OpenAPI spec to be the action name. Ensure that no names are duplicated across all controllers just to be safe.
     c.CustomOperationIds(e => $"{e.ActionDescriptor.RouteValues["action"]}");
 
+    //METRC uses basic authentication
     c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
     {
         Name = "Authorization",

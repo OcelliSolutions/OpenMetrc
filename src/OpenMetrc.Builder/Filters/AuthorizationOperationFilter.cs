@@ -4,6 +4,9 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace OpenMetrc.Builder.Filters;
 
+/// <summary>
+/// Add the permissions required and the available states to the endpoint description.
+/// </summary>
 public class AuthorizationOperationFilter : IOperationFilter
 {
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
@@ -17,10 +20,7 @@ public class AuthorizationOperationFilter : IOperationFilter
             operation.Description +=
                 $@"{(!string.IsNullOrWhiteSpace(operation.Description) ? "</br>" : "")}<b>Permissions Required</b>: {customAuthorizationFilter.PermissionDescription}";
         }
-
-        //var defaultValues = context.ApiDescription.CustomAttributes().Where(x => x.GetType() == typeof(MetrcEndpoint)).Select(x => x);
-
-
+        
         var x = (MapsToApiAttribute?)filterDescriptors
             .Select(filterInfo => filterInfo.Filter).FirstOrDefault(filter => filter is MapsToApiAttribute);
 

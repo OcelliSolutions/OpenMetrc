@@ -8,20 +8,20 @@ namespace OpenMetrc;
 public partial class MetrcService : IMetrcService
 {
     //protected static ConcurrentDictionary<string, IMetrcClient> MetrcClients = new();
-    protected static ConcurrentDictionary<string, IEmployeeClient> EmployeeClients = new();
-    protected static ConcurrentDictionary<string, IFacilityClient> FacilityClients = new();
-    protected static ConcurrentDictionary<string, IHarvestClient> HarvestClients = new();
-    protected static ConcurrentDictionary<string, IItemClient> ItemClients = new();
-    protected static ConcurrentDictionary<string, ILabTestClient> LabTestClients = new();
-    protected static ConcurrentDictionary<string, ILocationClient> LocationClients = new();
-    protected static ConcurrentDictionary<string, IPackageClient> PackageClients = new();
-    protected static ConcurrentDictionary<string, IPatientClient> PatientClients = new();
-    protected static ConcurrentDictionary<string, IPlantClient> PlantClients = new();
-    protected static ConcurrentDictionary<string, IPlantBatchClient> PlantBatchClients = new();
-    protected static ConcurrentDictionary<string, ISaleClient> SaleClients = new();
-    protected static ConcurrentDictionary<string, IStrainClient> StrainClients = new();
-    protected static ConcurrentDictionary<string, ITransferClient> TransferClients = new();
-    protected static ConcurrentDictionary<string, IUnitOfMeasureClient> UnitOfMeasureClients = new();
+    internal static ConcurrentDictionary<string, IEmployeeClient> EmployeeClients = new();
+    internal static ConcurrentDictionary<string, IFacilityClient> FacilityClients = new();
+    internal static ConcurrentDictionary<string, IHarvestClient> HarvestClients = new();
+    internal static ConcurrentDictionary<string, IItemClient> ItemClients = new();
+    internal static ConcurrentDictionary<string, ILabTestClient> LabTestClients = new();
+    internal static ConcurrentDictionary<string, ILocationClient> LocationClients = new();
+    internal static ConcurrentDictionary<string, IPackageClient> PackageClients = new();
+    internal static ConcurrentDictionary<string, IPatientClient> PatientClients = new();
+    internal static ConcurrentDictionary<string, IPlantClient> PlantClients = new();
+    internal static ConcurrentDictionary<string, IPlantBatchClient> PlantBatchClients = new();
+    internal static ConcurrentDictionary<string, ISaleClient> SaleClients = new();
+    internal static ConcurrentDictionary<string, IStrainClient> StrainClients = new();
+    internal static ConcurrentDictionary<string, ITransferClient> TransferClients = new();
+    internal static ConcurrentDictionary<string, IUnitOfMeasureClient> UnitOfMeasureClients = new();
 
     public MetrcService(string state = "xx", string softwareApiKey = "xx", string userApiKey = "xx",
         bool isSandbox = false, bool returnEmptyOnNotSupported = true)
