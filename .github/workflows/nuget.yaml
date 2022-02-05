@@ -28,7 +28,7 @@ jobs:
         run: dotnet restore
 
       - name: "Build projects"
-        run: dotnet build ${{ SOLUTION_PATH }} --no-restore --configuration Release
+        run: dotnet build ${{ env.SOLUTION_PATH }} --no-restore --configuration Release
 
       - name: "Write testing api keys to file"
         run: 'echo "$METRC_API_KEYS" > tests/OpenMetrc.Tests/bin/Debug/net6.0/api_keys.json'
@@ -37,7 +37,7 @@ jobs:
           METRC_API_KEYS: ${{secrets.METRC_API_KEYS}}
 
       - name: "Test project"
-        run: dotnet test ${{ SOLUTION_PATH }} --no-build --verbosity normal
+        run: dotnet test ${{ env.SOLUTION_PATH }} --no-build --verbosity normal
 
       - name: "Get Version"
         id: version
