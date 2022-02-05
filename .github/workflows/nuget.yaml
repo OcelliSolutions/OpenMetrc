@@ -6,6 +6,7 @@ on:
       - "v*"
 
 env:
+  SOLUTION_PATH: "OpenMetrc.sln"
   PROJECT_PATH: "src/OpenMetrc/OpenMetrc.csproj"
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
   NUGET_SOURCE_URL: "https://api.nuget.org/v3/index.json"
@@ -27,16 +28,16 @@ jobs:
         run: dotnet restore
 
       - name: "Build projects"
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build ${{ SOLUTION_PATH }} --no-restore --configuration Release
 
       - name: "Write testing api keys to file"
-        run: 'echo "$METRC_API_KEYS" > tests/OpenMetrc.Tests/api_keys.json'
+        run: 'echo "$METRC_API_KEYS" > tests/OpenMetrc.Tests/bin/Debug/net6.0/api_keys.json'
         shell: bash
         env:
           METRC_API_KEYS: ${{secrets.METRC_API_KEYS}}
 
       - name: "Test project"
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test ${{ SOLUTION_PATH }} --no-build --verbosity normal
 
       - name: "Get Version"
         id: version
