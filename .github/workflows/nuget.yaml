@@ -3,7 +3,7 @@ name: "Deploy to NuGet"
 on:
   push:
     tags:
-      - "v*"
+      - v*
 
 env:
   PROJECT_PATH: "src/OpenMetrc/OpenMetrc.csproj"
