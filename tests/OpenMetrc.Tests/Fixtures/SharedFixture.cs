@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using OpenMetrc.Tests.Models;
+﻿using OpenMetrc.Tests.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,22 +11,18 @@ public class SharedFixture : IDisposable
 {
     public SharedFixture()
     {
-        var builder = new ConfigurationBuilder()
-            .AddUserSecrets<SharedFixture>();
-
-        var configuration = builder.Build();
-
-        //try and load API keys from the environment variables. If none exist, load from file.
-        var apiKeys = configuration.GetSection("METRC_API_KEYS").Get<IList<ApiKey>>();
-        if (!apiKeys.Any())
+        try
         {
             var apiKeysJson = File.ReadAllText("api_keys.json");
             Debug.Assert(!string.IsNullOrWhiteSpace(apiKeysJson), "Please create a `api_keys.json` file");
-            apiKeys = JsonSerializer.Deserialize<IList<ApiKey>>(apiKeysJson);
-            Debug.Assert(apiKeys != null, "Please specify some api keys in `api_keys.json` before testing");
+            ApiKeys = JsonSerializer.Deserialize<List<ApiKey>>(apiKeysJson) ?? new List<ApiKey>();
+            Debug.Assert(ApiKeys != null, "Please specify some api keys in `api_keys.json` before testing");
+        }
+        catch (Exception ex)
+        {
+            throw new KeyNotFoundException($@"Please create a `api_keys.json` file. {ex.Message}");
         }
 
-        ApiKeys = apiKeys.ToList();
         Task.Run(async () => await this.LoadFacilities()).Wait();
     }
 
