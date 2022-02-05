@@ -7,7 +7,7 @@ on:
 
 env:
   PROJECT_PATH: "src/OpenMetrc/OpenMetrc.csproj"
-  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
   NUGET_SOURCE_URL: "https://api.nuget.org/v3/index.json"
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
         run: dotnet build --no-restore --configuration Release
 
       - name: "Write testing api keys to file"
-        run: 'echo "$METRC_API_KEYS" > tests\OpenMetrc.Tests\api_keys.json'
+        run: 'echo "$METRC_API_KEYS" > tests/OpenMetrc.Tests/api_keys.json'
         shell: bash
         env:
           METRC_API_KEYS: ${{secrets.METRC_API_KEYS}}
@@ -46,4 +46,4 @@ jobs:
         run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
 
       - name: "Push package"
-        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}\*.nupkg -k ${{ secrets.NUGET_API_TOKEN }} -s ${{ env.NUGET_SOURCE_URL }}
+        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_API_TOKEN }} -s ${{ env.NUGET_SOURCE_URL }}
