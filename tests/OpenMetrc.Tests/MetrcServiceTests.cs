@@ -37,7 +37,7 @@ public class MetrcServiceTests : IClassFixture<SharedFixture>
     public void MetrcClient_AvailableStates_NoNewStates()
     {
         const int expected = 16;
-        var actual = Fixture.ApiKeys[0].MetrcService.GetAvailableStates.Count();
+        var actual = Fixture.ApiKeys[0].MetrcService.AvailableStates.Count();
         Assert.Equal(expected, actual);
     }
 }
