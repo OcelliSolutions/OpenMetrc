@@ -97,6 +97,7 @@ public partial class MetrcService : IMetrcService
     public bool IsSandbox { get; set; }
     public string SoftwareApiKey { get; set; }
     public string UserApiKey { get; set; }
+    public IEnumerable<string> GetAvailableStates => MetrcEndpointExtensions.GetAvailableStates();
     public IEmployeeClient Employees => this;
     public IFacilityClient Facilities => this;
     public IHarvestClient Harvests => this;

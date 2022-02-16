@@ -20,37 +20,43 @@ var stateSummaries = JArray.Parse(File.ReadAllText(file));
 
 if (stateSummaries == null) #> //TODO: state-summaries.json was not found 
 <# #>
-internal enum MetrcEndpoint
+enum MetrcEndpoint
 {
 <#
     var endpoints = GetDistinctEndpoints();#>
     <#= string.Join(",\r\n\t", endpoints) #>
 }
-internal static class MetrcEndpointExtensions
+
+static class MetrcEndpointExtensions
 {
-    public static IEnumerable<string> GetStates(MetrcEndpoint endpoint)
+    public static IEnumerable<string> GetAvailableStates() => 
+        new List<string> <#= GetDistinctStatesObject() #>;
+
+    public static IEnumerable<string> GetStates(MetrcEndpoint endpoint) => endpoint switch
     {
-        return endpoint switch
-        {
     <#
         foreach(var endpoint in endpoints)
         {
             var states = GetStatesObject(endpoint);
     #>
-        MetrcEndpoint.<#= endpoint #> => new[] <#=states#>,
+    MetrcEndpoint.<#= endpoint #> => new[] <#=states#>,
     <#}#>
-        _ => throw new ArgumentOutOfRangeException(nameof(endpoint), endpoint, null)
-        };
-    }
+    _ => throw new ArgumentOutOfRangeException(nameof(endpoint), endpoint, null)
+    };
 }<#
 
 
-IEnumerable<string> GetDistinctEndpoints(){
-    return (from ss in stateSummaries
-            from s in ss["Sections"]
-            from e in s["Endpoints"]
-            select e.ToString()).Distinct().OrderBy(e => e);
+IEnumerable<string> GetDistinctEndpoints() => 
+    (from ss in stateSummaries
+    from s in ss["Sections"]
+    from e in s["Endpoints"]
+    select e.ToString()).Distinct().OrderBy(e => e);
+
+string GetDistinctStatesObject() {
+    var states = stateSummaries.Select(ss => ss["State"].ToString()).Distinct().OrderBy(s => s);
+    return JsonConvert.SerializeObject(states).Replace("[","{").Replace("]","}");
 }
+
 string GetStatesObject(JToken endpoint){
     var states = stateSummaries.Where(ss => ss["Sections"].Any(s => s["Endpoints"].Any(e => e.ToString() == endpoint.ToString()))).Select(ss => ss["State"]);
     return JsonConvert.SerializeObject(states).Replace("[","{").Replace("]","}");

@@ -12,6 +12,7 @@ public interface IMetrcService
     bool IsSandbox { get; set; }
     string SoftwareApiKey { get; set; }
     string UserApiKey { get; set; }
+    IEnumerable<string> GetAvailableStates { get; }
     IEmployeeClient Employees { get; }
     IFacilityClient Facilities { get; }
     IHarvestClient Harvests { get; }

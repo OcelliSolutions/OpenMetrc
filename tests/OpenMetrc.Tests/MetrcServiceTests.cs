@@ -29,4 +29,15 @@ public class MetrcServiceTests : IClassFixture<SharedFixture>
         Assert.NotEqual(string.Join(",", facilities0.Select(f => f.License.Number).OrderBy(f => f)),
             string.Join(",", facilities1.Select(f => f.License.Number).OrderBy(f => f)));
     }
+
+    /// <summary>
+    ///     This number will change over time as new states are added and scraped by the `OpenMetrc.Scraper`.
+    /// </summary>
+    [Fact]
+    public void MetrcClient_AvailableStates_NoNewStates()
+    {
+        const int expected = 16;
+        var actual = Fixture.ApiKeys[0].MetrcService.GetAvailableStates.Count();
+        Assert.Equal(expected, actual);
+    }
 }

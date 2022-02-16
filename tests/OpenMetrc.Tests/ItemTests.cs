@@ -4,9 +4,9 @@ namespace OpenMetrc.Tests;
 
 public class ItemTests : IClassFixture<SharedFixture>
 {
+    private const string NewItemName = "OpenMETRC Test Item";
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
     private readonly ITestOutputHelper _testOutputHelper;
-    private const string NewItemName = "OpenMETRC Test Item";
     private int NewItemId = 0;
 
     public ItemTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
