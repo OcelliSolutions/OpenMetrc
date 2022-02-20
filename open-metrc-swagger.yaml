@@ -7171,31 +7171,24 @@ components:
       type: object
       properties:
         name:
-          maxLength: 500
           type: string
           nullable: true
         productCategoryName:
-          maxLength: 100
           type: string
           nullable: true
         productCategoryType:
-          maxLength: 100
           type: string
           nullable: true
         quantityType:
-          maxLength: 100
           type: string
           nullable: true
         defaultLabTestingState:
-          maxLength: 100
           type: string
           nullable: true
         unitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         approvalStatus:
-          maxLength: 100
           type: string
           nullable: true
         approvalStatusDateTime:
@@ -7208,11 +7201,9 @@ components:
           format: int32
           nullable: true
         strainName:
-          maxLength: 100
           type: string
           nullable: true
         administrationMethod:
-          maxLength: 100
           type: string
           nullable: true
         unitCbdPercent:
@@ -7224,7 +7215,6 @@ components:
           format: double
           nullable: true
         unitCbdContentUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         unitCbdContentDose:
@@ -7232,7 +7222,6 @@ components:
           format: double
           nullable: true
         unitCbdContentDoseUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         unitThcPercent:
@@ -7244,7 +7233,6 @@ components:
           format: double
           nullable: true
         unitThcContentUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         unitThcContentDose:
@@ -7252,7 +7240,6 @@ components:
           format: double
           nullable: true
         unitThcContentDoseUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         unitVolume:
@@ -7260,7 +7247,6 @@ components:
           format: double
           nullable: true
         unitVolumeUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         unitWeight:
@@ -7268,11 +7254,9 @@ components:
           format: double
           nullable: true
         unitWeightUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         servingSize:
-          maxLength: 100
           type: string
           nullable: true
         supplyDurationDays:
@@ -7288,7 +7272,6 @@ components:
           format: double
           nullable: true
         unitQuantityUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         ingredients:
@@ -7841,7 +7824,6 @@ components:
       type: object
       properties:
         fullName:
-          maxLength: 100
           type: string
           nullable: true
         license:
@@ -8187,11 +8169,9 @@ components:
           type: integer
           format: int32
         name:
-          maxLength: 100
           type: string
           nullable: true
         harvestType:
-          maxLength: 100
           type: string
           nullable: true
         sourceStrainCount:
@@ -8211,11 +8191,9 @@ components:
           format: int32
           nullable: true
         dryingLocationName:
-          maxLength: 100
           type: string
           nullable: true
         dryingLocationTypeName:
-          maxLength: 100
           type: string
           nullable: true
         dryingRoomId:
@@ -8223,11 +8201,9 @@ components:
           format: int32
           nullable: true
         dryingRoomName:
-          maxLength: 100
           type: string
           nullable: true
         patientLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         currentWeight:
@@ -8259,11 +8235,9 @@ components:
           format: double
           nullable: true
         unitOfWeightName:
-          maxLength: 100
           type: string
           nullable: true
         labTestingState:
-          maxLength: 100
           type: string
           nullable: true
         labTestingStateDate:
@@ -8325,7 +8299,6 @@ components:
       type: object
       properties:
         name:
-          maxLength: 100
           type: string
           nullable: true
       additionalProperties: { }
@@ -8353,31 +8326,24 @@ components:
       type: object
       properties:
         name:
-          maxLength: 500
           type: string
           nullable: true
         productCategoryName:
-          maxLength: 100
           type: string
           nullable: true
         productCategoryType:
-          maxLength: 100
           type: string
           nullable: true
         quantityType:
-          maxLength: 100
           type: string
           nullable: true
         defaultLabTestingState:
-          maxLength: 100
           type: string
           nullable: true
         unitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         approvalStatus:
-          maxLength: 100
           type: string
           nullable: true
         approvalStatusDateTime:
@@ -8390,11 +8356,9 @@ components:
           format: int32
           nullable: true
         strainName:
-          maxLength: 100
           type: string
           nullable: true
         administrationMethod:
-          maxLength: 100
           type: string
           nullable: true
         unitCbdPercent:
@@ -8406,7 +8370,6 @@ components:
           format: double
           nullable: true
         unitCbdContentUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         unitCbdContentDose:
@@ -8414,7 +8377,6 @@ components:
           format: double
           nullable: true
         unitCbdContentDoseUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         unitThcPercent:
@@ -8426,7 +8388,6 @@ components:
           format: double
           nullable: true
         unitThcContentUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         unitThcContentDose:
@@ -8434,7 +8395,6 @@ components:
           format: double
           nullable: true
         unitThcContentDoseUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         unitVolume:
@@ -8442,7 +8402,6 @@ components:
           format: double
           nullable: true
         unitVolumeUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         unitWeight:
@@ -8450,11 +8409,9 @@ components:
           format: double
           nullable: true
         unitWeightUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         servingSize:
-          maxLength: 100
           type: string
           nullable: true
         supplyDurationDays:
@@ -8470,7 +8427,6 @@ components:
           format: double
           nullable: true
         unitQuantityUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         ingredients:
@@ -8493,11 +8449,9 @@ components:
       type: object
       properties:
         name:
-          maxLength: 100
           type: string
           nullable: true
         status:
-          maxLength: 100
           type: string
           nullable: true
       additionalProperties: { }
@@ -8505,15 +8459,12 @@ components:
       type: object
       properties:
         name:
-          maxLength: 100
           type: string
           nullable: true
         productCategoryType:
-          maxLength: 100
           type: string
           nullable: true
         quantityType:
-          maxLength: 100
           type: string
           nullable: true
         requiresStrain:
@@ -8599,23 +8550,18 @@ components:
           type: integer
           format: int32
         labFacilityLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         labFacilityName:
-          maxLength: 100
           type: string
           nullable: true
         sourcePackageLabel:
-          maxLength: 100
           type: string
           nullable: true
         productName:
-          maxLength: 200
           type: string
           nullable: true
         productCategoryName:
-          maxLength: 100
           type: string
           nullable: true
         testPerformedDate:
@@ -8640,7 +8586,6 @@ components:
           format: date
           nullable: true
         testTypeName:
-          maxLength: 100
           type: string
           nullable: true
         testPassed:
@@ -8689,7 +8634,6 @@ components:
           type: integer
           format: int32
         name:
-          maxLength: 100
           type: string
           nullable: true
         requiresTestResult:
@@ -8746,14 +8690,12 @@ components:
           type: integer
           format: int32
         name:
-          maxLength: 100
           type: string
           nullable: true
         locationTypeId:
           type: integer
           format: int32
         locationTypeName:
-          maxLength: 100
           type: string
           nullable: true
         forPlantBatches:
@@ -8778,7 +8720,6 @@ components:
           type: integer
           format: int32
         name:
-          maxLength: 100
           type: string
           nullable: true
         forPlantBatches:
@@ -8878,11 +8819,9 @@ components:
           type: integer
           format: int32
         label:
-          maxLength: 100
           type: string
           nullable: true
         packageType:
-          maxLength: 100
           type: string
           nullable: true
         sourceHarvestNames:
@@ -8893,11 +8832,9 @@ components:
           format: int32
           nullable: true
         locationName:
-          maxLength: 100
           type: string
           nullable: true
         locationTypeName:
-          maxLength: 100
           type: string
           nullable: true
         roomId:
@@ -8905,7 +8842,6 @@ components:
           format: int32
           nullable: true
         roomName:
-          maxLength: 100
           type: string
           nullable: true
         quantity:
@@ -8913,23 +8849,18 @@ components:
           format: double
           nullable: true
         unitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         unitOfMeasureAbbreviation:
-          maxLength: 100
           type: string
           nullable: true
         patientLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         itemFromFacilityLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         itemFromFacilityName:
-          maxLength: 100
           type: string
           nullable: true
         note:
@@ -8941,11 +8872,9 @@ components:
           format: date
           nullable: true
         initialLabTestingState:
-          maxLength: 100
           type: string
           nullable: true
         labTestingState:
-          maxLength: 100
           type: string
           nullable: true
         labTestingStateDate:
@@ -8956,11 +8885,9 @@ components:
         isProductionBatch:
           type: boolean
         productionBatchNumber:
-          maxLength: 100
           type: string
           nullable: true
         sourceProductionBatchNumbers:
-          maxLength: 100
           type: string
           nullable: true
         isTradeSample:
@@ -9004,15 +8931,12 @@ components:
           format: date
           nullable: true
         receivedFromManifestNumber:
-          maxLength: 100
           type: string
           nullable: true
         receivedFromFacilityLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         receivedFromFacilityName:
-          maxLength: 100
           type: string
           nullable: true
         isOnHold:
@@ -9038,7 +8962,6 @@ components:
       type: object
       properties:
         name:
-          maxLength: 100
           type: string
           nullable: true
         requiresNote:
@@ -9053,7 +8976,6 @@ components:
           type: integer
           format: int32
         licenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         registrationDate:
@@ -9096,15 +9018,12 @@ components:
           type: integer
           format: int32
         label:
-          maxLength: 100
           type: string
           nullable: true
         state:
-          maxLength: 100
           type: string
           nullable: true
         growthPhase:
-          maxLength: 100
           type: string
           nullable: true
         plantBatchId:
@@ -9112,7 +9031,6 @@ components:
           format: int32
           nullable: true
         plantBatchName:
-          maxLength: 100
           type: string
           nullable: true
         plantBatchTypeId:
@@ -9120,7 +9038,6 @@ components:
           format: int32
           nullable: true
         plantBatchTypeName:
-          maxLength: 100
           type: string
           nullable: true
         strainId:
@@ -9128,7 +9045,6 @@ components:
           format: int32
           nullable: true
         strainName:
-          maxLength: 100
           type: string
           nullable: true
         locationId:
@@ -9136,11 +9052,9 @@ components:
           format: int32
           nullable: true
         locationName:
-          maxLength: 100
           type: string
           nullable: true
         locationTypeName:
-          maxLength: 100
           type: string
           nullable: true
         roomId:
@@ -9148,11 +9062,9 @@ components:
           format: int32
           nullable: true
         roomName:
-          maxLength: 100
           type: string
           nullable: true
         patientLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         harvestId:
@@ -9160,11 +9072,9 @@ components:
           format: int32
           nullable: true
         harvestedUnitOfWeightName:
-          maxLength: 100
           type: string
           nullable: true
         harvestedUnitOfWeightAbbreviation:
-          maxLength: 100
           type: string
           nullable: true
         harvestedWetWeight:
@@ -9206,7 +9116,6 @@ components:
           type: string
           nullable: true
         destroyedByUserName:
-          maxLength: 100
           type: string
           nullable: true
         lastModified:
@@ -9218,27 +9127,21 @@ components:
       type: object
       properties:
         additiveTypeName:
-          maxLength: 100
           type: string
           nullable: true
         productTradeName:
-          maxLength: 100
           type: string
           nullable: true
         epaRegistrationNumber:
-          maxLength: 100
           type: string
           nullable: true
         productSupplier:
-          maxLength: 100
           type: string
           nullable: true
         applicationDevice:
-          maxLength: 100
           type: string
           nullable: true
         amountUnitOfMeasure:
-          maxLength: 100
           type: string
           nullable: true
         totalAmountApplied:
@@ -9250,7 +9153,6 @@ components:
           format: int32
           nullable: true
         plantBatchName:
-          maxLength: 100
           type: string
           nullable: true
         plantCount:
@@ -9267,7 +9169,6 @@ components:
           type: integer
           format: int32
         name:
-          maxLength: 100
           type: string
           nullable: true
         plantBatchTypeId:
@@ -9275,11 +9176,9 @@ components:
           format: int32
           nullable: true
         plantBatchTypeName:
-          maxLength: 100
           type: string
           nullable: true
         type:
-          maxLength: 100
           type: string
           nullable: true
         locationId:
@@ -9287,11 +9186,9 @@ components:
           format: int32
           nullable: true
         locationName:
-          maxLength: 100
           type: string
           nullable: true
         locationTypeName:
-          maxLength: 100
           type: string
           nullable: true
         roomId:
@@ -9299,7 +9196,6 @@ components:
           format: int32
           nullable: true
         roomName:
-          maxLength: 100
           type: string
           nullable: true
         strainId:
@@ -9307,11 +9203,9 @@ components:
           format: int32
           nullable: true
         strainName:
-          maxLength: 100
           type: string
           nullable: true
         patientLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         count:
@@ -9347,7 +9241,6 @@ components:
           format: int32
           nullable: true
         sourcePackageLabel:
-          maxLength: 100
           type: string
           nullable: true
         sourcePlantId:
@@ -9355,7 +9248,6 @@ components:
           format: int32
           nullable: true
         sourcePlantLabel:
-          maxLength: 100
           type: string
           nullable: true
         sourcePlantBatchId:
@@ -9363,7 +9255,6 @@ components:
           format: int32
           nullable: true
         sourcePlantBatchName:
-          maxLength: 100
           type: string
           nullable: true
         plantedDate:
@@ -9387,7 +9278,6 @@ components:
       type: object
       properties:
         name:
-          maxLength: 100
           type: string
           nullable: true
         requiresNote:
@@ -9643,7 +9533,6 @@ components:
           type: integer
           format: int32
         receiptNumber:
-          maxLength: 100
           type: string
           nullable: true
         salesDateTime:
@@ -9651,19 +9540,15 @@ components:
           type: string
           format: date
         salesCustomerType:
-          maxLength: 100
           type: string
           nullable: true
         patientLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         caregiverLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         identificationMethod:
-          maxLength: 100
           type: string
           nullable: true
         totalPackages:
@@ -9689,7 +9574,6 @@ components:
           type: string
           format: date
         recordedByUserName:
-          maxLength: 100
           type: string
           nullable: true
         lastModified:
@@ -9720,19 +9604,15 @@ components:
           type: integer
           format: int32
         packageLabel:
-          maxLength: 100
           type: string
           nullable: true
         productName:
-          maxLength: 200
           type: string
           nullable: true
         productCategoryName:
-          maxLength: 100
           type: string
           nullable: true
         itemStrainName:
-          maxLength: 100
           type: string
           nullable: true
         itemUnitCbdPercent:
@@ -9744,7 +9624,6 @@ components:
           format: double
           nullable: true
         itemUnitCbdContentUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         itemUnitCbdContentDose:
@@ -9752,7 +9631,6 @@ components:
           format: double
           nullable: true
         itemUnitCbdContentDoseUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         itemUnitThcPercent:
@@ -9764,7 +9642,6 @@ components:
           format: double
           nullable: true
         itemUnitThcContentUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         itemUnitThcContentDose:
@@ -9772,7 +9649,6 @@ components:
           format: double
           nullable: true
         itemUnitThcContentDoseUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         itemUnitVolume:
@@ -9780,7 +9656,6 @@ components:
           format: double
           nullable: true
         itemUnitVolumeUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         itemUnitWeight:
@@ -9788,11 +9663,9 @@ components:
           format: double
           nullable: true
         itemUnitWeightUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         itemServingSize:
-          maxLength: 100
           type: string
           nullable: true
         itemSupplyDurationDays:
@@ -9804,25 +9677,21 @@ components:
           format: double
           nullable: true
         itemUnitQuantityUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         quantitySold:
           type: number
           format: double
         unitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         unitOfMeasureAbbreviation:
-          maxLength: 100
           type: string
           nullable: true
         totalPrice:
           type: number
           format: double
         salesDeliveryState:
-          maxLength: 100
           type: string
           nullable: true
         archivedDate:
@@ -9836,7 +9705,6 @@ components:
           format: date
           nullable: true
         recordedByUserName:
-          maxLength: 100
           type: string
           nullable: true
         lastModified:
@@ -9901,11 +9769,9 @@ components:
           type: integer
           format: int32
         name:
-          maxLength: 100
           type: string
           nullable: true
         testingStatus:
-          maxLength: 100
           type: string
           nullable: true
         thcLevel:
@@ -9937,55 +9803,42 @@ components:
           type: integer
           format: int32
         manifestNumber:
-          maxLength: 100
           type: string
           nullable: true
         shipmentLicenseType:
-          maxLength: 100
           type: string
           nullable: true
         shipperFacilityLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         shipperFacilityName:
-          maxLength: 100
           type: string
           nullable: true
         name:
-          maxLength: 100
           type: string
           nullable: true
         transporterFacilityLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         transporterFacilityName:
-          maxLength: 100
           type: string
           nullable: true
         driverName:
-          maxLength: 100
           type: string
           nullable: true
         driverOccupationalLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         driverVehicleLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         vehicleMake:
-          maxLength: 100
           type: string
           nullable: true
         vehicleModel:
-          maxLength: 100
           type: string
           nullable: true
         vehicleLicensePlateNumber:
-          maxLength: 100
           type: string
           nullable: true
         deliveryCount:
@@ -10030,7 +9883,6 @@ components:
           type: string
           format: date
         createdByUserName:
-          maxLength: 100
           type: string
           nullable: true
         lastModified:
@@ -10042,19 +9894,15 @@ components:
           format: int32
           nullable: true
         recipientFacilityLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         recipientFacilityName:
-          maxLength: 100
           type: string
           nullable: true
         shipmentTypeName:
-          maxLength: 100
           type: string
           nullable: true
         shipmentTransactionType:
-          maxLength: 100
           type: string
           nullable: true
         estimatedDepartureDateTime:
@@ -10118,19 +9966,15 @@ components:
           type: integer
           format: int32
         recipientFacilityLicenseNumber:
-          maxLength: 100
           type: string
           nullable: true
         recipientFacilityName:
-          maxLength: 100
           type: string
           nullable: true
         shipmentTypeName:
-          maxLength: 100
           type: string
           nullable: true
         shipmentTransactionType:
-          maxLength: 100
           type: string
           nullable: true
         estimatedDepartureDateTime:
@@ -10158,11 +10002,9 @@ components:
           format: double
           nullable: true
         grossUnitOfWeightId:
-          maxLength: 100
           type: string
           nullable: true
         grossUnitOfWeightName:
-          maxLength: 100
           type: string
           nullable: true
         plannedRoute:
@@ -10212,11 +10054,9 @@ components:
           type: integer
           format: int32
         packageLabel:
-          maxLength: 100
           type: string
           nullable: true
         packageType:
-          maxLength: 100
           type: string
           nullable: true
         sourceHarvestNames:
@@ -10226,15 +10066,12 @@ components:
           type: string
           nullable: true
         productName:
-          maxLength: 200
           type: string
           nullable: true
         productCategoryName:
-          maxLength: 100
           type: string
           nullable: true
         itemStrainName:
-          maxLength: 100
           type: string
           nullable: true
         itemUnitCbdPercent:
@@ -10246,7 +10083,6 @@ components:
           format: double
           nullable: true
         itemUnitCbdContentUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         itemUnitCbdContentDose:
@@ -10254,7 +10090,6 @@ components:
           format: double
           nullable: true
         itemUnitCbdContentDoseUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         itemUnitThcPercent:
@@ -10266,7 +10101,6 @@ components:
           format: double
           nullable: true
         itemUnitThcContentUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         itemUnitThcContentDose:
@@ -10274,7 +10108,6 @@ components:
           format: double
           nullable: true
         itemUnitThcContentDoseUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         itemUnitVolume:
@@ -10282,7 +10115,6 @@ components:
           format: double
           nullable: true
         itemUnitVolumeUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         itemUnitWeight:
@@ -10290,11 +10122,9 @@ components:
           format: double
           nullable: true
         itemUnitWeightUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         itemServingSize:
-          maxLength: 100
           type: string
           nullable: true
         itemSupplyDurationDays:
@@ -10306,15 +10136,12 @@ components:
           format: double
           nullable: true
         itemUnitQuantityUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         labTestingState:
-          maxLength: 100
           type: string
           nullable: true
         productionBatchNumber:
-          maxLength: 100
           type: string
           nullable: true
         isTradeSample:
@@ -10339,18 +10166,15 @@ components:
           format: date
           nullable: true
         shipmentPackageState:
-          maxLength: 100
           type: string
           nullable: true
         shippedQuantity:
           type: number
           format: double
         shippedUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
         grossUnitOfWeightName:
-          maxLength: 100
           type: string
           nullable: true
         receivedQuantity:
@@ -10358,7 +10182,6 @@ components:
           format: double
           nullable: true
         receivedUnitOfMeasureName:
-          maxLength: 100
           type: string
           nullable: true
       additionalProperties: { }
@@ -10371,7 +10194,6 @@ components:
           type: integer
           format: int32
         packageLabel:
-          maxLength: 100
           type: string
           nullable: true
         shipperWholesalePrice:
@@ -10459,14 +10281,11 @@ components:
       type: object
       properties:
         name:
-          maxLength: 100
           type: string
         quantityType:
-          maxLength: 100
           type: string
           nullable: true
         abbreviation:
-          maxLength: 100
           type: string
           nullable: true
       additionalProperties: { }

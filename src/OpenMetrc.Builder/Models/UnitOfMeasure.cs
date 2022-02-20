@@ -9,8 +9,8 @@ public class UnitOfMeasure
         Abbreviation = string.Empty;
     }
 
-    [Required] [MaxLength(100)] public string Name { get; set; }
+    [Required] public string Name { get; set; }
 
-    [MaxLength(100)] public string QuantityType { get; set; }
-    [MaxLength(100)] public string Abbreviation { get; set; }
+    public string QuantityType { get; set; }
+    public string Abbreviation { get; set; }
 }

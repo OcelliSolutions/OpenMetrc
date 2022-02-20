@@ -4,8 +4,8 @@ public class Strain
 {
     [Required] public int Id { get; set; }
 
-    [MaxLength(100)] public string? Name { get; set; }
-    [MaxLength(100)] public string? TestingStatus { get; set; }
+    public string? Name { get; set; }
+    public string? TestingStatus { get; set; }
     public double? ThcLevel { get; set; }
     public double? CbdLevel { get; set; }
     public double IndicaPercentage { get; set; }

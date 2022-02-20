@@ -2,9 +2,9 @@
 
 public class ItemCategory
 {
-    [MaxLength(100)] public string? Name { get; set; }
-    [MaxLength(100)] public string? ProductCategoryType { get; set; }
-    [MaxLength(100)] public string? QuantityType { get; set; }
+    public string? Name { get; set; }
+    public string? ProductCategoryType { get; set; }
+    public string? QuantityType { get; set; }
     public bool? RequiresStrain { get; set; }
     public bool? RequiresItemBrand { get; set; }
     public bool? RequiresAdministrationMethod { get; set; }

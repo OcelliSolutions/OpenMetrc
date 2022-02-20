@@ -2,6 +2,6 @@
 
 public class ItemBrand
 {
-    [MaxLength(100)] public string? Name { get; set; }
-    [MaxLength(100)] public string? Status { get; set; }
+    public string? Name { get; set; }
+    public string? Status { get; set; }
 }

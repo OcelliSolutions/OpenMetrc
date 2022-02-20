@@ -4,17 +4,17 @@ public class TransferDelivery
 {
     [Required] public int Id { get; set; }
 
-    [MaxLength(100)] public string? RecipientFacilityLicenseNumber { get; set; }
-    [MaxLength(100)] public string? RecipientFacilityName { get; set; }
-    [MaxLength(100)] public string? ShipmentTypeName { get; set; }
-    [MaxLength(100)] public string? ShipmentTransactionType { get; set; }
+    public string? RecipientFacilityLicenseNumber { get; set; }
+    public string? RecipientFacilityName { get; set; }
+    public string? ShipmentTypeName { get; set; }
+    public string? ShipmentTransactionType { get; set; }
     public DateTimeOffset? EstimatedDepartureDateTime { get; set; }
     public DateTimeOffset? ActualDepartureDateTime { get; set; }
     public DateTimeOffset? EstimatedArrivalDateTime { get; set; }
     public DateTimeOffset? ActualArrivalDateTime { get; set; }
     public double? GrossWeight { get; set; }
-    [MaxLength(100)] public string? GrossUnitOfWeightId { get; set; }
-    [MaxLength(100)] public string? GrossUnitOfWeightName { get; set; }
+    public string? GrossUnitOfWeightId { get; set; }
+    public string? GrossUnitOfWeightName { get; set; }
     public string? PlannedRoute { get; set; }
     public int DeliveryPackageCount { get; set; }
     public int DeliveryReceivedPackageCount { get; set; }

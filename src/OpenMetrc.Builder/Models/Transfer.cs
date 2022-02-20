@@ -4,19 +4,19 @@ public class Transfer
 {
     [Required] public int Id { get; set; }
 
-    [MaxLength(100)] public string? ManifestNumber { get; set; }
-    [MaxLength(100)] public string? ShipmentLicenseType { get; set; }
-    [MaxLength(100)] public string? ShipperFacilityLicenseNumber { get; set; }
-    [MaxLength(100)] public string? ShipperFacilityName { get; set; }
-    [MaxLength(100)] public string? Name { get; set; }
-    [MaxLength(100)] public string? TransporterFacilityLicenseNumber { get; set; }
-    [MaxLength(100)] public string? TransporterFacilityName { get; set; }
-    [MaxLength(100)] public string? DriverName { get; set; }
-    [MaxLength(100)] public string? DriverOccupationalLicenseNumber { get; set; }
-    [MaxLength(100)] public string? DriverVehicleLicenseNumber { get; set; }
-    [MaxLength(100)] public string? VehicleMake { get; set; }
-    [MaxLength(100)] public string? VehicleModel { get; set; }
-    [MaxLength(100)] public string? VehicleLicensePlateNumber { get; set; }
+    public string? ManifestNumber { get; set; }
+    public string? ShipmentLicenseType { get; set; }
+    public string? ShipperFacilityLicenseNumber { get; set; }
+    public string? ShipperFacilityName { get; set; }
+    public string? Name { get; set; }
+    public string? TransporterFacilityLicenseNumber { get; set; }
+    public string? TransporterFacilityName { get; set; }
+    public string? DriverName { get; set; }
+    public string? DriverOccupationalLicenseNumber { get; set; }
+    public string? DriverVehicleLicenseNumber { get; set; }
+    public string? VehicleMake { get; set; }
+    public string? VehicleModel { get; set; }
+    public string? VehicleLicensePlateNumber { get; set; }
     public int? DeliveryCount { get; set; }
     public int? ReceivedDeliveryCount { get; set; }
     public int? PackageCount { get; set; }
@@ -29,13 +29,13 @@ public class Transfer
     public bool? ContainsProductRequiresRemediation { get; set; }
     public bool? ContainsRemediatedProductPackage { get; set; }
     public DateTimeOffset CreatedDateTime { get; set; }
-    [MaxLength(100)] public string? CreatedByUserName { get; set; }
+    public string? CreatedByUserName { get; set; }
     public DateTimeOffset LastModified { get; set; }
     public int? DeliveryId { get; set; }
-    [MaxLength(100)] public string? RecipientFacilityLicenseNumber { get; set; }
-    [MaxLength(100)] public string? RecipientFacilityName { get; set; }
-    [MaxLength(100)] public string? ShipmentTypeName { get; set; }
-    [MaxLength(100)] public string? ShipmentTransactionType { get; set; }
+    public string? RecipientFacilityLicenseNumber { get; set; }
+    public string? RecipientFacilityName { get; set; }
+    public string? ShipmentTypeName { get; set; }
+    public string? ShipmentTransactionType { get; set; }
     public DateTimeOffset? EstimatedDepartureDateTime { get; set; }
     public DateTimeOffset? ActualDepartureDateTime { get; set; }
     public DateTimeOffset? EstimatedArrivalDateTime { get; set; }

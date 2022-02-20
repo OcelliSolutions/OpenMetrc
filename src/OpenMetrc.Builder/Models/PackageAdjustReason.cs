@@ -7,6 +7,6 @@ public class PackageAdjustReason
         Name = string.Empty;
     }
 
-    [MaxLength(100)] public string Name { get; set; }
+    public string Name { get; set; }
     public bool RequiresNote { get; set; }
 }

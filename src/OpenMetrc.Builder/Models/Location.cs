@@ -4,9 +4,9 @@ public class Location
 {
     [Required] public int Id { get; set; }
 
-    [MaxLength(100)] public string? Name { get; set; }
+    public string? Name { get; set; }
     public int LocationTypeId { get; set; }
-    [MaxLength(100)] public string? LocationTypeName { get; set; }
+    public string? LocationTypeName { get; set; }
     public bool? ForPlantBatches { get; set; }
     public bool? ForPlants { get; set; }
     public bool? ForHarvests { get; set; }

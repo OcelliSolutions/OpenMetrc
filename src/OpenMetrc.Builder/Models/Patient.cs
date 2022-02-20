@@ -4,7 +4,7 @@ public class Patient
 {
     [Required] public int PatientId { get; set; }
 
-    [MaxLength(100)] public string? LicenseNumber { get; set; }
+    public string? LicenseNumber { get; set; }
     public DateTime? RegistrationDate { get; set; }
     public DateTime? LicenseEffectiveStartDate { get; set; }
     public DateTime? LicenseEffectiveEndDate { get; set; }
