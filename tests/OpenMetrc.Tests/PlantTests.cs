@@ -39,7 +39,7 @@ public class PlantTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: {facility.License.Number}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
                 timeout++;
             }
 
@@ -71,7 +71,7 @@ public class PlantTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: {facility.License.Number}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
                 timeout++;
             }
 
@@ -103,7 +103,7 @@ public class PlantTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: {facility.License.Number}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
                 timeout++;
             }
 
@@ -135,7 +135,7 @@ public class PlantTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: {facility.License.Number}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
                 timeout++;
             }
 
@@ -163,7 +163,7 @@ public class PlantTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
                 timeout++;
             }
 
@@ -193,7 +193,7 @@ public class PlantTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
                 timeout++;
             }
 
@@ -222,7 +222,7 @@ public class PlantTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: {facility.License.Number}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
                 timeout++;
             }
 
@@ -253,7 +253,7 @@ public class PlantTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: {facility.License.Number}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
                 timeout++;
             }
 
@@ -285,7 +285,7 @@ public class PlantTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: {facility.License.Number}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
                 timeout++;
             }
 

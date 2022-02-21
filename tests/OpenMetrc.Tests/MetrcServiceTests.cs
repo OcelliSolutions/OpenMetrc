@@ -18,9 +18,7 @@ public class MetrcServiceTests : IClassFixture<SharedFixture>
         var client1 = Fixture.ApiKeys[1];
         var facilities0 = await client0.MetrcService.Facilities.GetFacilitiesAsync();
 
-        client0.UserApiKey = client1.UserApiKey;
-        client0.SoftwareApiKey = client1.SoftwareApiKey;
-        client0.SubDomain = client1.SubDomain;
+        client0.OpenMetrcConfig = client1.OpenMetrcConfig;
 
         //call the same client again with the new credentials
         var facilities1 = await client0.MetrcService.Facilities.GetFacilitiesAsync();

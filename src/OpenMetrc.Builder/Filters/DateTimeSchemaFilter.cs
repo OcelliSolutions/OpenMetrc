@@ -4,7 +4,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 namespace OpenMetrc.Builder.Filters;
 
 /// <summary>
-/// All dates in the schemas must follow a very specific format.
+///     All dates in the schemas must follow a very specific format.
 /// </summary>
 public class DateTimeSchemaFilter : ISchemaFilter
 {

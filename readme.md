@@ -25,20 +25,29 @@ dotnet add package openmetrc
 ## Frequently Asked Questions
 
 * **Question**: How do I use OpenMETRC with a my state's implementation of METRC?
-  * **Answer**: OpenMETRC works with any METRC implementation, no extra configuration needed. All you need to do is pass in your `state`, `software_api_key` (Vendor Key), and `user_api_key`. There are two optional constructor properties that you can use to manage your connection.
-    * isSandbox: is this the sandbox environment for the state. Default `false`.
-    * returnEmptyOnNotSupported: not every state has every endpoint. If `false`, a `NotSupportedException` is returned. If `true`, an empty result is returned. Default `true`.
+  * **Answer**: OpenMETRC works with any METRC implementation, no extra configuration needed. All you need to do is pass in your `sub_domain`, `software_api_key` (Vendor Key), and `user_api_key`. There are two optional constructor properties that you can use to manage your connection.
+    * ReturnEmptyOnNotSupported: not every state has every endpoint. If `false`, a `NotSupportedException` is returned. If `true`, an empty result is returned. Default `true`.
+    * FacilityLimitCount: override the default of 50 calls per second per facility. You may need to play with this because your applications start instant of 1 second may not line up with METRC's.
+    * IntegratorLimitCount: override the default of 150 calls per second per integrator key. You may need to play with this because your applications start instant of 1 second may not line up with METRC's.
 
 ```c#
-var metrcService = new MetrcService("co", "<software_api_key>", "<user_api_key>");`
+var openMetrcConfig = new OpenMetrcConfig("api-co", "xx", "xx");
+var metrcService = new MetrcService(openMetrcConfig);`
 ```
+
+> :bulb: The subdomain is different for every state/province where METRC is deployed. Some examples are:
+> * https://<mark>api-co</mark>.metrc.com
+> * https://<mark>sandbox-api-co</mark>.metrc.com
+> * https://<mark>api-nv</mark>.metrc.com
+> * https://<mark>sandbox-api-nv</mark>.metrc.com
+
 
 * **Question**: How does the rate limiting work?
   * **Answer**: OpenMETRC uses a combination of static/global ConcurrentDictionaries and Semaphores to limit executions to the following rules. There are still some instances where a `429 Too Many Requests` can be returned. It is still a good practice to handle this exception.
     * 50 GET calls per second per facility,
-    * 150 GET calls per second per ~~integrator key~~ state url
+    * 150 GET calls per second per ~~integrator key~~ state sub-domain
     * 10 concurrent GET calls per second per facility
-    * 30 concurrent GET calls per second per ~~integrator key~~ state url
+    * 30 concurrent GET calls per second per ~~integrator key~~ state sub-domain
   * **TODO**: Change the state url rate limits to integration key limits to better align with the official rate limits.
 
 ## [OpenAPI/Swagger](https://swagger.io/specification/)

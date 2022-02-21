@@ -4,7 +4,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 namespace OpenMetrc.Builder.Filters;
 
 /// <summary>
-/// For the following datetime parameter, METRC expects a specific format. Enforce that.
+///     For the following datetime parameter, METRC expects a specific format. Enforce that.
 /// </summary>
 public class DateTimeParameterFilter : IParameterFilter
 {

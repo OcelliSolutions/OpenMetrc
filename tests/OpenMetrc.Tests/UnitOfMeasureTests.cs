@@ -37,7 +37,7 @@ public class UnitOfMeasureTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
                 timeout++;
             }
 

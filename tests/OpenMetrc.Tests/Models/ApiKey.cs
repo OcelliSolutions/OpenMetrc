@@ -4,30 +4,28 @@ namespace OpenMetrc.Tests.Models;
 
 public class ApiKey
 {
-    public ApiKey(string subDomain, string softwareApiKey, string userApiKey)
+    public ApiKey(OpenMetrcConfig openMetrcConfig)
     {
-        SubDomain = subDomain;
-        SoftwareApiKey = softwareApiKey;
-        UserApiKey = userApiKey;
-        Facilities = new HashSet<Facility>();
-        Transfers = new List<Transfer>();
-        TransferDeliveries = new List<TransferDelivery>();
-        TransferTemplates = new List<Transfer>();
+        openMetrcConfig.ReturnEmptyOnNotSupported = true;
+        openMetrcConfig.FacilityLimitCount = 25;
+        openMetrcConfig.IntegratorLimitCount = 75;
+        OpenMetrcConfig = openMetrcConfig;
+    }
+    public OpenMetrcConfig OpenMetrcConfig {
+        get => _openMetrcConfig;
+        set {
+            _openMetrcConfig = value;
+            MetrcService = new MetrcService(value);
+        }
     }
 
-    public string SubDomain { get; set; }
-    public string SoftwareApiKey { get; set; }
-    public string UserApiKey { get; set; }
-    public ICollection<Facility> Facilities { get; set; }
-    public ICollection<Transfer> Transfers { get; set; }
-    public ICollection<TransferDelivery> TransferDeliveries { get; set; }
+    public ICollection<Facility> Facilities { get; set; } = new HashSet<Facility>();
+    public ICollection<Transfer> Transfers { get; set; } = new HashSet<Transfer>();
+    public ICollection<TransferDelivery> TransferDeliveries { get; set; } = new HashSet<TransferDelivery>();
 
-    public ICollection<Transfer> TransferTemplates { get; set; }
-    //public ICollection<TransferDelivery> TransferDeliveryTemplates { get; set; }
-
-    internal string State => SubDomain[^2..];
-    internal bool IsSandbox => SubDomain.StartsWith("sandbox");
-    public bool IsReadOnly => !IsSandbox; //only the sandbox will be written to when doing integration testing
-    internal MetrcService MetrcService => new(State, SoftwareApiKey, UserApiKey, IsSandbox)
-        { ReturnEmptyOnNotSupported = true };
+    public ICollection<Transfer> TransferTemplates { get; set; } = new HashSet<Transfer>();
+    //public ICollection<TransferDelivery> TransferDeliveryTemplates { get; set; } = new HashSet<TransferDelivery>();
+    public bool IsReadOnly => !OpenMetrcConfig.IsSandbox; //only the sandbox will be written to when doing integration testing
+    internal MetrcService MetrcService = new (new OpenMetrcConfig("","","")); 
+    private OpenMetrcConfig _openMetrcConfig = null!;
 }

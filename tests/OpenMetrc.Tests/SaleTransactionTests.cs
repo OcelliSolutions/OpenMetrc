@@ -39,7 +39,7 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: {facility.License.Number}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
                 timeout++;
             }
 
@@ -71,7 +71,7 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.SubDomain}: {facility.License.Number}: Timeout");
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
                 timeout++;
             }
 

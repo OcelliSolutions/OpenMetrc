@@ -15,8 +15,13 @@ public class SharedFixture : IDisposable
         {
             var apiKeysJson = File.ReadAllText("api_keys.json");
             Debug.Assert(!string.IsNullOrWhiteSpace(apiKeysJson), "Please create a `api_keys.json` file");
-            ApiKeys = JsonSerializer.Deserialize<List<ApiKey>>(apiKeysJson) ?? new List<ApiKey>();
+            var configs = JsonSerializer.Deserialize<List<OpenMetrcConfig>>(apiKeysJson) ?? new List<OpenMetrcConfig>();
+            ApiKeys = configs.Select(c => new ApiKey(c)).ToList();
             Debug.Assert(ApiKeys != null, "Please specify some api keys in `api_keys.json` before testing");
+        }
+        catch (InvalidOperationException ex)
+        {
+            Console.WriteLine(ex);
         }
         catch (Exception ex)
         {
@@ -49,11 +54,11 @@ public class SharedFixture : IDisposable
             }
             catch (ApiException<ErrorResponse> ex)
             {
-                Console.WriteLine($@"SubDomain: {key.SubDomain} - {ex.Message}");
+                Console.WriteLine($@"SubDomain: {key.OpenMetrcConfig.SubDomain} - {ex.Message}");
             }
             catch (ApiException ex)
             {
-                Console.WriteLine($@"SubDomain: {key.SubDomain} - {ex.Message}");
+                Console.WriteLine($@"SubDomain: {key.OpenMetrcConfig.SubDomain} - {ex.Message}");
             }
             catch (Exception ex)
             {

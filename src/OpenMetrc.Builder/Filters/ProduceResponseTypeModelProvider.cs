@@ -46,6 +46,7 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
 
     public void AddUniversalStatusCodes(ActionModel action, Type returnType)
     {
+        AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status403Forbidden);
         AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status404NotFound);
         AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status429TooManyRequests);
         AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status500InternalServerError);

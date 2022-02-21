@@ -23,54 +23,18 @@ public partial class MetrcService : IMetrcService
     internal static ConcurrentDictionary<string, ITransferClient> TransferClients = new();
     internal static ConcurrentDictionary<string, IUnitOfMeasureClient> UnitOfMeasureClients = new();
 
-    public MetrcService(string state = "xx", string softwareApiKey = "xx", string userApiKey = "xx",
-        bool isSandbox = false, bool returnEmptyOnNotSupported = true)
+    public MetrcService(OpenMetrcConfig openMetrcConfig)
     {
-        ReturnEmptyOnNotSupported = returnEmptyOnNotSupported;
-        State = state;
-        SoftwareApiKey = softwareApiKey;
-        UserApiKey = userApiKey;
-        IsSandbox = isSandbox;
-
         //if (MetrcClients.Any(c => c.Key == MetrcClientKey)) return;
         if (FacilityClients.Any(c => c.Key == MetrcClientKey)) return;
-
-        var baseUrl = $@"https://{(IsSandbox ? "sandbox-" : "")}api-{state}.metrc.com";
-        var client = new HttpClient(new RateLimitHttpMessageHandler { InnerHandler = new HttpClientHandler() });
-        var byteArray = Encoding.ASCII.GetBytes($"{softwareApiKey}:{userApiKey}");
-        client.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-        //MetrcClients.TryAdd(MetrcClientKey, new MetrcClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        EmployeeClients.TryAdd(MetrcClientKey,
-            new EmployeeClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        FacilityClients.TryAdd(MetrcClientKey,
-            new FacilityClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        HarvestClients.TryAdd(MetrcClientKey,
-            new HarvestClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        ItemClients.TryAdd(MetrcClientKey, new ItemClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        LabTestClients.TryAdd(MetrcClientKey,
-            new LabTestClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        LocationClients.TryAdd(MetrcClientKey,
-            new LocationClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        PackageClients.TryAdd(MetrcClientKey,
-            new PackageClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        PatientClients.TryAdd(MetrcClientKey,
-            new PatientClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        PlantClients.TryAdd(MetrcClientKey,
-            new PlantClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        PlantBatchClients.TryAdd(MetrcClientKey,
-            new PlantBatchClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        SaleClients.TryAdd(MetrcClientKey, new SaleClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        StrainClients.TryAdd(MetrcClientKey,
-            new StrainClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        TransferClients.TryAdd(MetrcClientKey,
-            new TransferClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
-        UnitOfMeasureClients.TryAdd(MetrcClientKey,
-            new UnitOfMeasureClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
+        
+        OpenMetrcConfig = openMetrcConfig;
     }
 
-    protected string MetrcClientKey => $@"{SoftwareApiKey}:{UserApiKey}";
+    protected string MetrcClientKey => $@"{OpenMetrcConfig.SoftwareApiKey}:{OpenMetrcConfig.UserApiKey}";
+    OpenMetrcConfig? _openMetrcConfig;
 
+    protected HttpClient? HttpClient;
     //protected IMetrcClient UserMetrcClient => MetrcClients[MetrcClientKey];
     protected IEmployeeClient EmployeeClient => EmployeeClients[MetrcClientKey];
     protected IFacilityClient FacilityClient => FacilityClients[MetrcClientKey];
@@ -87,16 +51,57 @@ public partial class MetrcService : IMetrcService
     protected ITransferClient TransferClient => TransferClients[MetrcClientKey];
     protected IUnitOfMeasureClient UnitOfMeasureClient => UnitOfMeasureClients[MetrcClientKey];
 
-    /// <summary>
-    ///     METRC is not in all states and not all states have the same endpoint. If this value is true, an empty result will
-    ///     be returned instead of a `ReturnEmptyOnNotSupported` exception
-    /// </summary>
-    public bool ReturnEmptyOnNotSupported { get; set; }
+    public OpenMetrcConfig OpenMetrcConfig
+    {
+        get => _openMetrcConfig ?? new OpenMetrcConfig("api-xx","xx","xx");
+        set
+        {
+            _openMetrcConfig = value;
 
-    public string State { get; set; }
-    public bool IsSandbox { get; set; }
-    public string SoftwareApiKey { get; set; }
-    public string UserApiKey { get; set; }
+
+            var baseUrl =
+                $@"https://{OpenMetrcConfig.SubDomain}.metrc.com";
+            HttpClient = new HttpClient(new RateLimitHttpMessageHandler
+            {
+                InnerHandler = new HttpClientHandler(),
+                FacilityLimitCount = _openMetrcConfig.FacilityLimitCount,
+                IntegratorLimitCount = _openMetrcConfig.IntegratorLimitCount
+            });
+            //MetrcClients.TryAdd(MetrcClientKey, new MetrcClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            var byteArray = Encoding.ASCII.GetBytes($"{_openMetrcConfig.SoftwareApiKey}:{_openMetrcConfig.UserApiKey}");
+            HttpClient.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+            EmployeeClients.TryAdd(MetrcClientKey,
+                new EmployeeClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            FacilityClients.TryAdd(MetrcClientKey,
+                new FacilityClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            HarvestClients.TryAdd(MetrcClientKey,
+                new HarvestClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            ItemClients.TryAdd(MetrcClientKey,
+                new ItemClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            LabTestClients.TryAdd(MetrcClientKey,
+                new LabTestClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            LocationClients.TryAdd(MetrcClientKey,
+                new LocationClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            PackageClients.TryAdd(MetrcClientKey,
+                new PackageClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            PatientClients.TryAdd(MetrcClientKey,
+                new PatientClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            PlantClients.TryAdd(MetrcClientKey,
+                new PlantClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            PlantBatchClients.TryAdd(MetrcClientKey,
+                new PlantBatchClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            SaleClients.TryAdd(MetrcClientKey,
+                new SaleClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            StrainClients.TryAdd(MetrcClientKey,
+                new StrainClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            TransferClients.TryAdd(MetrcClientKey,
+                new TransferClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            UnitOfMeasureClients.TryAdd(MetrcClientKey,
+                new UnitOfMeasureClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+        }
+    }
+
     public IEnumerable<string> AvailableStates => MetrcEndpointExtensions.GetAvailableStates();
     public IEmployeeClient Employees => this;
     public IFacilityClient Facilities => this;
@@ -120,8 +125,8 @@ public partial class MetrcService : IMetrcService
             method.GetCustomAttributes(typeof(MapsToApiAttribute), true).FirstOrDefault() as MapsToApiAttribute;
         Debug.Assert(endpoint != null, nameof(endpoint) + " != null");
         var states = endpoint.States;
-        if (states.Contains(State)) return true;
-        if (!ReturnEmptyOnNotSupported) throw new NotSupportedException("This state does not support this endpoint");
+        if (states.Contains(OpenMetrcConfig.State)) return true;
+        if (!OpenMetrcConfig.ReturnEmptyOnNotSupported) throw new NotSupportedException("This state does not support this endpoint");
         return false;
     }
 }

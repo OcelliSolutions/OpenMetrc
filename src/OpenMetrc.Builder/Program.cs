@@ -1,6 +1,7 @@
 using System.Net.Mime;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
 
@@ -12,6 +13,7 @@ builder.Services.AddControllers(options =>
         options.Filters.Clear();
         options.Filters.Add(new ProducesAttribute(MediaTypeNames.Application.Json));
         options.Filters.Add(new ConsumesAttribute(MediaTypeNames.Application.Json));
+        options.OutputFormatters.RemoveType<HttpNoContentOutputFormatter>();
     })
     .ConfigureApiBehaviorOptions(options =>
     {

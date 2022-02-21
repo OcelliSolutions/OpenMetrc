@@ -4,7 +4,8 @@ using OpenMetrc.Builder.Extensions;
 namespace OpenMetrc.Builder.Filters;
 
 /// <summary>
-/// If there are ApiPermissions attributed to a controller action, create a concatenated string of all the assigned permissions.
+///     If there are ApiPermissions attributed to a controller action, create a concatenated string of all the assigned
+///     permissions.
 /// </summary>
 public class ApiAuthorizationFilter : ActionFilterAttribute
 {
@@ -16,6 +17,7 @@ public class ApiAuthorizationFilter : ActionFilterAttribute
         _apiPermissions = new List<ApiPermission>();
         _apiPermissions.AddRange(permissions);
     }
+
     public string PermissionDescription
     {
         get

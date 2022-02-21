@@ -6,8 +6,8 @@ namespace OpenMetrc;
 
 class RateLimitHttpMessageHandler : DelegatingHandler
 {
-    const int FacilityLimitCount = 50;
-    const int IntegratorLimitCount = 150;
+    public int FacilityLimitCount = 50;
+    public int IntegratorLimitCount = 150;
     static readonly ConcurrentDictionary<string, SemaphoreSlim> FacilitySemaphore = new();
     static readonly ConcurrentDictionary<string, SemaphoreSlim> IntegratorSemaphore = new();
     static readonly ConcurrentDictionary<string, List<DateTimeOffset>> FacilityCallLog = new();
