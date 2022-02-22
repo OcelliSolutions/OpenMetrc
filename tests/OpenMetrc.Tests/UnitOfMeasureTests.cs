@@ -26,13 +26,21 @@ public class UnitOfMeasureTests : IClassFixture<SharedFixture>
             try
             {
                 var unitOfMeasures = await apiKey.MetrcService.UnitOfMeasures.GetUnitsOfMeasureAsync();
+                if (unitOfMeasures == null) continue;
                 wasTested = wasTested || unitOfMeasures.Any();
                 foreach (var unitOfMeasure in unitOfMeasures)
                     _additionalPropertiesHelper.CheckAdditionalProperties(unitOfMeasure, string.Empty);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)

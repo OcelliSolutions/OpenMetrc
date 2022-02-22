@@ -121,7 +121,7 @@ public class TransferController : ControllerBase
     [SwaggerOperation(Summary = "Create incoming external transfer")]
     public ActionResult CreateExternalIncomingTransfers(
         [Required] string licenseNumber,
-        IEnumerable<CreateTransferRequest> createExternalIncomingTransferRequests) => Ok();
+        [Required] IEnumerable<CreateTransferRequest> createExternalIncomingTransferRequests) => Ok();
 
     [HttpPut("external/incoming")]
     [MapsToApi(MetrcEndpoint.put_transfers_v1_external_incoming)]
@@ -130,7 +130,7 @@ public class TransferController : ControllerBase
     [SwaggerOperation(Summary = "Update incoming external transfer")]
     public ActionResult UpdateExternalIncomingTransfers(
         [Required] string licenseNumber,
-        IEnumerable<UpdateTransferRequest> updateExternalIncomingTransferRequests) => Ok();
+        [Required] IEnumerable<UpdateTransferRequest> updateExternalIncomingTransferRequests) => Ok();
 
     [HttpDelete("external/incoming/{id:int}")]
     [MapsToApi(MetrcEndpoint.delete_transfers_v1_external_incoming_id)]
@@ -206,7 +206,7 @@ public class TransferController : ControllerBase
     [SwaggerOperation(Summary = "Create transfer template")]
     public ActionResult CreateTransferTemplates(
         [Required] string licenseNumber,
-        IEnumerable<CreateTransferRequest> createTransferTemplateRequests) => Ok();
+        [Required] IEnumerable<CreateTransferRequest> createTransferTemplateRequests) => Ok();
 
     [HttpPut("templates")]
     [MapsToApi(MetrcEndpoint.put_transfers_v1_templates)]
@@ -215,7 +215,7 @@ public class TransferController : ControllerBase
     [SwaggerOperation(Summary = "Update transfer template")]
     public ActionResult UpdateTransferTemplates(
         [Required] string licenseNumber,
-        IEnumerable<UpdateTransferRequest> updateTransferTemplateRequests) => Ok();
+        [Required] IEnumerable<UpdateTransferRequest> updateTransferTemplateRequests) => Ok();
 
     [HttpDelete("templates/{id:int}")]
     [MapsToApi(MetrcEndpoint.delete_transfers_v1_templates_id)]

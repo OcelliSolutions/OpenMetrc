@@ -1,6 +1,6 @@
 ﻿namespace OpenMetrc.Builder.Models.Requests;
 
-public class CreateItemRequest 
+public class CreateItemRequest
 {
     public string? Name { get; set; }
     public string? ProductCategoryName { get; set; }

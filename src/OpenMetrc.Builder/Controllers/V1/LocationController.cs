@@ -49,7 +49,7 @@ public class LocationController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageLocations })]
     [SwaggerOperation(Summary = "Create locations")]
     public ActionResult CreateLocation([Required] string licenseNumber,
-        List<CreateLocationRequest> createLocationRequests) => Ok();
+        [Required] List<CreateLocationRequest> createLocationRequests) => Ok();
 
     [HttpPost("update")]
     [MapsToApi(MetrcEndpoint.post_locations_v1_update)]
@@ -57,7 +57,7 @@ public class LocationController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageLocations })]
     [SwaggerOperation(Summary = "Update locations")]
     public ActionResult UpdateLocation([Required] string licenseNumber,
-        List<UpdateLocationRequest> updateLocationRequests) => Ok();
+        [Required] List<UpdateLocationRequest> updateLocationRequests) => Ok();
 
     [HttpDelete("{id:long}")]
     [MapsToApi(MetrcEndpoint.delete_locations_v1_id)]

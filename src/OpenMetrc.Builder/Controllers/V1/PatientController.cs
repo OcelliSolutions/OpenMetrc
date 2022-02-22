@@ -49,7 +49,7 @@ public class PatientController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ManagePatients })]
     [SwaggerOperation(Summary = "Create patients")]
     public ActionResult CreatePatient([Required] string licenseNumber,
-        List<CreatePatientRequest> createPatientRequests) => Ok();
+        [Required] List<CreatePatientRequest> createPatientRequests) => Ok();
 
     [HttpPost("update")]
     [MapsToApi(MetrcEndpoint.post_patients_v1_update)]
@@ -57,7 +57,7 @@ public class PatientController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ManagePatients })]
     [SwaggerOperation(Summary = "Update patients")]
     public ActionResult UpdatePatient([Required] string licenseNumber,
-        List<UpdatePatientRequest> updatePatientRequests) => Ok();
+        [Required] List<UpdatePatientRequest> updatePatientRequests) => Ok();
 
     [HttpDelete("{id:long}")]
     [MapsToApi(MetrcEndpoint.delete_patients_v1_id)]

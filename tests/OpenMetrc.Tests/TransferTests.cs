@@ -32,6 +32,7 @@ public class TransferTests : IClassFixture<SharedFixture>
                     var transfers =
                         await apiKey.MetrcService.Transfers.GetIncomingTransfersAsync(facility.License.Number,
                             DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    if (transfers == null) continue;
                     wasTested = wasTested || transfers.Any();
                     foreach (var transfer in transfers)
                     {
@@ -43,14 +44,22 @@ public class TransferTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -30) break;
                 }
-                catch (ApiException ex)
+                catch (ApiException<ErrorResponse?> ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    {
+                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                        _testOutputHelper.WriteLine(ex.Response);
+                        throw;
+                    }
+
                     unauthorized++;
                 }
                 catch (TimeoutException)
                 {
-                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
+                    _testOutputHelper.WriteLine(
+                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
                     timeout++;
                 }
             while (true);
@@ -76,6 +85,7 @@ public class TransferTests : IClassFixture<SharedFixture>
                     var transfers =
                         await apiKey.MetrcService.Transfers.GetOutgoingTransfersAsync(facility.License.Number,
                             DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    if (transfers == null) continue;
                     wasTested = wasTested || transfers.Any();
                     foreach (var transfer in transfers)
                     {
@@ -87,14 +97,22 @@ public class TransferTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -30) break;
                 }
-                catch (ApiException ex)
+                catch (ApiException<ErrorResponse?> ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    {
+                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                        _testOutputHelper.WriteLine(ex.Response);
+                        throw;
+                    }
+
                     unauthorized++;
                 }
                 catch (TimeoutException)
                 {
-                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
+                    _testOutputHelper.WriteLine(
+                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
                     timeout++;
                 }
             while (true);
@@ -116,6 +134,7 @@ public class TransferTests : IClassFixture<SharedFixture>
             try
             {
                 var transfers = await apiKey.MetrcService.Transfers.GetRejectedTransfersAsync(facility.License.Number);
+                if (transfers == null) continue;
                 wasTested = wasTested || transfers.Any();
                 foreach (var transfer in transfers)
                 {
@@ -123,9 +142,16 @@ public class TransferTests : IClassFixture<SharedFixture>
                     _additionalPropertiesHelper.CheckAdditionalProperties(transfer, facility.License.Number);
                 }
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -154,6 +180,7 @@ public class TransferTests : IClassFixture<SharedFixture>
                     var transfers =
                         await apiKey.MetrcService.Transfers.GetTransferTemplatesAsync(facility.License.Number,
                             DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    if (transfers == null) continue;
                     wasTested = wasTested || transfers.Any();
                     foreach (var transfer in transfers)
                     {
@@ -165,14 +192,22 @@ public class TransferTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -10) break;
                 }
-                catch (ApiException ex)
+                catch (ApiException<ErrorResponse?> ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    {
+                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                        _testOutputHelper.WriteLine(ex.Response);
+                        throw;
+                    }
+
                     unauthorized++;
                 }
                 catch (TimeoutException)
                 {
-                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
+                    _testOutputHelper.WriteLine(
+                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
                     timeout++;
                 }
             while (true);
@@ -193,8 +228,10 @@ public class TransferTests : IClassFixture<SharedFixture>
         foreach (var transfer in apiKey.Transfers)
             try
             {
+                if (transfer == null) continue;
                 var deliveries =
                     await apiKey.MetrcService.Transfers.GetTransferDeliveriesAsync(transfer.Id);
+                if (deliveries == null) continue;
                 wasTested = wasTested || deliveries.Any();
                 foreach (var delivery in deliveries)
                 {
@@ -202,14 +239,22 @@ public class TransferTests : IClassFixture<SharedFixture>
                     _additionalPropertiesHelper.CheckAdditionalProperties(delivery, string.Empty);
                 }
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
             {
-                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {transfer.Id}: Timeout");
+                if (transfer != null)
+                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {transfer.Id}: Timeout");
                 timeout++;
             }
 
@@ -231,13 +276,21 @@ public class TransferTests : IClassFixture<SharedFixture>
             {
                 var deliveries =
                     await apiKey.MetrcService.Transfers.GetTransferDeliveryPackagesAsync(transferDelivery.Id);
+                if (deliveries == null) continue;
                 wasTested = wasTested || deliveries.Any();
                 foreach (var delivery in deliveries)
                     _additionalPropertiesHelper.CheckAdditionalProperties(delivery, string.Empty);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -265,9 +318,16 @@ public class TransferTests : IClassFixture<SharedFixture>
                 var transfers = await apiKey.MetrcService.Transfers.GetTransferDeliveryPackageStatesAsync();
                 wasTested = wasTested || transfers.Any();
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)

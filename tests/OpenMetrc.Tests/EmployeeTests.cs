@@ -27,13 +27,21 @@ public class EmployeeTests : IClassFixture<SharedFixture>
             try
             {
                 var employees = await apiKey.MetrcService.Employees.GetEmployeesAsync(facility.License.Number);
+                if (employees == null) continue;
                 wasTested = wasTested || employees.Any();
                 foreach (var employee in employees)
                     _additionalPropertiesHelper.CheckAdditionalProperties(employee, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)

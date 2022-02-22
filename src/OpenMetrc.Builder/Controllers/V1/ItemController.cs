@@ -61,14 +61,14 @@ public class ItemController : ControllerBase
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageItems })]
     [SwaggerOperation(Summary = "Create items")]
-    public ActionResult CreateItem([Required] string licenseNumber, List<CreateItemRequest> createItemRequests) => Ok();
+    public ActionResult CreateItem([Required] string licenseNumber, [Required] List<CreateItemRequest> createItemRequests) => Ok();
 
     [HttpPost("update")]
     [MapsToApi(MetrcEndpoint.post_items_v1_update)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageItems })]
     [SwaggerOperation(Summary = "Update items")]
-    public ActionResult UpdateItem([Required] string licenseNumber, List<CreateItemRequest> createItemRequests) => Ok();
+    public ActionResult UpdateItem([Required] string licenseNumber, [Required] List<CreateItemRequest> createItemRequests) => Ok();
 
     [HttpDelete("{id:long}")]
     [MapsToApi(MetrcEndpoint.delete_items_v1_id)]

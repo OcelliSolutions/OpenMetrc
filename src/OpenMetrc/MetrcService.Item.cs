@@ -27,65 +27,65 @@ public partial class MetrcService : IItemClient
             : ItemClient.DeleteItemAsync(licenseNumber, id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_items_v1_active)]
-    Task<ICollection<Item>> IItemClient.GetActiveItemsAsync(string licenseNumber) =>
+    Task<ICollection<Item>?> IItemClient.GetActiveItemsAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Item>>(new List<Item>())
+            ? Task.FromResult<ICollection<Item>?>(new List<Item>())
             : ItemClient.GetActiveItemsAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_items_v1_active)]
-    Task<ICollection<Item>> IItemClient.
+    Task<ICollection<Item>?> IItemClient.
         GetActiveItemsAsync(string licenseNumber, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Item>>(new List<Item>())
+            ? Task.FromResult<ICollection<Item>?>(new List<Item>())
             : ItemClient.GetActiveItemsAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_items_v1_categories)]
-    Task<ICollection<ItemCategory>> IItemClient.GetItemCategoriesAsync(string? licenseNumber) =>
+    Task<ICollection<ItemCategory>?> IItemClient.GetItemCategoriesAsync(string? licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<ItemCategory>>(new List<ItemCategory>())
+            ? Task.FromResult<ICollection<ItemCategory>?>(new List<ItemCategory>())
             : ItemClient.GetItemCategoriesAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_items_v1_categories)]
-    Task<ICollection<ItemCategory>> IItemClient.GetItemCategoriesAsync(string? licenseNumber,
+    Task<ICollection<ItemCategory>?> IItemClient.GetItemCategoriesAsync(string? licenseNumber,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<ItemCategory>>(new List<ItemCategory>())
+            ? Task.FromResult<ICollection<ItemCategory>?>(new List<ItemCategory>())
             : ItemClient.GetItemCategoriesAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_items_v1_brands)]
-    Task<ICollection<ItemBrand>> IItemClient.GetItemBrandsAsync(string licenseNumber) =>
+    Task<ICollection<ItemBrand>?> IItemClient.GetItemBrandsAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<ItemBrand>>(new List<ItemBrand>())
+            ? Task.FromResult<ICollection<ItemBrand>?>(new List<ItemBrand>())
             : ItemClient.GetItemBrandsAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_items_v1_brands)]
-    Task<ICollection<ItemBrand>> IItemClient.GetItemBrandsAsync(string licenseNumber,
+    Task<ICollection<ItemBrand>?> IItemClient.GetItemBrandsAsync(string licenseNumber,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<ItemBrand>>(new List<ItemBrand>())
+            ? Task.FromResult<ICollection<ItemBrand>?>(new List<ItemBrand>())
             : ItemClient.GetItemBrandsAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_items_v1_create)]
-    Task IItemClient.CreateItemAsync(string licenseNumber, IEnumerable<CreateItemRequest>? body) =>
+    Task IItemClient.CreateItemAsync(string licenseNumber, IEnumerable<CreateItemRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : ItemClient.CreateItemAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_items_v1_create)]
-    Task IItemClient.CreateItemAsync(string licenseNumber, IEnumerable<CreateItemRequest>? body,
+    Task IItemClient.CreateItemAsync(string licenseNumber, IEnumerable<CreateItemRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : ItemClient.CreateItemAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_items_v1_update)]
-    Task IItemClient.UpdateItemAsync(string licenseNumber, IEnumerable<CreateItemRequest>? body) =>
+    Task IItemClient.UpdateItemAsync(string licenseNumber, IEnumerable<CreateItemRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : ItemClient.UpdateItemAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_items_v1_update)]
-    Task IItemClient.UpdateItemAsync(string licenseNumber, IEnumerable<CreateItemRequest>? body,
+    Task IItemClient.UpdateItemAsync(string licenseNumber, IEnumerable<CreateItemRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask

@@ -34,7 +34,7 @@ public class LabTestController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.ManagePackagesInventory })]
     [SwaggerOperation(Summary = "Upload the lab test results")]
     public ActionResult RecordLabTest([Required] string licenseNumber,
-        List<CreateLabTestResultRequest> createLabTestResultRequests) => Ok();
+        [Required] List<CreateLabTestResultRequest> createLabTestResultRequests) => Ok();
 
     [HttpPut("labtestdocument")]
     [MapsToApi(MetrcEndpoint.put_labtests_v1_labtestdocument)]
@@ -42,7 +42,7 @@ public class LabTestController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.ManagePackagesInventory })]
     [SwaggerOperation(Summary = "Update lab test documents")]
     public ActionResult UpdateLabTestDocument([Required] string licenseNumber,
-        List<UpdateLabTestDocumentRequest> updateLabTestDocumentRequests) => Ok();
+        [Required] List<UpdateLabTestDocumentRequest> updateLabTestDocumentRequests) => Ok();
 
     [HttpPut("results/release")]
     [MapsToApi(MetrcEndpoint.put_labtests_v1_results_release)]
@@ -50,5 +50,5 @@ public class LabTestController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.ManagePackagesInventory })]
     [SwaggerOperation(Summary = "Release lab test results")]
     public ActionResult ReleaseLabTestResults([Required] string licenseNumber,
-        List<ReleaseLabTestResultsRequest> releaseLabTestResultsRequests) => Ok();
+        [Required] List<ReleaseLabTestResultsRequest> releaseLabTestResultsRequests) => Ok();
 }

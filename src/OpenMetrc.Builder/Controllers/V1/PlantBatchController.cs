@@ -66,7 +66,7 @@ public class PlantBatchController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewImmaturePlants, ApiPermission.ManageImmaturePlantsInventory })]
     [SwaggerOperation(Summary = "Create plant batch plantings")]
     public ActionResult CreatePlantBatchPlantings([Required] string licenseNumber,
-        List<CreatePlantBatchPlantingRequest> createPlantBatchPlantingRequests) => Ok();
+        [Required] List<CreatePlantBatchPlantingRequest> createPlantBatchPlantingRequests) => Ok();
 
     [HttpPost("createpackages")]
     [MapsToApi(MetrcEndpoint.post_plantbatches_v1_createpackages)]
@@ -78,7 +78,7 @@ public class PlantBatchController : ControllerBase
     })]
     [SwaggerOperation(Summary = "Create plant batch packages")]
     public ActionResult CreatePlantBatchPackages([Required] string licenseNumber, bool isFromMotherPlant,
-        List<CreatePlantBatchPackageRequest> createPlantBatchPackageRequests) => Ok();
+        [Required] List<CreatePlantBatchPackageRequest> createPlantBatchPackageRequests) => Ok();
 
     [HttpPost("split")]
     [MapsToApi(MetrcEndpoint.post_plantbatches_v1_split)]
@@ -86,7 +86,7 @@ public class PlantBatchController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewImmaturePlants, ApiPermission.ManageImmaturePlantsInventory })]
     [SwaggerOperation(Summary = "Split a plant batch")]
     public ActionResult SplitPlantBatch([Required] string licenseNumber,
-        List<SplitPlantBatchRequest> splitPlantBatchRequests) => Ok();
+        [Required] List<SplitPlantBatchRequest> splitPlantBatchRequests) => Ok();
 
     [HttpPost("create/packages/frommotherplant")]
     [MapsToApi(MetrcEndpoint.post_plantbatches_v1_create_packages_frommotherplant)]
@@ -98,7 +98,7 @@ public class PlantBatchController : ControllerBase
     })]
     [SwaggerOperation(Summary = "Create packages from a mother plant for a plant batch")]
     public ActionResult CreatePackageFromPlantBatchMotherPlant([Required] string licenseNumber,
-        List<CreatePlantBatchPackageRequest> createPlantBatchPackageRequests) => Ok();
+        [Required] List<CreatePlantBatchPackageRequest> createPlantBatchPackageRequests) => Ok();
 
     [HttpPost("changegrowthphase")]
     [MapsToApi(MetrcEndpoint.post_plantbatches_v1_changegrowthphase)]
@@ -110,7 +110,7 @@ public class PlantBatchController : ControllerBase
     })]
     [SwaggerOperation(Summary = "Change the growth phase for a plant batch")]
     public ActionResult ChangeGrowthPhaseForPlantBatch([Required] string licenseNumber,
-        List<ChangeGrowthPhaseForPlantBatchRequest> changeGrowthPhaseForPlantBatchRequests) => Ok();
+        [Required] List<ChangeGrowthPhaseForPlantBatchRequest> changeGrowthPhaseForPlantBatchRequests) => Ok();
 
     [HttpPut("moveplantbatches")]
     [MapsToApi(MetrcEndpoint.put_plantbatches_v1_moveplantbatches)]
@@ -118,7 +118,7 @@ public class PlantBatchController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewImmaturePlants })]
     [SwaggerOperation(Summary = "Move a plant batch")]
     public ActionResult MovePlantBatch([Required] string licenseNumber,
-        List<MovePlantBatchRequest> movePlantBatchRequests) => Ok();
+        [Required] List<MovePlantBatchRequest> movePlantBatchRequests) => Ok();
 
     [HttpPost("additives")]
     [MapsToApi(MetrcEndpoint.post_plantbatches_v1_additives)]
@@ -126,7 +126,7 @@ public class PlantBatchController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ManagePlantsAdditives })]
     [SwaggerOperation(Summary = "Add plant additives to a plant batch")]
     public ActionResult AddAdditiveToPlantBatch([Required] string licenseNumber,
-        List<AddAdditiveToPlantBatchRequest> addAdditiveToPlantBatchRequests) => Ok();
+        [Required] List<AddAdditiveToPlantBatchRequest> addAdditiveToPlantBatchRequests) => Ok();
 
     [HttpPost("destroy")]
     [MapsToApi(MetrcEndpoint.post_plantbatches_v1_destroy)]
@@ -134,5 +134,5 @@ public class PlantBatchController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewImmaturePlants, ApiPermission.DestroyImmaturePlants })]
     [SwaggerOperation(Summary = "Destroy a plant batch")]
     public ActionResult DestroyPlantBatch([Required] string licenseNumber,
-        List<DestroyPlantBatchRequest> destroyPlantBatchRequests) => Ok();
+        [Required] List<DestroyPlantBatchRequest> destroyPlantBatchRequests) => Ok();
 }

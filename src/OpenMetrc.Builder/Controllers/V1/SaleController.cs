@@ -81,7 +81,7 @@ public class SaleController : ControllerBase
             "This date/time must already be in the same time zone as the Facility recording the sales. " +
             "For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.")]
     public ActionResult CreateSaleReceipt([Required] string licenseNumber,
-        IEnumerable<CreateSaleReceiptRequest> createSaleReceiptRequests) => Ok();
+        [Required] IEnumerable<CreateSaleReceiptRequest> createSaleReceiptRequests) => Ok();
 
     [HttpPut("receipts")]
     [MapsToApi(MetrcEndpoint.put_sales_v1_receipts)]
@@ -93,7 +93,7 @@ public class SaleController : ControllerBase
             "This date/time must already be in the same time zone as the Facility recording the sales. " +
             "For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.")]
     public ActionResult UpdateSaleReceipt([Required] string licenseNumber,
-        IEnumerable<UpdateSaleReceiptRequest> updateSaleReceiptRequests) => Ok();
+        [Required] IEnumerable<UpdateSaleReceiptRequest> updateSaleReceiptRequests) => Ok();
 
     [HttpDelete("{id:long}")]
     [MapsToApi(MetrcEndpoint.delete_sales_v1_receipts_id)]
@@ -142,7 +142,7 @@ public class SaleController : ControllerBase
             "The license number of the facility for which to append the sales transactions on the specified date")]
         string licenseNumber,
         [Required] DateTime date,
-        IEnumerable<SaleTransactionSummary> saleTransactionSummaries) => Ok();
+        [Required] IEnumerable<SaleTransactionSummary> saleTransactionSummaries) => Ok();
 
     [HttpPut("transactions/{date}")]
     [MapsToApi(MetrcEndpoint.put_sales_v1_transactions_date)]
@@ -155,7 +155,7 @@ public class SaleController : ControllerBase
             "The license number of the facility for which to update the sales transactions on the specified date")]
         string licenseNumber,
         [Required] DateTime date,
-        IEnumerable<SaleTransactionSummary> saleTransactionSummaries) => Ok();
+        [Required] IEnumerable<SaleTransactionSummary> saleTransactionSummaries) => Ok();
 
 
     [HttpGet("deliveries/active")]
@@ -227,7 +227,7 @@ public class SaleController : ControllerBase
             "This date/time must already be in the same time zone as the Facility recording the sales. " +
             "For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.")]
     public ActionResult CreateSaleDelivery([Required] string licenseNumber,
-        IEnumerable<CreateSaleDeliveryRequest> createSaleDeliveryRequests) => Ok();
+        [Required] IEnumerable<CreateSaleDeliveryRequest> createSaleDeliveryRequests) => Ok();
 
     [HttpPut("deliveries")]
     [MapsToApi(MetrcEndpoint.put_sales_v1_deliveries)]
@@ -239,7 +239,7 @@ public class SaleController : ControllerBase
             "This date/time must already be in the same time zone as the Facility recording the sales. " +
             "For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.")]
     public ActionResult UpdateSaleDelivery([Required] string licenseNumber,
-        IEnumerable<UpdateSaleDeliveryRequest> updateSaleDeliveryRequests) => Ok();
+        [Required] IEnumerable<UpdateSaleDeliveryRequest> updateSaleDeliveryRequests) => Ok();
 
     [HttpDelete("delivery/{id:long}")]
     [MapsToApi(MetrcEndpoint.delete_sales_v1_delivery_id)]
@@ -261,7 +261,7 @@ public class SaleController : ControllerBase
             "This date/time must already be in the same time zone as the Facility recording the sales. " +
             "For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.")]
     public ActionResult UpdateSaleDeliveryComplete([Required] string licenseNumber,
-        IEnumerable<UpdateSaleDeliveryCompleteRequest> updateSaleDeliveryCompleteRequests) => Ok();
+        [Required] IEnumerable<UpdateSaleDeliveryCompleteRequest> updateSaleDeliveryCompleteRequests) => Ok();
 
 
     [HttpGet("delivery/returnreasons")]

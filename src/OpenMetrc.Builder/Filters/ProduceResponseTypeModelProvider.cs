@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace OpenMetrc.Builder.Filters;
+
 /// <summary>
-/// There are some general rules as far as what the response types for any given endpoint can be. These are centrally managed here.
+///     There are some general rules as far as what the response types for any given endpoint can be. These are centrally
+///     managed here.
 /// </summary>
 public class ProduceResponseTypeModelProvider : IApplicationModelProvider
 {
@@ -29,7 +31,6 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
                 var methodVerbs = action.Attributes.OfType<HttpMethodAttribute>().SelectMany(x => x.HttpMethods).Distinct();
 
                 AddUniversalStatusCodes(action, returnType);
-                AddHeaderOnlyStatusCodes(action);
 
                 if (!methodVerbs.Contains("GET")) //POST, PUT, DELETE all have these.
                     AddPostStatusCodes(action, returnType);
@@ -50,10 +51,11 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
         AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status404NotFound);
         AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status429TooManyRequests);
         AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status500InternalServerError);
-    }
 
-    public void AddHeaderOnlyStatusCodes(ActionModel action) =>
-        AddProducesResponseTypeAttribute(action, null, StatusCodes.Status401Unauthorized);
+        //these will never return a response code, however, it makes exception handling easier if they have a nullable response instead of none at all
+        AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status401Unauthorized);
+        AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status503ServiceUnavailable);
+    }
 
     public void AddPostStatusCodes(ActionModel action, Type returnType)
     {

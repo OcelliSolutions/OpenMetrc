@@ -157,7 +157,7 @@ public class PlantController : ControllerBase
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewVegFlowerPlants, ApiPermission.ManageVegFlowerPlantsInventory })]
     [SwaggerOperation(Summary = "Move a plant")]
-    public ActionResult MovePlant([Required] string licenseNumber, List<MovePlantRequest> movePlantRequests) => Ok();
+    public ActionResult MovePlant([Required] string licenseNumber, [Required] List<MovePlantRequest> movePlantRequests) => Ok();
 
     [HttpPost("changegrowthphases")]
     [MapsToApi(MetrcEndpoint.post_plants_v1_changegrowthphases)]
@@ -165,14 +165,14 @@ public class PlantController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewVegFlowerPlants, ApiPermission.ManageVegFlowerPlantsInventory })]
     [SwaggerOperation(Summary = "Change a plant's growth phase")]
     public ActionResult ChangePlantGrowthPhase([Required] string licenseNumber,
-        List<ChangePlantGrowthPhaseRequest> changePlantGrowthPhaseRequests) => Ok();
+        [Required] List<ChangePlantGrowthPhaseRequest> changePlantGrowthPhaseRequests) => Ok();
 
     [HttpPost("destroyplants")]
     [MapsToApi(MetrcEndpoint.post_plants_v1_destroyplants)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewVegFlowerPlants, ApiPermission.DestroyVegFlowerPlants })]
     [SwaggerOperation(Summary = "Destroy a plant")]
-    public ActionResult DestroyPlant([Required] string licenseNumber, List<DestroyPlantRequest> destroyPlantRequests) =>
+    public ActionResult DestroyPlant([Required] string licenseNumber, [Required] List<DestroyPlantRequest> destroyPlantRequests) =>
         Ok();
 
     [HttpPost("additives")]
@@ -181,7 +181,7 @@ public class PlantController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ManagePlantsAdditives })]
     [SwaggerOperation(Summary = "Add additives to a plant")]
     public ActionResult AddAdditiveToPlant([Required] string licenseNumber,
-        List<AddAdditiveToPlantRequest> addAdditiveToPlantRequests) => Ok();
+        [Required] List<AddAdditiveToPlantRequest> addAdditiveToPlantRequests) => Ok();
 
     [HttpPost("additives/bylocation")]
     [MapsToApi(MetrcEndpoint.post_plants_v1_additives_bylocation)]
@@ -189,7 +189,7 @@ public class PlantController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ManagePlants, ApiPermission.ManagePlantsAdditives })]
     [SwaggerOperation(Summary = "Add additives to plants by location")]
     public ActionResult AddAdditiveToPlantByLocation([Required] string licenseNumber,
-        List<AddAdditiveToPlantByLocationRequest> addAdditiveToPlantByLocationRequests) => Ok();
+        [Required] List<AddAdditiveToPlantByLocationRequest> addAdditiveToPlantByLocationRequests) => Ok();
 
     [HttpPost("create/plantings")]
     [MapsToApi(MetrcEndpoint.post_plants_v1_create_plantings)]
@@ -201,7 +201,7 @@ public class PlantController : ControllerBase
     })]
     [SwaggerOperation(Summary = "Add additives to plants by location")]
     public ActionResult CreatePlantingOfPlant([Required] string licenseNumber,
-        List<CreatePlantingOfPlantRequest> createPlantingOfPlantRequests) => Ok();
+        [Required] List<CreatePlantingOfPlantRequest> createPlantingOfPlantRequests) => Ok();
 
     [HttpPost("create/plantbatch/packages")]
     [MapsToApi(MetrcEndpoint.post_plants_v1_create_plantbatch_packages)]
@@ -214,14 +214,14 @@ public class PlantController : ControllerBase
     })]
     [SwaggerOperation(Summary = "Create plant batch from plants")]
     public ActionResult CreatePlantBatchFromPlantPackage([Required] string licenseNumber,
-        List<CreatePlantBatchFromPlantPackageRequest> createPlantBatchFromPlantPackageRequests) => Ok();
+        [Required] List<CreatePlantBatchFromPlantPackageRequest> createPlantBatchFromPlantPackageRequests) => Ok();
 
     [HttpPost("harvestplants")]
     [MapsToApi(MetrcEndpoint.post_plants_v1_harvestplants)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewImmaturePlants, ApiPermission.ManicureHarvestVegFlowerPlants })]
     [SwaggerOperation(Summary = "Harvest plants")]
-    public ActionResult HarvestPlant([Required] string licenseNumber, List<HarvestPlantRequest> harvestPlantRequests) =>
+    public ActionResult HarvestPlant([Required] string licenseNumber, [Required] List<HarvestPlantRequest> harvestPlantRequests) =>
         Ok();
 
     [HttpPost("manicureplants")]
@@ -230,5 +230,5 @@ public class PlantController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewImmaturePlants, ApiPermission.ManicureHarvestVegFlowerPlants })]
     [SwaggerOperation(Summary = "Manicure plants")]
     public ActionResult ManicurePlant([Required] string licenseNumber,
-        List<ManicurePlantRequest> manicurePlantRequest) => Ok();
+        [Required] List<ManicurePlantRequest> manicurePlantRequest) => Ok();
 }

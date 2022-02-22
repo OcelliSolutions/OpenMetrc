@@ -28,13 +28,21 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
             {
                 var saleTransactions =
                     await apiKey.MetrcService.Sales.GetTransactionsAsync(facility.License.Number);
+                if (saleTransactions == null) continue;
                 wasTested = wasTested || saleTransactions.Any();
                 foreach (var saleTransaction in saleTransactions)
                     _additionalPropertiesHelper.CheckAdditionalProperties(saleTransaction, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -60,13 +68,21 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
             {
                 var saleTransactions = await apiKey.MetrcService.Sales.GetTransactionsByDateRangeAsync(
                     facility.License.Number, DateTimeOffset.UtcNow.AddDays(-2), DateTimeOffset.UtcNow.AddDays(-1));
+                if (saleTransactions == null) continue;
                 wasTested = wasTested || saleTransactions.Any();
                 foreach (var saleTransaction in saleTransactions)
                     _additionalPropertiesHelper.CheckAdditionalProperties(saleTransaction, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)

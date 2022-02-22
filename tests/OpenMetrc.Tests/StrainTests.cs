@@ -27,13 +27,21 @@ public class StrainTests : IClassFixture<SharedFixture>
             try
             {
                 var strains = await apiKey.MetrcService.Strains.GetActiveStrainsAsync(facility.License.Number);
+                if (strains == null) continue;
                 wasTested = wasTested || strains.Any();
                 foreach (var strain in strains)
                     _additionalPropertiesHelper.CheckAdditionalProperties(strain, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)

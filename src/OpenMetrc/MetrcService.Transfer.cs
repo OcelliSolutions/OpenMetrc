@@ -3,133 +3,133 @@
 public partial class MetrcService : ITransferClient
 {
     [MapsToApi(MetrcEndpoint.get_transfers_v1_incoming)]
-    Task<ICollection<Transfer>> ITransferClient.GetIncomingTransfersAsync(string licenseNumber,
+    Task<ICollection<Transfer>?> ITransferClient.GetIncomingTransfersAsync(string licenseNumber,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Transfer>>(new List<Transfer>())
+            ? Task.FromResult<ICollection<Transfer>?>(new List<Transfer>())
             : TransferClient.GetIncomingTransfersAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_incoming)]
-    Task<ICollection<Transfer>> ITransferClient.GetIncomingTransfersAsync(string licenseNumber,
+    Task<ICollection<Transfer>?> ITransferClient.GetIncomingTransfersAsync(string licenseNumber,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Transfer>>(new List<Transfer>())
+            ? Task.FromResult<ICollection<Transfer>?>(new List<Transfer>())
             : TransferClient.GetIncomingTransfersAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
                 cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_outgoing)]
-    Task<ICollection<Transfer>> ITransferClient.GetOutgoingTransfersAsync(string licenseNumber,
+    Task<ICollection<Transfer>?> ITransferClient.GetOutgoingTransfersAsync(string licenseNumber,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Transfer>>(new List<Transfer>())
+            ? Task.FromResult<ICollection<Transfer>?>(new List<Transfer>())
             : TransferClient.GetOutgoingTransfersAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_outgoing)]
-    Task<ICollection<Transfer>> ITransferClient.GetOutgoingTransfersAsync(string licenseNumber,
+    Task<ICollection<Transfer>?> ITransferClient.GetOutgoingTransfersAsync(string licenseNumber,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Transfer>>(new List<Transfer>())
+            ? Task.FromResult<ICollection<Transfer>?>(new List<Transfer>())
             : TransferClient.GetOutgoingTransfersAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
                 cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_rejected)]
-    Task<ICollection<Transfer>> ITransferClient.GetRejectedTransfersAsync(string licenseNumber) =>
+    Task<ICollection<Transfer>?> ITransferClient.GetRejectedTransfersAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Transfer>>(new List<Transfer>())
+            ? Task.FromResult<ICollection<Transfer>?>(new List<Transfer>())
             : TransferClient.GetRejectedTransfersAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_rejected)]
-    Task<ICollection<Transfer>> ITransferClient.GetRejectedTransfersAsync(string licenseNumber,
+    Task<ICollection<Transfer>?> ITransferClient.GetRejectedTransfersAsync(string licenseNumber,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Transfer>>(new List<Transfer>())
+            ? Task.FromResult<ICollection<Transfer>?>(new List<Transfer>())
             : TransferClient.GetRejectedTransfersAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_id_deliveries)]
-    Task<ICollection<TransferDelivery>> ITransferClient.GetTransferDeliveriesAsync(int id) =>
+    Task<ICollection<TransferDelivery>?> ITransferClient.GetTransferDeliveriesAsync(int id) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDelivery>>(new List<TransferDelivery>())
+            ? Task.FromResult<ICollection<TransferDelivery>?>(new List<TransferDelivery>())
             : TransferClient.GetTransferDeliveriesAsync(id);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_id_deliveries)]
-    Task<ICollection<TransferDelivery>> ITransferClient.GetTransferDeliveriesAsync(int id,
+    Task<ICollection<TransferDelivery>?> ITransferClient.GetTransferDeliveriesAsync(int id,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDelivery>>(new List<TransferDelivery>())
+            ? Task.FromResult<ICollection<TransferDelivery>?>(new List<TransferDelivery>())
             : TransferClient.GetTransferDeliveriesAsync(id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_id_transporters)]
-    Task<ICollection<TransferDeliveryTransporter>> ITransferClient.GetTransferDeliveryTransportersAsync(int id) =>
+    Task<ICollection<TransferDeliveryTransporter>?> ITransferClient.GetTransferDeliveryTransportersAsync(int id) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryTransporter>>(new List<TransferDeliveryTransporter>())
+            ? Task.FromResult<ICollection<TransferDeliveryTransporter>?>(new List<TransferDeliveryTransporter>())
             : TransferClient.GetTransferDeliveryTransportersAsync(id);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_id_transporters)]
-    Task<ICollection<TransferDeliveryTransporter>> ITransferClient.GetTransferDeliveryTransportersAsync(int id,
+    Task<ICollection<TransferDeliveryTransporter>?> ITransferClient.GetTransferDeliveryTransportersAsync(int id,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryTransporter>>(new List<TransferDeliveryTransporter>())
+            ? Task.FromResult<ICollection<TransferDeliveryTransporter>?>(new List<TransferDeliveryTransporter>())
             : TransferClient.GetTransferDeliveryTransportersAsync(id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_id_transporters_details)]
-    Task<ICollection<TransferDeliveryTransporterDetail>> ITransferClient.
+    Task<ICollection<TransferDeliveryTransporterDetail>?> ITransferClient.
         GetTransferDeliveryTransportersDetailAsync(int id) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryTransporterDetail>>(
+            ? Task.FromResult<ICollection<TransferDeliveryTransporterDetail>?>(
                 new List<TransferDeliveryTransporterDetail>())
             : TransferClient.GetTransferDeliveryTransportersDetailAsync(id);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_id_transporters_details)]
-    Task<ICollection<TransferDeliveryTransporterDetail>> ITransferClient.GetTransferDeliveryTransportersDetailAsync(
+    Task<ICollection<TransferDeliveryTransporterDetail>?> ITransferClient.GetTransferDeliveryTransportersDetailAsync(
         int id,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryTransporterDetail>>(
+            ? Task.FromResult<ICollection<TransferDeliveryTransporterDetail>?>(
                 new List<TransferDeliveryTransporterDetail>())
             : TransferClient.GetTransferDeliveryTransportersDetailAsync(id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_id_packages)]
-    Task<ICollection<TransferDeliveryPackage>> ITransferClient.GetTransferDeliveryPackagesAsync(int id) =>
+    Task<ICollection<TransferDeliveryPackage>?> ITransferClient.GetTransferDeliveryPackagesAsync(int id) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryPackage>>(new List<TransferDeliveryPackage>())
+            ? Task.FromResult<ICollection<TransferDeliveryPackage>?>(new List<TransferDeliveryPackage>())
             : TransferClient.GetTransferDeliveryPackagesAsync(id);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_id_packages)]
-    Task<ICollection<TransferDeliveryPackage>> ITransferClient.GetTransferDeliveryPackagesAsync(int id,
+    Task<ICollection<TransferDeliveryPackage>?> ITransferClient.GetTransferDeliveryPackagesAsync(int id,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryPackage>>(new List<TransferDeliveryPackage>())
+            ? Task.FromResult<ICollection<TransferDeliveryPackage>?>(new List<TransferDeliveryPackage>())
             : TransferClient.GetTransferDeliveryPackagesAsync(id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_id_packages_wholesale)]
-    Task<ICollection<TransferDeliveryPackageWholesale>> ITransferClient.
+    Task<ICollection<TransferDeliveryPackageWholesale>?> ITransferClient.
         GetTransferDeliveryPackagesWholesaleAsync(int id) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryPackageWholesale>>(
+            ? Task.FromResult<ICollection<TransferDeliveryPackageWholesale>?>(
                 new List<TransferDeliveryPackageWholesale>())
             : TransferClient.GetTransferDeliveryPackagesWholesaleAsync(id);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_id_packages_wholesale)]
-    Task<ICollection<TransferDeliveryPackageWholesale>> ITransferClient.GetTransferDeliveryPackagesWholesaleAsync(
+    Task<ICollection<TransferDeliveryPackageWholesale>?> ITransferClient.GetTransferDeliveryPackagesWholesaleAsync(
         int id,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryPackageWholesale>>(
+            ? Task.FromResult<ICollection<TransferDeliveryPackageWholesale>?>(
                 new List<TransferDeliveryPackageWholesale>())
             : TransferClient.GetTransferDeliveryPackagesWholesaleAsync(id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_package_id_requiredlabtestbatches)]
-    Task<ICollection<RequiredLabTestBatch>> ITransferClient.
+    Task<ICollection<RequiredLabTestBatch>?> ITransferClient.
         GetTransferDeliveryPackagesThatRequireLabTestAsync(int id) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<RequiredLabTestBatch>>(new List<RequiredLabTestBatch>())
+            ? Task.FromResult<ICollection<RequiredLabTestBatch>?>(new List<RequiredLabTestBatch>())
             : TransferClient.GetTransferDeliveryPackagesThatRequireLabTestAsync(id);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_package_id_requiredlabtestbatches)]
-    Task<ICollection<RequiredLabTestBatch>> ITransferClient.GetTransferDeliveryPackagesThatRequireLabTestAsync(int id,
+    Task<ICollection<RequiredLabTestBatch>?> ITransferClient.GetTransferDeliveryPackagesThatRequireLabTestAsync(int id,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<RequiredLabTestBatch>>(new List<RequiredLabTestBatch>())
+            ? Task.FromResult<ICollection<RequiredLabTestBatch>?>(new List<RequiredLabTestBatch>())
             : TransferClient.GetTransferDeliveryPackagesThatRequireLabTestAsync(id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_packages_states)]
@@ -146,27 +146,27 @@ public partial class MetrcService : ITransferClient
             : TransferClient.GetTransferDeliveryPackageStatesAsync(cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_types)]
-    Task<ICollection<TransferType>> ITransferClient.GetTransferTypesAsync() =>
+    Task<ICollection<TransferType>?> ITransferClient.GetTransferTypesAsync() =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferType>>(new List<TransferType>())
+            ? Task.FromResult<ICollection<TransferType>?>(new List<TransferType>())
             : TransferClient.GetTransferTypesAsync();
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_types)]
-    Task<ICollection<TransferType>> ITransferClient.GetTransferTypesAsync(CancellationToken cancellationToken) =>
+    Task<ICollection<TransferType>?> ITransferClient.GetTransferTypesAsync(CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferType>>(new List<TransferType>())
+            ? Task.FromResult<ICollection<TransferType>?>(new List<TransferType>())
             : TransferClient.GetTransferTypesAsync(cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_transfers_v1_external_incoming)]
     Task ITransferClient.CreateExternalIncomingTransfersAsync(string licenseNumber,
-        IEnumerable<CreateTransferRequest>? body) =>
+        IEnumerable<CreateTransferRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : TransferClient.CreateExternalIncomingTransfersAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_transfers_v1_external_incoming)]
     Task ITransferClient.CreateExternalIncomingTransfersAsync(string licenseNumber,
-        IEnumerable<CreateTransferRequest>? body,
+        IEnumerable<CreateTransferRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
@@ -174,14 +174,14 @@ public partial class MetrcService : ITransferClient
 
     [MapsToApi(MetrcEndpoint.put_transfers_v1_external_incoming)]
     Task ITransferClient.UpdateExternalIncomingTransfersAsync(string licenseNumber,
-        IEnumerable<UpdateTransferRequest>? body) =>
+        IEnumerable<UpdateTransferRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : TransferClient.UpdateExternalIncomingTransfersAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.put_transfers_v1_external_incoming)]
     Task ITransferClient.UpdateExternalIncomingTransfersAsync(string licenseNumber,
-        IEnumerable<UpdateTransferRequest>? body,
+        IEnumerable<UpdateTransferRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
@@ -201,101 +201,101 @@ public partial class MetrcService : ITransferClient
             : TransferClient.DeleteExternalIncomingTransferAsync(licenseNumber, id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates)]
-    Task<ICollection<Transfer>> ITransferClient.GetTransferTemplatesAsync(string licenseNumber,
+    Task<ICollection<Transfer>?> ITransferClient.GetTransferTemplatesAsync(string licenseNumber,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Transfer>>(new List<Transfer>())
+            ? Task.FromResult<ICollection<Transfer>?>(new List<Transfer>())
             : TransferClient.GetTransferTemplatesAsync(licenseNumber, lastModifiedStart, lastModifiedEnd);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates)]
-    Task<ICollection<Transfer>> ITransferClient.GetTransferTemplatesAsync(string licenseNumber,
+    Task<ICollection<Transfer>?> ITransferClient.GetTransferTemplatesAsync(string licenseNumber,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Transfer>>(new List<Transfer>())
+            ? Task.FromResult<ICollection<Transfer>?>(new List<Transfer>())
             : TransferClient.GetTransferTemplatesAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
                 cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_transfers_v1_templates)]
-    Task ITransferClient.CreateTransferTemplatesAsync(string licenseNumber, IEnumerable<CreateTransferRequest>? body) =>
+    Task ITransferClient.CreateTransferTemplatesAsync(string licenseNumber, IEnumerable<CreateTransferRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : TransferClient.CreateTransferTemplatesAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_transfers_v1_templates)]
-    Task ITransferClient.CreateTransferTemplatesAsync(string licenseNumber, IEnumerable<CreateTransferRequest>? body,
+    Task ITransferClient.CreateTransferTemplatesAsync(string licenseNumber, IEnumerable<CreateTransferRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : TransferClient.CreateTransferTemplatesAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.put_transfers_v1_templates)]
-    Task ITransferClient.UpdateTransferTemplatesAsync(string licenseNumber, IEnumerable<UpdateTransferRequest>? body) =>
+    Task ITransferClient.UpdateTransferTemplatesAsync(string licenseNumber, IEnumerable<UpdateTransferRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : TransferClient.UpdateTransferTemplatesAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.put_transfers_v1_templates)]
-    Task ITransferClient.UpdateTransferTemplatesAsync(string licenseNumber, IEnumerable<UpdateTransferRequest>? body,
+    Task ITransferClient.UpdateTransferTemplatesAsync(string licenseNumber, IEnumerable<UpdateTransferRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : TransferClient.UpdateTransferTemplatesAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_id_deliveries)]
-    Task<ICollection<TransferDelivery>> ITransferClient.GetTransferDeliveryTemplateAsync(int id) =>
+    Task<ICollection<TransferDelivery>?> ITransferClient.GetTransferDeliveryTemplateAsync(int id) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDelivery>>(new List<TransferDelivery>())
+            ? Task.FromResult<ICollection<TransferDelivery>?>(new List<TransferDelivery>())
             : TransferClient.GetTransferDeliveryTemplateAsync(id);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_id_deliveries)]
-    Task<ICollection<TransferDelivery>> ITransferClient.GetTransferDeliveryTemplateAsync(int id,
+    Task<ICollection<TransferDelivery>?> ITransferClient.GetTransferDeliveryTemplateAsync(int id,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDelivery>>(new List<TransferDelivery>())
+            ? Task.FromResult<ICollection<TransferDelivery>?>(new List<TransferDelivery>())
             : TransferClient.GetTransferDeliveryTemplateAsync(id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_delivery_id_transporters)]
-    Task<ICollection<TransferDeliveryTransporter>> ITransferClient.
+    Task<ICollection<TransferDeliveryTransporter>?> ITransferClient.
         GetTransferDeliveryTransporterTemplatesAsync(int id) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryTransporter>>(new List<TransferDeliveryTransporter>())
+            ? Task.FromResult<ICollection<TransferDeliveryTransporter>?>(new List<TransferDeliveryTransporter>())
             : TransferClient.GetTransferDeliveryTransporterTemplatesAsync(id);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_delivery_id_transporters)]
-    Task<ICollection<TransferDeliveryTransporter>> ITransferClient.GetTransferDeliveryTransporterTemplatesAsync(int id,
+    Task<ICollection<TransferDeliveryTransporter>?> ITransferClient.GetTransferDeliveryTransporterTemplatesAsync(int id,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryTransporter>>(new List<TransferDeliveryTransporter>())
+            ? Task.FromResult<ICollection<TransferDeliveryTransporter>?>(new List<TransferDeliveryTransporter>())
             : TransferClient.GetTransferDeliveryTransporterTemplatesAsync(id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_delivery_id_transporters_details)]
-    Task<ICollection<TransferDeliveryTransporterDetail>> ITransferClient.
+    Task<ICollection<TransferDeliveryTransporterDetail>?> ITransferClient.
         GetTransferDeliveryTransportersDetailTemplatesAsync(int id) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryTransporterDetail>>(
+            ? Task.FromResult<ICollection<TransferDeliveryTransporterDetail>?>(
                 new List<TransferDeliveryTransporterDetail>())
             : TransferClient.GetTransferDeliveryTransportersDetailTemplatesAsync(id);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_delivery_id_transporters_details)]
-    Task<ICollection<TransferDeliveryTransporterDetail>> ITransferClient.
+    Task<ICollection<TransferDeliveryTransporterDetail>?> ITransferClient.
         GetTransferDeliveryTransportersDetailTemplatesAsync(
             int id, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryTransporterDetail>>(
+            ? Task.FromResult<ICollection<TransferDeliveryTransporterDetail>?>(
                 new List<TransferDeliveryTransporterDetail>())
             : TransferClient.GetTransferDeliveryTransportersDetailTemplatesAsync(id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_delivery_id_packages)]
-    Task<ICollection<TransferDeliveryPackage>> ITransferClient.GetTransferDeliveryPackagesTemplateAsync(int id) =>
+    Task<ICollection<TransferDeliveryPackage>?> ITransferClient.GetTransferDeliveryPackagesTemplateAsync(int id) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryPackage>>(new List<TransferDeliveryPackage>())
+            ? Task.FromResult<ICollection<TransferDeliveryPackage>?>(new List<TransferDeliveryPackage>())
             : TransferClient.GetTransferDeliveryPackagesTemplateAsync(id);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_delivery_id_packages)]
-    Task<ICollection<TransferDeliveryPackage>> ITransferClient.GetTransferDeliveryPackagesTemplateAsync(int id,
+    Task<ICollection<TransferDeliveryPackage>?> ITransferClient.GetTransferDeliveryPackagesTemplateAsync(int id,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<TransferDeliveryPackage>>(new List<TransferDeliveryPackage>())
+            ? Task.FromResult<ICollection<TransferDeliveryPackage>?>(new List<TransferDeliveryPackage>())
             : TransferClient.GetTransferDeliveryPackagesTemplateAsync(id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.delete_transfers_v1_templates_id)]

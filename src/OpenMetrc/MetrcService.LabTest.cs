@@ -15,38 +15,38 @@ public partial class MetrcService : ILabTestClient
             : LabTestClient.GetLabTestStatesAsync(cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_labtests_v1_types)]
-    Task<ICollection<LabTestType>> ILabTestClient.GetLabTestTypesAsync() =>
+    Task<ICollection<LabTestType>?> ILabTestClient.GetLabTestTypesAsync() =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<LabTestType>>(new List<LabTestType>())
+            ? Task.FromResult<ICollection<LabTestType>?>(new List<LabTestType>())
             : LabTestClient.GetLabTestTypesAsync();
 
     [MapsToApi(MetrcEndpoint.get_labtests_v1_types)]
-    Task<ICollection<LabTestType>> ILabTestClient.GetLabTestTypesAsync(CancellationToken cancellationToken) =>
+    Task<ICollection<LabTestType>?> ILabTestClient.GetLabTestTypesAsync(CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<LabTestType>>(new List<LabTestType>())
+            ? Task.FromResult<ICollection<LabTestType>?>(new List<LabTestType>())
             : LabTestClient.GetLabTestTypesAsync(cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_labtests_v1_results)]
-    Task<ICollection<LabTest>> ILabTestClient.GetLabTestResultsAsync(int packageId, string licenseNumber) =>
+    Task<ICollection<LabTest>?> ILabTestClient.GetLabTestResultsAsync(int packageId, string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<LabTest>>(new List<LabTest>())
+            ? Task.FromResult<ICollection<LabTest>?>(new List<LabTest>())
             : LabTestClient.GetLabTestResultsAsync(packageId, licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_labtests_v1_results)]
-    Task<ICollection<LabTest>> ILabTestClient.GetLabTestResultsAsync(int packageId, string licenseNumber,
+    Task<ICollection<LabTest>?> ILabTestClient.GetLabTestResultsAsync(int packageId, string licenseNumber,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<LabTest>>(new List<LabTest>())
+            ? Task.FromResult<ICollection<LabTest>?>(new List<LabTest>())
             : LabTestClient.GetLabTestResultsAsync(packageId, licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_labtests_v1_record)]
-    Task ILabTestClient.RecordLabTestAsync(string licenseNumber, IEnumerable<CreateLabTestResultRequest>? body) =>
+    Task ILabTestClient.RecordLabTestAsync(string licenseNumber, IEnumerable<CreateLabTestResultRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : LabTestClient.RecordLabTestAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_labtests_v1_record)]
-    Task ILabTestClient.RecordLabTestAsync(string licenseNumber, IEnumerable<CreateLabTestResultRequest>? body,
+    Task ILabTestClient.RecordLabTestAsync(string licenseNumber, IEnumerable<CreateLabTestResultRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
@@ -54,14 +54,14 @@ public partial class MetrcService : ILabTestClient
 
     [MapsToApi(MetrcEndpoint.put_labtests_v1_labtestdocument)]
     Task ILabTestClient.UpdateLabTestDocumentAsync(string licenseNumber,
-        IEnumerable<UpdateLabTestDocumentRequest>? body) =>
+        IEnumerable<UpdateLabTestDocumentRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : LabTestClient.UpdateLabTestDocumentAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.put_labtests_v1_labtestdocument)]
     Task ILabTestClient.UpdateLabTestDocumentAsync(string licenseNumber,
-        IEnumerable<UpdateLabTestDocumentRequest>? body,
+        IEnumerable<UpdateLabTestDocumentRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
@@ -69,14 +69,14 @@ public partial class MetrcService : ILabTestClient
 
     [MapsToApi(MetrcEndpoint.put_labtests_v1_results_release)]
     Task ILabTestClient.ReleaseLabTestResultsAsync(string licenseNumber,
-        IEnumerable<ReleaseLabTestResultsRequest>? body) =>
+        IEnumerable<ReleaseLabTestResultsRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : LabTestClient.ReleaseLabTestResultsAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.put_labtests_v1_results_release)]
     Task ILabTestClient.ReleaseLabTestResultsAsync(string licenseNumber,
-        IEnumerable<ReleaseLabTestResultsRequest>? body,
+        IEnumerable<ReleaseLabTestResultsRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask

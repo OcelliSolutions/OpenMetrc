@@ -24,6 +24,7 @@ public class MetrcServiceTests : IClassFixture<SharedFixture>
         var facilities1 = await client0.MetrcService.Facilities.GetFacilitiesAsync();
 
         //join all the license numbers together and ensure that you got separate results. 
+        if (facilities0 == null || facilities1 == null) return;
         Assert.NotEqual(string.Join(",", facilities0.Select(f => f.License.Number).OrderBy(f => f)),
             string.Join(",", facilities1.Select(f => f.License.Number).OrderBy(f => f)));
     }

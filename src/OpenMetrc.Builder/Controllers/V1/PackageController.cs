@@ -109,7 +109,7 @@ public class PackageController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.CreateSubmitDiscontinuePackages })]
     [SwaggerOperation(Summary = "Create packages")]
     public ActionResult CreatePackage([Required] string licenseNumber,
-        List<CreatePackageRequest> createPackageRequests) => Ok();
+        [Required] List<CreatePackageRequest> createPackageRequests) => Ok();
 
     [HttpPost("create/testing")]
     [MapsToApi(MetrcEndpoint.post_packages_v1_create_testing)]
@@ -117,7 +117,7 @@ public class PackageController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.CreateSubmitDiscontinuePackages })]
     [SwaggerOperation(Summary = "Create testing packages")]
     public ActionResult CreateTestingPackage([Required] string licenseNumber,
-        List<CreatePackageRequest> createPackageRequests) => Ok();
+        [Required] List<CreatePackageRequest> createPackageRequests) => Ok();
 
     [HttpPost("create/plantings")]
     [MapsToApi(MetrcEndpoint.post_packages_v1_create_plantings)]
@@ -129,7 +129,7 @@ public class PackageController : ControllerBase
     })]
     [SwaggerOperation(Summary = "Create package plantings")]
     public ActionResult CreatePackagePlanting([Required] string licenseNumber,
-        List<CreatePackagePlantingRequest> createPackagePlantingRequests) => Ok();
+        [Required] List<CreatePackagePlantingRequest> createPackagePlantingRequests) => Ok();
 
     [HttpPost("change/item")]
     [MapsToApi(MetrcEndpoint.post_packages_v1_change_item)]
@@ -137,7 +137,7 @@ public class PackageController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.CreateSubmitDiscontinuePackages })]
     [SwaggerOperation(Summary = "Change the package item")]
     public ActionResult ChangePackageItem([Required] string licenseNumber,
-        List<ChangePackageItemRequest> changePackageItemRequests) => Ok();
+        [Required] List<ChangePackageItemRequest> changePackageItemRequests) => Ok();
 
     [HttpPut("change/note")]
     [MapsToApi(MetrcEndpoint.put_packages_v1_change_note)]
@@ -146,7 +146,7 @@ public class PackageController : ControllerBase
         { ApiPermission.ViewPackages, ApiPermission.ManagePackagesInventory, ApiPermission.ManagePackageNotes })]
     [SwaggerOperation(Summary = "Update a package note")]
     public ActionResult ChangePackageNote([Required] string licenseNumber,
-        List<ChangePackageNoteRequest> changePackageNoteRequests) => Ok();
+        [Required] List<ChangePackageNoteRequest> changePackageNoteRequests) => Ok();
 
     [HttpPost("change/locations")]
     [MapsToApi(MetrcEndpoint.post_packages_v1_change_locations)]
@@ -154,7 +154,7 @@ public class PackageController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.CreateSubmitDiscontinuePackages })]
     [SwaggerOperation(Summary = "Change a package location")]
     public ActionResult ChangePackageLocation([Required] string licenseNumber,
-        List<ChangePackageLocationRequest> changePackageLocationRequests) => Ok();
+        [Required] List<ChangePackageLocationRequest> changePackageLocationRequests) => Ok();
 
     [HttpPost("adjust")]
     [MapsToApi(MetrcEndpoint.post_packages_v1_adjust)]
@@ -162,7 +162,7 @@ public class PackageController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.ManagePackagesInventory })]
     [SwaggerOperation(Summary = "Adjust packages")]
     public ActionResult AdjustPackage([Required] string licenseNumber,
-        List<AdjustPackageRequest> adjustPackageRequests) => Ok();
+        [Required] List<AdjustPackageRequest> adjustPackageRequests) => Ok();
 
     [HttpPost("finish")]
     [MapsToApi(MetrcEndpoint.post_packages_v1_finish)]
@@ -170,7 +170,7 @@ public class PackageController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.ManagePackagesInventory })]
     [SwaggerOperation(Summary = "Finish packages")]
     public ActionResult FinishPackage([Required] string licenseNumber,
-        List<FinishPackageRequest> finishPackageRequests) => Ok();
+        [Required] List<FinishPackageRequest> finishPackageRequests) => Ok();
 
     [HttpPost("unfinish")]
     [MapsToApi(MetrcEndpoint.post_packages_v1_unfinish)]
@@ -178,7 +178,7 @@ public class PackageController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.ManagePackagesInventory })]
     [SwaggerOperation(Summary = "Unfinish packages")]
     public ActionResult UnfinishPackage([Required] string licenseNumber,
-        List<UnfinishPackageRequest> unfinishPackageRequests) => Ok();
+        [Required] List<UnfinishPackageRequest> unfinishPackageRequests) => Ok();
 
     [HttpPost("remediate")]
     [MapsToApi(MetrcEndpoint.post_packages_v1_remediate)]
@@ -186,5 +186,5 @@ public class PackageController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.ManagePackagesInventory })]
     [SwaggerOperation(Summary = "Remediate packages")]
     public ActionResult RemediatePackage([Required] string licenseNumber,
-        List<RemediatePackageRequest> remediatePackageRequests) => Ok();
+        [Required] List<RemediatePackageRequest> remediatePackageRequests) => Ok();
 }

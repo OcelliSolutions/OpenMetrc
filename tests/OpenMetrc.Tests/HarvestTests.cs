@@ -32,16 +32,24 @@ public class HarvestTests : IClassFixture<SharedFixture>
                 if (facility.FacilityType.CanGrowPlants ?? false)
                 {
                     var harvests = await cmd;
+                    if (harvests == null) continue;
                     wasTested = wasTested || harvests.Any();
                     foreach (var harvest in harvests.Take(10))
                         _additionalPropertiesHelper.CheckAdditionalProperties(harvest, facility.License.Number);
                 }
                 else
-                    await Assert.ThrowsAsync<ApiException>(() => cmd);
+                    await Assert.ThrowsAsync<ApiException<ErrorResponse?>>(() => cmd);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -71,16 +79,24 @@ public class HarvestTests : IClassFixture<SharedFixture>
                 if (facility.FacilityType.CanGrowPlants ?? false)
                 {
                     var harvests = await cmd;
+                    if (harvests == null) continue;
                     wasTested = wasTested || harvests.Any();
                     foreach (var harvest in harvests.Take(10))
                         _additionalPropertiesHelper.CheckAdditionalProperties(harvest, facility.License.Number);
                 }
                 else
-                    await Assert.ThrowsAsync<ApiException>(() => cmd);
+                    await Assert.ThrowsAsync<ApiException<ErrorResponse?>>(() => cmd);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -110,16 +126,24 @@ public class HarvestTests : IClassFixture<SharedFixture>
                 if (facility.FacilityType.CanGrowPlants ?? false)
                 {
                     var harvests = await cmd;
+                    if (harvests == null) continue;
                     wasTested = wasTested || harvests.Any();
                     foreach (var harvest in harvests.Take(10))
                         _additionalPropertiesHelper.CheckAdditionalProperties(harvest, facility.License.Number);
                 }
                 else
-                    await Assert.ThrowsAsync<ApiException>(() => cmd);
+                    await Assert.ThrowsAsync<ApiException<ErrorResponse?>>(() => cmd);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -145,13 +169,20 @@ public class HarvestTests : IClassFixture<SharedFixture>
                 var cmd = apiKey.MetrcService.Harvests.GetHarvestWasteTypesAsync();
 
                 var harvests = await cmd;
+                if (harvests == null) continue;
                 wasTested = wasTested || harvests.Any();
                 foreach (var harvest in harvests)
                     _additionalPropertiesHelper.CheckAdditionalProperties(harvest, string.Empty);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode == StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode == StatusCodes.Status401Unauthorized)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)

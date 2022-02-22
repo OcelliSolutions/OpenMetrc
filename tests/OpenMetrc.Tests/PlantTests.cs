@@ -28,13 +28,21 @@ public class PlantTests : IClassFixture<SharedFixture>
             {
                 var plants = await apiKey.MetrcService.Plants.GetFloweringPlantsAsync(facility.License.Number,
                     DateTimeOffset.UtcNow.AddDays(-1), null);
+                if (plants == null) continue;
                 wasTested = wasTested || plants.Any();
                 foreach (var plant in plants)
                     _additionalPropertiesHelper.CheckAdditionalProperties(plant, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -60,13 +68,21 @@ public class PlantTests : IClassFixture<SharedFixture>
             {
                 var plants = await apiKey.MetrcService.Plants.GetInactivePlantsAsync(facility.License.Number,
                     DateTimeOffset.UtcNow.AddDays(-1), null);
+                if (plants == null) continue;
                 wasTested = wasTested || plants.Any();
                 foreach (var plant in plants)
                     _additionalPropertiesHelper.CheckAdditionalProperties(plant, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -92,13 +108,21 @@ public class PlantTests : IClassFixture<SharedFixture>
             {
                 var plants = await apiKey.MetrcService.Plants.GetOnHoldPlantsAsync(facility.License.Number,
                     DateTimeOffset.UtcNow.AddDays(-1), null);
+                if (plants == null) continue;
                 wasTested = wasTested || plants.Any();
                 foreach (var plant in plants)
                     _additionalPropertiesHelper.CheckAdditionalProperties(plant, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -124,13 +148,21 @@ public class PlantTests : IClassFixture<SharedFixture>
             {
                 var plants = await apiKey.MetrcService.Plants.GetPlantAdditivesAsync(facility.License.Number,
                     DateTimeOffset.UtcNow.AddDays(-1), null);
+                if (plants == null) continue;
                 wasTested = wasTested || plants.Any();
                 foreach (var plant in plants)
                     _additionalPropertiesHelper.CheckAdditionalProperties(plant, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -156,9 +188,16 @@ public class PlantTests : IClassFixture<SharedFixture>
                 var plants = await apiKey.MetrcService.Plants.GetPlantAdditivesTypesAsync();
                 wasTested = wasTested || plants.Any();
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -182,13 +221,21 @@ public class PlantTests : IClassFixture<SharedFixture>
             try
             {
                 var plants = await apiKey.MetrcService.Plants.GetPlantWasteMethodsAsync();
+                if (plants == null) continue;
                 wasTested = wasTested || plants.Any();
                 foreach (var plant in plants)
                     _additionalPropertiesHelper.CheckAdditionalProperties(plant, string.Empty);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -215,9 +262,16 @@ public class PlantTests : IClassFixture<SharedFixture>
                 var plants = await apiKey.MetrcService.Plants.GetPlantGrowthPhasesAsync(facility.License.Number);
                 wasTested = wasTested || plants.Any();
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -242,13 +296,21 @@ public class PlantTests : IClassFixture<SharedFixture>
             try
             {
                 var plants = await apiKey.MetrcService.Plants.GetPlantWasteReasonsAsync(facility.License.Number);
+                if (plants == null) continue;
                 wasTested = wasTested || plants.Any();
                 foreach (var plant in plants)
                     _additionalPropertiesHelper.CheckAdditionalProperties(plant, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -274,13 +336,21 @@ public class PlantTests : IClassFixture<SharedFixture>
             {
                 var plants = await apiKey.MetrcService.Plants.GetVegetativePlantsAsync(facility.License.Number,
                     DateTimeOffset.UtcNow.AddDays(-1), null);
+                if (plants == null) continue;
                 wasTested = wasTested || plants.Any();
                 foreach (var plant in plants)
                     _additionalPropertiesHelper.CheckAdditionalProperties(plant, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)

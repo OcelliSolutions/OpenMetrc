@@ -2,12 +2,13 @@
 
 public class UpdateTransferRequest
 {
-    public int TransferId { get; set; }
     public UpdateTransferRequest()
     {
         ShipperLicenseNumber = string.Empty;
         ShipperName = string.Empty;
     }
+
+    public int TransferId { get; set; }
 
     public string ShipperLicenseNumber { get; set; }
     public string ShipperName { get; set; }

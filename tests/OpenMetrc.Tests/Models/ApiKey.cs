@@ -24,10 +24,10 @@ public class ApiKey
     }
 
     public ICollection<Facility> Facilities { get; set; } = new HashSet<Facility>();
-    public ICollection<Transfer> Transfers { get; set; } = new HashSet<Transfer>();
+    public ICollection<Transfer?> Transfers { get; set; } = new HashSet<Transfer?>();
     public ICollection<TransferDelivery> TransferDeliveries { get; set; } = new HashSet<TransferDelivery>();
 
-    public ICollection<Transfer> TransferTemplates { get; set; } = new HashSet<Transfer>();
+    public ICollection<Transfer?> TransferTemplates { get; set; } = new HashSet<Transfer?>();
 
     //public ICollection<TransferDelivery> TransferDeliveryTemplates { get; set; } = new HashSet<TransferDelivery>();
     public bool IsReadOnly =>

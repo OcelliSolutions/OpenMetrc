@@ -1,7 +1,6 @@
 using System.Net.Mime;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
 
@@ -13,7 +12,6 @@ builder.Services.AddControllers(options =>
         options.Filters.Clear();
         options.Filters.Add(new ProducesAttribute(MediaTypeNames.Application.Json));
         options.Filters.Add(new ConsumesAttribute(MediaTypeNames.Application.Json));
-        options.OutputFormatters.RemoveType<HttpNoContentOutputFormatter>();
     })
     .ConfigureApiBehaviorOptions(options =>
     {
@@ -37,12 +35,29 @@ builder.Services.AddSwaggerGen(c =>
 
     //get all the available states that were detected by the scraper and add them as possible servers.
     var availableStates = DistinctStates().ToList();
-    foreach (var state in availableStates) 
+    foreach (var state in availableStates)
         c.AddServer(new OpenApiServer { Url = $@"https://api-{state}.metrc.com" });
     foreach (var state in availableStates)
         c.AddServer(new OpenApiServer { Url = $@"https://sandbox-api-{state}.metrc.com" });
 
     c.EnableAnnotations();
+
+    #region Enable OneOf and response nullability
+
+    c.UseOneOfForPolymorphism();
+    c.SelectSubTypesUsing(baseType =>
+    {
+        if (baseType.Name.EndsWith("Request"))
+            return Enumerable.Empty<Type>();
+        return new[]
+        {
+            baseType
+        };
+    });
+    c.SchemaFilter<NullableResponseSchemaFilter>();
+
+    #endregion Enable OneOf and response nullability
+
     c.DocumentFilter<AdditionalPropertiesDocumentFilter>();
     c.SchemaFilter<DateTimeSchemaFilter>();
     c.ParameterFilter<DateTimeParameterFilter>();

@@ -4,10 +4,11 @@ namespace OpenMetrc.Tests;
 
 public class ItemTests : IClassFixture<SharedFixture>
 {
-    private const string NewItemName = "OpenMETRC Test Item";
+    //private const string NewItemName = "OpenMETRC Test Item";
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
+
     private readonly ITestOutputHelper _testOutputHelper;
-    private int NewItemId = 0;
+    //private int NewItemId = 0;
 
     public ItemTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
     {
@@ -29,13 +30,21 @@ public class ItemTests : IClassFixture<SharedFixture>
             try
             {
                 var items = await apiKey.MetrcService.Items.GetActiveItemsAsync(facility.License.Number);
+                if (items == null) continue;
                 wasTested = wasTested || items.Any();
                 foreach (var item in items)
                     _additionalPropertiesHelper.CheckAdditionalProperties(item, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -60,13 +69,21 @@ public class ItemTests : IClassFixture<SharedFixture>
             try
             {
                 var items = await apiKey.MetrcService.Items.GetItemBrandsAsync(facility.License.Number);
+                if (items == null) continue;
                 wasTested = wasTested || items.Any();
                 foreach (var item in items)
                     _additionalPropertiesHelper.CheckAdditionalProperties(item, facility.License.Number);
             }
-            catch (ApiException ex)
-            {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+            catch (ApiException<ErrorResponse?> ex)
+            { 
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized && 
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -91,13 +108,21 @@ public class ItemTests : IClassFixture<SharedFixture>
             try
             {
                 var items = await apiKey.MetrcService.Items.GetItemCategoriesAsync(facility.License.Number);
+                if (items == null) continue;
                 wasTested = wasTested || items.Any();
                 foreach (var item in items)
                     _additionalPropertiesHelper.CheckAdditionalProperties(item, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)

@@ -106,7 +106,7 @@ public class HarvestController : ControllerBase
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewHarvests, ApiPermission.ManageHarvests })]
     [SwaggerOperation(Summary = "Move a harvest to a new room")]
-    public ActionResult MoveHarvest([Required] string licenseNumber, List<MoveHarvestRequest> moveHarvestRequests) =>
+    public ActionResult MoveHarvest([Required] string licenseNumber, [Required] List<MoveHarvestRequest> moveHarvestRequests) =>
         Ok();
 
     [HttpPost("removewaste")]
@@ -115,7 +115,7 @@ public class HarvestController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewHarvests, ApiPermission.ManageHarvests })]
     [SwaggerOperation(Summary = "Remove waste from a harvest")]
     public ActionResult RemoveHarvestWaste([Required] string licenseNumber,
-        List<RemoveWasteRequest> removeWasteRequests) =>
+        [Required] List<RemoveWasteRequest> removeWasteRequests) =>
         Ok();
 
     [HttpPut("rename")]
@@ -124,7 +124,7 @@ public class HarvestController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewHarvests, ApiPermission.ManageHarvests })]
     [SwaggerOperation(Summary = "Rename a harvest")]
     public ActionResult RenameHarvest([Required] string licenseNumber,
-        List<RenameHarvestRequest> renameHarvestRequests) => Ok();
+        [Required] List<RenameHarvestRequest> renameHarvestRequests) => Ok();
 
     [HttpPost("finish")]
     [MapsToApi(MetrcEndpoint.post_harvests_v1_finish)]
@@ -132,7 +132,7 @@ public class HarvestController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewHarvests, ApiPermission.FinishDiscontinueHarvests })]
     [SwaggerOperation(Summary = "Finish a harvest")]
     public ActionResult FinishHarvest([Required] string licenseNumber,
-        List<FinishHarvestRequest> finishHarvestRequests) => Ok();
+        [Required] List<FinishHarvestRequest> finishHarvestRequests) => Ok();
 
     [HttpPost("unfinish")]
     [MapsToApi(MetrcEndpoint.post_harvests_v1_unfinish)]
@@ -140,5 +140,5 @@ public class HarvestController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewHarvests, ApiPermission.FinishDiscontinueHarvests })]
     [SwaggerOperation(Summary = "Unfinish a harvest")]
     public ActionResult UnfinishHarvest([Required] string licenseNumber,
-        List<UnfinishHarvestRequest> unfinishHarvestRequests) => Ok();
+        [Required] List<UnfinishHarvestRequest> unfinishHarvestRequests) => Ok();
 }

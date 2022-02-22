@@ -31,7 +31,7 @@ public class SharedFixture : IDisposable
         Task.Run(async () => await this.LoadFacilities()).Wait();
     }
 
-    public List<ApiKey> ApiKeys { get; set; }
+    public List<ApiKey> ApiKeys { get; set; } = new();
 
     public void Dispose()
     {
@@ -45,18 +45,14 @@ public class SharedFixture : IDisposable
             try
             {
                 var facilities = await key.MetrcService.Facilities.GetFacilitiesAsync();
-                //key.Facilities = facilities;
 
+                if (facilities == null) continue;
                 var sampleFacilities = facilities.Where(f => f.IsOwner ?? false).Take(3).ToList();
                 sampleFacilities.AddRange(facilities.Where(f => f.FacilityType.CanGrowPlants ?? false).Take(3));
                 sampleFacilities.AddRange(facilities.Where(f => f.FacilityType.CanSellToPatients ?? false).Take(3));
                 key.Facilities = sampleFacilities;
             }
-            catch (ApiException<ErrorResponse> ex)
-            {
-                Console.WriteLine($@"SubDomain: {key.OpenMetrcConfig.SubDomain} - {ex.Message}");
-            }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
                 Console.WriteLine($@"SubDomain: {key.OpenMetrcConfig.SubDomain} - {ex.Message}");
             }

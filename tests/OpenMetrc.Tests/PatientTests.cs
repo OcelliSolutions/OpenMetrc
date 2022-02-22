@@ -27,13 +27,21 @@ public class PatientTests : IClassFixture<SharedFixture>
             try
             {
                 var patients = await apiKey.MetrcService.Patients.GetActivePatientsAsync(facility.License.Number);
+                if (patients == null) continue;
                 wasTested = wasTested || patients.Any();
                 foreach (var patient in patients)
                     _additionalPropertiesHelper.CheckAdditionalProperties(patient, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)

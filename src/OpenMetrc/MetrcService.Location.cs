@@ -28,52 +28,52 @@ public partial class MetrcService : ILocationClient
             : LocationClient.DeleteLocationAsync(licenseNumber, id, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_locations_v1_active)]
-    Task<ICollection<Location>> ILocationClient.GetActiveLocationsAsync(string licenseNumber) =>
+    Task<ICollection<Location>?> ILocationClient.GetActiveLocationsAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Location>>(new List<Location>())
+            ? Task.FromResult<ICollection<Location>?>(new List<Location>())
             : LocationClient.GetActiveLocationsAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_locations_v1_active)]
-    Task<ICollection<Location>> ILocationClient.GetActiveLocationsAsync(string licenseNumber,
+    Task<ICollection<Location>?> ILocationClient.GetActiveLocationsAsync(string licenseNumber,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Location>>(new List<Location>())
+            ? Task.FromResult<ICollection<Location>?>(new List<Location>())
             : LocationClient.GetActiveLocationsAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_locations_v1_types)]
-    Task<ICollection<LocationType>> ILocationClient.GetLocationTypesAsync(string? licenseNumber) =>
+    Task<ICollection<LocationType>?> ILocationClient.GetLocationTypesAsync(string? licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<LocationType>>(new List<LocationType>())
+            ? Task.FromResult<ICollection<LocationType>?>(new List<LocationType>())
             : LocationClient.GetLocationTypesAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_locations_v1_types)]
-    Task<ICollection<LocationType>> ILocationClient.GetLocationTypesAsync(string? licenseNumber,
+    Task<ICollection<LocationType>?> ILocationClient.GetLocationTypesAsync(string? licenseNumber,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<LocationType>>(new List<LocationType>())
+            ? Task.FromResult<ICollection<LocationType>?>(new List<LocationType>())
             : LocationClient.GetLocationTypesAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_locations_v1_create)]
-    Task ILocationClient.CreateLocationAsync(string licenseNumber, IEnumerable<CreateLocationRequest>? body) =>
+    Task ILocationClient.CreateLocationAsync(string licenseNumber, IEnumerable<CreateLocationRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : LocationClient.CreateLocationAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_locations_v1_create)]
-    Task ILocationClient.CreateLocationAsync(string licenseNumber, IEnumerable<CreateLocationRequest>? body,
+    Task ILocationClient.CreateLocationAsync(string licenseNumber, IEnumerable<CreateLocationRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : LocationClient.CreateLocationAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_locations_v1_update)]
-    Task ILocationClient.UpdateLocationAsync(string licenseNumber, IEnumerable<UpdateLocationRequest>? body) =>
+    Task ILocationClient.UpdateLocationAsync(string licenseNumber, IEnumerable<UpdateLocationRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : LocationClient.UpdateLocationAsync(licenseNumber, body);
 
     [MapsToApi(MetrcEndpoint.post_locations_v1_update)]
-    Task ILocationClient.UpdateLocationAsync(string licenseNumber, IEnumerable<UpdateLocationRequest>? body,
+    Task ILocationClient.UpdateLocationAsync(string licenseNumber, IEnumerable<UpdateLocationRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask

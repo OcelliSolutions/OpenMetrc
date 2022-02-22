@@ -27,13 +27,21 @@ public class LocationTests : IClassFixture<SharedFixture>
             try
             {
                 var items = await apiKey.MetrcService.Locations.GetActiveLocationsAsync(facility.License.Number);
+                if (items == null) continue;
                 wasTested = wasTested || items.Any();
                 foreach (var item in items)
                     _additionalPropertiesHelper.CheckAdditionalProperties(item, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -58,13 +66,21 @@ public class LocationTests : IClassFixture<SharedFixture>
             try
             {
                 var items = await apiKey.MetrcService.Locations.GetLocationTypesAsync(facility.License.Number);
+                if (items == null) continue;
                 wasTested = wasTested || items.Any();
                 foreach (var item in items)
                     _additionalPropertiesHelper.CheckAdditionalProperties(item, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)

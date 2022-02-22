@@ -28,13 +28,22 @@ public class PackageTests : IClassFixture<SharedFixture>
             {
                 var packages = await apiKey.MetrcService.Packages.GetActivePackagesAsync(facility.License.Number,
                     DateTimeOffset.UtcNow.AddDays(-1), null);
+
+                if (packages == null) continue;
                 wasTested = wasTested || packages.Any();
                 foreach (var package in packages)
                     _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -60,13 +69,21 @@ public class PackageTests : IClassFixture<SharedFixture>
             {
                 var packages = await apiKey.MetrcService.Packages.GetInactivePackagesAsync(facility.License.Number,
                     DateTimeOffset.UtcNow.AddDays(-1), null);
+                if (packages == null) continue;
                 wasTested = wasTested || packages.Any();
                 foreach (var package in packages)
                     _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -92,13 +109,21 @@ public class PackageTests : IClassFixture<SharedFixture>
             {
                 var packages = await apiKey.MetrcService.Packages.GetOnHoldPackagesAsync(facility.License.Number,
                     DateTimeOffset.UtcNow.AddDays(-1), null);
+                if (packages == null) continue;
                 wasTested = wasTested || packages.Any();
                 foreach (var package in packages)
                     _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -124,13 +149,21 @@ public class PackageTests : IClassFixture<SharedFixture>
             try
             {
                 var packages = await apiKey.MetrcService.Packages.GetPackageAdjustReasonsAsync(facility.License.Number);
+                if (packages == null) continue;
                 wasTested = wasTested || packages.Any();
                 foreach (var package in packages)
                     _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -157,9 +190,16 @@ public class PackageTests : IClassFixture<SharedFixture>
                 var packages = await apiKey.MetrcService.Packages.GetPackageTypesAsync();
                 wasTested = wasTested || packages.Any();
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)

@@ -27,13 +27,21 @@ public class LabTestTests : IClassFixture<SharedFixture>
             try
             {
                 var items = await apiKey.MetrcService.LabTests.GetLabTestTypesAsync();
+                if (items == null) continue;
                 wasTested = wasTested || items.Any();
                 foreach (var item in items)
                     _additionalPropertiesHelper.CheckAdditionalProperties(item, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -60,9 +68,16 @@ public class LabTestTests : IClassFixture<SharedFixture>
                 wasTested = wasTested || items.Any();
                 Assert.NotEmpty(items);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
@@ -89,13 +104,21 @@ public class LabTestTests : IClassFixture<SharedFixture>
             {
                 var items = await apiKey.MetrcService.LabTests.GetLabTestResultsAsync(packageId,
                     facility.License.Number);
+                if (items == null) continue;
                 wasTested = wasTested || items.Any();
                 foreach (var item in items)
                     _additionalPropertiesHelper.CheckAdditionalProperties(item, facility.License.Number);
             }
-            catch (ApiException ex)
+            catch (ApiException<ErrorResponse?> ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized) throw;
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
                 unauthorized++;
             }
             catch (TimeoutException)
