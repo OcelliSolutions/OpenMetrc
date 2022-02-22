@@ -35,7 +35,8 @@ public class StrainController : ControllerBase
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageStrains })]
     [SwaggerOperation(Summary = "Create strains")]
-    public ActionResult CreateStrain([Required] string licenseNumber, [Required] List<CreateStrainRequest> createStrainRequests) =>
+    public ActionResult CreateStrain([Required] string licenseNumber,
+        [Required] List<CreateStrainRequest> createStrainRequests) =>
         Ok();
 
     [HttpPost("update")]
@@ -43,7 +44,8 @@ public class StrainController : ControllerBase
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageStrains })]
     [SwaggerOperation(Summary = "Update strains")]
-    public ActionResult UpdateStrain([Required] string licenseNumber, [Required] List<UpdateStrainRequest> updateStrainRequests) =>
+    public ActionResult UpdateStrain([Required] string licenseNumber,
+        [Required] List<UpdateStrainRequest> updateStrainRequests) =>
         Ok();
 
     [HttpDelete("{id:long}")]

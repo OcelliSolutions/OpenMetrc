@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace OpenMetrc.Builder.Controllers.V1;
+﻿namespace OpenMetrc.Builder.Controllers.V1;
 
 [Route("employees/v1")]
 [ApiController]

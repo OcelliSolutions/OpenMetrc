@@ -14,10 +14,9 @@ public class NullableResponseSchemaFilter : ISchemaFilter
         };
 
         //make all collection 
-        if (schema.Type == "array" && schema.Items != null && schema.Items.OneOf.Any() && !schema.Items.OneOf.Any(s => excludeProperties.Contains(s.Reference.Id)) && !schema.Items.OneOf.Any(s => s.Reference.Id.EndsWith("Request")))
-        {
-            schema.Nullable = true;
-        }
+        if (schema.Type == "array" && schema.Items != null && schema.Items.OneOf.Any() &&
+            !schema.Items.OneOf.Any(s => excludeProperties.Contains(s.Reference.Id)) &&
+            !schema.Items.OneOf.Any(s => s.Reference.Id.EndsWith("Request"))) schema.Nullable = true;
 
         if (schema.OneOf.Any() && schema.OneOf.All(s => s.Reference.Id == nameof(ErrorResponse)))
             schema.Nullable = true;

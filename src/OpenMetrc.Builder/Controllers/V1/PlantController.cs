@@ -157,7 +157,8 @@ public class PlantController : ControllerBase
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewVegFlowerPlants, ApiPermission.ManageVegFlowerPlantsInventory })]
     [SwaggerOperation(Summary = "Move a plant")]
-    public ActionResult MovePlant([Required] string licenseNumber, [Required] List<MovePlantRequest> movePlantRequests) => Ok();
+    public ActionResult MovePlant([Required] string licenseNumber,
+        [Required] List<MovePlantRequest> movePlantRequests) => Ok();
 
     [HttpPost("changegrowthphases")]
     [MapsToApi(MetrcEndpoint.post_plants_v1_changegrowthphases)]
@@ -172,7 +173,8 @@ public class PlantController : ControllerBase
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewVegFlowerPlants, ApiPermission.DestroyVegFlowerPlants })]
     [SwaggerOperation(Summary = "Destroy a plant")]
-    public ActionResult DestroyPlant([Required] string licenseNumber, [Required] List<DestroyPlantRequest> destroyPlantRequests) =>
+    public ActionResult DestroyPlant([Required] string licenseNumber,
+        [Required] List<DestroyPlantRequest> destroyPlantRequests) =>
         Ok();
 
     [HttpPost("additives")]
@@ -221,7 +223,8 @@ public class PlantController : ControllerBase
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewImmaturePlants, ApiPermission.ManicureHarvestVegFlowerPlants })]
     [SwaggerOperation(Summary = "Harvest plants")]
-    public ActionResult HarvestPlant([Required] string licenseNumber, [Required] List<HarvestPlantRequest> harvestPlantRequests) =>
+    public ActionResult HarvestPlant([Required] string licenseNumber,
+        [Required] List<HarvestPlantRequest> harvestPlantRequests) =>
         Ok();
 
     [HttpPost("manicureplants")]

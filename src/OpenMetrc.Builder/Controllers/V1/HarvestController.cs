@@ -106,7 +106,8 @@ public class HarvestController : ControllerBase
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewHarvests, ApiPermission.ManageHarvests })]
     [SwaggerOperation(Summary = "Move a harvest to a new room")]
-    public ActionResult MoveHarvest([Required] string licenseNumber, [Required] List<MoveHarvestRequest> moveHarvestRequests) =>
+    public ActionResult MoveHarvest([Required] string licenseNumber,
+        [Required] List<MoveHarvestRequest> moveHarvestRequests) =>
         Ok();
 
     [HttpPost("removewaste")]
