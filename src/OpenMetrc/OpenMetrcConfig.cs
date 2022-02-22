@@ -1,7 +1,9 @@
 ﻿namespace OpenMetrc;
+
 public class OpenMetrcConfig
 {
-    public OpenMetrcConfig(string subDomain, string softwareApiKey, string userApiKey, bool returnEmptyOnNotSupported = false, int facilityLimitCount = 50, int integratorLimitCount = 150)
+    public OpenMetrcConfig(string subDomain, string softwareApiKey, string userApiKey,
+        bool returnEmptyOnNotSupported = false, int facilityLimitCount = 50, int integratorLimitCount = 150)
     {
         SubDomain = subDomain;
         SoftwareApiKey = softwareApiKey;

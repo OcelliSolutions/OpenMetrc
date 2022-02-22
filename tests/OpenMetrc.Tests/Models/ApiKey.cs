@@ -4,6 +4,9 @@ namespace OpenMetrc.Tests.Models;
 
 public class ApiKey
 {
+    private OpenMetrcConfig _openMetrcConfig = null!;
+    internal MetrcService MetrcService = new(new OpenMetrcConfig("", "", ""));
+
     public ApiKey(OpenMetrcConfig openMetrcConfig)
     {
         openMetrcConfig.ReturnEmptyOnNotSupported = true;
@@ -11,6 +14,7 @@ public class ApiKey
         openMetrcConfig.IntegratorLimitCount = 75;
         OpenMetrcConfig = openMetrcConfig;
     }
+
     public OpenMetrcConfig OpenMetrcConfig {
         get => _openMetrcConfig;
         set {
@@ -24,8 +28,8 @@ public class ApiKey
     public ICollection<TransferDelivery> TransferDeliveries { get; set; } = new HashSet<TransferDelivery>();
 
     public ICollection<Transfer> TransferTemplates { get; set; } = new HashSet<Transfer>();
+
     //public ICollection<TransferDelivery> TransferDeliveryTemplates { get; set; } = new HashSet<TransferDelivery>();
-    public bool IsReadOnly => !OpenMetrcConfig.IsSandbox; //only the sandbox will be written to when doing integration testing
-    internal MetrcService MetrcService = new (new OpenMetrcConfig("","","")); 
-    private OpenMetrcConfig _openMetrcConfig = null!;
+    public bool IsReadOnly =>
+        !OpenMetrcConfig.IsSandbox; //only the sandbox will be written to when doing integration testing
 }

@@ -6,13 +6,13 @@ namespace OpenMetrc;
 
 class RateLimitHttpMessageHandler : DelegatingHandler
 {
-    public int FacilityLimitCount = 50;
-    public int IntegratorLimitCount = 150;
     static readonly ConcurrentDictionary<string, SemaphoreSlim> FacilitySemaphore = new();
     static readonly ConcurrentDictionary<string, SemaphoreSlim> IntegratorSemaphore = new();
     static readonly ConcurrentDictionary<string, List<DateTimeOffset>> FacilityCallLog = new();
     static readonly ConcurrentDictionary<string, List<DateTimeOffset>> IntegratorCallLog = new();
     readonly TimeSpan _limitTime = TimeSpan.FromSeconds(1);
+    public int FacilityLimitCount = 50;
+    public int IntegratorLimitCount = 150;
 
     protected override async Task<HttpResponseMessage> SendAsync(
         HttpRequestMessage request,

@@ -22,7 +22,27 @@ If you're using .NET Core, you can use the `dotnet` command from your favorite s
 dotnet add package openmetrc
 ```
 
+## Quick Start
+
+```c#
+var openMetrcConfig = new OpenMetrcConfig("api-co", "xx", "xx");
+var metrcService = new MetrcService(openMetrcConfig);`
+try
+{
+    var facilities = await metrcService.Facilities.GetFacilitiesAsync();
+}
+catch (ApiException<ErrorResponse?> ex)
+{
+    //The ex.Result will return the error message, if any, from METRC.
+    Console.WriteLine(ex.Result?.Message);
+    Console.WriteLine(ex.Message);
+}
+```
+
 ## Frequently Asked Questions
+
+* **Question**: Is it secure?
+  * **Answer**: This is  just a wrapper for the METRC apis. All communication is directly between you and METRC over HTTPS. 
 
 * **Question**: How do I use OpenMETRC with a my state's implementation of METRC?
   * **Answer**: OpenMETRC works with any METRC implementation, no extra configuration needed. All you need to do is pass in your `sub_domain`, `software_api_key` (Vendor Key), and `user_api_key`. There are two optional constructor properties that you can use to manage your connection.

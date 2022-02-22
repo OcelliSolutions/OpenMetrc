@@ -22,19 +22,20 @@ public partial class MetrcService : IMetrcService
     internal static ConcurrentDictionary<string, IStrainClient> StrainClients = new();
     internal static ConcurrentDictionary<string, ITransferClient> TransferClients = new();
     internal static ConcurrentDictionary<string, IUnitOfMeasureClient> UnitOfMeasureClients = new();
+    OpenMetrcConfig? _openMetrcConfig;
+
+    protected HttpClient? HttpClient;
 
     public MetrcService(OpenMetrcConfig openMetrcConfig)
     {
         //if (MetrcClients.Any(c => c.Key == MetrcClientKey)) return;
         if (FacilityClients.Any(c => c.Key == MetrcClientKey)) return;
-        
+
         OpenMetrcConfig = openMetrcConfig;
     }
 
     protected string MetrcClientKey => $@"{OpenMetrcConfig.SoftwareApiKey}:{OpenMetrcConfig.UserApiKey}";
-    OpenMetrcConfig? _openMetrcConfig;
 
-    protected HttpClient? HttpClient;
     //protected IMetrcClient UserMetrcClient => MetrcClients[MetrcClientKey];
     protected IEmployeeClient EmployeeClient => EmployeeClients[MetrcClientKey];
     protected IFacilityClient FacilityClient => FacilityClients[MetrcClientKey];
@@ -53,7 +54,7 @@ public partial class MetrcService : IMetrcService
 
     public OpenMetrcConfig OpenMetrcConfig
     {
-        get => _openMetrcConfig ?? new OpenMetrcConfig("api-xx","xx","xx");
+        get => _openMetrcConfig ?? new OpenMetrcConfig("api-xx", "xx", "xx");
         set
         {
             _openMetrcConfig = value;
@@ -126,7 +127,8 @@ public partial class MetrcService : IMetrcService
         Debug.Assert(endpoint != null, nameof(endpoint) + " != null");
         var states = endpoint.States;
         if (states.Contains(OpenMetrcConfig.State)) return true;
-        if (!OpenMetrcConfig.ReturnEmptyOnNotSupported) throw new NotSupportedException("This state does not support this endpoint");
+        if (!OpenMetrcConfig.ReturnEmptyOnNotSupported)
+            throw new NotSupportedException("This state does not support this endpoint");
         return false;
     }
 }
