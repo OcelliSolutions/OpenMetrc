@@ -12429,9 +12429,6 @@ components:
         - id
       type: object
       properties:
-        noResponse:
-          type: string
-          nullable: true
         id:
           type: integer
           format: int32
