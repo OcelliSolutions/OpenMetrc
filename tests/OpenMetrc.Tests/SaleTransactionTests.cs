@@ -62,34 +62,41 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
         var wasTested = false;
         var unauthorized = 0;
         var timeout = 0;
+        var daysBack = -1;
         foreach (var apiKey in Fixture.ApiKeys)
         foreach (var facility in apiKey.Facilities)
-            try
-            {
-                var saleTransactions = await apiKey.MetrcService.Sales.GetTransactionsByDateRangeAsync(
-                    facility.License.Number, DateTimeOffset.UtcNow.AddDays(-2), DateTimeOffset.UtcNow.AddDays(-1));
-                if (saleTransactions == null) continue;
-                wasTested = wasTested || saleTransactions.Any();
-                foreach (var saleTransaction in saleTransactions)
-                    _additionalPropertiesHelper.CheckAdditionalProperties(saleTransaction, facility.License.Number);
-            }
-            catch (ApiException<ErrorResponse?> ex)
-            {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+            do
+                try
                 {
-                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                    _testOutputHelper.WriteLine(ex.Response);
-                    throw;
+                    var saleTransactions = await apiKey.MetrcService.Sales.GetTransactionsByDateRangeAsync(
+                        facility.License.Number, DateTimeOffset.UtcNow.AddDays(daysBack - 1),
+                        DateTimeOffset.UtcNow.AddDays(daysBack));
+                    if (saleTransactions == null) continue;
+                    wasTested = wasTested || saleTransactions.Any();
+                    foreach (var saleTransaction in saleTransactions)
+                        _additionalPropertiesHelper.CheckAdditionalProperties(saleTransaction, facility.License.Number);
+                    daysBack--;
+                    if (daysBack < -10) break;
                 }
+                catch (ApiException<ErrorResponse?> ex)
+                {
+                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    {
+                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                        _testOutputHelper.WriteLine(ex.Response);
+                        throw;
+                    }
 
-                unauthorized++;
-            }
-            catch (TimeoutException)
-            {
-                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                timeout++;
-            }
+                    unauthorized++;
+                }
+                catch (TimeoutException)
+                {
+                    _testOutputHelper.WriteLine(
+                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
+                    timeout++;
+                }
+            while (true);
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
         Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");

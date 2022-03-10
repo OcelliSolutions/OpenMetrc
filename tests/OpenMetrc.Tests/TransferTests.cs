@@ -1,7 +1,10 @@
-﻿using System;
+﻿using OpenMetrc.Tests.Attributes;
+using System;
 
 namespace OpenMetrc.Tests;
 
+
+[TestCaseOrderer("OpenMetrc.Tests.Orderers.PriorityOrderer", "OpenMetrc.Tests")]
 public class TransferTests : IClassFixture<SharedFixture>
 {
     private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
@@ -17,7 +20,7 @@ public class TransferTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [SkippableFact]
-    [Order(1)]
+    [TestPriority(1)]
     public async void GetIncomingTransfersAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
@@ -36,13 +39,13 @@ public class TransferTests : IClassFixture<SharedFixture>
                     wasTested = wasTested || transfers.Any();
                     foreach (var transfer in transfers)
                     {
-                        apiKey.Transfers.Add(transfer);
+                        apiKey.IncomingTransfers.Add(transfer);
                         _additionalPropertiesHelper.CheckAdditionalProperties(transfer, facility.License.Number);
                     }
 
-                    if (transfers.Any()) break;
+                    if (apiKey.IncomingTransfers.Count >= 5) break;
                     daysBack--;
-                    if (daysBack < -30) break;
+                    if (daysBack < -10) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
@@ -70,7 +73,7 @@ public class TransferTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    [Order(1)]
+    [TestPriority(1)]
     public async void GetOutgoingTransfersAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
@@ -89,13 +92,13 @@ public class TransferTests : IClassFixture<SharedFixture>
                     wasTested = wasTested || transfers.Any();
                     foreach (var transfer in transfers)
                     {
-                        apiKey.Transfers.Add(transfer);
+                        apiKey.OutgoingTransfers.Add(transfer);
                         _additionalPropertiesHelper.CheckAdditionalProperties(transfer, facility.License.Number);
                     }
 
-                    if (transfers.Any()) break;
-                    daysBack--;
-                    if (daysBack < -30) break;
+                    if (apiKey.OutgoingTransfers.Count >= 10) break;
+                        daysBack--;
+                    if (daysBack < -10) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
@@ -123,7 +126,7 @@ public class TransferTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    [Order(1)]
+    [TestPriority(1)]
     public async void GetRejectedTransfersAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
@@ -138,7 +141,7 @@ public class TransferTests : IClassFixture<SharedFixture>
                 wasTested = wasTested || transfers.Any();
                 foreach (var transfer in transfers)
                 {
-                    apiKey.Transfers.Add(transfer);
+                    apiKey.RejectedTransfers.Add(transfer);
                     _additionalPropertiesHelper.CheckAdditionalProperties(transfer, facility.License.Number);
                 }
             }
@@ -218,7 +221,7 @@ public class TransferTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    [Order(2)]
+    [TestPriority(2)]
     public async void GetTransferDeliveriesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
@@ -264,7 +267,7 @@ public class TransferTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    [Order(3)]
+    [TestPriority(3)]
     public async void GetTransferDeliveryPackagesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
@@ -304,10 +307,133 @@ public class TransferTests : IClassFixture<SharedFixture>
         Skip.IfNot(wasTested, "WARN: There were no testable Transfers for any license");
     }
 
+    [SkippableFact]
+    [TestPriority(3)]
+    public async void GetTransferDeliveryPackagesWholesaleAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    {
+        var wasTested = false;
+        var unauthorized = 0;
+        var timeout = 0;
+        foreach (var apiKey in Fixture.ApiKeys)
+        foreach (var transferDelivery in apiKey.TransferDeliveries)
+            try
+            {
+                var deliveries =
+                    await apiKey.MetrcService.Transfers.GetTransferDeliveryPackagesWholesaleAsync(transferDelivery.Id);
+                if (deliveries == null) continue;
+                wasTested = wasTested || deliveries.Any();
+                foreach (var delivery in deliveries)
+                    _additionalPropertiesHelper.CheckAdditionalProperties(delivery, string.Empty);
+            }
+            catch (ApiException<ErrorResponse?> ex)
+            {
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
+                unauthorized++;
+            }
+            catch (TimeoutException)
+            {
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {transferDelivery.Id}: Timeout");
+                timeout++;
+            }
+
+        Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
+        Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
+        Skip.IfNot(wasTested, "WARN: There were no testable Transfers for any license");
+    }
+
+    [SkippableFact]
+    [TestPriority(3)]
+    public async void GetTransferDeliveryTransportersAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    {
+        var wasTested = false;
+        var unauthorized = 0;
+        var timeout = 0;
+        foreach (var apiKey in Fixture.ApiKeys)
+        foreach (var transferDelivery in apiKey.TransferDeliveries)
+            try
+            {
+                var deliveries =
+                    await apiKey.MetrcService.Transfers.GetTransferDeliveryTransportersAsync(transferDelivery.Id);
+                if (deliveries == null) continue;
+                wasTested = wasTested || deliveries.Any();
+                foreach (var delivery in deliveries)
+                    _additionalPropertiesHelper.CheckAdditionalProperties(delivery, string.Empty);
+            }
+            catch (ApiException<ErrorResponse?> ex)
+            {
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
+                unauthorized++;
+            }
+            catch (TimeoutException)
+            {
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {transferDelivery.Id}: Timeout");
+                timeout++;
+            }
+
+        Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
+        Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
+        Skip.IfNot(wasTested, "WARN: There were no testable Transfers for any license");
+    }
+
+    [SkippableFact]
+    [TestPriority(3)]
+    public async void GetTransferDeliveryTransportersDetailAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    {
+        var wasTested = false;
+        var unauthorized = 0;
+        var timeout = 0;
+        foreach (var apiKey in Fixture.ApiKeys)
+        foreach (var transferDelivery in apiKey.TransferDeliveries)
+            try
+            {
+                var deliveries =
+                    await apiKey.MetrcService.Transfers.GetTransferDeliveryTransportersDetailAsync(transferDelivery.Id);
+                if (deliveries == null) continue;
+                wasTested = wasTested || deliveries.Any();
+                foreach (var delivery in deliveries)
+                    _additionalPropertiesHelper.CheckAdditionalProperties(delivery, string.Empty);
+            }
+            catch (ApiException<ErrorResponse?> ex)
+            {
+                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
+                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+
+                unauthorized++;
+            }
+            catch (TimeoutException)
+            {
+                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {transferDelivery.Id}: Timeout");
+                timeout++;
+            }
+
+        Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
+        Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
+        Skip.IfNot(wasTested, "WARN: There were no testable Transfers for any license");
+    }
+
     #region Simple Tests
 
     [SkippableFact]
-    public async void GetActiveStrainsAsync_ValidEndpoint_ShouldPass()
+    public async void GetTransferDeliveryPackageStatesAsync_ValidEndpoint_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;

@@ -34,7 +34,7 @@ public class PatientController : ControllerBase
     [MapsToApi(MetrcEndpoint.get_patients_v1_statuses_patientLicenseNumber)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.LookupPatients })]
-    [ProducesResponseType(typeof(IEnumerable<Patient>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IEnumerable<PatientStatus>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get patient status. Data returned by this endpoint is cached for up to one minute")]
     public ActionResult GetPatientStatus(
         [Required] string patientLicenseNumber,

@@ -6,14 +6,58 @@ namespace OpenMetrc;
 
 class RateLimitHttpMessageHandler : DelegatingHandler
 {
-    static readonly ConcurrentDictionary<string, SemaphoreSlim> FacilitySemaphore = new();
-    static readonly ConcurrentDictionary<string, SemaphoreSlim> IntegratorSemaphore = new();
-    static readonly ConcurrentDictionary<string, List<DateTimeOffset>> FacilityCallLog = new();
-    static readonly ConcurrentDictionary<string, List<DateTimeOffset>> IntegratorCallLog = new();
-    readonly TimeSpan _limitTime = TimeSpan.FromSeconds(1);
-    public int FacilityLimitCount = 50;
-    public int IntegratorLimitCount = 150;
+    static readonly ConcurrentDictionary<string, SemaphoreSlim> ConcurrentCallsPerSecondPerFacilitySemaphore = new();
+    static readonly ConcurrentDictionary<string, SemaphoreSlim> ConcurrentCallsPerSecondPerIntegratorSemaphore = new();
+    //static readonly ConcurrentDictionary<string, List<DateTimeOffset>> CallsPerSecondPerFacilitySemaphore = new();
+    //static readonly ConcurrentDictionary<string, List<DateTimeOffset>> CallsPerSecondPerIntegratorSemaphore = new();
+    static readonly ConcurrentDictionary<string, AsyncRateLimitedSemaphore> CallsPerSecondPerFacilitySemaphore = new();
+    static readonly ConcurrentDictionary<string, AsyncRateLimitedSemaphore> CallsPerSecondPerIntegratorSemaphore = new();
 
+    readonly TimeSpan _limitTime = TimeSpan.FromSeconds(1);
+    public int CallsPerSecondPerFacility = 50;
+    public int CallsPerSecondPerIntegrator = 150;
+    public int ConcurrentCallsPerSecondPerFacility = 10;
+    public int ConcurrentCallsPerSecondPerIntegrator = 30;
+
+    protected override async Task<HttpResponseMessage> SendAsync(
+        HttpRequestMessage request,
+        CancellationToken cancellationToken)
+    {
+        var now = DateTimeOffset.Now.ToUnixTimeSeconds();
+        if (request.RequestUri == null) return await base.SendAsync(request, cancellationToken);
+
+        var integrator = request.RequestUri.Host;
+        var facility = HttpUtility.ParseQueryString(request.RequestUri.Query).Get("licenseNumber") ?? integrator;
+        if (facility == "NA")
+            Console.WriteLine($@"{request.RequestUri.AbsoluteUri}");
+
+        ConcurrentCallsPerSecondPerFacilitySemaphore.TryAdd(facility, new SemaphoreSlim(ConcurrentCallsPerSecondPerFacility));
+        CallsPerSecondPerFacilitySemaphore.TryAdd(facility, new AsyncRateLimitedSemaphore(CallsPerSecondPerFacility, TimeSpan.FromSeconds(1)));
+
+        ConcurrentCallsPerSecondPerIntegratorSemaphore.TryAdd(integrator, new SemaphoreSlim(ConcurrentCallsPerSecondPerIntegrator));
+        CallsPerSecondPerIntegratorSemaphore.TryAdd(integrator, new AsyncRateLimitedSemaphore(CallsPerSecondPerIntegrator, TimeSpan.FromSeconds(1)));
+        
+        var result = new HttpResponseMessage();
+        try
+        {
+            await CallsPerSecondPerFacilitySemaphore[facility].WaitAsync();
+            await CallsPerSecondPerIntegratorSemaphore[integrator].WaitAsync();
+
+            await ConcurrentCallsPerSecondPerFacilitySemaphore[facility].WaitAsync(cancellationToken);
+            await ConcurrentCallsPerSecondPerIntegratorSemaphore[integrator].WaitAsync(cancellationToken);
+            //Console.WriteLine($@"{facility} {now}");
+            result = await base.SendAsync(request, cancellationToken);
+            ConcurrentCallsPerSecondPerFacilitySemaphore[facility].Release();
+            ConcurrentCallsPerSecondPerIntegratorSemaphore[integrator].Release();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+        return result;
+    }
+    /*
     protected override async Task<HttpResponseMessage> SendAsync(
         HttpRequestMessage request,
         CancellationToken cancellationToken)
@@ -23,43 +67,47 @@ class RateLimitHttpMessageHandler : DelegatingHandler
 
         var integrator = request.RequestUri.Host;
         var facility = HttpUtility.ParseQueryString(request.RequestUri.Query).Get("licenseNumber") ?? integrator;
+        if(facility == "NA")
+            Console.WriteLine($@"{request.RequestUri.AbsoluteUri}");
 
-        FacilitySemaphore.TryAdd(facility, new SemaphoreSlim(10));
-        lock (FacilityCallLog)
+        ConcurrentCallsPerSecondPerFacilitySemaphore.TryAdd(facility, new SemaphoreSlim(5));
+        lock (CallsPerSecondPerFacilitySemaphore)
         {
-            FacilityCallLog.TryAdd(facility, new List<DateTimeOffset>());
+            CallsPerSecondPerFacilitySemaphore.TryAdd(facility, new List<DateTimeOffset>());
         }
 
-        IntegratorSemaphore.TryAdd(integrator, new SemaphoreSlim(30));
-        lock (IntegratorCallLog)
+        ConcurrentCallsPerSecondPerIntegratorSemaphore.TryAdd(integrator, new SemaphoreSlim(15));
+        lock (CallsPerSecondPerIntegratorSemaphore)
         {
-            IntegratorCallLog.TryAdd(integrator, new List<DateTimeOffset>());
+            CallsPerSecondPerIntegratorSemaphore.TryAdd(integrator, new List<DateTimeOffset>());
         }
 
-
-        lock (FacilityCallLog)
+        
+        lock (CallsPerSecondPerFacilitySemaphore)
         {
-            lock (IntegratorCallLog)
+            lock (CallsPerSecondPerIntegratorSemaphore)
             {
-                FacilityCallLog[facility].Add(now);
-                while (FacilityCallLog[facility].Count > FacilityLimitCount)
-                    FacilityCallLog[facility].RemoveAt(0);
+                CallsPerSecondPerFacilitySemaphore[facility].Add(now);
+                while (CallsPerSecondPerFacilitySemaphore[facility].Count > CallsPerSecondPerFacility)
+                    CallsPerSecondPerFacilitySemaphore[facility].RemoveAt(0);
 
-                IntegratorCallLog[integrator].Add(now);
-                while (IntegratorCallLog[integrator].Count > IntegratorLimitCount)
-                    IntegratorCallLog[integrator].RemoveAt(0);
+                CallsPerSecondPerIntegratorSemaphore[integrator].Add(now);
+                while (CallsPerSecondPerIntegratorSemaphore[integrator].Count > CallsPerSecondPerIntegrator)
+                    CallsPerSecondPerIntegratorSemaphore[integrator].RemoveAt(0);
             }
         }
+        
 
         await LimitDelay(facility, integrator, now);
         var result = new HttpResponseMessage();
         try
         {
-            await FacilitySemaphore[facility].WaitAsync(cancellationToken);
-            await IntegratorSemaphore[integrator].WaitAsync(cancellationToken);
+            await ConcurrentCallsPerSecondPerFacilitySemaphore[facility].WaitAsync(cancellationToken);
+            await ConcurrentCallsPerSecondPerIntegratorSemaphore[integrator].WaitAsync(cancellationToken);
+            Console.WriteLine($@"facility: {facility} - {now}");
             result = await base.SendAsync(request, cancellationToken);
-            FacilitySemaphore[facility].Release();
-            IntegratorSemaphore[integrator].Release();
+            ConcurrentCallsPerSecondPerFacilitySemaphore[facility].Release();
+            ConcurrentCallsPerSecondPerIntegratorSemaphore[integrator].Release();
         }
         catch (Exception ex)
         {
@@ -68,12 +116,11 @@ class RateLimitHttpMessageHandler : DelegatingHandler
 
         return result;
     }
-
     async Task LimitDelay(string facility, string integrator, DateTimeOffset now)
     {
-        lock (FacilityCallLog)
+        lock (CallsPerSecondPerFacilitySemaphore)
         {
-            if (FacilityCallLog.Count < FacilityLimitCount && IntegratorCallLog.Count < IntegratorLimitCount) return;
+            if (CallsPerSecondPerFacilitySemaphore.Count < CallsPerSecondPerFacility && CallsPerSecondPerIntegratorSemaphore.Count < CallsPerSecondPerIntegrator) return;
         }
 
         var limit = now.Add(-_limitTime);
@@ -83,15 +130,15 @@ class RateLimitHttpMessageHandler : DelegatingHandler
         DateTimeOffset integratorLastCall;
         bool integratorShouldLock;
 
-        lock (FacilityCallLog)
+        lock (CallsPerSecondPerFacilitySemaphore)
         {
-            lock (IntegratorCallLog)
+            lock (CallsPerSecondPerIntegratorSemaphore)
             {
-                facilityLastCall = FacilityCallLog[facility].FirstOrDefault();
-                facilityShouldLock = FacilityCallLog[facility].Count(x => x >= limit) >= FacilityLimitCount;
+                facilityLastCall = CallsPerSecondPerFacilitySemaphore[facility].FirstOrDefault();
+                facilityShouldLock = CallsPerSecondPerFacilitySemaphore[facility].Count(x => x >= limit) >= CallsPerSecondPerFacility;
 
-                integratorLastCall = IntegratorCallLog[integrator].FirstOrDefault();
-                integratorShouldLock = IntegratorCallLog[integrator].Count(x => x >= limit) >= IntegratorLimitCount;
+                integratorLastCall = CallsPerSecondPerIntegratorSemaphore[integrator].FirstOrDefault();
+                integratorShouldLock = CallsPerSecondPerIntegratorSemaphore[integrator].Count(x => x >= limit) >= CallsPerSecondPerIntegrator;
             }
         }
 
@@ -102,5 +149,73 @@ class RateLimitHttpMessageHandler : DelegatingHandler
 
         if (delayTime > TimeSpan.Zero)
             await Task.Delay(delayTime);
+    }
+    */
+
+    class AsyncRateLimitedSemaphore
+    {
+        private readonly int maxCount;
+        private readonly TimeSpan resetTimeSpan;
+
+        private readonly SemaphoreSlim semaphore;
+        private long nextResetTimeTicks;
+
+        private readonly object resetTimeLock = new();
+
+        public AsyncRateLimitedSemaphore(int maxCount, TimeSpan resetTimeSpan)
+        {
+            this.maxCount = maxCount;
+            this.resetTimeSpan = resetTimeSpan;
+
+            this.semaphore = new SemaphoreSlim(maxCount, maxCount);
+            this.nextResetTimeTicks = (DateTimeOffset.UtcNow + this.resetTimeSpan).UtcTicks;
+        }
+
+        private void TryResetSemaphore()
+        {
+            // quick exit if before the reset time, no need to lock
+            if (!(DateTimeOffset.UtcNow.UtcTicks > Interlocked.Read(ref this.nextResetTimeTicks)))
+            {
+                return;
+            }
+
+            // take a lock so only one reset can happen per period
+            lock (this.resetTimeLock)
+            {
+                var currentTime = DateTimeOffset.UtcNow;
+                // need to check again in case a reset has already happened in this period
+                if (currentTime.UtcTicks > Interlocked.Read(ref this.nextResetTimeTicks))
+                {
+                    this.semaphore.Release(this.maxCount - this.semaphore.CurrentCount);
+
+                    var newResetTimeTicks = (currentTime + this.resetTimeSpan).UtcTicks;
+                    Interlocked.Exchange(ref this.nextResetTimeTicks, newResetTimeTicks);
+                }
+            }
+        }
+
+        public async Task WaitAsync()
+        {
+            // attempt a reset in case it's been some time since the last wait
+            TryResetSemaphore();
+
+            var semaphoreTask = this.semaphore.WaitAsync();
+
+            // if there are no slots, need to keep trying to reset until one opens up
+            while (!semaphoreTask.IsCompleted)
+            {
+                var ticks = Interlocked.Read(ref this.nextResetTimeTicks);
+                var nextResetTime = new DateTimeOffset(new DateTime(ticks, DateTimeKind.Utc));
+                var delayTime = nextResetTime - DateTimeOffset.UtcNow;
+
+                // delay until the next reset period
+                // can't delay a negative time so if it's already passed just continue with a completed task
+                var delayTask = delayTime >= TimeSpan.Zero ? Task.Delay(delayTime) : Task.CompletedTask;
+
+                await Task.WhenAny(semaphoreTask, delayTask);
+
+                TryResetSemaphore();
+            }
+        }
     }
 }

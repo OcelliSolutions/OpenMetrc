@@ -110,7 +110,7 @@ public class TransferController : ControllerBase
     [ApiAuthorizationFilter]
     [ProducesResponseType(typeof(IEnumerable<TransferType>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get transfer types")]
-    public ActionResult GetTransferTypes() => Ok();
+    public ActionResult GetTransferTypes([Required] string licenseNumber) => Ok();
 
     #region External Incoming
 

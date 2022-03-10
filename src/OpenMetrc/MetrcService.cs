@@ -24,15 +24,24 @@ public partial class MetrcService : IMetrcService
     internal static ConcurrentDictionary<string, IUnitOfMeasureClient> UnitOfMeasureClients = new();
     OpenMetrcConfig? _openMetrcConfig;
 
-    protected HttpClient? HttpClient;
+    protected static HttpClient? HttpClient;
 
+    public MetrcService()
+    {
+        OpenMetrcConfig = new OpenMetrcConfig("xx", "xx", "xx");
+    }
+    public MetrcService(OpenMetrcConfig openMetrcConfig)
+    {
+        OpenMetrcConfig = openMetrcConfig;
+    }
+    /*
     public MetrcService(OpenMetrcConfig openMetrcConfig)
     {
         //if (MetrcClients.Any(c => c.Key == MetrcClientKey)) return;
-        if (FacilityClients.Any(c => c.Key == MetrcClientKey)) return;
+        //if (FacilityClients.Any(c => c.Key == MetrcClientKey)) return;
 
         OpenMetrcConfig = openMetrcConfig;
-    }
+    }*/
 
     protected string MetrcClientKey => $@"{OpenMetrcConfig.SoftwareApiKey}:{OpenMetrcConfig.UserApiKey}";
 
@@ -65,8 +74,10 @@ public partial class MetrcService : IMetrcService
             HttpClient = new HttpClient(new RateLimitHttpMessageHandler
             {
                 InnerHandler = new HttpClientHandler(),
-                FacilityLimitCount = _openMetrcConfig.FacilityLimitCount,
-                IntegratorLimitCount = _openMetrcConfig.IntegratorLimitCount
+                CallsPerSecondPerFacility = _openMetrcConfig.CallsPerSecondPerFacility,
+                CallsPerSecondPerIntegrator = _openMetrcConfig.CallsPerSecondPerIntegrator,
+                ConcurrentCallsPerSecondPerFacility = _openMetrcConfig.ConcurrentCallsPerSecondPerFacility,
+                ConcurrentCallsPerSecondPerIntegrator = _openMetrcConfig.ConcurrentCallsPerSecondPerIntegrator
             });
             //MetrcClients.TryAdd(MetrcClientKey, new MetrcClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
             var byteArray = Encoding.ASCII.GetBytes($"{_openMetrcConfig.SoftwareApiKey}:{_openMetrcConfig.UserApiKey}");

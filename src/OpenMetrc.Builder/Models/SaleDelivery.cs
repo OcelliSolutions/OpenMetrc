@@ -22,7 +22,7 @@ public class SaleDelivery
     public string? VehicleLicensePlateNumber { get; set; }
     public string? RecipientName { get; set; }
     public string? PlannedRoute { get; set; }
-    public int? Direction { get; set; }
+    public string? Direction { get; set; }
     public DateTime? EstimatedDepartureDateTime { get; set; }
     public DateTime? ActualDepartureDateTime { get; set; }
     public DateTime? EstimatedArrivalDateTime { get; set; }
@@ -36,7 +36,7 @@ public class SaleDelivery
     public DateTime? AcceptedDateTime { get; set; }
     public SaleTransaction[]? Transactions { get; set; }
     public DateTime? CompletedDateTime { get; set; }
-    public int SalesDeliveryState { get; set; }
+    public string? SalesDeliveryState { get; set; }
     public DateTime? VoidedDate { get; set; }
     public DateTime? RecordedDateTime { get; set; }
     public string? RecordedByUserName { get; set; }

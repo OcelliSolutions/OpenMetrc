@@ -41,17 +41,17 @@ public partial class MetrcService : IPatientClient
             : PatientClient.GetActivePatientsAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_patients_v1_statuses_patientLicenseNumber)]
-    Task<ICollection<Patient>?> IPatientClient.
+    Task<ICollection<PatientStatus>?> IPatientClient.
         GetPatientStatusAsync(string patientLicenseNumber, string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Patient>?>(new List<Patient>())
+            ? Task.FromResult<ICollection<PatientStatus>?>(new List<PatientStatus>())
             : PatientClient.GetPatientStatusAsync(patientLicenseNumber, licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_patients_v1_statuses_patientLicenseNumber)]
-    Task<ICollection<Patient>?> IPatientClient.GetPatientStatusAsync(string patientLicenseNumber, string licenseNumber,
+    Task<ICollection<PatientStatus>?> IPatientClient.GetPatientStatusAsync(string patientLicenseNumber, string licenseNumber,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<Patient>?>(new List<Patient>())
+            ? Task.FromResult<ICollection<PatientStatus>?>(new List<PatientStatus>())
             : PatientClient.GetPatientStatusAsync(patientLicenseNumber, licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_patients_v1_add)]

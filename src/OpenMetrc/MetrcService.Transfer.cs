@@ -146,16 +146,16 @@ public partial class MetrcService : ITransferClient
             : TransferClient.GetTransferDeliveryPackageStatesAsync(cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_types)]
-    Task<ICollection<TransferType>?> ITransferClient.GetTransferTypesAsync() =>
+    Task<ICollection<TransferType>?> ITransferClient.GetTransferTypesAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<TransferType>?>(new List<TransferType>())
-            : TransferClient.GetTransferTypesAsync();
+            : TransferClient.GetTransferTypesAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_transfers_v1_types)]
-    Task<ICollection<TransferType>?> ITransferClient.GetTransferTypesAsync(CancellationToken cancellationToken) =>
+    Task<ICollection<TransferType>?> ITransferClient.GetTransferTypesAsync(string licenseNumber, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<TransferType>?>(new List<TransferType>())
-            : TransferClient.GetTransferTypesAsync(cancellationToken);
+            : TransferClient.GetTransferTypesAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_transfers_v1_external_incoming)]
     Task ITransferClient.CreateExternalIncomingTransfersAsync(string licenseNumber,

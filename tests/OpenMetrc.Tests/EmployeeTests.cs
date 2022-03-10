@@ -52,6 +52,6 @@ public class EmployeeTests : IClassFixture<SharedFixture>
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
         Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
-        Skip.IfNot(wasTested, "WARN: There were testable brands for any license");
+        Skip.IfNot(wasTested, "WARN: There were testable employees for any license");
     }
 }

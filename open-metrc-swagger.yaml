@@ -4314,7 +4314,7 @@ paths:
                 type: array
                 items:
                   oneOf:
-                    - $ref: '#/components/schemas/Patient'
+                    - $ref: '#/components/schemas/PatientStatus'
                 nullable: true
         '403':
           description: Forbidden
@@ -9953,6 +9953,12 @@ paths:
       summary: Get transfer types
       description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
       operationId: GetTransferTypes
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -13115,6 +13121,24 @@ components:
           format: int32
           nullable: true
       additionalProperties: { }
+    PatientStatus:
+      type: object
+      properties:
+        patientLicenseNumber:
+          type: string
+          nullable: true
+        active:
+          type: boolean
+        flowerOuncesAvailable:
+          type: number
+          format: double
+        thcOuncesAvailable:
+          type: number
+          format: double
+        purchaseAmountDays:
+          type: number
+          format: double
+      additionalProperties: { }
     Plant:
       required:
         - id
@@ -13543,8 +13567,7 @@ components:
           type: string
           nullable: true
         direction:
-          type: integer
-          format: int32
+          type: string
           nullable: true
         estimatedDepartureDateTime:
           pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
@@ -13610,8 +13633,8 @@ components:
           format: date
           nullable: true
         salesDeliveryState:
-          type: integer
-          format: int32
+          type: string
+          nullable: true
         voidedDate:
           pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
           type: string
@@ -14323,8 +14346,8 @@ components:
           type: string
           nullable: true
         transporterDirection:
-          type: integer
-          format: int32
+          type: string
+          nullable: true
       additionalProperties: { }
     TransferDeliveryTransporterDetail:
       type: object
