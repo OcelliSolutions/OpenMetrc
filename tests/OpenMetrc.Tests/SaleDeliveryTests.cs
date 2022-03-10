@@ -45,7 +45,7 @@ public class SaleDeliveryTests : IClassFixture<SharedFixture>
                     }
 
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
@@ -100,7 +100,7 @@ public class SaleDeliveryTests : IClassFixture<SharedFixture>
                     }
 
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {

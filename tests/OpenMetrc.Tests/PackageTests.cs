@@ -36,7 +36,7 @@ public class PackageTests : IClassFixture<SharedFixture>
                     foreach (var package in packages)
                         _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
@@ -81,7 +81,7 @@ public class PackageTests : IClassFixture<SharedFixture>
                     foreach (var package in packages)
                         _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
@@ -126,7 +126,7 @@ public class PackageTests : IClassFixture<SharedFixture>
                     foreach (var package in packages)
                         _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {

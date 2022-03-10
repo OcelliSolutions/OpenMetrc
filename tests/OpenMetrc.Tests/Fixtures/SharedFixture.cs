@@ -15,8 +15,11 @@ public class SharedFixture : IDisposable
         {
             var apiKeysJson = File.ReadAllText("api_keys.json");
             Debug.Assert(!string.IsNullOrWhiteSpace(apiKeysJson), "Please create a `api_keys.json` file");
-            var configs = JsonSerializer.Deserialize<List<OpenMetrcConfig>>(apiKeysJson) ?? new List<OpenMetrcConfig>();
-            ApiKeys = configs.Select(c => new ApiKey(c)).ToList();
+
+            var settings = JsonSerializer.Deserialize<ApiKeySetting>(apiKeysJson) ?? new ApiKeySetting();
+            Debug.Assert(settings.OpenMetrcConfigs != null, "settings.OpenMetrcConfigs != null");
+
+            ApiKeys = settings.OpenMetrcConfigs.Select(c => new ApiKey(c){DaysToTest = settings.DaysToTest}).ToList();
             Debug.Assert(ApiKeys != null, "Please specify some api keys in `api_keys.json` before testing");
         }
         catch (InvalidOperationException ex)

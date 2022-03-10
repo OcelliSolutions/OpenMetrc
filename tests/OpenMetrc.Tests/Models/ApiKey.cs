@@ -13,9 +13,12 @@ public class ApiKey
         openMetrcConfig.ReturnEmptyOnNotSupported = true;
         openMetrcConfig.CallsPerSecondPerFacility = 40;
         openMetrcConfig.CallsPerSecondPerIntegrator = 130;
-        openMetrcConfig.ConcurrentCallsPerSecondPerFacility = 3;
-        openMetrcConfig.ConcurrentCallsPerSecondPerIntegrator = 3;
-
+        openMetrcConfig.ConcurrentCallsPerSecondPerFacility = 2;
+        openMetrcConfig.ConcurrentCallsPerSecondPerIntegrator = 2;
+        DaysToTest = 1;
+#if DEBUG
+        DaysToTest = 10;
+#endif
         OpenMetrcConfig = openMetrcConfig;
     }
 
@@ -28,6 +31,7 @@ public class ApiKey
         }
     }
 
+    public int DaysToTest { get; set; }
     public ICollection<Facility> Facilities { get; set; } = new HashSet<Facility>();
     public ICollection<Transfer?> IncomingTransfers { get; set; } = new HashSet<Transfer?>();
     public ICollection<Transfer?> OutgoingTransfers { get; set; } = new HashSet<Transfer?>();

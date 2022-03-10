@@ -36,7 +36,7 @@ public class PlantBatchTests : IClassFixture<SharedFixture>
                     foreach (var plantBatch in plantBatches)
                         _additionalPropertiesHelper.CheckAdditionalProperties(plantBatch, facility.License.Number);
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
@@ -83,7 +83,7 @@ public class PlantBatchTests : IClassFixture<SharedFixture>
                         _additionalPropertiesHelper.CheckAdditionalProperties(plantBatch, facility.License.Number);
 
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {

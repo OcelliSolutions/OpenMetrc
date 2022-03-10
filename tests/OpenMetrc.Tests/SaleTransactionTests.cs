@@ -76,7 +76,7 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
                     foreach (var saleTransaction in saleTransactions)
                         _additionalPropertiesHelper.CheckAdditionalProperties(saleTransaction, facility.License.Number);
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {

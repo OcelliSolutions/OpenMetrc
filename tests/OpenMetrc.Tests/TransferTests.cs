@@ -45,7 +45,7 @@ public class TransferTests : IClassFixture<SharedFixture>
 
                     if (apiKey.IncomingTransfers.Count >= 5) break;
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
@@ -98,7 +98,7 @@ public class TransferTests : IClassFixture<SharedFixture>
 
                     if (apiKey.OutgoingTransfers.Count >= 10) break;
                         daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
@@ -193,7 +193,7 @@ public class TransferTests : IClassFixture<SharedFixture>
 
                     if (transfers.Any()) break;
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {

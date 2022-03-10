@@ -1,7 +1,10 @@
-[
-  {
-    "UserApiKey": "value",
-    "SubDomain": "sandbox-api-ca",
-    "SoftwareApiKey": "value"
-  }
-]
+{
+  "days_to_test": 2,
+  "configs": [
+    {
+      "user_api_key": "value",
+      "sub_domain": "sandbox-api-ca",
+      "software_api_key": "value"
+    }
+  ]
+}

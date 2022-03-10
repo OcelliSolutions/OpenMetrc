@@ -35,7 +35,7 @@ public class PlantTests : IClassFixture<SharedFixture>
                     foreach (var plant in plants)
                         _additionalPropertiesHelper.CheckAdditionalProperties(plant, facility.License.Number);
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
@@ -81,7 +81,7 @@ public class PlantTests : IClassFixture<SharedFixture>
                     foreach (var plant in plants)
                         _additionalPropertiesHelper.CheckAdditionalProperties(plant, facility.License.Number);
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
@@ -128,7 +128,7 @@ public class PlantTests : IClassFixture<SharedFixture>
                     foreach (var plant in plants)
                         _additionalPropertiesHelper.CheckAdditionalProperties(plant, facility.License.Number);
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
@@ -174,7 +174,7 @@ public class PlantTests : IClassFixture<SharedFixture>
                     foreach (var plant in plants)
                         _additionalPropertiesHelper.CheckAdditionalProperties(plant, facility.License.Number);
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
@@ -368,7 +368,7 @@ public class PlantTests : IClassFixture<SharedFixture>
                     foreach (var plant in plants)
                         _additionalPropertiesHelper.CheckAdditionalProperties(plant, facility.License.Number);
                     daysBack--;
-                    if (daysBack < -10) break;
+                    if (daysBack < -apiKey.DaysToTest) break;
                 }
                 catch (ApiException<ErrorResponse?> ex)
                 {
