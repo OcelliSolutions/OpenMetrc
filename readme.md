@@ -24,6 +24,8 @@ dotnet add package openmetrc
 
 ## Quick Start
 
+For the purpose of rate limiting, you should register OpenMetrc as a singleton.
+
 ```c#
 var openMetrcConfig = new OpenMetrcConfig("api-co", "xx", "xx");
 var metrcService = new MetrcService(openMetrcConfig);`
@@ -38,6 +40,18 @@ catch (ApiException<ErrorResponse?> ex)
     Console.WriteLine(ex.Message);
 }
 ```
+
+### Using Dependency Injection
+
+You may also use dependency injection by adding:
+
+```csharp
+//use either of these but not both.
+services.AddSingleton<OpenMetrc.IMetrcService, OpenMetrc.MetrcService>();
+//services.AddSingleton<OpenMetrc.IMetrcService>(m => new MetrcService(new OpenMetrcConfig("xx","xx","xx",true)));
+```
+
+Either way, you can override the `OpenMetrcConfig` at any time.
 
 ## Frequently Asked Questions
 
