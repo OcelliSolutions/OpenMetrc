@@ -2,8 +2,7 @@
 
 public class TransferDeliveryPackage
 {
-    [Required] public int PackageId { get; set; }
-
+    public int? PackageId { get; set; }
     public string? PackageLabel { get; set; }
     public string? PackageType { get; set; }
     public string? SourceHarvestNames { get; set; }

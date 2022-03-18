@@ -14177,13 +14177,12 @@ components:
           nullable: true
       additionalProperties: { }
     TransferDeliveryPackage:
-      required:
-        - packageId
       type: object
       properties:
         packageId:
           type: integer
           format: int32
+          nullable: true
         packageLabel:
           type: string
           nullable: true
@@ -14317,13 +14316,12 @@ components:
           nullable: true
       additionalProperties: { }
     TransferDeliveryPackageWholesale:
-      required:
-        - packageId
       type: object
       properties:
         packageId:
           type: integer
           format: int32
+          nullable: true
         packageLabel:
           type: string
           nullable: true

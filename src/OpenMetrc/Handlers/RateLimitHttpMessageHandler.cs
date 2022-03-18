@@ -13,7 +13,6 @@ class RateLimitHttpMessageHandler : DelegatingHandler
     static readonly ConcurrentDictionary<string, AsyncRateLimitedSemaphore> CallsPerSecondPerFacilitySemaphore = new();
     static readonly ConcurrentDictionary<string, AsyncRateLimitedSemaphore> CallsPerSecondPerIntegratorSemaphore = new();
 
-    readonly TimeSpan _limitTime = TimeSpan.FromSeconds(1);
     public int CallsPerSecondPerFacility = 50;
     public int CallsPerSecondPerIntegrator = 150;
     public int ConcurrentCallsPerSecondPerFacility = 10;
@@ -23,7 +22,7 @@ class RateLimitHttpMessageHandler : DelegatingHandler
         HttpRequestMessage request,
         CancellationToken cancellationToken)
     {
-        var now = DateTimeOffset.Now.ToUnixTimeSeconds();
+        //var now = DateTimeOffset.Now.ToUnixTimeSeconds();
         if (request.RequestUri == null) return await base.SendAsync(request, cancellationToken);
 
         var integrator = request.RequestUri.Host;
