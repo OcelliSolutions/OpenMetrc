@@ -59,9 +59,5 @@ public class SharedFixture : IDisposable
             {
                 Console.WriteLine($@"SubDomain: {key.OpenMetrcConfig.SubDomain} - {ex.Message}");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
     }
 }

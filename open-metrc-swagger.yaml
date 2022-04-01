@@ -7251,16 +7251,18 @@ paths:
           in: query
           description: 'The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.'
           schema:
-            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
             type: string
-            format: date
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
         - name: salesDateEnd
           in: query
           description: 'The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.'
           schema:
-            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
             type: string
-            format: date
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
         - name: lastModifiedStart
           in: query
           description: 'The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.'
@@ -7353,16 +7355,18 @@ paths:
           in: query
           description: 'The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.'
           schema:
-            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
             type: string
-            format: date
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
         - name: salesDateEnd
           in: query
           description: 'The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.'
           schema:
-            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
             type: string
-            format: date
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
         - name: lastModifiedStart
           in: query
           description: 'The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.'
@@ -8132,16 +8136,18 @@ paths:
           in: query
           description: 'The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.'
           schema:
-            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
             type: string
-            format: date
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
         - name: salesDateEnd
           in: query
           description: 'The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.'
           schema:
-            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
             type: string
-            format: date
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
         - name: lastModifiedStart
           in: query
           description: 'The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.'
@@ -8234,16 +8240,18 @@ paths:
           in: query
           description: 'The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.'
           schema:
-            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
             type: string
-            format: date
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
         - name: salesDateEnd
           in: query
           description: 'The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.'
           schema:
-            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
             type: string
-            format: date
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
         - name: lastModifiedStart
           in: query
           description: 'The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.'
@@ -11288,9 +11296,10 @@ components:
           type: string
           nullable: true
         approvalStatusDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         strainId:
           type: integer
@@ -11456,13 +11465,15 @@ components:
           type: string
           nullable: true
         plantedDate:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         unpackagedDate:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
       additionalProperties: { }
     CreatePackageRequest:
       required:
@@ -11675,9 +11686,10 @@ components:
           type: string
           nullable: true
         actualDate:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
       additionalProperties: { }
     CreateSaleDeliveryRequest:
       type: object
@@ -11761,9 +11773,10 @@ components:
       type: object
       properties:
         salesDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         salesCustomerType:
           type: string
           nullable: true
@@ -11953,13 +11966,15 @@ components:
           type: string
           nullable: true
         estimatedDepartureDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         estimatedArrivalDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         grossWeight:
           type: number
           format: double
@@ -12010,13 +12025,15 @@ components:
         isLayover:
           type: boolean
         estimatedDepartureDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         estimatedArrivalDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         transporterDetails:
           oneOf:
             - $ref: '#/components/schemas/TransferDeliveryTransporterDetail'
@@ -12374,9 +12391,10 @@ components:
           format: date
           nullable: true
         lastModified:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
       additionalProperties: { }
     HarvestPlantRequest:
@@ -12460,9 +12478,10 @@ components:
           type: string
           nullable: true
         approvalStatusDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         strainId:
           type: integer
@@ -12691,9 +12710,10 @@ components:
           type: boolean
           nullable: true
         resultReleaseDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         testTypeName:
           type: string
@@ -13062,9 +13082,10 @@ components:
           format: date
           nullable: true
         lastModified:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         item:
           oneOf:
             - $ref: '#/components/schemas/Item'
@@ -13249,9 +13270,10 @@ components:
           type: string
           nullable: true
         lastModified:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
       additionalProperties: { }
     PlantAdditive:
       type: object
@@ -13393,9 +13415,10 @@ components:
           format: date
           nullable: true
         lastModified:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
       additionalProperties: { }
     PlantWasteMethod:
       type: object
@@ -13666,9 +13689,10 @@ components:
           type: string
           nullable: true
         salesDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         salesCustomerType:
           type: string
           nullable: true
@@ -13696,21 +13720,24 @@ components:
         isFinal:
           type: boolean
         archivedDate:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         recordedDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         recordedByUserName:
           type: string
           nullable: true
         lastModified:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
       additionalProperties: { }
     SaleReceiptTransaction:
       type: object
@@ -13826,22 +13853,25 @@ components:
           type: string
           nullable: true
         archivedDate:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         recordedDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         recordedByUserName:
           type: string
           nullable: true
         lastModified:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
       additionalProperties: { }
     SaleTransactionSummary:
       required:
@@ -14010,16 +14040,18 @@ components:
           type: boolean
           nullable: true
         createdDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         createdByUserName:
           type: string
           nullable: true
         lastModified:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         deliveryId:
           type: integer
           format: int32
@@ -14037,24 +14069,28 @@ components:
           type: string
           nullable: true
         estimatedDepartureDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         actualDepartureDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         estimatedArrivalDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         actualArrivalDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         deliveryPackageCount:
           type: integer
@@ -14063,29 +14099,34 @@ components:
           type: integer
           format: int32
         receivedDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         estimatedReturnDepartureDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         actualReturnDepartureDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         estimatedReturnArrivalDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         actualReturnArrivalDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
       additionalProperties: { }
     TransferDelivery:
@@ -14109,24 +14150,28 @@ components:
           type: string
           nullable: true
         estimatedDepartureDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         actualDepartureDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         estimatedArrivalDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         actualArrivalDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         grossWeight:
           type: number
@@ -14148,29 +14193,34 @@ components:
           type: integer
           format: int32
         receivedDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         estimatedReturnDepartureDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         actualReturnDepartureDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         estimatedReturnArrivalDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         actualReturnArrivalDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
         rejectedPackagesReturned:
           type: boolean
@@ -14431,13 +14481,15 @@ components:
           type: string
           nullable: true
         estimatedDepartureDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         estimatedArrivalDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         grossWeight:
           type: number
           format: double
@@ -14488,13 +14540,15 @@ components:
         isLayover:
           type: boolean
         estimatedDepartureDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         estimatedArrivalDateTime:
-          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
           type: string
-          format: date
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
         transporterDetails:
           oneOf:
             - $ref: '#/components/schemas/TransferDeliveryTransporterDetail'

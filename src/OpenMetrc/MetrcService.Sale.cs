@@ -234,14 +234,14 @@ public partial class MetrcService : ISaleClient
 
     [MapsToApi(MetrcEndpoint.get_sales_v1_transactions_salesDateStart_salesDateEnd)]
     Task<ICollection<SaleTransaction>?> ISaleClient.GetTransactionsByDateRangeAsync(string licenseNumber,
-        DateTimeOffset salesDateStart, DateTimeOffset salesDateEnd) =>
+        DateTime salesDateStart, DateTime salesDateEnd) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<SaleTransaction>?>(new List<SaleTransaction>())
             : SaleClient.GetTransactionsByDateRangeAsync(licenseNumber, salesDateStart, salesDateEnd);
 
     [MapsToApi(MetrcEndpoint.get_sales_v1_transactions_salesDateStart_salesDateEnd)]
     Task<ICollection<SaleTransaction>?> ISaleClient.GetTransactionsByDateRangeAsync(string licenseNumber,
-        DateTimeOffset salesDateStart, DateTimeOffset salesDateEnd,
+        DateTime salesDateStart, DateTime salesDateEnd,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<SaleTransaction>?>(new List<SaleTransaction>())
@@ -249,28 +249,28 @@ public partial class MetrcService : ISaleClient
                 cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_sales_v1_transactions_date)]
-    Task ISaleClient.CreateSaleTransactionSummaryAsync(string licenseNumber, DateTimeOffset date,
+    Task ISaleClient.CreateSaleTransactionSummaryAsync(string licenseNumber, DateTime date,
         IEnumerable<SaleTransactionSummary>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : SaleClient.CreateSaleTransactionSummaryAsync(licenseNumber, date, body);
 
     [MapsToApi(MetrcEndpoint.post_sales_v1_transactions_date)]
-    Task ISaleClient.CreateSaleTransactionSummaryAsync(string licenseNumber, DateTimeOffset date,
+    Task ISaleClient.CreateSaleTransactionSummaryAsync(string licenseNumber, DateTime date,
         IEnumerable<SaleTransactionSummary>? body, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : SaleClient.CreateSaleTransactionSummaryAsync(licenseNumber, date, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.put_sales_v1_transactions_date)]
-    Task ISaleClient.UpdateSaleTransactionSummaryAsync(string licenseNumber, DateTimeOffset date,
+    Task ISaleClient.UpdateSaleTransactionSummaryAsync(string licenseNumber, DateTime date,
         IEnumerable<SaleTransactionSummary>? body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : SaleClient.UpdateSaleTransactionSummaryAsync(licenseNumber, date, body);
 
     [MapsToApi(MetrcEndpoint.put_sales_v1_transactions_date)]
-    Task ISaleClient.UpdateSaleTransactionSummaryAsync(string licenseNumber, DateTimeOffset date,
+    Task ISaleClient.UpdateSaleTransactionSummaryAsync(string licenseNumber, DateTime date,
         IEnumerable<SaleTransactionSummary>? body, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask

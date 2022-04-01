@@ -60,7 +60,6 @@ builder.Services.AddSwaggerGen(c =>
 
     c.DocumentFilter<AdditionalPropertiesDocumentFilter>();
     c.SchemaFilter<DateTimeSchemaFilter>();
-    c.ParameterFilter<DateTimeParameterFilter>();
     c.OperationFilter<AuthorizationOperationFilter>();
 
     //Set the OperationIds for the OpenAPI spec to be the action name. Ensure that no names are duplicated across all controllers just to be safe.

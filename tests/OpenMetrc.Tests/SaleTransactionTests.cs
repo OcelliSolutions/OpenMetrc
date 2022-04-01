@@ -69,8 +69,8 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
                 try
                 {
                     var saleTransactions = await apiKey.MetrcService.Sales.GetTransactionsByDateRangeAsync(
-                        facility.License.Number, DateTimeOffset.UtcNow.AddDays(daysBack - 1),
-                        DateTimeOffset.UtcNow.AddDays(daysBack));
+                        facility.License.Number, DateTime.UtcNow.AddDays(daysBack - 1),
+                        DateTime.UtcNow.AddDays(daysBack));
                     if (saleTransactions == null) continue;
                     wasTested = wasTested || saleTransactions.Any();
                     foreach (var saleTransaction in saleTransactions)
