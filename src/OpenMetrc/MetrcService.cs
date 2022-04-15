@@ -83,6 +83,7 @@ public partial class MetrcService : IMetrcService
             var byteArray = Encoding.ASCII.GetBytes($"{_openMetrcConfig.SoftwareApiKey}:{_openMetrcConfig.UserApiKey}");
             HttpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+            HttpClient.Timeout = TimeSpan.FromMinutes(3);
             EmployeeClients.TryAdd(MetrcClientKey,
                 new EmployeeClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
             FacilityClients.TryAdd(MetrcClientKey,
