@@ -225,7 +225,7 @@ internal static class MetrcEndpointExtensions
             MetrcEndpoint.get_transfers_v1_templates_delivery_id_transporters_details => new[] {"ak","ca","co","dc","la","me","md","ma","mi","mo","mt","nv","oh","ok","or","wv"},
             MetrcEndpoint.get_transfers_v1_templates_id_deliveries => new[] {"ak","ca","co","dc","la","me","md","ma","mi","mo","mt","nv","oh","ok","or","wv"},
             MetrcEndpoint.get_transfers_v1_types => new[] {"ak","ca","co","dc","la","me","md","ma","mi","mo","mt","nv","oh","ok","or","wv"},
-            MetrcEndpoint.get_unitsofmeasure_v1_active => new[] {"ak","ca","co","dc","la","me","md","ma","mi","mo","mt","nv","oh","ok","or","wv"},
+            MetrcEndpoint.get_unitsofmeasure_v1_active => new[] {"ak","az","ca","co","dc","fl","gu","il","la","me","md","ma","mi","mn","mo","mt","nv","nj","ny","oh","ok","or","ri","sd","va","wv"},
             MetrcEndpoint.post_harvests_v1_create_packages => new[] {"ak","ca","co","dc","la","me","md","ma","mi","mo","mt","nv","oh","ok","or","wv"},
             MetrcEndpoint.post_harvests_v1_create_packages_testing => new[] {"ak","ca","co","dc","la","me","md","ma","mi","mo","mt","nv","oh","ok","or","wv"},
             MetrcEndpoint.post_harvests_v1_finish => new[] {"ak","ca","co","dc","la","me","md","ma","mi","mo","mt","nv","oh","ok","or","wv"},

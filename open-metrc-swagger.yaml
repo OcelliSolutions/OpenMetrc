@@ -5,36 +5,58 @@ info:
   version: v1
 servers:
   - url: https://api-ak.metrc.com
+  - url: https://api-al.metrc.com
+  - url: https://api-az.metrc.com
   - url: https://api-ca.metrc.com
   - url: https://api-co.metrc.com
   - url: https://api-dc.metrc.com
+  - url: https://api-fl.metrc.com
+  - url: https://api-gu.metrc.com
+  - url: https://api-il.metrc.com
   - url: https://api-la.metrc.com
   - url: https://api-ma.metrc.com
   - url: https://api-md.metrc.com
   - url: https://api-me.metrc.com
   - url: https://api-mi.metrc.com
+  - url: https://api-mn.metrc.com
   - url: https://api-mo.metrc.com
   - url: https://api-mt.metrc.com
+  - url: https://api-nj.metrc.com
   - url: https://api-nv.metrc.com
+  - url: https://api-ny.metrc.com
   - url: https://api-oh.metrc.com
   - url: https://api-ok.metrc.com
   - url: https://api-or.metrc.com
+  - url: https://api-ri.metrc.com
+  - url: https://api-sd.metrc.com
+  - url: https://api-va.metrc.com
   - url: https://api-wv.metrc.com
   - url: https://sandbox-api-ak.metrc.com
+  - url: https://sandbox-api-al.metrc.com
+  - url: https://sandbox-api-az.metrc.com
   - url: https://sandbox-api-ca.metrc.com
   - url: https://sandbox-api-co.metrc.com
   - url: https://sandbox-api-dc.metrc.com
+  - url: https://sandbox-api-fl.metrc.com
+  - url: https://sandbox-api-gu.metrc.com
+  - url: https://sandbox-api-il.metrc.com
   - url: https://sandbox-api-la.metrc.com
   - url: https://sandbox-api-ma.metrc.com
   - url: https://sandbox-api-md.metrc.com
   - url: https://sandbox-api-me.metrc.com
   - url: https://sandbox-api-mi.metrc.com
+  - url: https://sandbox-api-mn.metrc.com
   - url: https://sandbox-api-mo.metrc.com
   - url: https://sandbox-api-mt.metrc.com
+  - url: https://sandbox-api-nj.metrc.com
   - url: https://sandbox-api-nv.metrc.com
+  - url: https://sandbox-api-ny.metrc.com
   - url: https://sandbox-api-oh.metrc.com
   - url: https://sandbox-api-ok.metrc.com
   - url: https://sandbox-api-or.metrc.com
+  - url: https://sandbox-api-ri.metrc.com
+  - url: https://sandbox-api-sd.metrc.com
+  - url: https://sandbox-api-va.metrc.com
   - url: https://sandbox-api-wv.metrc.com
 paths:
   /employees/v1:
@@ -10910,7 +10932,7 @@ paths:
       tags:
         - UnitOfMeasure
       summary: Get all units of measures
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, fl, gu, il, la, me, md, ma, mi, mn, mo, mt, nv, nj, ny, oh, ok, or, ri, sd, va, wv'
       operationId: GetUnitsOfMeasure
       responses:
         '200':

@@ -5,7 +5,7 @@ namespace OpenMetrc;
 public class OpenMetrcConfig
 {
     public OpenMetrcConfig(string subDomain, string softwareApiKey, string userApiKey,
-        bool returnEmptyOnNotSupported = false, int callsPerSecondPerFacility = 50, int callsPerSecondPerIntegrator = 150, int concurrentCallsPerSecondPerFacility = 10, int concurrentCallsPerSecondPerIntegrator = 30)
+        bool returnEmptyOnNotSupported = false, int callsPerSecondPerFacility = 50, int callsPerSecondPerIntegrator = 150, int concurrentCallsPerSecondPerFacility = 10, int concurrentCallsPerSecondPerIntegrator = 30, int httpTimeoutSeconds = 180)
     {
         SubDomain = subDomain;
         SoftwareApiKey = softwareApiKey;
@@ -15,6 +15,9 @@ public class OpenMetrcConfig
         CallsPerSecondPerIntegrator = callsPerSecondPerIntegrator;
         ConcurrentCallsPerSecondPerFacility = concurrentCallsPerSecondPerFacility;
         ConcurrentCallsPerSecondPerIntegrator = concurrentCallsPerSecondPerIntegrator;
+        HttpTimeout = httpTimeoutSeconds <= 0
+            ? new TimeSpan(0, 0, 0, 0, Timeout.Infinite)
+            : TimeSpan.FromSeconds(httpTimeoutSeconds);
     }
 
     [JsonPropertyName("sub_domain")]
@@ -46,4 +49,7 @@ public class OpenMetrcConfig
 
     [JsonPropertyName("concurrent_calls_per_second_per_integrator")]
     public int ConcurrentCallsPerSecondPerIntegrator { get; set; }
+
+    [JsonPropertyName("http_timeout_seconds")]
+    public TimeSpan HttpTimeout { get; set; }
 }

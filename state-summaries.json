@@ -1,5 +1,16 @@
 [
   {
+    "State": "al",
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
     "State": "ak",
     "Sections": [
       {
@@ -182,6 +193,17 @@
           "get_transfers_v1_types"
         ]
       },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "az",
+    "Sections": [
       {
         "Name": "UnitsOfMeasure",
         "Endpoints": [
@@ -793,6 +815,39 @@
           "get_transfers_v1_types"
         ]
       },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "fl",
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "gu",
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "il",
+    "Sections": [
       {
         "Name": "UnitsOfMeasure",
         "Endpoints": [
@@ -1813,6 +1868,17 @@
     ]
   },
   {
+    "State": "mn",
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
     "State": "mo",
     "Sections": [
       {
@@ -2442,6 +2508,28 @@
     ]
   },
   {
+    "State": "nj",
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "ny",
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
     "State": "oh",
     "Sections": [
       {
@@ -3024,6 +3112,39 @@
           "get_transfers_v1_types"
         ]
       },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "ri",
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "sd",
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "va",
+    "Sections": [
       {
         "Name": "UnitsOfMeasure",
         "Endpoints": [

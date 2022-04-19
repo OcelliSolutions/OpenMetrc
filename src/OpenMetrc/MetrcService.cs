@@ -77,8 +77,9 @@ public partial class MetrcService : IMetrcService
                 CallsPerSecondPerFacility = _openMetrcConfig.CallsPerSecondPerFacility,
                 CallsPerSecondPerIntegrator = _openMetrcConfig.CallsPerSecondPerIntegrator,
                 ConcurrentCallsPerSecondPerFacility = _openMetrcConfig.ConcurrentCallsPerSecondPerFacility,
-                ConcurrentCallsPerSecondPerIntegrator = _openMetrcConfig.ConcurrentCallsPerSecondPerIntegrator
+                ConcurrentCallsPerSecondPerIntegrator = _openMetrcConfig.ConcurrentCallsPerSecondPerIntegrator,
             });
+            HttpClient.Timeout = _openMetrcConfig.HttpTimeout;
             //MetrcClients.TryAdd(MetrcClientKey, new MetrcClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
             var byteArray = Encoding.ASCII.GetBytes($"{_openMetrcConfig.SoftwareApiKey}:{_openMetrcConfig.UserApiKey}");
             HttpClient.DefaultRequestHeaders.Authorization =
