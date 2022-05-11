@@ -20,6 +20,7 @@ servers:
   - url: https://api-mi.metrc.com
   - url: https://api-mn.metrc.com
   - url: https://api-mo.metrc.com
+  - url: https://api-ms.metrc.com
   - url: https://api-mt.metrc.com
   - url: https://api-nj.metrc.com
   - url: https://api-nv.metrc.com
@@ -47,6 +48,7 @@ servers:
   - url: https://sandbox-api-mi.metrc.com
   - url: https://sandbox-api-mn.metrc.com
   - url: https://sandbox-api-mo.metrc.com
+  - url: https://sandbox-api-ms.metrc.com
   - url: https://sandbox-api-mt.metrc.com
   - url: https://sandbox-api-nj.metrc.com
   - url: https://sandbox-api-nv.metrc.com
@@ -101,7 +103,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -167,7 +169,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -243,7 +245,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -332,7 +334,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -421,7 +423,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -510,7 +512,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -576,7 +578,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -651,7 +653,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -736,7 +738,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -821,7 +823,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -906,7 +908,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -991,7 +993,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1076,7 +1078,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1161,7 +1163,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1247,7 +1249,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1315,7 +1317,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1398,7 +1400,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1470,7 +1472,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1543,7 +1545,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1618,7 +1620,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1703,7 +1705,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1777,7 +1779,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1843,7 +1845,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1921,7 +1923,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -1996,7 +1998,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -2081,7 +2083,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -2166,7 +2168,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -2252,7 +2254,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -2320,7 +2322,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -2403,7 +2405,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -2475,7 +2477,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -2550,7 +2552,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -2635,7 +2637,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -2721,7 +2723,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -2796,7 +2798,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -2885,7 +2887,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -2974,7 +2976,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -3063,7 +3065,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -3127,7 +3129,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -3200,7 +3202,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -3275,7 +3277,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -3360,7 +3362,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -3445,7 +3447,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -3530,7 +3532,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -3615,7 +3617,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -3700,7 +3702,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -3785,7 +3787,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -3870,7 +3872,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -3955,7 +3957,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -4040,7 +4042,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -4126,7 +4128,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -4194,7 +4196,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -4277,7 +4279,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -4355,7 +4357,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -4430,7 +4432,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -4515,7 +4517,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -4601,7 +4603,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -4676,7 +4678,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -4765,7 +4767,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -4854,7 +4856,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -4943,7 +4945,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5032,7 +5034,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5121,7 +5123,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5195,7 +5197,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5276,7 +5278,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5340,7 +5342,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5406,7 +5408,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5479,7 +5481,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5554,7 +5556,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5639,7 +5641,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5724,7 +5726,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5809,7 +5811,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5894,7 +5896,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -5979,7 +5981,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -6064,7 +6066,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -6149,7 +6151,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -6235,7 +6237,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -6324,7 +6326,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -6413,7 +6415,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -6477,7 +6479,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -6552,7 +6554,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -6641,7 +6643,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -6726,7 +6728,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -6811,7 +6813,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -6896,7 +6898,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -6981,7 +6983,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -7066,7 +7068,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -7151,7 +7153,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -7225,7 +7227,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -7329,7 +7331,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -7433,7 +7435,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -7509,7 +7511,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -7584,7 +7586,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -7668,7 +7670,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -7747,7 +7749,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -7830,7 +7832,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -7917,7 +7919,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -8004,7 +8006,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -8100,7 +8102,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -8214,7 +8216,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -8318,7 +8320,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -8394,7 +8396,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -8462,7 +8464,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -8547,7 +8549,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -8631,7 +8633,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -8716,7 +8718,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -8792,7 +8794,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -8868,7 +8870,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -8936,7 +8938,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9019,7 +9021,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9094,7 +9096,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9179,7 +9181,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9277,7 +9279,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9365,7 +9367,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9437,7 +9439,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9511,7 +9513,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9585,7 +9587,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9659,7 +9661,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9733,7 +9735,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9807,7 +9809,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9881,7 +9883,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -9945,7 +9947,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10017,7 +10019,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10092,7 +10094,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10176,7 +10178,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10255,7 +10257,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10353,7 +10355,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10427,7 +10429,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10511,7 +10513,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10595,7 +10597,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10669,7 +10671,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10743,7 +10745,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10817,7 +10819,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10886,7 +10888,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:
@@ -10932,7 +10934,7 @@ paths:
       tags:
         - UnitOfMeasure
       summary: Get all units of measures
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, fl, gu, il, la, me, md, ma, mi, mn, mo, mt, nv, nj, ny, oh, ok, or, ri, sd, va, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: al, ak, az, ca, co, dc, fl, gu, il, la, me, md, ma, mi, mn, ms, mo, mt, nv, nj, ny, oh, ok, or, ri, sd, va, wv'
       operationId: GetUnitsOfMeasure
       responses:
         '200':
@@ -10962,7 +10964,7 @@ paths:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
         '429':
-          description: Client Error
+          description: Too Many Requests
           content:
             application/json:
               schema:

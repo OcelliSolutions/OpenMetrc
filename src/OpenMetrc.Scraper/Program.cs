@@ -45,7 +45,7 @@ foreach (var state in states)
 }
 
 var json = JsonSerializer.Serialize(stateSummaries);
-const string path = "state-summaries.json";
+const string path = "../../../../../state-summaries.json";
 await File.WriteAllTextAsync(path, FormatJsonText(json));
 
 Console.ForegroundColor = ConsoleColor.Yellow;

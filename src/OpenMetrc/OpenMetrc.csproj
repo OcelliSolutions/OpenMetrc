@@ -4,16 +4,23 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<PackageId>OpenMETRC</PackageId>
+		<PackageId>Ocelli.OpenMETRC</PackageId>
 		<Company>Code Cooper LLC</Company>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<Authors>Jason Cooper</Authors>
 		<Description>Using OpenAPI standards, create an interface for the METRC platform's APIs.</Description>
 		<PackageProjectUrl>https://github.com/codecooper/OpenMetrc</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
-		<PackageTags>openapi swagger metrc</PackageTags>
+		<PackageTags>openapi swagger metrc ocelli</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>app_icon_128_128.jpg</PackageIcon>
 	</PropertyGroup>
+	<ItemGroup>
+		<None Include="..\..\app_icon_128_128.jpg">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
 	<ItemGroup>
 		<OpenApiReference Include="../../open-metrc-swagger.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenMetrc" ClassName="{controller}Client" Link="OpenAPIs/open-metrc-swagger.yaml" OutputPath="MetrcClient.cs">
@@ -22,8 +29,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
-		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="6.0.3">
+		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.8" />
+		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="6.0.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -67,5 +74,16 @@
 
 	<ItemGroup>
 		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Update="readme.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
 </Project>

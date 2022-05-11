@@ -1,9 +1,35 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
+[assembly: InternalsVisibleTo("OpenMetrc.Tests")]
 namespace OpenMetrc;
 
 public class OpenMetrcConfig
 {
+    public OpenMetrcConfig()
+    {
+        SubDomain = "invalid";
+        SoftwareApiKey = "not_supplied";
+        UserApiKey = "not_supplied";   
+        ReturnEmptyOnNotSupported = false;
+        CallsPerSecondPerFacility = 50;
+        CallsPerSecondPerIntegrator = 150;
+        ConcurrentCallsPerSecondPerFacility = 10;
+        ConcurrentCallsPerSecondPerIntegrator = 30;
+        HttpTimeout = TimeSpan.FromSeconds(180);
+    }
+    public OpenMetrcConfig(string subDomain, string softwareApiKey, string userApiKey)
+    {
+        SubDomain = subDomain;
+        SoftwareApiKey = softwareApiKey;
+        UserApiKey = userApiKey;
+        ReturnEmptyOnNotSupported = false;
+        CallsPerSecondPerFacility = 50;
+        CallsPerSecondPerIntegrator = 150;
+        ConcurrentCallsPerSecondPerFacility = 10;
+        ConcurrentCallsPerSecondPerIntegrator = 30;
+        HttpTimeout = TimeSpan.FromSeconds(180);
+    }
     public OpenMetrcConfig(string subDomain, string softwareApiKey, string userApiKey,
         bool returnEmptyOnNotSupported = false, int callsPerSecondPerFacility = 50, int callsPerSecondPerIntegrator = 150, int concurrentCallsPerSecondPerFacility = 10, int concurrentCallsPerSecondPerIntegrator = 30, int httpTimeoutSeconds = 180)
     {

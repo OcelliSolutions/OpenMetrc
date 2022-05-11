@@ -8,4 +8,6 @@ internal class ApiKeySetting
     public int DaysToTest { get; set; } = 1;
     [JsonPropertyName("configs")]
     public List<OpenMetrcConfig>? OpenMetrcConfigs { get; set; }
+    [JsonPropertyName("disabled_configs")]
+    public List<OpenMetrcConfig>? DisabledOpenMetrcConfigs { get; set; }
 }

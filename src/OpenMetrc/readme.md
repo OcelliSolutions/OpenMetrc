@@ -1,4 +1,4 @@
-# OpenMETRC
+# Open:METRC
 
 This is the final product that is published to NuGet. It contains several features that do not come out of the box with an OpenAPI code generator. These features include:
 

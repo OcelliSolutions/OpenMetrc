@@ -1879,6 +1879,17 @@
     ]
   },
   {
+    "State": "ms",
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
     "State": "mo",
     "Sections": [
       {
