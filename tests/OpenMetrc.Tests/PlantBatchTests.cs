@@ -17,7 +17,7 @@ public class PlantBatchTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [SkippableFact]
-    public async void GetActivePlantBatchesAllAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetActivePlantBatchesAllAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -28,9 +28,9 @@ public class PlantBatchTests : IClassFixture<SharedFixture>
             do
                 try
                 {
-                    var plantBatches =
-                        await apiKey.MetrcService.PlantBatches.GetActivePlantBatchesAsync(facility.License.Number,
-                            DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    var plantBatches = Fixture.SafeExecutor(() =>
+                        apiKey.MetrcService.PlantBatches.GetActivePlantBatchesAsync(facility.License.Number,
+                            DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
                     if (plantBatches == null) continue;
                     wasTested = wasTested || plantBatches.Any();
                     foreach (var plantBatch in plantBatches)
@@ -38,23 +38,26 @@ public class PlantBatchTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
 
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
             while (true);
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
@@ -63,7 +66,7 @@ public class PlantBatchTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetInactivePlantBatchesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetInactivePlantBatchesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -74,9 +77,9 @@ public class PlantBatchTests : IClassFixture<SharedFixture>
             do
                 try
                 {
-                    var plantBatches =
-                        await apiKey.MetrcService.PlantBatches.GetInactivePlantBatchesAsync(facility.License.Number,
-                            DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    var plantBatches = Fixture.SafeExecutor(() =>
+                        apiKey.MetrcService.PlantBatches.GetInactivePlantBatchesAsync(facility.License.Number,
+                            DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
                     if (plantBatches == null) continue;
                     wasTested = wasTested || plantBatches.Any();
                     foreach (var plantBatch in plantBatches)
@@ -85,23 +88,26 @@ public class PlantBatchTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
 
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
             while (true);
 
@@ -111,7 +117,7 @@ public class PlantBatchTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetPlantBatchTypesAsync_ValidEndpoint_ShouldPass()
+    public void GetPlantBatchTypesAsync_ValidEndpoint_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -119,25 +125,27 @@ public class PlantBatchTests : IClassFixture<SharedFixture>
         foreach (var apiKey in Fixture.ApiKeys)
             try
             {
-                var plantBatches = await apiKey.MetrcService.PlantBatches.GetPlantBatchTypesAsync();
+                var plantBatches = Fixture.SafeExecutor(() => apiKey.MetrcService.PlantBatches.GetPlantBatchTypesAsync().Result);
                 wasTested = wasTested || plantBatches.Any();
             }
-            catch (ApiException<ErrorResponse?> ex)
+            catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                if (ex.Unauthorized || ex.Unavailable)
                 {
-                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                    _testOutputHelper.WriteLine(ex.Response);
-                    throw;
+                    unauthorized++;
+                    continue;
                 }
-
-                unauthorized++;
-            }
-            catch (TimeoutException)
-            {
-                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                timeout++;
+                if (ex.Timeout)
+                {
+                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                    timeout++;
+                }
+                else
+                {
+                    _testOutputHelper.WriteLine(ex.Message);
+                    if (!string.IsNullOrWhiteSpace(ex.Response))
+                        _testOutputHelper.WriteLine(ex.Response);
+                }
             }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");

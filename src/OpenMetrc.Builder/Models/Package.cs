@@ -7,6 +7,7 @@ public class Package
     public string? Label { get; set; }
     public string? PackageType { get; set; }
     public string? SourceHarvestNames { get; set; }
+    public int? SourceHarvestCount { get; set; }
     public int? LocationId { get; set; }
     public string? LocationName { get; set; }
     public string? LocationTypeName { get; set; }
@@ -31,8 +32,10 @@ public class Package
     public bool? IsDonationPersistent { get; set; }
     public bool? SourcePackageIsDonation { get; set; }
     public bool? SourcePackageIsTradeSample { get; set; }
+    public int? SourcePackageCount { get; set; }
     public bool? IsTestingSample { get; set; }
     public bool? IsProcessValidationTestingSample { get; set; }
+    public int? SourceProcessingJobCount { get; set; }
     public bool? IsTradeSamplePersistent { get; set; }
     public bool? ProductRequiresRemediation { get; set; }
     public bool? ContainsRemediatedProduct { get; set; }

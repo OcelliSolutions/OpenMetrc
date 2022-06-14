@@ -17,7 +17,7 @@ public class UnitOfMeasureTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [SkippableFact]
-    public async void GetActiveUnitOfMeasuresAllAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetActiveUnitOfMeasuresAllAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -25,28 +25,30 @@ public class UnitOfMeasureTests : IClassFixture<SharedFixture>
         foreach (var apiKey in Fixture.ApiKeys)
             try
             {
-                var unitOfMeasures = await apiKey.MetrcService.UnitOfMeasures.GetUnitsOfMeasureAsync();
+                var unitOfMeasures = Fixture.SafeExecutor(() => apiKey.MetrcService.UnitOfMeasures.GetUnitsOfMeasureAsync().Result);
                 if (unitOfMeasures == null) continue;
                 wasTested = wasTested || unitOfMeasures.Any();
                 foreach (var unitOfMeasure in unitOfMeasures)
                     _additionalPropertiesHelper.CheckAdditionalProperties(unitOfMeasure, string.Empty);
             }
-            catch (ApiException<ErrorResponse?> ex)
+            catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                if (ex.Unauthorized || ex.Unavailable)
                 {
-                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                    _testOutputHelper.WriteLine(ex.Response);
-                    throw;
+                    unauthorized++;
+                    continue;
                 }
-
-                unauthorized++;
-            }
-            catch (TimeoutException)
-            {
-                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                timeout++;
+                if (ex.Timeout)
+                {
+                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                    timeout++;
+                }
+                else
+                {
+                    _testOutputHelper.WriteLine(ex.Message);
+                    if (!string.IsNullOrWhiteSpace(ex.Response))
+                        _testOutputHelper.WriteLine(ex.Response);
+                }
             }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");

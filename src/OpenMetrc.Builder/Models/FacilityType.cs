@@ -57,4 +57,6 @@ public class FacilityType
     public bool? CanSpecifyPatientSalesLimitExemption { get; set; }
     public bool? CanReportPatientsAdverseResponses { get; set; }
     public bool? CanReportStrainProperties { get; set; }
+    public bool? CanRecordProcessingJobs { get; set; }
+    public bool? CanClonePlantBatches { get; set; }
 }

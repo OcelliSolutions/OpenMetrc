@@ -31,7 +31,8 @@ public class SharedFixture : IDisposable
             throw new KeyNotFoundException($@"Please create a `api_keys.json` file. {ex.Message}");
         }
 
-        Task.Run(async () => await this.LoadFacilities()).Wait();
+        this.LoadFacilities().Wait();
+        //Task.Run(async () => await this.LoadFacilities()).Wait();
     }
 
     public List<ApiKey> ApiKeys { get; set; } = new();
@@ -59,5 +60,60 @@ public class SharedFixture : IDisposable
             {
                 Console.WriteLine($@"SubDomain: {key.OpenMetrcConfig.SubDomain} - {ex.Message}");
             }
+            catch (ApiException ex)
+            {
+                Console.WriteLine($@"SubDomain: {key.OpenMetrcConfig.SubDomain} - {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($@"SubDomain: {key.OpenMetrcConfig.SubDomain} - {ex.Message}");
+            }
+    }
+
+    public T SafeExecutor<T>(Func<T> action)
+    {
+        try
+        {
+            return action();
+        }
+        catch (ApiException<ErrorResponse?> ex)
+        {
+            if (ex.StatusCode is StatusCodes.Status401Unauthorized or StatusCodes.Status503ServiceUnavailable)
+                throw new TestExceptionWrapper(null, null, ex.InnerException, true);
+            throw new TestExceptionWrapper(ex.Result?.Message ?? ex.Message, ex.Response, ex.InnerException);
+        }/*
+        catch (ApiException ex)
+        {
+            if (ex.StatusCode == StatusCodes.Status503ServiceUnavailable)
+                throw new TestExceptionWrapper(null, null, ex.InnerException, unavailable: true);
+            throw new TestExceptionWrapper(ex.Message, ex.Response, ex.InnerException);
+        }*/
+        catch (TimeoutException ex)
+        {
+            throw new TestExceptionWrapper(ex.Message, null, null, unavailable: true);
+        }
+        catch (Exception ex)
+        {
+            throw new TestExceptionWrapper(ex.Message, ex.InnerException);
+        }
+    }
+
+    public class TestExceptionWrapper: Exception
+    {
+        public string? Response { get; }
+        public bool Unauthorized { get; }
+        public bool Unavailable { get; }
+        public bool Timeout { get; }
+
+        public TestExceptionWrapper(string? message, string? response, Exception? innerException, bool unauthorized = false, bool unavailable = false, bool timeout = false) : base(message, innerException)
+        {
+            Response = response;
+            Unauthorized = unauthorized;
+            Unavailable = unavailable;
+            Timeout = timeout;
+        }
+        public TestExceptionWrapper(string? message, Exception? innerException) : base(message, innerException)
+        {
+        }
     }
 }

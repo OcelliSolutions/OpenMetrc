@@ -38,6 +38,16 @@ public class FacilityTests : IClassFixture<SharedFixture>
 
                 unauthorized++;
             }
+            catch (ApiException ex)
+            {
+                if (ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                {
+                    _testOutputHelper.WriteLine(ex.Message);
+                    _testOutputHelper.WriteLine(ex.Response);
+                    throw;
+                }
+                unauthorized++;
+            }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
         Skip.IfNot(wasTested, "WARN: No facilities were returned.");

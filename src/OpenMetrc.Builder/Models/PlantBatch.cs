@@ -29,6 +29,9 @@ public class PlantBatch
     public string? SourcePlantLabel { get; set; }
     public int? SourcePlantBatchId { get; set; }
     public string? SourcePlantBatchName { get; set; }
+    public int[]? SourcePlantBatchIds { get; set; }
+    public string? SourcePlantBatchNames { get; set; }
+    public bool? MultiPlantBatch { get; set; }
     public DateTime? PlantedDate { get; set; }
     public DateTimeOffset LastModified { get; set; }
 }

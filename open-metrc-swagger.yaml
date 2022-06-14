@@ -5,7 +5,6 @@ info:
   version: v1
 servers:
   - url: https://api-ak.metrc.com
-  - url: https://api-al.metrc.com
   - url: https://api-az.metrc.com
   - url: https://api-ca.metrc.com
   - url: https://api-co.metrc.com
@@ -20,7 +19,6 @@ servers:
   - url: https://api-mi.metrc.com
   - url: https://api-mn.metrc.com
   - url: https://api-mo.metrc.com
-  - url: https://api-ms.metrc.com
   - url: https://api-mt.metrc.com
   - url: https://api-nj.metrc.com
   - url: https://api-nv.metrc.com
@@ -33,7 +31,6 @@ servers:
   - url: https://api-va.metrc.com
   - url: https://api-wv.metrc.com
   - url: https://sandbox-api-ak.metrc.com
-  - url: https://sandbox-api-al.metrc.com
   - url: https://sandbox-api-az.metrc.com
   - url: https://sandbox-api-ca.metrc.com
   - url: https://sandbox-api-co.metrc.com
@@ -48,7 +45,6 @@ servers:
   - url: https://sandbox-api-mi.metrc.com
   - url: https://sandbox-api-mn.metrc.com
   - url: https://sandbox-api-mo.metrc.com
-  - url: https://sandbox-api-ms.metrc.com
   - url: https://sandbox-api-mt.metrc.com
   - url: https://sandbox-api-nj.metrc.com
   - url: https://sandbox-api-nv.metrc.com
@@ -128,12 +124,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /facilities/v1:
     get:
       tags:
@@ -194,12 +184,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/harvests/v1/{id}':
     get:
       tags:
@@ -270,12 +254,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /harvests/v1/active:
     get:
       tags:
@@ -359,12 +337,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /harvests/v1/onhold:
     get:
       tags:
@@ -448,12 +420,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /harvests/v1/inactive:
     get:
       tags:
@@ -537,12 +503,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /harvests/v1/waste/types:
     get:
       tags:
@@ -603,12 +563,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /harvests/v1/create/packages:
     post:
       tags:
@@ -678,12 +632,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -763,12 +711,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -848,12 +790,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -933,12 +869,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -1018,12 +948,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -1103,12 +1027,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -1188,12 +1106,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -1274,12 +1186,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
     delete:
       tags:
         - Item
@@ -1342,12 +1248,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -1425,12 +1325,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /items/v1/categories:
     get:
       tags:
@@ -1497,12 +1391,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /items/v1/brands:
     get:
       tags:
@@ -1570,12 +1458,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /items/v1/create:
     post:
       tags:
@@ -1645,12 +1527,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -1730,12 +1606,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -1804,12 +1674,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /labtests/v1/types:
     get:
       tags:
@@ -1870,12 +1734,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /labtests/v1/results:
     get:
       tags:
@@ -1948,12 +1806,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /labtests/v1/record:
     post:
       tags:
@@ -2023,12 +1875,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -2108,12 +1954,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -2193,12 +2033,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -2279,12 +2113,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
     delete:
       tags:
         - Location
@@ -2347,12 +2175,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -2430,12 +2252,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /locations/v1/types:
     get:
       tags:
@@ -2502,12 +2318,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /locations/v1/create:
     post:
       tags:
@@ -2577,12 +2387,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -2662,12 +2466,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -2748,12 +2546,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/packages/v1/{label}':
     get:
       tags:
@@ -2823,12 +2615,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /packages/v1/active:
     get:
       tags:
@@ -2912,12 +2698,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /packages/v1/onhold:
     get:
       tags:
@@ -3001,12 +2781,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /packages/v1/inactive:
     get:
       tags:
@@ -3090,12 +2864,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /packages/v1/types:
     get:
       tags:
@@ -3154,12 +2922,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /packages/v1/adjust/reasons:
     get:
       tags:
@@ -3227,12 +2989,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /packages/v1/create:
     post:
       tags:
@@ -3302,12 +3058,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -3387,12 +3137,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -3472,12 +3216,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -3557,12 +3295,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -3642,12 +3374,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -3727,12 +3453,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -3812,12 +3532,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -3897,12 +3611,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -3982,12 +3690,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -4067,12 +3769,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -4153,12 +3849,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
     delete:
       tags:
         - Patient
@@ -4221,12 +3911,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -4304,12 +3988,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/patients/v1/statuses/{patientLicenseNumber}':
     get:
       tags:
@@ -4382,12 +4060,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /patients/v1/add:
     post:
       tags:
@@ -4457,12 +4129,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -4542,12 +4208,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -4628,12 +4288,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/plants/v1/{label}':
     get:
       tags:
@@ -4703,12 +4357,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plants/v1/vegetative:
     get:
       tags:
@@ -4792,12 +4440,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plants/v1/flowering:
     get:
       tags:
@@ -4881,12 +4523,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plants/v1/onhold:
     get:
       tags:
@@ -4970,12 +4606,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plants/v1/inactive:
     get:
       tags:
@@ -5059,12 +4689,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plants/v1/additives:
     get:
       tags:
@@ -5148,12 +4772,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
     post:
       tags:
         - Plant
@@ -5222,12 +4840,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -5303,12 +4915,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plants/v1/additives/types:
     get:
       tags:
@@ -5367,12 +4973,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plants/v1/waste/methods:
     get:
       tags:
@@ -5433,12 +5033,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plants/v1/waste/reasons:
     get:
       tags:
@@ -5506,12 +5100,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plants/v1/moveplants:
     post:
       tags:
@@ -5581,12 +5169,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -5666,12 +5248,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -5751,12 +5327,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -5836,12 +5406,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -5921,12 +5485,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -6006,12 +5564,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -6091,12 +5643,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -6176,12 +5722,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -6262,12 +5802,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plantbatches/v1/active:
     get:
       tags:
@@ -6351,12 +5885,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plantbatches/v1/inactive:
     get:
       tags:
@@ -6440,12 +5968,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plantbatches/v1/types:
     get:
       tags:
@@ -6504,12 +6026,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /plantbatches/v1/createplantings:
     post:
       tags:
@@ -6579,12 +6095,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -6668,12 +6178,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -6753,12 +6257,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -6838,12 +6336,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -6923,12 +6415,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -7008,12 +6494,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -7093,12 +6573,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -7178,12 +6652,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -7252,12 +6720,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /sales/v1/receipts/active:
     get:
       tags:
@@ -7356,12 +6818,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /sales/v1/receipts/inactive:
     get:
       tags:
@@ -7460,12 +6916,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/sales/v1/receipts/{id}':
     get:
       tags:
@@ -7536,12 +6986,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /sales/v1/receipts:
     post:
       tags:
@@ -7611,12 +7055,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -7695,12 +7133,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -7774,12 +7206,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -7857,12 +7283,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/sales/v1/transactions/{salesDateStart}/{salesDateEnd}':
     get:
       tags:
@@ -7944,12 +7364,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/sales/v1/transactions/{date}':
     post:
       tags:
@@ -8031,12 +7445,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -8127,12 +7535,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -8241,12 +7643,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /sales/v1/deliveries/inactive:
     get:
       tags:
@@ -8345,12 +7741,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/sales/v1/delivery/{id}':
     get:
       tags:
@@ -8421,12 +7811,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
     delete:
       tags:
         - Sale
@@ -8489,12 +7873,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -8574,12 +7952,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -8658,12 +8030,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -8743,12 +8109,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -8819,12 +8179,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/strains/v1/{id}':
     get:
       tags:
@@ -8895,12 +8249,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
     delete:
       tags:
         - Strain
@@ -8963,12 +8311,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -9046,12 +8388,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /strains/v1/create:
     post:
       tags:
@@ -9121,12 +8457,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -9206,12 +8536,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -9304,12 +8628,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /transfers/v1/outgoing:
     get:
       tags:
@@ -9392,12 +8710,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /transfers/v1/rejected:
     get:
       tags:
@@ -9464,12 +8776,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/transfers/v1/{id}/deliveries':
     get:
       tags:
@@ -9538,12 +8844,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/transfers/v1/delivery/{id}/transporters':
     get:
       tags:
@@ -9612,12 +8912,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/transfers/v1/delivery/{id}/transporters/details':
     get:
       tags:
@@ -9686,12 +8980,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/transfers/v1/delivery/{id}/packages':
     get:
       tags:
@@ -9760,12 +9048,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/transfers/v1/delivery/{id}/packages/wholesale':
     get:
       tags:
@@ -9834,12 +9116,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/transfers/v1/delivery/package/{id}/requiredlabtestbatches':
     get:
       tags:
@@ -9908,12 +9184,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /transfers/v1/delivery/packages/states:
     get:
       tags:
@@ -9972,12 +9242,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /transfers/v1/types:
     get:
       tags:
@@ -10044,12 +9308,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /transfers/v1/external/incoming:
     post:
       tags:
@@ -10119,12 +9377,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -10203,12 +9455,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -10282,12 +9528,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -10380,12 +9620,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
     post:
       tags:
         - Transfer
@@ -10454,12 +9688,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -10538,12 +9766,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -10622,12 +9844,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/transfers/v1/templates/delivery/{id}/transporters':
     get:
       tags:
@@ -10696,12 +9912,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/transfers/v1/templates/delivery/{id}/transporters/details':
     get:
       tags:
@@ -10770,12 +9980,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/transfers/v1/templates/delivery/{id}/packages':
     get:
       tags:
@@ -10844,12 +10048,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   '/transfers/v1/templates/{id}':
     delete:
       tags:
@@ -10913,12 +10111,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '200':
           description: Success
         '400':
@@ -10989,12 +10181,6 @@ paths:
                 nullable: true
         '503':
           description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
 components:
   schemas:
     ActiveIngredient:
@@ -12288,6 +11474,12 @@ components:
         canReportStrainProperties:
           type: boolean
           nullable: true
+        canRecordProcessingJobs:
+          type: boolean
+          nullable: true
+        canClonePlantBatches:
+          type: boolean
+          nullable: true
       additionalProperties: { }
     FinishHarvestRequest:
       type: object
@@ -12981,6 +12173,10 @@ components:
         sourceHarvestNames:
           type: string
           nullable: true
+        sourceHarvestCount:
+          type: integer
+          format: int32
+          nullable: true
         locationId:
           type: integer
           format: int32
@@ -13059,11 +12255,19 @@ components:
         sourcePackageIsTradeSample:
           type: boolean
           nullable: true
+        sourcePackageCount:
+          type: integer
+          format: int32
+          nullable: true
         isTestingSample:
           type: boolean
           nullable: true
         isProcessValidationTestingSample:
           type: boolean
+          nullable: true
+        sourceProcessingJobCount:
+          type: integer
+          format: int32
           nullable: true
         isTradeSamplePersistent:
           type: boolean
@@ -13432,6 +12636,18 @@ components:
           nullable: true
         sourcePlantBatchName:
           type: string
+          nullable: true
+        sourcePlantBatchIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        sourcePlantBatchNames:
+          type: string
+          nullable: true
+        multiPlantBatch:
+          type: boolean
           nullable: true
         plantedDate:
           pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'

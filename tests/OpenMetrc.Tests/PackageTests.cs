@@ -17,7 +17,7 @@ public class PackageTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [SkippableFact]
-    public async void GetActivePackagesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetActivePackagesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -28,8 +28,8 @@ public class PackageTests : IClassFixture<SharedFixture>
             do
                 try
                 {
-                    var packages = await apiKey.MetrcService.Packages.GetActivePackagesAsync(facility.License.Number,
-                        DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    var packages = Fixture.SafeExecutor(() => apiKey.MetrcService.Packages.GetActivePackagesAsync(facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
 
                     if (packages == null) continue;
                     wasTested = wasTested || packages.Any();
@@ -38,23 +38,26 @@ public class PackageTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
 
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
             while (true);
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
@@ -63,7 +66,7 @@ public class PackageTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetInactivePackagesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetInactivePackagesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -74,8 +77,8 @@ public class PackageTests : IClassFixture<SharedFixture>
             do
                 try
                 {
-                    var packages = await apiKey.MetrcService.Packages.GetInactivePackagesAsync(facility.License.Number,
-                        DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    var packages = Fixture.SafeExecutor(() => apiKey.MetrcService.Packages.GetInactivePackagesAsync(facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
                     if (packages == null) continue;
                     wasTested = wasTested || packages.Any();
                     foreach (var package in packages)
@@ -83,23 +86,25 @@ public class PackageTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
-
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
             while (true);
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
@@ -108,7 +113,7 @@ public class PackageTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetOnHoldPackagesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetOnHoldPackagesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -119,8 +124,8 @@ public class PackageTests : IClassFixture<SharedFixture>
             do
                 try
                 {
-                    var packages = await apiKey.MetrcService.Packages.GetOnHoldPackagesAsync(facility.License.Number,
-                        DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    var packages = Fixture.SafeExecutor(() => apiKey.MetrcService.Packages.GetOnHoldPackagesAsync(facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
                     if (packages == null) continue;
                     wasTested = wasTested || packages.Any();
                     foreach (var package in packages)
@@ -128,25 +133,26 @@ public class PackageTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
-
-                    unauthorized++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
-                }
-
             while (true);
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
         Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
@@ -155,7 +161,7 @@ public class PackageTests : IClassFixture<SharedFixture>
 
 
     [SkippableFact]
-    public async void GetPackageAdjustReasonsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetPackageAdjustReasonsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -164,28 +170,30 @@ public class PackageTests : IClassFixture<SharedFixture>
         foreach (var facility in apiKey.Facilities)
             try
             {
-                var packages = await apiKey.MetrcService.Packages.GetPackageAdjustReasonsAsync(facility.License.Number);
+                var packages = Fixture.SafeExecutor(() => apiKey.MetrcService.Packages.GetPackageAdjustReasonsAsync(facility.License.Number).Result);
                 if (packages == null) continue;
                 wasTested = wasTested || packages.Any();
                 foreach (var package in packages)
                     _additionalPropertiesHelper.CheckAdditionalProperties(package, facility.License.Number);
             }
-            catch (ApiException<ErrorResponse?> ex)
+            catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                if (ex.Unauthorized || ex.Unavailable)
                 {
-                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                    _testOutputHelper.WriteLine(ex.Response);
-                    throw;
+                    unauthorized++;
+                    continue;
                 }
-
-                unauthorized++;
-            }
-            catch (TimeoutException)
-            {
-                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                timeout++;
+                if (ex.Timeout)
+                {
+                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                    timeout++;
+                }
+                else
+                {
+                    _testOutputHelper.WriteLine(ex.Message);
+                    if (!string.IsNullOrWhiteSpace(ex.Response))
+                        _testOutputHelper.WriteLine(ex.Response);
+                }
             }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
@@ -194,7 +202,7 @@ public class PackageTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetPackageTypesAsync_ValidEndpoint_ShouldPass()
+    public void GetPackageTypesAsync_ValidEndpoint_ShouldPass()
     {
         //this endpoint just returns a list of strings, there are no additional properties to look for
         var wasTested = false;
@@ -203,25 +211,28 @@ public class PackageTests : IClassFixture<SharedFixture>
         foreach (var apiKey in Fixture.ApiKeys)
             try
             {
-                var packages = await apiKey.MetrcService.Packages.GetPackageTypesAsync();
+                var packages = Fixture.SafeExecutor(() => apiKey.MetrcService.Packages.GetPackageTypesAsync().Result);
+                //var packages = Fixture.SafeExecutor(() => apiKey.MetrcService.Packages.GetPackageTypesAsync().Result);
                 wasTested = wasTested || packages.Any();
             }
-            catch (ApiException<ErrorResponse?> ex)
+            catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                if (ex.Unauthorized || ex.Unavailable)
                 {
-                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                    _testOutputHelper.WriteLine(ex.Response);
-                    throw;
+                    unauthorized++;
+                    continue;
                 }
-
-                unauthorized++;
-            }
-            catch (TimeoutException)
-            {
-                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                timeout++;
+                if (ex.Timeout)
+                {
+                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                    timeout++;
+                }
+                else
+                {
+                    _testOutputHelper.WriteLine(ex.Message);
+                    if (!string.IsNullOrWhiteSpace(ex.Response))
+                        _testOutputHelper.WriteLine(ex.Response);
+                }
             }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");

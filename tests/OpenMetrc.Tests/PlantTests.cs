@@ -17,7 +17,7 @@ public class PlantTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [SkippableFact]
-    public async void GetFloweringPlantsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetFloweringPlantsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -28,8 +28,8 @@ public class PlantTests : IClassFixture<SharedFixture>
             do
                 try
                 {
-                    var plants = await apiKey.MetrcService.Plants.GetFloweringPlantsAsync(facility.License.Number,
-                        DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    var plants = Fixture.SafeExecutor(() => apiKey.MetrcService.Plants.GetFloweringPlantsAsync(facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
                     if (plants == null) continue;
                     wasTested = wasTested || plants.Any();
                     foreach (var plant in plants)
@@ -37,23 +37,25 @@ public class PlantTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
-
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
             while (true);
 
@@ -63,7 +65,7 @@ public class PlantTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetInactivePlantsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetInactivePlantsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -74,8 +76,8 @@ public class PlantTests : IClassFixture<SharedFixture>
             do
                 try
                 {
-                    var plants = await apiKey.MetrcService.Plants.GetInactivePlantsAsync(facility.License.Number,
-                        DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    var plants = Fixture.SafeExecutor(() => apiKey.MetrcService.Plants.GetInactivePlantsAsync(facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
                     if (plants == null) continue;
                     wasTested = wasTested || plants.Any();
                     foreach (var plant in plants)
@@ -83,23 +85,25 @@ public class PlantTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
-
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
 
             while (true);
@@ -110,7 +114,7 @@ public class PlantTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetOnHoldPlantsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetOnHoldPlantsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -121,8 +125,8 @@ public class PlantTests : IClassFixture<SharedFixture>
             do
                 try
                 {
-                    var plants = await apiKey.MetrcService.Plants.GetOnHoldPlantsAsync(facility.License.Number,
-                        DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    var plants = Fixture.SafeExecutor(() => apiKey.MetrcService.Plants.GetOnHoldPlantsAsync(facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
                     if (plants == null) continue;
                     wasTested = wasTested || plants.Any();
                     foreach (var plant in plants)
@@ -130,23 +134,25 @@ public class PlantTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
-
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
             while (true);
 
@@ -156,7 +162,7 @@ public class PlantTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetPlantAdditivesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetPlantAdditivesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -167,8 +173,8 @@ public class PlantTests : IClassFixture<SharedFixture>
             do
                 try
                 {
-                    var plants = await apiKey.MetrcService.Plants.GetPlantAdditivesAsync(facility.License.Number,
-                        DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    var plants = Fixture.SafeExecutor(() => apiKey.MetrcService.Plants.GetPlantAdditivesAsync(facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
                     if (plants == null) continue;
                     wasTested = wasTested || plants.Any();
                     foreach (var plant in plants)
@@ -176,23 +182,25 @@ public class PlantTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
-
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
             while (true);
 
@@ -202,7 +210,7 @@ public class PlantTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetPlantAdditivesTypesAsync_ValidEndpoint_ShouldPass()
+    public void GetPlantAdditivesTypesAsync_ValidEndpoint_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -210,25 +218,27 @@ public class PlantTests : IClassFixture<SharedFixture>
         foreach (var apiKey in Fixture.ApiKeys)
             try
             {
-                var plants = await apiKey.MetrcService.Plants.GetPlantAdditivesTypesAsync();
+                var plants = Fixture.SafeExecutor(() => apiKey.MetrcService.Plants.GetPlantAdditivesTypesAsync().Result);
                 wasTested = wasTested || plants.Any();
             }
-            catch (ApiException<ErrorResponse?> ex)
+            catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                if (ex.Unauthorized || ex.Unavailable)
                 {
-                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                    _testOutputHelper.WriteLine(ex.Response);
-                    throw;
+                    unauthorized++;
+                    continue;
                 }
-
-                unauthorized++;
-            }
-            catch (TimeoutException)
-            {
-                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                timeout++;
+                if (ex.Timeout)
+                {
+                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                    timeout++;
+                }
+                else
+                {
+                    _testOutputHelper.WriteLine(ex.Message);
+                    if (!string.IsNullOrWhiteSpace(ex.Response))
+                        _testOutputHelper.WriteLine(ex.Response);
+                }
             }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
@@ -237,7 +247,7 @@ public class PlantTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetPlantWasteMethodsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetPlantWasteMethodsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -245,28 +255,30 @@ public class PlantTests : IClassFixture<SharedFixture>
         foreach (var apiKey in Fixture.ApiKeys)
             try
             {
-                var plants = await apiKey.MetrcService.Plants.GetPlantWasteMethodsAsync();
+                var plants = Fixture.SafeExecutor(() => apiKey.MetrcService.Plants.GetPlantWasteMethodsAsync().Result);
                 if (plants == null) continue;
                 wasTested = wasTested || plants.Any();
                 foreach (var plant in plants)
                     _additionalPropertiesHelper.CheckAdditionalProperties(plant, string.Empty);
             }
-            catch (ApiException<ErrorResponse?> ex)
+            catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                if (ex.Unauthorized || ex.Unavailable)
                 {
-                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                    _testOutputHelper.WriteLine(ex.Response);
-                    throw;
+                    unauthorized++;
+                    continue;
                 }
-
-                unauthorized++;
-            }
-            catch (TimeoutException)
-            {
-                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                timeout++;
+                if (ex.Timeout)
+                {
+                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                    timeout++;
+                }
+                else
+                {
+                    _testOutputHelper.WriteLine(ex.Message);
+                    if (!string.IsNullOrWhiteSpace(ex.Response))
+                        _testOutputHelper.WriteLine(ex.Response);
+                }
             }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
@@ -275,7 +287,7 @@ public class PlantTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetPlantGrowthPhasesAsync_ValidEndpoint_ShouldPass()
+    public void GetPlantGrowthPhasesAsync_ValidEndpoint_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -284,25 +296,27 @@ public class PlantTests : IClassFixture<SharedFixture>
         foreach (var facility in apiKey.Facilities)
             try
             {
-                var plants = await apiKey.MetrcService.Plants.GetPlantGrowthPhasesAsync(facility.License.Number);
+                var plants = Fixture.SafeExecutor(() => apiKey.MetrcService.Plants.GetPlantGrowthPhasesAsync(facility.License.Number).Result);
                 wasTested = wasTested || plants.Any();
             }
-            catch (ApiException<ErrorResponse?> ex)
+            catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                if (ex.Unauthorized || ex.Unavailable)
                 {
-                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                    _testOutputHelper.WriteLine(ex.Response);
-                    throw;
+                    unauthorized++;
+                    continue;
                 }
-
-                unauthorized++;
-            }
-            catch (TimeoutException)
-            {
-                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                timeout++;
+                if (ex.Timeout)
+                {
+                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                    timeout++;
+                }
+                else
+                {
+                    _testOutputHelper.WriteLine(ex.Message);
+                    if (!string.IsNullOrWhiteSpace(ex.Response))
+                        _testOutputHelper.WriteLine(ex.Response);
+                }
             }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
@@ -311,7 +325,7 @@ public class PlantTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetPlantWasteReasonsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetPlantWasteReasonsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -320,28 +334,30 @@ public class PlantTests : IClassFixture<SharedFixture>
         foreach (var facility in apiKey.Facilities)
             try
             {
-                var plants = await apiKey.MetrcService.Plants.GetPlantWasteReasonsAsync(facility.License.Number);
+                var plants = Fixture.SafeExecutor(() => apiKey.MetrcService.Plants.GetPlantWasteReasonsAsync(facility.License.Number).Result);
                 if (plants == null) continue;
                 wasTested = wasTested || plants.Any();
                 foreach (var plant in plants)
                     _additionalPropertiesHelper.CheckAdditionalProperties(plant, facility.License.Number);
             }
-            catch (ApiException<ErrorResponse?> ex)
+            catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                if (ex.Unauthorized || ex.Unavailable)
                 {
-                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                    _testOutputHelper.WriteLine(ex.Response);
-                    throw;
+                    unauthorized++;
+                    continue;
                 }
-
-                unauthorized++;
-            }
-            catch (TimeoutException)
-            {
-                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                timeout++;
+                if (ex.Timeout)
+                {
+                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                    timeout++;
+                }
+                else
+                {
+                    _testOutputHelper.WriteLine(ex.Message);
+                    if (!string.IsNullOrWhiteSpace(ex.Response))
+                        _testOutputHelper.WriteLine(ex.Response);
+                }
             }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
@@ -350,7 +366,7 @@ public class PlantTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetVegetativePlantsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetVegetativePlantsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -361,8 +377,8 @@ public class PlantTests : IClassFixture<SharedFixture>
             do
                 try
                 {
-                    var plants = await apiKey.MetrcService.Plants.GetVegetativePlantsAsync(facility.License.Number,
-                        DateTimeOffset.UtcNow.AddDays(daysBack), null);
+                    var plants = Fixture.SafeExecutor(() => apiKey.MetrcService.Plants.GetVegetativePlantsAsync(facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
                     if (plants == null) continue;
                     wasTested = wasTested || plants.Any();
                     foreach (var plant in plants)
@@ -370,23 +386,25 @@ public class PlantTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
-
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
 
             while (true);

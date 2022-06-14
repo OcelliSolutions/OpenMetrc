@@ -1,16 +1,5 @@
 [
   {
-    "State": "al",
-    "Sections": [
-      {
-        "Name": "UnitsOfMeasure",
-        "Endpoints": [
-          "get_unitsofmeasure_v1_active"
-        ]
-      }
-    ]
-  },
-  {
     "State": "ak",
     "Sections": [
       {
@@ -1869,17 +1858,6 @@
   },
   {
     "State": "mn",
-    "Sections": [
-      {
-        "Name": "UnitsOfMeasure",
-        "Endpoints": [
-          "get_unitsofmeasure_v1_active"
-        ]
-      }
-    ]
-  },
-  {
-    "State": "ms",
     "Sections": [
       {
         "Name": "UnitsOfMeasure",

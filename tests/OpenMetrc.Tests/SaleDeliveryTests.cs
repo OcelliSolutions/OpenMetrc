@@ -18,7 +18,7 @@ public class SaleDeliveryTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [SkippableFact]
-    public async void GetActiveSaleDeliveriesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetActiveSaleDeliveriesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -30,8 +30,8 @@ public class SaleDeliveryTests : IClassFixture<SharedFixture>
                 try
                 {
                     var saleDeliveries =
-                        await apiKey.MetrcService.Sales.GetActiveSaleDeliveriesAsync(facility.License.Number,
-                            DateTimeOffset.UtcNow.AddDays(daysBack), null, null, null);
+                        Fixture.SafeExecutor(() => apiKey.MetrcService.Sales.GetActiveSaleDeliveriesAsync(facility.License.Number,
+                            DateTimeOffset.UtcNow.AddDays(daysBack), null, null, null).Result);
                     if (saleDeliveries == null) continue;
                     wasTested = wasTested || saleDeliveries.Any();
                     foreach (var saleDelivery in saleDeliveries)
@@ -47,23 +47,25 @@ public class SaleDeliveryTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
-
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
             while (true);
 
@@ -73,7 +75,7 @@ public class SaleDeliveryTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetInactiveSaleDeliveriesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetInactiveSaleDeliveriesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -85,8 +87,8 @@ public class SaleDeliveryTests : IClassFixture<SharedFixture>
                 try
                 {
                     var saleDeliveries =
-                        await apiKey.MetrcService.Sales.GetInactiveSaleDeliveriesAsync(facility.License.Number,
-                            DateTimeOffset.UtcNow.AddDays(daysBack), null, null, null);
+                        Fixture.SafeExecutor(() => apiKey.MetrcService.Sales.GetInactiveSaleDeliveriesAsync(facility.License.Number,
+                            DateTimeOffset.UtcNow.AddDays(daysBack), null, null, null).Result);
                     if (saleDeliveries == null) continue;
                     wasTested = wasTested || saleDeliveries.Any();
                     foreach (var saleDelivery in saleDeliveries)
@@ -102,23 +104,25 @@ public class SaleDeliveryTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
-
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
             while (true);
 

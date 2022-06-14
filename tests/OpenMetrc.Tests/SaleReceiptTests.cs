@@ -18,7 +18,7 @@ public class SaleReceiptTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [SkippableFact]
-    public async void GetActiveSaleReceiptsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetActiveSaleReceiptsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -30,8 +30,8 @@ public class SaleReceiptTests : IClassFixture<SharedFixture>
                 try
                 {
                     var saleReceipts =
-                        await apiKey.MetrcService.Sales.GetActiveSaleReceiptsAsync(facility.License.Number,
-                            DateTimeOffset.UtcNow.AddDays(daysBack), null, null, null);
+                        Fixture.SafeExecutor(() => apiKey.MetrcService.Sales.GetActiveSaleReceiptsAsync(facility.License.Number,
+                            DateTimeOffset.UtcNow.AddDays(daysBack), null, null, null).Result);
                     if (saleReceipts == null) continue;
                     wasTested = wasTested || saleReceipts.Any();
                     foreach (var saleReceipt in saleReceipts)
@@ -47,23 +47,25 @@ public class SaleReceiptTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
-
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
 
             while (true);
@@ -74,7 +76,7 @@ public class SaleReceiptTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetInactiveSaleReceiptsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetInactiveSaleReceiptsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -86,8 +88,8 @@ public class SaleReceiptTests : IClassFixture<SharedFixture>
                 try
                 {
                     var saleReceipts =
-                        await apiKey.MetrcService.Sales.GetInactiveSaleReceiptsAsync(facility.License.Number,
-                            DateTimeOffset.UtcNow.AddDays(daysBack), null, null, null);
+                        Fixture.SafeExecutor(() => apiKey.MetrcService.Sales.GetInactiveSaleReceiptsAsync(facility.License.Number,
+                            DateTimeOffset.UtcNow.AddDays(daysBack), null, null, null).Result);
                     if (saleReceipts == null) continue;
                     wasTested = wasTested || saleReceipts.Any();
                     foreach (var saleReceipt in saleReceipts)
@@ -103,23 +105,25 @@ public class SaleReceiptTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
-
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
             while (true);
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
@@ -128,7 +132,7 @@ public class SaleReceiptTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetSaleCustomerTypesAsync_ValidEndpoint_ShouldPass()
+    public void GetSaleCustomerTypesAsync_ValidEndpoint_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -136,27 +140,28 @@ public class SaleReceiptTests : IClassFixture<SharedFixture>
         foreach (var apiKey in Fixture.ApiKeys)
             try
             {
-                var saleReceipts = await apiKey.MetrcService.Sales.GetSaleCustomerTypesAsync();
+                var saleReceipts = Fixture.SafeExecutor(() => apiKey.MetrcService.Sales.GetSaleCustomerTypesAsync().Result);
                 wasTested = wasTested || saleReceipts.Any();
             }
-            catch (ApiException<ErrorResponse?> ex)
+            catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                if (ex.Unauthorized || ex.Unavailable)
                 {
-                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                    _testOutputHelper.WriteLine(ex.Response);
-                    throw;
+                    unauthorized++;
+                    continue;
                 }
-
-                unauthorized++;
+                if (ex.Timeout)
+                {
+                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                    timeout++;
+                }
+                else
+                {
+                    _testOutputHelper.WriteLine(ex.Message);
+                    if (!string.IsNullOrWhiteSpace(ex.Response))
+                        _testOutputHelper.WriteLine(ex.Response);
+                }
             }
-            catch (TimeoutException)
-            {
-                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                timeout++;
-            }
-
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
         Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
         Skip.IfNot(wasTested, "WARN: There were no testable SaleReceipts for any license");

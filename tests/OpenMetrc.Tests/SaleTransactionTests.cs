@@ -17,7 +17,7 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
     private SharedFixture Fixture { get; }
 
     [SkippableFact]
-    public async void GetTransactionsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetTransactionsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -26,29 +26,30 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
         foreach (var facility in apiKey.Facilities)
             try
             {
-                var saleTransactions =
-                    await apiKey.MetrcService.Sales.GetTransactionsAsync(facility.License.Number);
+                var saleTransactions = Fixture.SafeExecutor(() => apiKey.MetrcService.Sales.GetTransactionsAsync(facility.License.Number).Result);
                 if (saleTransactions == null) continue;
                 wasTested = wasTested || saleTransactions.Any();
                 foreach (var saleTransaction in saleTransactions)
                     _additionalPropertiesHelper.CheckAdditionalProperties(saleTransaction, facility.License.Number);
             }
-            catch (ApiException<ErrorResponse?> ex)
+            catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                    ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                if (ex.Unauthorized || ex.Unavailable)
                 {
-                    if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                    _testOutputHelper.WriteLine(ex.Response);
-                    throw;
+                    unauthorized++;
+                    continue;
                 }
-
-                unauthorized++;
-            }
-            catch (TimeoutException)
-            {
-                _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                timeout++;
+                if (ex.Timeout)
+                {
+                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                    timeout++;
+                }
+                else
+                {
+                    _testOutputHelper.WriteLine(ex.Message);
+                    if (!string.IsNullOrWhiteSpace(ex.Response))
+                        _testOutputHelper.WriteLine(ex.Response);
+                }
             }
 
         Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
@@ -57,7 +58,7 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
     }
 
     [SkippableFact]
-    public async void GetInactiveSaleTransactionsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetInactiveSaleTransactionsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
         var wasTested = false;
         var unauthorized = 0;
@@ -68,9 +69,9 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
             do
                 try
                 {
-                    var saleTransactions = await apiKey.MetrcService.Sales.GetTransactionsByDateRangeAsync(
+                    var saleTransactions = Fixture.SafeExecutor(() => apiKey.MetrcService.Sales.GetTransactionsByDateRangeAsync(
                         facility.License.Number, DateTime.UtcNow.AddDays(daysBack - 1),
-                        DateTime.UtcNow.AddDays(daysBack));
+                        DateTime.UtcNow.AddDays(daysBack)).Result);
                     if (saleTransactions == null) continue;
                     wasTested = wasTested || saleTransactions.Any();
                     foreach (var saleTransaction in saleTransactions)
@@ -78,23 +79,25 @@ public class SaleTransactionTests : IClassFixture<SharedFixture>
                     daysBack--;
                     if (daysBack < -apiKey.DaysToTest) break;
                 }
-                catch (ApiException<ErrorResponse?> ex)
+                catch (SharedFixture.TestExceptionWrapper ex)
                 {
-                    if (ex.StatusCode != StatusCodes.Status401Unauthorized &&
-                        ex.StatusCode != StatusCodes.Status503ServiceUnavailable)
+                    if (ex.Unauthorized || ex.Unavailable)
                     {
-                        if (ex.Result != null) _testOutputHelper.WriteLine(ex.Result.Message);
-                        _testOutputHelper.WriteLine(ex.Response);
-                        throw;
+                        unauthorized++;
+                        break;
                     }
-
-                    unauthorized++;
-                }
-                catch (TimeoutException)
-                {
-                    _testOutputHelper.WriteLine(
-                        $@"{apiKey.OpenMetrcConfig.SubDomain}: {facility.License.Number}: Timeout");
-                    timeout++;
+                    if (ex.Timeout)
+                    {
+                        _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+                        timeout++;
+                    }
+                    else
+                    {
+                        _testOutputHelper.WriteLine(ex.Message);
+                        if (!string.IsNullOrWhiteSpace(ex.Response))
+                            _testOutputHelper.WriteLine(ex.Response);
+                        break;
+                    }
                 }
             while (true);
 
