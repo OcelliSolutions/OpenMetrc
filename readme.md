@@ -6,7 +6,7 @@ OpenMETRC is two part project. The first is an OpenAPI specification for the MET
 * Rate Limiting
 * State/Endpoint Validation
 
-The [METRC State &amp; Endpoint Coverage](src\OpenMetrc\Data\MetrcEndpointsSummary.md) report will show the coverage of this application. _Currently, only GET endpoints are tested although POST, PUT, and DELETE are implemented as well._
+The [METRC State &amp; Endpoint Coverage](src/OpenMetrc/Data/MetrcEndpointsSummary.md) report will show the coverage of this application. _Currently, only GET endpoints are tested although POST, PUT, and DELETE are implemented as well._
 
 ## Installation
 
