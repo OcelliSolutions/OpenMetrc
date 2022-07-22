@@ -9,6 +9,9 @@ public class TransferDeliveryPackage
     public string? SourcePackageLabels { get; set; }
     public string? ProductName { get; set; }
     public string? ProductCategoryName { get; set; }
+    public string? ItemId { get; set; }
+    public string? ItemName { get; set; }
+    public string? ItemCategoryName { get; set; }
     public string? ItemStrainName { get; set; }
     public double? ItemUnitCbdPercent { get; set; }
     public double? ItemUnitCbdContent { get; set; }

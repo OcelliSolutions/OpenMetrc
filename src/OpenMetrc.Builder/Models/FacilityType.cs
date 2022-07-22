@@ -59,4 +59,5 @@ public class FacilityType
     public bool? CanReportStrainProperties { get; set; }
     public bool? CanRecordProcessingJobs { get; set; }
     public bool? CanClonePlantBatches { get; set; }
+    public bool? TestsRequireLabSample { get; set; }
 }

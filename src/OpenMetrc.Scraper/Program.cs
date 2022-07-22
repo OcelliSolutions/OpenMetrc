@@ -41,6 +41,9 @@ foreach (var state in states)
         section.Endpoints.Add(endpoint);
     }
 
+    // don't add a state that is only a placeholder or only has unit of measure.
+    if (stateSummary.Sections.Count <= 1)
+        continue;
     stateSummaries.Add(stateSummary);
 }
 
