@@ -3,6 +3,8 @@
 //The API permissions are not stored on the credentials or on a token. They are managed in METRC at user key creation.
 public enum ApiPermission
 {
+    [Display(Name = "Lookup Caregivers")] LookupCaregivers,
+
     [Display(Name = "Manage Employees")] ManageEmployees,
 
     #region Harvest
@@ -76,6 +78,12 @@ public enum ApiPermission
     ManicureHarvestVegFlowerPlants,
 
     #endregion Plant
+
+    #region Processing
+
+    [Display(Name = "Manage Processing Job")] ManageProcessingJob,
+
+    #endregion Processing
 
     #region Sale
 

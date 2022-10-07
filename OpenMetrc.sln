@@ -13,6 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 		state-summaries.json = state-summaries.json
 	EndProjectSection
+	ProjectSection(FolderGlobals) = preProject
+		C_5_4Users_4jason_4source_4repos_4open-metrc_4state-summaries_1json__JsonSchema = https://geojson.org/schema/GeoJSON.json
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMetrc.Tests", "tests\OpenMetrc.Tests\OpenMetrc.Tests.csproj", "{2C04B302-5720-4405-B59E-B6FF7A6C1B60}"
 EndProject
@@ -21,6 +24,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMetrc.Builder", "src\OpenMetrc.Builder\OpenMetrc.Builder.csproj", "{3EB00E68-D233-4C03-96E5-39747F4F3DBA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMetrc", "src\OpenMetrc\OpenMetrc.csproj", "{065E44CA-D985-42CD-A3B5-062C568C2A6C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3EB00E68-D233-4C03-96E5-39747F4F3DBA} = {3EB00E68-D233-4C03-96E5-39747F4F3DBA}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

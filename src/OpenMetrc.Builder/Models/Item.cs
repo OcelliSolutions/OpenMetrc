@@ -37,4 +37,7 @@ public class Item
     public string? Description { get; set; }
     public bool? IsUsed { get; set; }
     public string? PublicIngredients { get; set; }
+    public List<Photo>? ProductImages { get; set; }
+    public List<Photo>? LabelImages { get; set; }
+    public List<Photo>? PackagingImages { get; set; }
 }

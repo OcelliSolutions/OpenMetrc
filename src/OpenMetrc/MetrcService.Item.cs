@@ -1,4 +1,6 @@
-﻿namespace OpenMetrc;
+﻿using System.Threading;
+
+namespace OpenMetrc;
 
 public partial class MetrcService : IItemClient
 {
@@ -39,6 +41,18 @@ public partial class MetrcService : IItemClient
             ? Task.FromResult<ICollection<Item>?>(new List<Item>())
             : ItemClient.GetActiveItemsAsync(licenseNumber, cancellationToken);
 
+    [MapsToApi(MetrcEndpoint.get_items_v1_inactive)]
+    Task<ICollection<Item>?> IItemClient.GetInactiveItemsAsync(string licenseNumber) =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.FromResult<ICollection<Item>?>(new List<Item>())
+            : ItemClient.GetInactiveItemsAsync(licenseNumber);
+
+    [MapsToApi(MetrcEndpoint.get_items_v1_inactive)]
+    Task<ICollection<Item>?> IItemClient.GetInactiveItemsAsync(string licenseNumber, CancellationToken cancellationToken) =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.FromResult<ICollection<Item>?>(new List<Item>())
+            : ItemClient.GetInactiveItemsAsync(licenseNumber, cancellationToken);
+
     [MapsToApi(MetrcEndpoint.get_items_v1_categories)]
     Task<ICollection<ItemCategory>?> IItemClient.GetItemCategoriesAsync(string? licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
@@ -65,6 +79,18 @@ public partial class MetrcService : IItemClient
             ? Task.FromResult<ICollection<ItemBrand>?>(new List<ItemBrand>())
             : ItemClient.GetItemBrandsAsync(licenseNumber, cancellationToken);
 
+    [MapsToApi(MetrcEndpoint.get_items_v1_photo_id)]
+    Task<Photo> IItemClient.GetItemPhotoAsync(string licenseNumber, string id) =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.FromResult(new Photo())
+            : ItemClient.GetItemPhotoAsync(licenseNumber, id);
+
+    [MapsToApi(MetrcEndpoint.get_items_v1_photo_id)]
+    Task<Photo> IItemClient.GetItemPhotoAsync(string licenseNumber, string id, CancellationToken cancellationToken) =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.FromResult(new Photo())
+            : ItemClient.GetItemPhotoAsync(licenseNumber, id, cancellationToken);
+
     [MapsToApi(MetrcEndpoint.post_items_v1_create)]
     Task IItemClient.CreateItemAsync(string licenseNumber, IEnumerable<CreateItemRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
@@ -90,4 +116,16 @@ public partial class MetrcService : IItemClient
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : ItemClient.UpdateItemAsync(licenseNumber, body, cancellationToken);
+
+    [MapsToApi(MetrcEndpoint.post_items_v1_photo)]
+    Task IItemClient.CreatePhotoAsync(string licenseNumber, IEnumerable<CreatePhotoRequest> body) =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.CompletedTask
+            : ItemClient.CreatePhotoAsync(licenseNumber, body);
+
+    [MapsToApi(MetrcEndpoint.post_items_v1_photo)]
+    Task IItemClient.CreatePhotoAsync(string licenseNumber, IEnumerable<CreatePhotoRequest> body, CancellationToken cancellationToken) =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.CompletedTask
+            : ItemClient.CreatePhotoAsync(licenseNumber, body, cancellationToken);
 }

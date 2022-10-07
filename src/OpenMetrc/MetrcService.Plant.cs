@@ -158,6 +158,18 @@ public partial class MetrcService : IPlantClient
             ? Task.FromResult<ICollection<PlantWasteMethod>?>(new List<PlantWasteMethod>())
             : PlantClient.GetPlantWasteMethodsAsync(cancellationToken);
 
+    [MapsToApi(MetrcEndpoint.get_plants_v1_waste_methods_all)]
+    Task<ICollection<PlantWasteMethod>?> IPlantClient.GetPlantWasteMethodsAllAsync() =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.FromResult<ICollection<PlantWasteMethod>?>(new List<PlantWasteMethod>())
+            : PlantClient.GetPlantWasteMethodsAllAsync();
+
+    [MapsToApi(MetrcEndpoint.get_plants_v1_waste_methods_all)]
+    Task<ICollection<PlantWasteMethod>?> IPlantClient.GetPlantWasteMethodsAllAsync(CancellationToken cancellationToken) =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.FromResult<ICollection<PlantWasteMethod>?>(new List<PlantWasteMethod>())
+            : PlantClient.GetPlantWasteMethodsAllAsync(cancellationToken);
+
     [MapsToApi(MetrcEndpoint.get_plants_v1_waste_reasons)]
     Task<ICollection<PlantWasteReason>?> IPlantClient.GetPlantWasteReasonsAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())

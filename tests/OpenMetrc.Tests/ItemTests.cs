@@ -1,5 +1,3 @@
-using System;
-
 namespace OpenMetrc.Tests;
 
 public class ItemTests : IClassFixture<SharedFixture>

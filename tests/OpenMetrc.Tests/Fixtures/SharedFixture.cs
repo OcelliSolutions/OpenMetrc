@@ -81,7 +81,7 @@ public class SharedFixture : IDisposable
             if (ex.StatusCode is StatusCodes.Status401Unauthorized or StatusCodes.Status503ServiceUnavailable)
                 throw new TestExceptionWrapper(null, null, ex.InnerException, true);
             throw new TestExceptionWrapper(ex.Result?.Message ?? ex.Message, ex.Response, ex.InnerException);
-        }/*
+        } /*
         catch (ApiException ex)
         {
             if (ex.StatusCode == StatusCodes.Status503ServiceUnavailable)
@@ -91,6 +91,26 @@ public class SharedFixture : IDisposable
         catch (TimeoutException ex)
         {
             throw new TestExceptionWrapper(ex.Message, null, null, unavailable: true);
+        }
+        catch (AggregateException ex)
+        {
+            ex.Handle(ie =>
+            {
+                if (ie is ApiException<ErrorResponse> apiException)
+                {
+                    if (apiException.StatusCode is StatusCodes.Status401Unauthorized
+                        or StatusCodes.Status503ServiceUnavailable)
+                        throw new TestExceptionWrapper(null, null, ex.InnerException, true);
+                    throw new TestExceptionWrapper(apiException.Result?.Message ?? apiException.Message, apiException.Response,
+                        ex.InnerException);
+                }
+
+                if (ie is TimeoutException timeoutException)
+                    throw new TestExceptionWrapper(timeoutException.Message, null, null, unavailable: true);
+
+                throw ie;
+            });
+            throw;
         }
         catch (Exception ex)
         {
@@ -103,13 +123,15 @@ public class SharedFixture : IDisposable
         public string? Response { get; }
         public bool Unauthorized { get; }
         public bool Unavailable { get; }
+        public bool CouldNotDeserialize { get; }
         public bool Timeout { get; }
 
-        public TestExceptionWrapper(string? message, string? response, Exception? innerException, bool unauthorized = false, bool unavailable = false, bool timeout = false) : base(message, innerException)
+        public TestExceptionWrapper(string? message, string? response, Exception? innerException, bool unauthorized = false, bool unavailable = false, bool timeout = false, bool couldNotDeserialize = false) : base(message, innerException)
         {
             Response = response;
             Unauthorized = unauthorized;
             Unavailable = unavailable;
+            CouldNotDeserialize = couldNotDeserialize;
             Timeout = timeout;
         }
         public TestExceptionWrapper(string? message, Exception? innerException) : base(message, innerException)

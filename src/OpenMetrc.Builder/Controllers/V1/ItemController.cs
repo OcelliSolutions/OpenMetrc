@@ -31,6 +31,19 @@ public class ItemController : ControllerBase
         string licenseNumber
     ) => Ok();
 
+    [HttpGet("inactive")]
+    [MapsToApi(MetrcEndpoint.get_items_v1_inactive)]
+    [Authorize]
+    [ApiAuthorizationFilter(new[] { ApiPermission.ManageItems })]
+    [ProducesResponseType(typeof(IEnumerable<Item>), StatusCodes.Status200OK)]
+    [SwaggerOperation(Summary = "Get inactive items")]
+    public ActionResult GetInactiveItems(
+        [Required]
+        [SwaggerParameter(Description =
+            "The license number of the facility for which to return the list of inactive items.")]
+        string licenseNumber
+    ) => Ok();
+
     [HttpGet("categories")]
     [MapsToApi(MetrcEndpoint.get_items_v1_categories)]
     [Authorize]
@@ -56,6 +69,19 @@ public class ItemController : ControllerBase
         string licenseNumber
     ) => Ok();
 
+    [HttpGet("photo/{id:long}")]
+    [MapsToApi(MetrcEndpoint.get_items_v1_photo_id)]
+    [Authorize]
+    [ApiAuthorizationFilter(new[] { ApiPermission.ManageItems })]
+    [ProducesResponseType(typeof(Photo), StatusCodes.Status200OK)]
+    [SwaggerOperation(Summary = "Get item photo")]
+    public ActionResult GetItemPhoto(
+        [Required]
+        [SwaggerParameter(Description =
+            "The license number of the facility for which to return the item photo.")]
+        string licenseNumber
+    ) => Ok();
+
     [HttpPost("create")]
     [MapsToApi(MetrcEndpoint.post_items_v1_create)]
     [Authorize]
@@ -71,6 +97,15 @@ public class ItemController : ControllerBase
     [SwaggerOperation(Summary = "Update items")]
     public ActionResult UpdateItem([Required] string licenseNumber,
         [Required] List<CreateItemRequest> createItemRequests) => Ok();
+
+    [HttpPost("photo")]
+    [MapsToApi(MetrcEndpoint.post_items_v1_photo)]
+    [Authorize]
+    [ApiAuthorizationFilter(new[] { ApiPermission.ManageItems })]
+    [ProducesResponseType(typeof(IEnumerable<long>), StatusCodes.Status200OK)]
+    [SwaggerOperation(Summary = "Create Photo")]   
+    public ActionResult CreatePhoto([Required] string licenseNumber,
+        [Required] List<CreatePhotoRequest> createPhotoRequests) => Ok();
 
     [HttpDelete("{id:long}")]
     [MapsToApi(MetrcEndpoint.delete_items_v1_id)]

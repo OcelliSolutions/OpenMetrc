@@ -8,6 +8,7 @@ namespace OpenMetrc;
 public partial class MetrcService : IMetrcService
 {
     //protected static ConcurrentDictionary<string, IMetrcClient> MetrcClients = new();
+    internal static ConcurrentDictionary<string, ICaregiverClient> CaregiverClients = new();
     internal static ConcurrentDictionary<string, IEmployeeClient> EmployeeClients = new();
     internal static ConcurrentDictionary<string, IFacilityClient> FacilityClients = new();
     internal static ConcurrentDictionary<string, IHarvestClient> HarvestClients = new();
@@ -18,6 +19,7 @@ public partial class MetrcService : IMetrcService
     internal static ConcurrentDictionary<string, IPatientClient> PatientClients = new();
     internal static ConcurrentDictionary<string, IPlantClient> PlantClients = new();
     internal static ConcurrentDictionary<string, IPlantBatchClient> PlantBatchClients = new();
+    internal static ConcurrentDictionary<string, IProcessingClient> ProcessingClients = new();
     internal static ConcurrentDictionary<string, ISaleClient> SaleClients = new();
     internal static ConcurrentDictionary<string, IStrainClient> StrainClients = new();
     internal static ConcurrentDictionary<string, ITransferClient> TransferClients = new();
@@ -46,6 +48,7 @@ public partial class MetrcService : IMetrcService
     protected string MetrcClientKey => $@"{OpenMetrcConfig.SoftwareApiKey}:{OpenMetrcConfig.UserApiKey}";
 
     //protected IMetrcClient UserMetrcClient => MetrcClients[MetrcClientKey];
+    protected ICaregiverClient CaregiverClient => CaregiverClients[MetrcClientKey];
     protected IEmployeeClient EmployeeClient => EmployeeClients[MetrcClientKey];
     protected IFacilityClient FacilityClient => FacilityClients[MetrcClientKey];
     protected IHarvestClient HarvestClient => HarvestClients[MetrcClientKey];
@@ -56,6 +59,7 @@ public partial class MetrcService : IMetrcService
     protected IPatientClient PatientClient => PatientClients[MetrcClientKey];
     protected IPlantClient PlantClient => PlantClients[MetrcClientKey];
     protected IPlantBatchClient PlantBatchClient => PlantBatchClients[MetrcClientKey];
+    protected IProcessingClient ProcessingClient => ProcessingClients[MetrcClientKey];
     protected ISaleClient SaleClient => SaleClients[MetrcClientKey];
     protected IStrainClient StrainClient => StrainClients[MetrcClientKey];
     protected ITransferClient TransferClient => TransferClients[MetrcClientKey];
@@ -85,6 +89,8 @@ public partial class MetrcService : IMetrcService
             HttpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             HttpClient.Timeout = TimeSpan.FromMinutes(3);
+            CaregiverClients.TryAdd(MetrcClientKey,
+                new CaregiverClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
             EmployeeClients.TryAdd(MetrcClientKey,
                 new EmployeeClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
             FacilityClients.TryAdd(MetrcClientKey,
@@ -105,6 +111,8 @@ public partial class MetrcService : IMetrcService
                 new PlantClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
             PlantBatchClients.TryAdd(MetrcClientKey,
                 new PlantBatchClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            ProcessingClients.TryAdd(MetrcClientKey,
+                new ProcessingClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
             SaleClients.TryAdd(MetrcClientKey,
                 new SaleClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
             StrainClients.TryAdd(MetrcClientKey,
@@ -117,6 +125,7 @@ public partial class MetrcService : IMetrcService
     }
 
     public IEnumerable<string> AvailableStates => MetrcEndpointExtensions.GetAvailableStates();
+    public ICaregiverClient Caregivers => this;
     public IEmployeeClient Employees => this;
     public IFacilityClient Facilities => this;
     public IHarvestClient Harvests => this;
@@ -127,6 +136,7 @@ public partial class MetrcService : IMetrcService
     public IPatientClient Patients => this;
     public IPlantClient Plants => this;
     public IPlantBatchClient PlantBatches => this;
+    public IProcessingClient Processes => this;
     public ISaleClient Sales => this;
     public IStrainClient Strains => this;
     public ITransferClient Transfers => this;

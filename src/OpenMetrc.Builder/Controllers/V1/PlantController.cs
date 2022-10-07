@@ -142,6 +142,15 @@ public class PlantController : ControllerBase
     [SwaggerOperation(Summary = "Get plant waste methods")]
     public ActionResult GetPlantWasteMethods() => Ok();
 
+
+    [HttpGet("waste/methods/all")]
+    [MapsToApi(MetrcEndpoint.get_plants_v1_waste_methods_all)]
+    [Authorize]
+    [ApiAuthorizationFilter]
+    [ProducesResponseType(typeof(IEnumerable<PlantWasteMethod>), StatusCodes.Status200OK)]
+    [SwaggerOperation(Summary = "Get all plant waste method properties")]
+    public ActionResult GetPlantWasteMethodsAll() => Ok();
+
     [HttpGet("waste/reasons")]
     [MapsToApi(MetrcEndpoint.get_plants_v1_waste_reasons)]
     [Authorize]

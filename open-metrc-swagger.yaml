@@ -5,66 +5,122 @@ info:
   version: v1
 servers:
   - url: https://api-ak.metrc.com
-  - url: https://api-al.metrc.com
   - url: https://api-az.metrc.com
   - url: https://api-ca.metrc.com
   - url: https://api-co.metrc.com
   - url: https://api-dc.metrc.com
-  - url: https://api-fl.metrc.com
-  - url: https://api-gu.metrc.com
-  - url: https://api-il.metrc.com
   - url: https://api-la.metrc.com
   - url: https://api-ma.metrc.com
   - url: https://api-md.metrc.com
   - url: https://api-me.metrc.com
   - url: https://api-mi.metrc.com
-  - url: https://api-mn.metrc.com
   - url: https://api-mo.metrc.com
   - url: https://api-ms.metrc.com
   - url: https://api-mt.metrc.com
-  - url: https://api-nj.metrc.com
   - url: https://api-nv.metrc.com
   - url: https://api-oh.metrc.com
   - url: https://api-ok.metrc.com
   - url: https://api-or.metrc.com
   - url: https://api-ri.metrc.com
   - url: https://api-sd.metrc.com
-  - url: https://api-va.metrc.com
   - url: https://api-wv.metrc.com
   - url: https://sandbox-api-ak.metrc.com
-  - url: https://sandbox-api-al.metrc.com
   - url: https://sandbox-api-az.metrc.com
   - url: https://sandbox-api-ca.metrc.com
   - url: https://sandbox-api-co.metrc.com
   - url: https://sandbox-api-dc.metrc.com
-  - url: https://sandbox-api-fl.metrc.com
-  - url: https://sandbox-api-gu.metrc.com
-  - url: https://sandbox-api-il.metrc.com
   - url: https://sandbox-api-la.metrc.com
   - url: https://sandbox-api-ma.metrc.com
   - url: https://sandbox-api-md.metrc.com
   - url: https://sandbox-api-me.metrc.com
   - url: https://sandbox-api-mi.metrc.com
-  - url: https://sandbox-api-mn.metrc.com
   - url: https://sandbox-api-mo.metrc.com
   - url: https://sandbox-api-ms.metrc.com
   - url: https://sandbox-api-mt.metrc.com
-  - url: https://sandbox-api-nj.metrc.com
   - url: https://sandbox-api-nv.metrc.com
   - url: https://sandbox-api-oh.metrc.com
   - url: https://sandbox-api-ok.metrc.com
   - url: https://sandbox-api-or.metrc.com
   - url: https://sandbox-api-ri.metrc.com
   - url: https://sandbox-api-sd.metrc.com
-  - url: https://sandbox-api-va.metrc.com
   - url: https://sandbox-api-wv.metrc.com
 paths:
+  '/caregivers/v1/{caregiverLicenseNumber}':
+    get:
+      tags:
+        - Caregiver
+      summary: Data returned by this endpoint is cached for up to one minute
+      description: '<b>Permissions Required</b>: Lookup Caregivers</br><b>Available In</b>: ms, ri, sd'
+      operationId: GetCaregiverStatus
+      parameters:
+        - name: caregiverLicenseNumber
+          in: path
+          description: The license number of the Caregiver.
+          required: true
+          schema:
+            type: string
+        - name: licenseNumber
+          in: query
+          description: The license number of the Facility under which to get the Caregiver status.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CaregiverStatus'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
   /employees/v1:
     get:
       tags:
         - Employee
       summary: Get all employees for a license
-      description: '<b>Permissions Required</b>: Manage Employees</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Employees</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetEmployees
       parameters:
         - name: licenseNumber
@@ -131,7 +187,7 @@ paths:
       tags:
         - Facility
       summary: 'A Facility represents a building licensed for the growing, processing, and/or selling of product'
-      description: 'This endpoint provides a list of facilities for which the authenticated user has access.</br><b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: 'This endpoint provides a list of facilities for which the authenticated user has access.</br><b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetFacilities
       responses:
         '200':
@@ -191,7 +247,7 @@ paths:
       tags:
         - Harvest
       summary: Get a specific harvest by id
-      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetHarvestById
       parameters:
         - name: id
@@ -261,7 +317,7 @@ paths:
       tags:
         - Harvest
       summary: Get harvests in an active status
-      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActiveHarvests
       parameters:
         - name: licenseNumber
@@ -344,7 +400,7 @@ paths:
       tags:
         - Harvest
       summary: Get harvests in an onhold status
-      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetOnHoldHarvests
       parameters:
         - name: licenseNumber
@@ -427,7 +483,7 @@ paths:
       tags:
         - Harvest
       summary: Get harvests in an inactive status
-      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetInactiveHarvests
       parameters:
         - name: licenseNumber
@@ -510,7 +566,7 @@ paths:
       tags:
         - Harvest
       summary: Get harvests waste types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetHarvestWasteTypes
       responses:
         '200':
@@ -570,7 +626,7 @@ paths:
       tags:
         - Harvest
       summary: Create packages for one or more harvests
-      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateHarvestPackage
       parameters:
         - name: licenseNumber
@@ -649,7 +705,7 @@ paths:
       tags:
         - Harvest
       summary: Create packages for one or more harvests for testing
-      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateHarvestPackageTesting
       parameters:
         - name: licenseNumber
@@ -728,7 +784,7 @@ paths:
       tags:
         - Harvest
       summary: Move a harvest to a new room
-      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: MoveHarvest
       parameters:
         - name: licenseNumber
@@ -807,7 +863,7 @@ paths:
       tags:
         - Harvest
       summary: Remove waste from a harvest
-      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: RemoveHarvestWaste
       parameters:
         - name: licenseNumber
@@ -886,7 +942,7 @@ paths:
       tags:
         - Harvest
       summary: Rename a harvest
-      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: RenameHarvest
       parameters:
         - name: licenseNumber
@@ -965,7 +1021,7 @@ paths:
       tags:
         - Harvest
       summary: Finish a harvest
-      description: '<b>Permissions Required</b>: View Harvests • Finish/Discontinue Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Finish/Discontinue Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: FinishHarvest
       parameters:
         - name: licenseNumber
@@ -1044,7 +1100,7 @@ paths:
       tags:
         - Harvest
       summary: Unfinish a harvest
-      description: '<b>Permissions Required</b>: View Harvests • Finish/Discontinue Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Finish/Discontinue Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UnfinishHarvest
       parameters:
         - name: licenseNumber
@@ -1123,7 +1179,7 @@ paths:
       tags:
         - Item
       summary: Get a specific item by id
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetItemById
       parameters:
         - name: id
@@ -1192,7 +1248,7 @@ paths:
       tags:
         - Item
       summary: Delete an item
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DeleteItem
       parameters:
         - name: licenseNumber
@@ -1265,7 +1321,7 @@ paths:
       tags:
         - Item
       summary: Get active items
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActiveItems
       parameters:
         - name: licenseNumber
@@ -1327,12 +1383,79 @@ paths:
                 nullable: true
         '503':
           description: Server Error
+  /items/v1/inactive:
+    get:
+      tags:
+        - Item
+      summary: Get inactive items
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      operationId: GetInactiveItems
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return the list of inactive items.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: '#/components/schemas/Item'
+                nullable: true
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
   /items/v1/categories:
     get:
       tags:
         - Item
       summary: Get item categories
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetItemCategories
       parameters:
         - name: licenseNumber
@@ -1398,7 +1521,7 @@ paths:
       tags:
         - Item
       summary: Get item brands
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetItemBrands
       parameters:
         - name: licenseNumber
@@ -1460,12 +1583,81 @@ paths:
                 nullable: true
         '503':
           description: Server Error
+  '/items/v1/photo/{id}':
+    get:
+      tags:
+        - Item
+      summary: Get item photo
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      operationId: GetItemPhoto
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return the item photo.
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Photo'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
   /items/v1/create:
     post:
       tags:
         - Item
       summary: Create items
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateItem
       parameters:
         - name: licenseNumber
@@ -1544,7 +1736,7 @@ paths:
       tags:
         - Item
       summary: Update items
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateItem
       parameters:
         - name: licenseNumber
@@ -1618,12 +1810,91 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
+  /items/v1/photo:
+    post:
+      tags:
+        - Item
+      summary: Create Photo
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      operationId: CreatePhoto
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreatePhotoRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreatePhotoRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
   /labtests/v1/states:
     get:
       tags:
         - LabTest
       summary: Get all lab test states
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetLabTestStates
       responses:
         '200':
@@ -1681,7 +1952,7 @@ paths:
       tags:
         - LabTest
       summary: Get all lab test types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetLabTestTypes
       responses:
         '200':
@@ -1741,7 +2012,7 @@ paths:
       tags:
         - LabTest
       summary: Get lab test results for a package
-      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetLabTestResults
       parameters:
         - name: packageId
@@ -1813,7 +2084,7 @@ paths:
       tags:
         - LabTest
       summary: Upload the lab test results
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: RecordLabTest
       parameters:
         - name: licenseNumber
@@ -1892,7 +2163,7 @@ paths:
       tags:
         - LabTest
       summary: Update lab test documents
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateLabTestDocument
       parameters:
         - name: licenseNumber
@@ -1971,7 +2242,7 @@ paths:
       tags:
         - LabTest
       summary: Release lab test results
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ReleaseLabTestResults
       parameters:
         - name: licenseNumber
@@ -2050,7 +2321,7 @@ paths:
       tags:
         - Location
       summary: Get a specific location by id
-      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetLocationById
       parameters:
         - name: id
@@ -2119,7 +2390,7 @@ paths:
       tags:
         - Location
       summary: Delete an location
-      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DeleteLocation
       parameters:
         - name: licenseNumber
@@ -2192,7 +2463,7 @@ paths:
       tags:
         - Location
       summary: Get active locations
-      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActiveLocations
       parameters:
         - name: licenseNumber
@@ -2259,7 +2530,7 @@ paths:
       tags:
         - Location
       summary: Get location types
-      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetLocationTypes
       parameters:
         - name: licenseNumber
@@ -2325,7 +2596,7 @@ paths:
       tags:
         - Location
       summary: Create locations
-      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateLocation
       parameters:
         - name: licenseNumber
@@ -2404,7 +2675,7 @@ paths:
       tags:
         - Location
       summary: Update locations
-      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateLocation
       parameters:
         - name: licenseNumber
@@ -2483,7 +2754,7 @@ paths:
       tags:
         - Package
       summary: Get a specific package by id
-      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPackageById
       parameters:
         - name: id
@@ -2553,7 +2824,7 @@ paths:
       tags:
         - Package
       summary: Get a specific package by label
-      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPackageByLabel
       parameters:
         - name: label
@@ -2622,7 +2893,7 @@ paths:
       tags:
         - Package
       summary: Get packages in an active status
-      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActivePackages
       parameters:
         - name: licenseNumber
@@ -2705,7 +2976,7 @@ paths:
       tags:
         - Package
       summary: Get packages in an onhold status
-      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetOnHoldPackages
       parameters:
         - name: licenseNumber
@@ -2788,7 +3059,7 @@ paths:
       tags:
         - Package
       summary: Get packages in an inactive status
-      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetInactivePackages
       parameters:
         - name: licenseNumber
@@ -2871,7 +3142,7 @@ paths:
       tags:
         - Package
       summary: Get package types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPackageTypes
       responses:
         '200':
@@ -2929,7 +3200,7 @@ paths:
       tags:
         - Package
       summary: Get package adjust reasons
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPackageAdjustReasons
       parameters:
         - name: licenseNumber
@@ -2996,7 +3267,7 @@ paths:
       tags:
         - Package
       summary: Create packages
-      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePackage
       parameters:
         - name: licenseNumber
@@ -3075,7 +3346,7 @@ paths:
       tags:
         - Package
       summary: Create testing packages
-      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateTestingPackage
       parameters:
         - name: licenseNumber
@@ -3154,7 +3425,7 @@ paths:
       tags:
         - Package
       summary: Create package plantings
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants • View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants • View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePackagePlanting
       parameters:
         - name: licenseNumber
@@ -3233,7 +3504,7 @@ paths:
       tags:
         - Package
       summary: Change the package item
-      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ChangePackageItem
       parameters:
         - name: licenseNumber
@@ -3312,7 +3583,7 @@ paths:
       tags:
         - Package
       summary: Update a package note
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory • Manage Package Notes</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory • Manage Package Notes</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ChangePackageNote
       parameters:
         - name: licenseNumber
@@ -3391,7 +3662,7 @@ paths:
       tags:
         - Package
       summary: Change a package location
-      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ChangePackageLocation
       parameters:
         - name: licenseNumber
@@ -3470,7 +3741,7 @@ paths:
       tags:
         - Package
       summary: Adjust packages
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: AdjustPackage
       parameters:
         - name: licenseNumber
@@ -3549,7 +3820,7 @@ paths:
       tags:
         - Package
       summary: Finish packages
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: FinishPackage
       parameters:
         - name: licenseNumber
@@ -3628,7 +3899,7 @@ paths:
       tags:
         - Package
       summary: Unfinish packages
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UnfinishPackage
       parameters:
         - name: licenseNumber
@@ -3707,7 +3978,7 @@ paths:
       tags:
         - Package
       summary: Remediate packages
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: RemediatePackage
       parameters:
         - name: licenseNumber
@@ -3786,7 +4057,7 @@ paths:
       tags:
         - Patient
       summary: Get a specific patient by id
-      description: '<b>Permissions Required</b>: Manage Patients</br><b>Available In</b>: az, co, la, ma, mt, nv, ok, wv'
+      description: '<b>Permissions Required</b>: Manage Patients</br><b>Available In</b>: az, co, la, ma, ms, mt, nv, ok, ri, sd, wv'
       operationId: GetPatientById
       parameters:
         - name: id
@@ -3855,7 +4126,7 @@ paths:
       tags:
         - Patient
       summary: Delete an patient
-      description: '<b>Permissions Required</b>: Manage Patients</br><b>Available In</b>: az, co, la, ma, mt, nv, ok, wv'
+      description: '<b>Permissions Required</b>: Manage Patients</br><b>Available In</b>: az, co, la, ma, ms, mt, nv, ok, ri, sd, wv'
       operationId: DeletePatient
       parameters:
         - name: licenseNumber
@@ -3928,7 +4199,7 @@ paths:
       tags:
         - Patient
       summary: Get active patients
-      description: '<b>Permissions Required</b>: Manage Patients</br><b>Available In</b>: az, co, la, ma, mt, nv, ok, wv'
+      description: '<b>Permissions Required</b>: Manage Patients</br><b>Available In</b>: az, co, la, ma, ms, mt, nv, ok, ri, sd, wv'
       operationId: GetActivePatients
       parameters:
         - name: licenseNumber
@@ -3995,7 +4266,7 @@ paths:
       tags:
         - Patient
       summary: Get patient status. Data returned by this endpoint is cached for up to one minute
-      description: '<b>Permissions Required</b>: Lookup Patients</br><b>Available In</b>: co, dc, md, mi, mo, mt, wv'
+      description: '<b>Permissions Required</b>: Lookup Patients</br><b>Available In</b>: co, dc, md, mi, ms, mo, mt, ri, sd, wv'
       operationId: GetPatientStatus
       parameters:
         - name: patientLicenseNumber
@@ -4067,7 +4338,7 @@ paths:
       tags:
         - Patient
       summary: Create patients
-      description: '<b>Permissions Required</b>: Manage Patients</br><b>Available In</b>: az, co, la, ma, mt, nv, ok, wv'
+      description: '<b>Permissions Required</b>: Manage Patients</br><b>Available In</b>: az, co, la, ma, ms, mt, nv, ok, ri, sd, wv'
       operationId: CreatePatient
       parameters:
         - name: licenseNumber
@@ -4146,7 +4417,7 @@ paths:
       tags:
         - Patient
       summary: Update patients
-      description: '<b>Permissions Required</b>: Manage Patients</br><b>Available In</b>: az, co, la, ma, mt, nv, ok, wv'
+      description: '<b>Permissions Required</b>: Manage Patients</br><b>Available In</b>: az, co, la, ma, ms, mt, nv, ok, ri, sd, wv'
       operationId: UpdatePatient
       parameters:
         - name: licenseNumber
@@ -4225,7 +4496,7 @@ paths:
       tags:
         - Plant
       summary: Get a specific plant by id
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantById
       parameters:
         - name: id
@@ -4295,7 +4566,7 @@ paths:
       tags:
         - Plant
       summary: Get a specific plant by label
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantByLabel
       parameters:
         - name: label
@@ -4364,7 +4635,7 @@ paths:
       tags:
         - Plant
       summary: Get plants in an vegetating status
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetVegetativePlants
       parameters:
         - name: licenseNumber
@@ -4447,7 +4718,7 @@ paths:
       tags:
         - Plant
       summary: Get plants in an flowering status
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetFloweringPlants
       parameters:
         - name: licenseNumber
@@ -4530,7 +4801,7 @@ paths:
       tags:
         - Plant
       summary: Get plants in an onhold status
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetOnHoldPlants
       parameters:
         - name: licenseNumber
@@ -4613,7 +4884,7 @@ paths:
       tags:
         - Plant
       summary: Get plants in an inactive status
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetInactivePlants
       parameters:
         - name: licenseNumber
@@ -4696,7 +4967,7 @@ paths:
       tags:
         - Plant
       summary: Get plant additives
-      description: '<b>Permissions Required</b>: View/Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View/Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantAdditives
       parameters:
         - name: licenseNumber
@@ -4778,7 +5049,7 @@ paths:
       tags:
         - Plant
       summary: Add additives to a plant
-      description: '<b>Permissions Required</b>: Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: AddAdditiveToPlant
       parameters:
         - name: licenseNumber
@@ -4857,7 +5128,7 @@ paths:
       tags:
         - Plant
       summary: Get plant growth phases
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantGrowthPhases
       parameters:
         - name: licenseNumber
@@ -4922,7 +5193,7 @@ paths:
       tags:
         - Plant
       summary: Get plant additive types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantAdditivesTypes
       responses:
         '200':
@@ -4980,8 +5251,68 @@ paths:
       tags:
         - Plant
       summary: Get plant waste methods
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ca'
       operationId: GetPlantWasteMethods
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: '#/components/schemas/PlantWasteMethod'
+                nullable: true
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+  /plants/v1/waste/methods/all:
+    get:
+      tags:
+        - Plant
+      summary: Get all plant waste method properties
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      operationId: GetPlantWasteMethodsAll
       responses:
         '200':
           description: Success
@@ -5040,7 +5371,7 @@ paths:
       tags:
         - Plant
       summary: Get plant waste reasons
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantWasteReasons
       parameters:
         - name: licenseNumber
@@ -5107,7 +5438,7 @@ paths:
       tags:
         - Plant
       summary: Move a plant
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: MovePlant
       parameters:
         - name: licenseNumber
@@ -5186,7 +5517,7 @@ paths:
       tags:
         - Plant
       summary: Change a plant's growth phase
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ChangePlantGrowthPhase
       parameters:
         - name: licenseNumber
@@ -5265,7 +5596,7 @@ paths:
       tags:
         - Plant
       summary: Destroy a plant
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Destroy Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Destroy Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DestroyPlant
       parameters:
         - name: licenseNumber
@@ -5344,7 +5675,7 @@ paths:
       tags:
         - Plant
       summary: Add additives to plants by location
-      description: '<b>Permissions Required</b>: Manage Plants • Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Plants • Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: AddAdditiveToPlantByLocation
       parameters:
         - name: licenseNumber
@@ -5423,7 +5754,7 @@ paths:
       tags:
         - Plant
       summary: Add additives to plants by location
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePlantingOfPlant
       parameters:
         - name: licenseNumber
@@ -5502,7 +5833,7 @@ paths:
       tags:
         - Plant
       summary: Create plant batch from plants
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePlantBatchFromPlantPackage
       parameters:
         - name: licenseNumber
@@ -5581,7 +5912,7 @@ paths:
       tags:
         - Plant
       summary: Harvest plants
-      description: '<b>Permissions Required</b>: View Immature Plants • Manicure/Harvest Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manicure/Harvest Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: HarvestPlant
       parameters:
         - name: licenseNumber
@@ -5660,7 +5991,7 @@ paths:
       tags:
         - Plant
       summary: Manicure plants
-      description: '<b>Permissions Required</b>: View Immature Plants • Manicure/Harvest Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manicure/Harvest Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ManicurePlant
       parameters:
         - name: licenseNumber
@@ -5739,7 +6070,7 @@ paths:
       tags:
         - PlantBatch
       summary: Get a specific plant batch by id
-      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantBatchById
       parameters:
         - name: id
@@ -5809,7 +6140,7 @@ paths:
       tags:
         - PlantBatch
       summary: Get plant batches in an active status
-      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActivePlantBatches
       parameters:
         - name: licenseNumber
@@ -5892,7 +6223,7 @@ paths:
       tags:
         - PlantBatch
       summary: Get plant batches in an inactive status
-      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetInactivePlantBatches
       parameters:
         - name: licenseNumber
@@ -5975,7 +6306,7 @@ paths:
       tags:
         - PlantBatch
       summary: Get plant batch types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantBatchTypes
       responses:
         '200':
@@ -6033,7 +6364,7 @@ paths:
       tags:
         - PlantBatch
       summary: Create plant batch plantings
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePlantBatchPlantings
       parameters:
         - name: licenseNumber
@@ -6112,7 +6443,7 @@ paths:
       tags:
         - PlantBatch
       summary: Create plant batch packages
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePlantBatchPackages
       parameters:
         - name: licenseNumber
@@ -6195,7 +6526,7 @@ paths:
       tags:
         - PlantBatch
       summary: Split a plant batch
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: SplitPlantBatch
       parameters:
         - name: licenseNumber
@@ -6274,7 +6605,7 @@ paths:
       tags:
         - PlantBatch
       summary: Create packages from a mother plant for a plant batch
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePackageFromPlantBatchMotherPlant
       parameters:
         - name: licenseNumber
@@ -6353,7 +6684,7 @@ paths:
       tags:
         - PlantBatch
       summary: Change the growth phase for a plant batch
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ChangeGrowthPhaseForPlantBatch
       parameters:
         - name: licenseNumber
@@ -6432,7 +6763,7 @@ paths:
       tags:
         - PlantBatch
       summary: Move a plant batch
-      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: MovePlantBatch
       parameters:
         - name: licenseNumber
@@ -6511,7 +6842,7 @@ paths:
       tags:
         - PlantBatch
       summary: Add plant additives to a plant batch
-      description: '<b>Permissions Required</b>: Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: AddAdditiveToPlantBatch
       parameters:
         - name: licenseNumber
@@ -6590,7 +6921,7 @@ paths:
       tags:
         - PlantBatch
       summary: Destroy a plant batch
-      description: '<b>Permissions Required</b>: View Immature Plants • Destroy Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Destroy Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DestroyPlantBatch
       parameters:
         - name: licenseNumber
@@ -6664,12 +6995,1243 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
+  '/processing/v1/{id}':
+    get:
+      tags:
+        - Processing
+      summary: Get a specific processing by id
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: GetProcessingById
+      parameters:
+        - name: id
+          in: path
+          description: Processing ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: licenseNumber
+          in: query
+          description: 'If specified, the Processing will be validated against the specified License Number. If not specified, the Processing will be validated against all of the User''s current Facilities. Please note that if the Processing is not valid for the specified License Number, a 401 Unauthorized status will be returned.'
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Processing'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+    delete:
+      tags:
+        - Processing
+      summary: Delete processing
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: DeleteProcessing
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+  /processing/v1/active:
+    get:
+      tags:
+        - Processing
+      summary: Get processing in an active status
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: GetActiveProcessing
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return the list of active processing.
+          required: true
+          schema:
+            type: string
+        - name: lastModifiedStart
+          in: query
+          description: The last modified start timestamp
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+            type: string
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
+        - name: lastModifiedEnd
+          in: query
+          description: The last modified end timestamp
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+            type: string
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: '#/components/schemas/Processing'
+                nullable: true
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+  /processing/v1/inactive:
+    get:
+      tags:
+        - Processing
+      summary: Get processing in an inactive status
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: GetInactiveProcessing
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return the list of inactive processing.
+          required: true
+          schema:
+            type: string
+        - name: lastModifiedStart
+          in: query
+          description: The last modified start timestamp
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+            type: string
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
+        - name: lastModifiedEnd
+          in: query
+          description: The last modified end timestamp
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+            type: string
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: '#/components/schemas/Processing'
+                nullable: true
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+  /processing/v1/createpackages:
+    post:
+      tags:
+        - Processing
+      summary: Create packages from a processing
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: CreateProcessingPackage
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateProcessingPackageRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateProcessingPackageRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+  /processing/v1/start:
+    post:
+      tags:
+        - Processing
+      summary: Start processing
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: StartProcessing
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/StartProcessingRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/StartProcessingRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+  /processing/v1/adjust:
+    post:
+      tags:
+        - Processing
+      summary: Adjust processing
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: AdjustProcessing
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AdjustProcessingRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AdjustProcessingRequest'
+        required: true
+      responses:
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+  /processing/v1/finish:
+    put:
+      tags:
+        - Processing
+      summary: Finish processing
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: FinishProcessing
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FinishProcessingRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FinishProcessingRequest'
+        required: true
+      responses:
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+  /processing/v1/unfinish:
+    put:
+      tags:
+        - Processing
+      summary: Unfinish processing
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: UnfinishProcessing
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UnfinishProcessingRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UnfinishProcessingRequest'
+        required: true
+      responses:
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+  /processing/v1/jobtypes/active:
+    get:
+      tags:
+        - Processing
+      summary: Get active job types
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: GetActiveJobTypes
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return the list of active processing.
+          required: true
+          schema:
+            type: string
+        - name: lastModifiedStart
+          in: query
+          description: The last modified start timestamp
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+            type: string
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
+        - name: lastModifiedEnd
+          in: query
+          description: The last modified end timestamp
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+            type: string
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: '#/components/schemas/ProcessingJobType'
+                nullable: true
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+  /processing/v1/jobtypes/inactive:
+    get:
+      tags:
+        - Processing
+      summary: Get inactive job types
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: GetInactiveJobTypes
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return the list of inactive processing.
+          required: true
+          schema:
+            type: string
+        - name: lastModifiedStart
+          in: query
+          description: The last modified start timestamp
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+            type: string
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
+        - name: lastModifiedEnd
+          in: query
+          description: The last modified end timestamp
+          schema:
+            pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+            type: string
+            description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+            format: date-time
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: '#/components/schemas/ProcessingJobType'
+                nullable: true
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+  /processing/v1/jobtypes:
+    post:
+      tags:
+        - Processing
+      summary: Create Job Type
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: CreateJobType
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateJobTypeRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateJobTypeRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+    put:
+      tags:
+        - Processing
+      summary: Update Job Type
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: UpdateJobType
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/ProcessingJobType'
+              nullable: true
+          application/*+json:
+            schema:
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/ProcessingJobType'
+              nullable: true
+        required: true
+      responses:
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+  '/processing/v1/jobtypes/{id}':
+    delete:
+      tags:
+        - Processing
+      summary: Delete job type
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: DeleteJobType
+      parameters:
+        - name: licenseNumber
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+  /processing/v1/jobtypes/attributes:
+    get:
+      tags:
+        - Processing
+      summary: Get job type attributes
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: GetJobTypeAttributes
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return the job type attributes.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
+  /processing/v1/jobtypes/categories:
+    get:
+      tags:
+        - Processing
+      summary: Get job type categories
+      description: '<b>Permissions Required</b>: Manage Processing Job</br><b>Available In</b>: ri'
+      operationId: GetJobTypeCategories
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return the job type categories.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '503':
+          description: Server Error
   /sales/v1/customertypes:
     get:
       tags:
         - Sale
       summary: Get sale customer types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetSaleCustomerTypes
       responses:
         '200':
@@ -6727,7 +8289,7 @@ paths:
       tags:
         - Sale
       summary: Get active sales receipts
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActiveSaleReceipts
       parameters:
         - name: licenseNumber
@@ -6825,7 +8387,7 @@ paths:
       tags:
         - Sale
       summary: Get inactive sales receipts
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetInactiveSaleReceipts
       parameters:
         - name: licenseNumber
@@ -6923,7 +8485,7 @@ paths:
       tags:
         - Sale
       summary: Get a sales receipt by id
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetSaleReceiptById
       parameters:
         - name: id
@@ -6993,7 +8555,7 @@ paths:
       tags:
         - Sale
       summary: Create a new sale receipt
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateSaleReceipt
       parameters:
         - name: licenseNumber
@@ -7071,7 +8633,7 @@ paths:
       tags:
         - Sale
       summary: Create a new sale receipt
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateSaleReceipt
       parameters:
         - name: licenseNumber
@@ -7150,7 +8712,7 @@ paths:
       tags:
         - Sale
       summary: Delete an sale receipt
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DeleteReceipt
       parameters:
         - name: licenseNumber
@@ -7223,7 +8785,7 @@ paths:
       tags:
         - Sale
       summary: Get a summary of all sales
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransactions
       parameters:
         - name: licenseNumber
@@ -7290,7 +8852,7 @@ paths:
       tags:
         - Sale
       summary: Get a detail of all sales transactions between a date range
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransactionsByDateRange
       parameters:
         - name: licenseNumber
@@ -7371,7 +8933,7 @@ paths:
       tags:
         - Sale
       summary: Upload a sales summary
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateSaleTransactionSummary
       parameters:
         - name: licenseNumber
@@ -7461,7 +9023,7 @@ paths:
       tags:
         - Sale
       summary: Update a sales summary
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateSaleTransactionSummary
       parameters:
         - name: licenseNumber
@@ -7552,7 +9114,7 @@ paths:
       tags:
         - Sale
       summary: Get active sales deliveries
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, mo, mt, nv, or'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, ms, mo, mt, nv, or, ri, sd'
       operationId: GetActiveSaleDeliveries
       parameters:
         - name: licenseNumber
@@ -7650,7 +9212,7 @@ paths:
       tags:
         - Sale
       summary: Get inactive sales deliveries
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, mo, mt, nv, or'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, ms, mo, mt, nv, or, ri, sd'
       operationId: GetInactiveSaleDeliveries
       parameters:
         - name: licenseNumber
@@ -7748,7 +9310,7 @@ paths:
       tags:
         - Sale
       summary: Get a sales delivery by id
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, mo, mt, nv, or'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, ms, mo, mt, nv, or, ri, sd'
       operationId: GetSaleDeliveryById
       parameters:
         - name: id
@@ -7817,7 +9379,7 @@ paths:
       tags:
         - Sale
       summary: Delete an sale delivery
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, mo, mt, nv, or'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, ms, mo, mt, nv, or, ri, sd'
       operationId: DeleteDelivery
       parameters:
         - name: licenseNumber
@@ -7890,7 +9452,7 @@ paths:
       tags:
         - Sale
       summary: Create a new sale delivery
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, mo, mt, nv, or'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, ms, mo, mt, nv, or, ri, sd'
       operationId: CreateSaleDelivery
       parameters:
         - name: licenseNumber
@@ -7968,7 +9530,7 @@ paths:
       tags:
         - Sale
       summary: Create a new sale delivery
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, mo, mt, nv, or'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, ms, mo, mt, nv, or, ri, sd'
       operationId: UpdateSaleDelivery
       parameters:
         - name: licenseNumber
@@ -8047,7 +9609,7 @@ paths:
       tags:
         - Sale
       summary: Update a sale delivery to complete
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, mo, mt, nv, or'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: az, co, dc, md, ma, mi, ms, mo, mt, nv, or, ri, sd'
       operationId: UpdateSaleDeliveryComplete
       parameters:
         - name: licenseNumber
@@ -8126,7 +9688,7 @@ paths:
       tags:
         - Sale
       summary: Get delivery return reasons
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: az, co, dc, md, ma, mi, mo, mt, nv, or'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: az, co, dc, md, ma, mi, ms, mo, mt, nv, or, ri, sd'
       operationId: GetDeliveryReturnReasons
       responses:
         '200':
@@ -8186,7 +9748,7 @@ paths:
       tags:
         - Strain
       summary: Get a specific strain by id
-      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetStrainById
       parameters:
         - name: id
@@ -8255,7 +9817,7 @@ paths:
       tags:
         - Strain
       summary: Delete an strain
-      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DeleteStrain
       parameters:
         - name: licenseNumber
@@ -8328,7 +9890,7 @@ paths:
       tags:
         - Strain
       summary: Get active strains
-      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActiveStrains
       parameters:
         - name: licenseNumber
@@ -8395,7 +9957,7 @@ paths:
       tags:
         - Strain
       summary: Create strains
-      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateStrain
       parameters:
         - name: licenseNumber
@@ -8474,7 +10036,7 @@ paths:
       tags:
         - Strain
       summary: Update strains
-      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateStrain
       parameters:
         - name: licenseNumber
@@ -8553,7 +10115,7 @@ paths:
       tags:
         - Transfer
       summary: Get incoming transfers
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetIncomingTransfers
       parameters:
         - name: licenseNumber
@@ -8635,7 +10197,7 @@ paths:
       tags:
         - Transfer
       summary: Get outgoing transfers
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetOutgoingTransfers
       parameters:
         - name: licenseNumber
@@ -8717,7 +10279,7 @@ paths:
       tags:
         - Transfer
       summary: Get rejected transfers
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetRejectedTransfers
       parameters:
         - name: licenseNumber
@@ -8783,7 +10345,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer deliveries
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveries
       parameters:
         - name: id
@@ -8851,7 +10413,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery transporters
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryTransporters
       parameters:
         - name: id
@@ -8919,7 +10481,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery transporters (detail)
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryTransportersDetail
       parameters:
         - name: id
@@ -8987,7 +10549,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery packages
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryPackages
       parameters:
         - name: id
@@ -9055,7 +10617,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery packages for wholesale
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryPackagesWholesale
       parameters:
         - name: id
@@ -9123,7 +10685,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery packages that require lab tests
-      description: 'Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryPackagesThatRequireLabTest
       parameters:
         - name: id
@@ -9191,7 +10753,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery package states
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryPackageStates
       responses:
         '200':
@@ -9249,7 +10811,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferTypes
       parameters:
         - name: licenseNumber
@@ -9315,7 +10877,7 @@ paths:
       tags:
         - Transfer
       summary: Create incoming external transfer
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateExternalIncomingTransfers
       parameters:
         - name: licenseNumber
@@ -9393,7 +10955,7 @@ paths:
       tags:
         - Transfer
       summary: Update incoming external transfer
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateExternalIncomingTransfers
       parameters:
         - name: licenseNumber
@@ -9472,7 +11034,7 @@ paths:
       tags:
         - Transfer
       summary: Delete incoming external transfer
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DeleteExternalIncomingTransfer
       parameters:
         - name: licenseNumber
@@ -9545,7 +11107,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer templates
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferTemplates
       parameters:
         - name: licenseNumber
@@ -9626,7 +11188,7 @@ paths:
       tags:
         - Transfer
       summary: Create transfer template
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateTransferTemplates
       parameters:
         - name: licenseNumber
@@ -9704,7 +11266,7 @@ paths:
       tags:
         - Transfer
       summary: Update transfer template
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateTransferTemplates
       parameters:
         - name: licenseNumber
@@ -9783,7 +11345,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery templates
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryTemplate
       parameters:
         - name: id
@@ -9851,7 +11413,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery transporter templates
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryTransporterTemplates
       parameters:
         - name: id
@@ -9919,7 +11481,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery transporters (detail) templates
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryTransportersDetailTemplates
       parameters:
         - name: id
@@ -9987,7 +11549,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery package templates
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryPackagesTemplate
       parameters:
         - name: id
@@ -10055,7 +11617,7 @@ paths:
       tags:
         - Transfer
       summary: Delete transfer template
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mo, mt, nv, oh, ok, or, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DeleteTransferTemplate
       parameters:
         - name: licenseNumber
@@ -10128,7 +11690,7 @@ paths:
       tags:
         - UnitOfMeasure
       summary: Get all units of measures
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, fl, gu, il, la, me, md, ma, mi, mn, mo, mt, nv, nj, oh, ok, or, ri, sd, va, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetUnitsOfMeasure
       responses:
         '200':
@@ -10317,6 +11879,7 @@ components:
       type: object
       properties:
         label:
+          minLength: 1
           type: string
         quantity:
           type: number
@@ -10334,6 +11897,49 @@ components:
         reasonNote:
           type: string
           nullable: true
+      additionalProperties: { }
+    AdjustProcessingRequest:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        adjustmentReason:
+          type: string
+          nullable: true
+        adjustmentDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        adjustmentNote:
+          type: string
+          nullable: true
+        countUnitOfMeasureName:
+          type: string
+          nullable: true
+        volumeUnitOfMeasureName:
+          type: string
+          nullable: true
+        weightUnitOfMeasureName:
+          type: string
+          nullable: true
+        packages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessingPackageRequest'
+          nullable: true
+      additionalProperties: { }
+    CaregiverStatus:
+      type: object
+      properties:
+        caregiverLicenseNumber:
+          type: string
+          nullable: true
+        active:
+          type: boolean
       additionalProperties: { }
     ChangeGrowthPhaseForPlantBatchRequest:
       type: object
@@ -10368,8 +11974,10 @@ components:
       type: object
       properties:
         label:
+          minLength: 1
           type: string
         item:
+          minLength: 1
           type: string
       additionalProperties: { }
     ChangePackageLocationRequest:
@@ -10426,6 +12034,7 @@ components:
       type: object
       properties:
         tag:
+          minLength: 1
           type: string
         location:
           type: string
@@ -10604,6 +12213,27 @@ components:
           type: string
           nullable: true
       additionalProperties: { }
+    CreateJobTypeRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        category:
+          type: string
+          nullable: true
+        processingSteps:
+          type: string
+          nullable: true
+        attributes:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: { }
     CreateLabTestResultRequest:
       required:
         - label
@@ -10612,6 +12242,7 @@ components:
       type: object
       properties:
         label:
+          minLength: 1
           type: string
         resultDate:
           pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
@@ -10637,8 +12268,10 @@ components:
       type: object
       properties:
         name:
+          minLength: 1
           type: string
         locationTypeName:
+          minLength: 1
           type: string
       additionalProperties: { }
     CreatePackagePlantingRequest:
@@ -10650,6 +12283,7 @@ components:
       type: object
       properties:
         packageLabel:
+          minLength: 1
           type: string
         packageAdjustmentAmount:
           type: number
@@ -10701,16 +12335,19 @@ components:
       type: object
       properties:
         tag:
+          minLength: 1
           type: string
         location:
           type: string
           nullable: true
         item:
+          minLength: 1
           type: string
         quantity:
           type: number
           format: double
         unitOfMeasure:
+          minLength: 1
           type: string
         patientLicenseNumber:
           type: string
@@ -10752,6 +12389,7 @@ components:
       type: object
       properties:
         licenseNumber:
+          minLength: 1
           type: string
         licenseEffectiveStartDate:
           pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
@@ -10773,6 +12411,19 @@ components:
           pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
           type: string
           format: date
+      additionalProperties: { }
+    CreatePhotoRequest:
+      required:
+        - encodedImageBase64
+        - fileName
+      type: object
+      properties:
+        fileName:
+          minLength: 1
+          type: string
+        encodedImageBase64:
+          minLength: 1
+          type: string
       additionalProperties: { }
     CreatePlantBatchFromPlantPackageRequest:
       type: object
@@ -10902,6 +12553,72 @@ components:
           type: string
           description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
           format: date-time
+      additionalProperties: { }
+    CreateProcessingPackageRequest:
+      type: object
+      properties:
+        jobName:
+          type: string
+          nullable: true
+        tag:
+          type: string
+          nullable: true
+        location:
+          type: string
+          nullable: true
+        item:
+          type: string
+          nullable: true
+        quantity:
+          type: number
+          format: double
+          nullable: true
+        unitOfMeasure:
+          type: string
+          nullable: true
+        patientLicenseNumber:
+          type: string
+          nullable: true
+        note:
+          type: string
+          nullable: true
+        productionBatchNumber:
+          type: string
+          nullable: true
+        finishProcessingJob:
+          type: boolean
+        finishDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+        wasteCountQuantity:
+          type: integer
+          format: int32
+        wasteCountUnitOfMeasureName:
+          type: string
+          nullable: true
+        wasteVolumeQuantity:
+          type: number
+          format: double
+          nullable: true
+        wasteVolumeUnitOfMeasureName:
+          type: string
+          nullable: true
+        wasteWeightQuantity:
+          type: number
+          format: double
+          nullable: true
+        wasteWeightUnitOfMeasureName:
+          type: string
+          nullable: true
+        finishNote:
+          type: string
+          nullable: true
+        packageDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
       additionalProperties: { }
     CreateSaleDeliveryRequest:
       type: object
@@ -11410,6 +13127,9 @@ components:
         canInfuseProducts:
           type: boolean
           nullable: true
+        canDestroyProduct:
+          type: boolean
+          nullable: true
         canTestPackages:
           type: boolean
           nullable: true
@@ -11479,6 +13199,9 @@ components:
         canRecordProcessingJobs:
           type: boolean
           nullable: true
+        canRecordProductForDestruction:
+          type: boolean
+          nullable: true
         canClonePlantBatches:
           type: boolean
           nullable: true
@@ -11507,6 +13230,44 @@ components:
           pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
           type: string
           format: date
+      additionalProperties: { }
+    FinishProcessingRequest:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        finishDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        finishNote:
+          type: string
+          nullable: true
+        totalCountWaste:
+          type: number
+          format: double
+          nullable: true
+        wasteCountUnitOfMeasureName:
+          type: string
+          nullable: true
+        totalVolumeWaste:
+          type: number
+          format: double
+          nullable: true
+        wasteVolumeUnitOfMeasureName:
+          type: string
+          nullable: true
+        totalWeightWaste:
+          type: number
+          format: double
+          nullable: true
+        wasteWeightUnitOfMeasureName:
+          type: string
+          nullable: true
       additionalProperties: { }
     Harvest:
       required:
@@ -11794,6 +13555,24 @@ components:
         publicIngredients:
           type: string
           nullable: true
+        productImages:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/Photo'
+          nullable: true
+        labelImages:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/Photo'
+          nullable: true
+        packagingImages:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/Photo'
+          nullable: true
       additionalProperties: { }
     ItemBrand:
       type: object
@@ -11967,6 +13746,7 @@ components:
       type: object
       properties:
         labTestTypeName:
+          minLength: 1
           type: string
         quantity:
           type: number
@@ -11974,6 +13754,7 @@ components:
         passed:
           type: boolean
         notes:
+          minLength: 1
           type: string
       additionalProperties: { }
     LabTestType:
@@ -12017,6 +13798,7 @@ components:
       type: object
       properties:
         Number:
+          minLength: 1
           type: string
         StartDate:
           pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
@@ -12393,6 +14175,19 @@ components:
           type: number
           format: double
       additionalProperties: { }
+    Photo:
+      type: object
+      properties:
+        fileContents:
+          type: string
+          nullable: true
+        contentType:
+          type: string
+          nullable: true
+        fileDownloadName:
+          type: string
+          nullable: true
+      additionalProperties: { }
     Plant:
       required:
         - id
@@ -12671,6 +14466,18 @@ components:
         name:
           type: string
           nullable: true
+        forPlants:
+          type: boolean
+          nullable: true
+        forProductDestruction:
+          type: boolean
+          nullable: true
+        lastModified:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
+          nullable: true
       additionalProperties: { }
     PlantWasteReason:
       type: object
@@ -12680,6 +14487,53 @@ components:
           nullable: true
         requiresNote:
           type: boolean
+      additionalProperties: { }
+    Processing:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    ProcessingJobType:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        categoryName:
+          type: string
+          nullable: true
+        processingSteps:
+          type: string
+          nullable: true
+        attributes:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: { }
+    ProcessingPackageRequest:
+      type: object
+      properties:
+        label:
+          type: string
+          nullable: true
+        quantity:
+          type: number
+          format: double
+        unitOfMeasure:
+          type: string
+          nullable: true
       additionalProperties: { }
     ReleaseLabTestResultsRequest:
       type: object
@@ -13162,6 +15016,34 @@ components:
           type: string
           nullable: true
         actualDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+      additionalProperties: { }
+    StartProcessingRequest:
+      type: object
+      properties:
+        jobName:
+          type: string
+          nullable: true
+        jobType:
+          type: string
+          nullable: true
+        countUnitOfMeasure:
+          type: string
+          nullable: true
+        volumeUnitOfMeasure:
+          type: string
+          nullable: true
+        weightUnitOfMeasure:
+          type: string
+          nullable: true
+        packages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessingPackageRequest'
+          nullable: true
+        startDate:
           pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
           type: string
           format: date
@@ -13682,6 +15564,7 @@ components:
       type: object
       properties:
         name:
+          minLength: 1
           type: string
         forLicensedShipments:
           type: boolean
@@ -13708,12 +15591,22 @@ components:
           type: string
           nullable: true
       additionalProperties: { }
+    UnfinishProcessingRequest:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+      additionalProperties: { }
     UnitOfMeasure:
       required:
         - name
       type: object
       properties:
         name:
+          minLength: 1
           type: string
         quantityType:
           type: string

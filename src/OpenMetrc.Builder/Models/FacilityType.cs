@@ -35,6 +35,7 @@ public class FacilityType
     public bool? CanRequestProductRemediation { get; set; }
     public bool? CanRemediatePackagesWithFailedLabResults { get; set; }
     public bool? CanInfuseProducts { get; set; }
+    public bool? CanDestroyProduct { get; set; }
     public bool? CanTestPackages { get; set; }
     public bool? CanTransferFromExternalFacilities { get; set; }
     public bool? CanSellToConsumers { get; set; }
@@ -58,6 +59,7 @@ public class FacilityType
     public bool? CanReportPatientsAdverseResponses { get; set; }
     public bool? CanReportStrainProperties { get; set; }
     public bool? CanRecordProcessingJobs { get; set; }
+    public bool? CanRecordProductForDestruction { get; set; }
     public bool? CanClonePlantBatches { get; set; }
     public bool? TestsRequireLabSample { get; set; }
 }
