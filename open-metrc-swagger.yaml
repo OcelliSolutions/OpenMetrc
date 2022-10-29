@@ -14,6 +14,7 @@ servers:
   - url: https://api-md.metrc.com
   - url: https://api-me.metrc.com
   - url: https://api-mi.metrc.com
+  - url: https://api-mn.metrc.com
   - url: https://api-mo.metrc.com
   - url: https://api-ms.metrc.com
   - url: https://api-mt.metrc.com
@@ -34,6 +35,7 @@ servers:
   - url: https://sandbox-api-md.metrc.com
   - url: https://sandbox-api-me.metrc.com
   - url: https://sandbox-api-mi.metrc.com
+  - url: https://sandbox-api-mn.metrc.com
   - url: https://sandbox-api-mo.metrc.com
   - url: https://sandbox-api-ms.metrc.com
   - url: https://sandbox-api-mt.metrc.com
@@ -50,7 +52,7 @@ paths:
       tags:
         - Caregiver
       summary: Data returned by this endpoint is cached for up to one minute
-      description: '<b>Permissions Required</b>: Lookup Caregivers</br><b>Available In</b>: ms, ri, sd'
+      description: '<b>Permissions Required</b>: Lookup Caregivers</br><b>Available In</b>: mn, ms, ri, sd'
       operationId: GetCaregiverStatus
       parameters:
         - name: caregiverLicenseNumber
@@ -187,7 +189,7 @@ paths:
       tags:
         - Facility
       summary: 'A Facility represents a building licensed for the growing, processing, and/or selling of product'
-      description: 'This endpoint provides a list of facilities for which the authenticated user has access.</br><b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: 'This endpoint provides a list of facilities for which the authenticated user has access.</br><b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetFacilities
       responses:
         '200':
@@ -247,7 +249,7 @@ paths:
       tags:
         - Harvest
       summary: Get a specific harvest by id
-      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetHarvestById
       parameters:
         - name: id
@@ -317,7 +319,7 @@ paths:
       tags:
         - Harvest
       summary: Get harvests in an active status
-      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActiveHarvests
       parameters:
         - name: licenseNumber
@@ -400,7 +402,7 @@ paths:
       tags:
         - Harvest
       summary: Get harvests in an onhold status
-      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetOnHoldHarvests
       parameters:
         - name: licenseNumber
@@ -483,7 +485,7 @@ paths:
       tags:
         - Harvest
       summary: Get harvests in an inactive status
-      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetInactiveHarvests
       parameters:
         - name: licenseNumber
@@ -566,7 +568,7 @@ paths:
       tags:
         - Harvest
       summary: Get harvests waste types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetHarvestWasteTypes
       responses:
         '200':
@@ -626,7 +628,7 @@ paths:
       tags:
         - Harvest
       summary: Create packages for one or more harvests
-      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateHarvestPackage
       parameters:
         - name: licenseNumber
@@ -705,7 +707,7 @@ paths:
       tags:
         - Harvest
       summary: Create packages for one or more harvests for testing
-      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateHarvestPackageTesting
       parameters:
         - name: licenseNumber
@@ -784,7 +786,7 @@ paths:
       tags:
         - Harvest
       summary: Move a harvest to a new room
-      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: MoveHarvest
       parameters:
         - name: licenseNumber
@@ -863,7 +865,7 @@ paths:
       tags:
         - Harvest
       summary: Remove waste from a harvest
-      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: RemoveHarvestWaste
       parameters:
         - name: licenseNumber
@@ -942,7 +944,7 @@ paths:
       tags:
         - Harvest
       summary: Rename a harvest
-      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: RenameHarvest
       parameters:
         - name: licenseNumber
@@ -1021,7 +1023,7 @@ paths:
       tags:
         - Harvest
       summary: Finish a harvest
-      description: '<b>Permissions Required</b>: View Harvests • Finish/Discontinue Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Finish/Discontinue Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: FinishHarvest
       parameters:
         - name: licenseNumber
@@ -1100,7 +1102,7 @@ paths:
       tags:
         - Harvest
       summary: Unfinish a harvest
-      description: '<b>Permissions Required</b>: View Harvests • Finish/Discontinue Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Harvests • Finish/Discontinue Harvests</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UnfinishHarvest
       parameters:
         - name: licenseNumber
@@ -1179,7 +1181,7 @@ paths:
       tags:
         - Item
       summary: Get a specific item by id
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetItemById
       parameters:
         - name: id
@@ -1248,7 +1250,7 @@ paths:
       tags:
         - Item
       summary: Delete an item
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DeleteItem
       parameters:
         - name: licenseNumber
@@ -1321,7 +1323,7 @@ paths:
       tags:
         - Item
       summary: Get active items
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActiveItems
       parameters:
         - name: licenseNumber
@@ -1388,7 +1390,7 @@ paths:
       tags:
         - Item
       summary: Get inactive items
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetInactiveItems
       parameters:
         - name: licenseNumber
@@ -1455,7 +1457,7 @@ paths:
       tags:
         - Item
       summary: Get item categories
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetItemCategories
       parameters:
         - name: licenseNumber
@@ -1521,7 +1523,7 @@ paths:
       tags:
         - Item
       summary: Get item brands
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetItemBrands
       parameters:
         - name: licenseNumber
@@ -1588,7 +1590,7 @@ paths:
       tags:
         - Item
       summary: Get item photo
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetItemPhoto
       parameters:
         - name: licenseNumber
@@ -1657,7 +1659,7 @@ paths:
       tags:
         - Item
       summary: Create items
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateItem
       parameters:
         - name: licenseNumber
@@ -1736,7 +1738,7 @@ paths:
       tags:
         - Item
       summary: Update items
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateItem
       parameters:
         - name: licenseNumber
@@ -1815,7 +1817,7 @@ paths:
       tags:
         - Item
       summary: Create Photo
-      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePhoto
       parameters:
         - name: licenseNumber
@@ -1894,7 +1896,7 @@ paths:
       tags:
         - LabTest
       summary: Get all lab test states
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetLabTestStates
       responses:
         '200':
@@ -1952,7 +1954,7 @@ paths:
       tags:
         - LabTest
       summary: Get all lab test types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetLabTestTypes
       responses:
         '200':
@@ -2012,7 +2014,7 @@ paths:
       tags:
         - LabTest
       summary: Get lab test results for a package
-      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetLabTestResults
       parameters:
         - name: packageId
@@ -2084,7 +2086,7 @@ paths:
       tags:
         - LabTest
       summary: Upload the lab test results
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: RecordLabTest
       parameters:
         - name: licenseNumber
@@ -2163,7 +2165,7 @@ paths:
       tags:
         - LabTest
       summary: Update lab test documents
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateLabTestDocument
       parameters:
         - name: licenseNumber
@@ -2242,7 +2244,7 @@ paths:
       tags:
         - LabTest
       summary: Release lab test results
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ReleaseLabTestResults
       parameters:
         - name: licenseNumber
@@ -2321,7 +2323,7 @@ paths:
       tags:
         - Location
       summary: Get a specific location by id
-      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetLocationById
       parameters:
         - name: id
@@ -2390,7 +2392,7 @@ paths:
       tags:
         - Location
       summary: Delete an location
-      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DeleteLocation
       parameters:
         - name: licenseNumber
@@ -2463,7 +2465,7 @@ paths:
       tags:
         - Location
       summary: Get active locations
-      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActiveLocations
       parameters:
         - name: licenseNumber
@@ -2530,7 +2532,7 @@ paths:
       tags:
         - Location
       summary: Get location types
-      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetLocationTypes
       parameters:
         - name: licenseNumber
@@ -2596,7 +2598,7 @@ paths:
       tags:
         - Location
       summary: Create locations
-      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateLocation
       parameters:
         - name: licenseNumber
@@ -2675,7 +2677,7 @@ paths:
       tags:
         - Location
       summary: Update locations
-      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Locations</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateLocation
       parameters:
         - name: licenseNumber
@@ -2754,7 +2756,7 @@ paths:
       tags:
         - Package
       summary: Get a specific package by id
-      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPackageById
       parameters:
         - name: id
@@ -2824,7 +2826,7 @@ paths:
       tags:
         - Package
       summary: Get a specific package by label
-      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPackageByLabel
       parameters:
         - name: label
@@ -2893,7 +2895,7 @@ paths:
       tags:
         - Package
       summary: Get packages in an active status
-      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActivePackages
       parameters:
         - name: licenseNumber
@@ -2976,7 +2978,7 @@ paths:
       tags:
         - Package
       summary: Get packages in an onhold status
-      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetOnHoldPackages
       parameters:
         - name: licenseNumber
@@ -3059,7 +3061,7 @@ paths:
       tags:
         - Package
       summary: Get packages in an inactive status
-      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetInactivePackages
       parameters:
         - name: licenseNumber
@@ -3142,7 +3144,7 @@ paths:
       tags:
         - Package
       summary: Get package types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPackageTypes
       responses:
         '200':
@@ -3200,7 +3202,7 @@ paths:
       tags:
         - Package
       summary: Get package adjust reasons
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPackageAdjustReasons
       parameters:
         - name: licenseNumber
@@ -3267,7 +3269,7 @@ paths:
       tags:
         - Package
       summary: Create packages
-      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePackage
       parameters:
         - name: licenseNumber
@@ -3346,7 +3348,7 @@ paths:
       tags:
         - Package
       summary: Create testing packages
-      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateTestingPackage
       parameters:
         - name: licenseNumber
@@ -3425,7 +3427,7 @@ paths:
       tags:
         - Package
       summary: Create package plantings
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants • View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants • View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePackagePlanting
       parameters:
         - name: licenseNumber
@@ -3504,7 +3506,7 @@ paths:
       tags:
         - Package
       summary: Change the package item
-      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ChangePackageItem
       parameters:
         - name: licenseNumber
@@ -3583,7 +3585,7 @@ paths:
       tags:
         - Package
       summary: Update a package note
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory • Manage Package Notes</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory • Manage Package Notes</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ChangePackageNote
       parameters:
         - name: licenseNumber
@@ -3662,7 +3664,7 @@ paths:
       tags:
         - Package
       summary: Change a package location
-      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ChangePackageLocation
       parameters:
         - name: licenseNumber
@@ -3741,7 +3743,7 @@ paths:
       tags:
         - Package
       summary: Adjust packages
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: AdjustPackage
       parameters:
         - name: licenseNumber
@@ -3820,7 +3822,7 @@ paths:
       tags:
         - Package
       summary: Finish packages
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: FinishPackage
       parameters:
         - name: licenseNumber
@@ -3899,7 +3901,7 @@ paths:
       tags:
         - Package
       summary: Unfinish packages
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UnfinishPackage
       parameters:
         - name: licenseNumber
@@ -3978,7 +3980,7 @@ paths:
       tags:
         - Package
       summary: Remediate packages
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: RemediatePackage
       parameters:
         - name: licenseNumber
@@ -4496,7 +4498,7 @@ paths:
       tags:
         - Plant
       summary: Get a specific plant by id
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantById
       parameters:
         - name: id
@@ -4566,7 +4568,7 @@ paths:
       tags:
         - Plant
       summary: Get a specific plant by label
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantByLabel
       parameters:
         - name: label
@@ -4635,7 +4637,7 @@ paths:
       tags:
         - Plant
       summary: Get plants in an vegetating status
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetVegetativePlants
       parameters:
         - name: licenseNumber
@@ -4718,7 +4720,7 @@ paths:
       tags:
         - Plant
       summary: Get plants in an flowering status
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetFloweringPlants
       parameters:
         - name: licenseNumber
@@ -4801,7 +4803,7 @@ paths:
       tags:
         - Plant
       summary: Get plants in an onhold status
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetOnHoldPlants
       parameters:
         - name: licenseNumber
@@ -4884,7 +4886,7 @@ paths:
       tags:
         - Plant
       summary: Get plants in an inactive status
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetInactivePlants
       parameters:
         - name: licenseNumber
@@ -4967,7 +4969,7 @@ paths:
       tags:
         - Plant
       summary: Get plant additives
-      description: '<b>Permissions Required</b>: View/Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View/Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantAdditives
       parameters:
         - name: licenseNumber
@@ -5049,7 +5051,7 @@ paths:
       tags:
         - Plant
       summary: Add additives to a plant
-      description: '<b>Permissions Required</b>: Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: AddAdditiveToPlant
       parameters:
         - name: licenseNumber
@@ -5128,7 +5130,7 @@ paths:
       tags:
         - Plant
       summary: Get plant growth phases
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantGrowthPhases
       parameters:
         - name: licenseNumber
@@ -5193,7 +5195,7 @@ paths:
       tags:
         - Plant
       summary: Get plant additive types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantAdditivesTypes
       responses:
         '200':
@@ -5311,7 +5313,7 @@ paths:
       tags:
         - Plant
       summary: Get all plant waste method properties
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantWasteMethodsAll
       responses:
         '200':
@@ -5371,7 +5373,7 @@ paths:
       tags:
         - Plant
       summary: Get plant waste reasons
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantWasteReasons
       parameters:
         - name: licenseNumber
@@ -5438,7 +5440,7 @@ paths:
       tags:
         - Plant
       summary: Move a plant
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: MovePlant
       parameters:
         - name: licenseNumber
@@ -5517,7 +5519,7 @@ paths:
       tags:
         - Plant
       summary: Change a plant's growth phase
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ChangePlantGrowthPhase
       parameters:
         - name: licenseNumber
@@ -5596,7 +5598,7 @@ paths:
       tags:
         - Plant
       summary: Destroy a plant
-      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Destroy Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Destroy Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DestroyPlant
       parameters:
         - name: licenseNumber
@@ -5675,7 +5677,7 @@ paths:
       tags:
         - Plant
       summary: Add additives to plants by location
-      description: '<b>Permissions Required</b>: Manage Plants • Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Plants • Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: AddAdditiveToPlantByLocation
       parameters:
         - name: licenseNumber
@@ -5754,7 +5756,7 @@ paths:
       tags:
         - Plant
       summary: Add additives to plants by location
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePlantingOfPlant
       parameters:
         - name: licenseNumber
@@ -5833,7 +5835,7 @@ paths:
       tags:
         - Plant
       summary: Create plant batch from plants
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePlantBatchFromPlantPackage
       parameters:
         - name: licenseNumber
@@ -5912,7 +5914,7 @@ paths:
       tags:
         - Plant
       summary: Harvest plants
-      description: '<b>Permissions Required</b>: View Immature Plants • Manicure/Harvest Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manicure/Harvest Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: HarvestPlant
       parameters:
         - name: licenseNumber
@@ -5991,7 +5993,7 @@ paths:
       tags:
         - Plant
       summary: Manicure plants
-      description: '<b>Permissions Required</b>: View Immature Plants • Manicure/Harvest Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manicure/Harvest Veg/Flower Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ManicurePlant
       parameters:
         - name: licenseNumber
@@ -6070,7 +6072,7 @@ paths:
       tags:
         - PlantBatch
       summary: Get a specific plant batch by id
-      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantBatchById
       parameters:
         - name: id
@@ -6140,7 +6142,7 @@ paths:
       tags:
         - PlantBatch
       summary: Get plant batches in an active status
-      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActivePlantBatches
       parameters:
         - name: licenseNumber
@@ -6223,7 +6225,7 @@ paths:
       tags:
         - PlantBatch
       summary: Get plant batches in an inactive status
-      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetInactivePlantBatches
       parameters:
         - name: licenseNumber
@@ -6306,7 +6308,7 @@ paths:
       tags:
         - PlantBatch
       summary: Get plant batch types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetPlantBatchTypes
       responses:
         '200':
@@ -6364,7 +6366,7 @@ paths:
       tags:
         - PlantBatch
       summary: Create plant batch plantings
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePlantBatchPlantings
       parameters:
         - name: licenseNumber
@@ -6443,7 +6445,7 @@ paths:
       tags:
         - PlantBatch
       summary: Create plant batch packages
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePlantBatchPackages
       parameters:
         - name: licenseNumber
@@ -6526,7 +6528,7 @@ paths:
       tags:
         - PlantBatch
       summary: Split a plant batch
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: SplitPlantBatch
       parameters:
         - name: licenseNumber
@@ -6605,7 +6607,7 @@ paths:
       tags:
         - PlantBatch
       summary: Create packages from a mother plant for a plant batch
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Packages • Create/Submit/Discontinue Packages</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreatePackageFromPlantBatchMotherPlant
       parameters:
         - name: licenseNumber
@@ -6684,7 +6686,7 @@ paths:
       tags:
         - PlantBatch
       summary: Change the growth phase for a plant batch
-      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: ChangeGrowthPhaseForPlantBatch
       parameters:
         - name: licenseNumber
@@ -6763,7 +6765,7 @@ paths:
       tags:
         - PlantBatch
       summary: Move a plant batch
-      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: MovePlantBatch
       parameters:
         - name: licenseNumber
@@ -6842,7 +6844,7 @@ paths:
       tags:
         - PlantBatch
       summary: Add plant additives to a plant batch
-      description: '<b>Permissions Required</b>: Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Plants Additives</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: AddAdditiveToPlantBatch
       parameters:
         - name: licenseNumber
@@ -6921,7 +6923,7 @@ paths:
       tags:
         - PlantBatch
       summary: Destroy a plant batch
-      description: '<b>Permissions Required</b>: View Immature Plants • Destroy Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: View Immature Plants • Destroy Immature Plants</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DestroyPlantBatch
       parameters:
         - name: licenseNumber
@@ -8231,7 +8233,7 @@ paths:
       tags:
         - Sale
       summary: Get sale customer types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetSaleCustomerTypes
       responses:
         '200':
@@ -8289,7 +8291,7 @@ paths:
       tags:
         - Sale
       summary: Get active sales receipts
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActiveSaleReceipts
       parameters:
         - name: licenseNumber
@@ -8387,7 +8389,7 @@ paths:
       tags:
         - Sale
       summary: Get inactive sales receipts
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetInactiveSaleReceipts
       parameters:
         - name: licenseNumber
@@ -8485,7 +8487,7 @@ paths:
       tags:
         - Sale
       summary: Get a sales receipt by id
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetSaleReceiptById
       parameters:
         - name: id
@@ -8555,7 +8557,7 @@ paths:
       tags:
         - Sale
       summary: Create a new sale receipt
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateSaleReceipt
       parameters:
         - name: licenseNumber
@@ -8633,7 +8635,7 @@ paths:
       tags:
         - Sale
       summary: Create a new sale receipt
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateSaleReceipt
       parameters:
         - name: licenseNumber
@@ -8712,7 +8714,7 @@ paths:
       tags:
         - Sale
       summary: Delete an sale receipt
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DeleteReceipt
       parameters:
         - name: licenseNumber
@@ -8785,7 +8787,7 @@ paths:
       tags:
         - Sale
       summary: Get a summary of all sales
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransactions
       parameters:
         - name: licenseNumber
@@ -8852,7 +8854,7 @@ paths:
       tags:
         - Sale
       summary: Get a detail of all sales transactions between a date range
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransactionsByDateRange
       parameters:
         - name: licenseNumber
@@ -8933,7 +8935,7 @@ paths:
       tags:
         - Sale
       summary: Upload a sales summary
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateSaleTransactionSummary
       parameters:
         - name: licenseNumber
@@ -9023,7 +9025,7 @@ paths:
       tags:
         - Sale
       summary: Update a sales summary
-      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Sales</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateSaleTransactionSummary
       parameters:
         - name: licenseNumber
@@ -9748,7 +9750,7 @@ paths:
       tags:
         - Strain
       summary: Get a specific strain by id
-      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetStrainById
       parameters:
         - name: id
@@ -9817,7 +9819,7 @@ paths:
       tags:
         - Strain
       summary: Delete an strain
-      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: DeleteStrain
       parameters:
         - name: licenseNumber
@@ -9890,7 +9892,7 @@ paths:
       tags:
         - Strain
       summary: Get active strains
-      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetActiveStrains
       parameters:
         - name: licenseNumber
@@ -9957,7 +9959,7 @@ paths:
       tags:
         - Strain
       summary: Create strains
-      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: CreateStrain
       parameters:
         - name: licenseNumber
@@ -10036,7 +10038,7 @@ paths:
       tags:
         - Strain
       summary: Update strains
-      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Manage Strains</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: UpdateStrain
       parameters:
         - name: licenseNumber
@@ -10115,7 +10117,7 @@ paths:
       tags:
         - Transfer
       summary: Get incoming transfers
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetIncomingTransfers
       parameters:
         - name: licenseNumber
@@ -10197,7 +10199,7 @@ paths:
       tags:
         - Transfer
       summary: Get outgoing transfers
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetOutgoingTransfers
       parameters:
         - name: licenseNumber
@@ -10279,7 +10281,7 @@ paths:
       tags:
         - Transfer
       summary: Get rejected transfers
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetRejectedTransfers
       parameters:
         - name: licenseNumber
@@ -10345,7 +10347,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer deliveries
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveries
       parameters:
         - name: id
@@ -10413,7 +10415,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery transporters
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryTransporters
       parameters:
         - name: id
@@ -10481,7 +10483,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery transporters (detail)
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryTransportersDetail
       parameters:
         - name: id
@@ -10549,7 +10551,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery packages
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryPackages
       parameters:
         - name: id
@@ -10617,7 +10619,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery packages for wholesale
-      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryPackagesWholesale
       parameters:
         - name: id
@@ -10685,7 +10687,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery packages that require lab tests
-      description: 'Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryPackagesThatRequireLabTest
       parameters:
         - name: id
@@ -10753,7 +10755,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery package states
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryPackageStates
       responses:
         '200':
@@ -10811,7 +10813,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer types
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferTypes
       parameters:
         - name: licenseNumber
@@ -11107,7 +11109,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer templates
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferTemplates
       parameters:
         - name: licenseNumber
@@ -11345,7 +11347,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery templates
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryTemplate
       parameters:
         - name: id
@@ -11413,7 +11415,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery transporter templates
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryTransporterTemplates
       parameters:
         - name: id
@@ -11481,7 +11483,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery transporters (detail) templates
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryTransportersDetailTemplates
       parameters:
         - name: id
@@ -11549,7 +11551,7 @@ paths:
       tags:
         - Transfer
       summary: Get transfer delivery package templates
-      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: Transfer Templates</br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetTransferDeliveryPackagesTemplate
       parameters:
         - name: id
@@ -11690,7 +11692,7 @@ paths:
       tags:
         - UnitOfMeasure
       summary: Get all units of measures
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, oh, ok, or, ri, sd, wv'
       operationId: GetUnitsOfMeasure
       responses:
         '200':
