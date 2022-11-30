@@ -271,4 +271,12 @@ public class SaleController : ControllerBase
     [ProducesResponseType(typeof(IEnumerable<DeliveryReturnReason>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get delivery return reasons")]
     public ActionResult GetDeliveryReturnReasons() => Ok();
+
+    [HttpGet("patientregistration/locations")]
+    [MapsToApi(MetrcEndpoint.get_sales_v1_patientregistration_locations)]
+    [Authorize]
+    [ApiAuthorizationFilter]
+    [ProducesResponseType(typeof(IEnumerable<PatientRegistrationLocation>), StatusCodes.Status200OK)]
+    [SwaggerOperation(Summary = "Get patient registration locations")]
+    public ActionResult GetPatientRegistrationLocations() => Ok();
 }

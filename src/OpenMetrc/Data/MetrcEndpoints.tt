@@ -30,7 +30,7 @@ enum MetrcEndpoint
 static class MetrcEndpointExtensions
 {
     public static IEnumerable<string> GetAvailableStates() => 
-        new List<string> <#= GetDistinctStatesObject() #>;
+        new List<string> <#= GetDistinctStatesObject().Replace(",", ",\r\n\t\t\t") #>;
 
     public static IEnumerable<string> GetStates(MetrcEndpoint endpoint) => endpoint switch
     {

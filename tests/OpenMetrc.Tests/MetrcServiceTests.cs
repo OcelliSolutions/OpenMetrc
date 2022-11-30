@@ -1,4 +1,6 @@
-﻿namespace OpenMetrc.Tests;
+﻿using System.Collections.Generic;
+
+namespace OpenMetrc.Tests;
 
 public class MetrcServiceTests : IClassFixture<SharedFixture>
 {
@@ -35,8 +37,11 @@ public class MetrcServiceTests : IClassFixture<SharedFixture>
     [Fact]
     public void MetrcClient_AvailableStates_NoNewStates()
     {
-        const int expected = 20;
-        var actual = Fixture.ApiKeys[0].MetrcService.AvailableStates.Count();
-        Assert.Equal(expected, actual);
+        var expectedStates = new List<string>() {
+            "ak", "az", "ca", "co", "dc", "la", "ma", "md", "me", "mi", "mn", "mo", "ms", "mt", "nj", "nv", "oh", "ok",
+            "or", "ri", "sd", "wv"
+        };
+        var actual = Fixture.ApiKeys[0].MetrcService.AvailableStates.ToList();
+        Assert.Equal(expectedStates, actual);
     }
 }

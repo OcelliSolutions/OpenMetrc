@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace OpenMetrc.Builder.Filters;
@@ -24,7 +23,7 @@ public class AuthorizationOperationFilter : IOperationFilter
         var x = (MapsToApiAttribute?)filterDescriptors
             .Select(filterInfo => filterInfo.Filter).FirstOrDefault(filter => filter is MapsToApiAttribute);
 
-        Debug.Assert(x?.States != null, "x?.States != null");
+        if (x == null || !x.States.Any()) return;
         operation.Description +=
             $@"</br><b>Available In</b>: {string.Join(", ", x.States)}";
     }

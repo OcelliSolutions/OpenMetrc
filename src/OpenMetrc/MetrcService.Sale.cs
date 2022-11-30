@@ -118,6 +118,16 @@ public partial class MetrcService : ISaleClient
             ? Task.FromResult<ICollection<DeliveryReturnReason>?>(new List<DeliveryReturnReason>())
             : SaleClient.GetDeliveryReturnReasonsAsync(cancellationToken);
 
+    public Task<ICollection<PatientRegistrationLocation>?> GetPatientRegistrationLocationsAsync() =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.FromResult<ICollection<PatientRegistrationLocation>?>(new List<PatientRegistrationLocation>())
+            : SaleClient.GetPatientRegistrationLocationsAsync();
+
+    public Task<ICollection<PatientRegistrationLocation>?> GetPatientRegistrationLocationsAsync(CancellationToken cancellationToken) =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.FromResult<ICollection<PatientRegistrationLocation>?>(new List<PatientRegistrationLocation>())
+            : SaleClient.GetPatientRegistrationLocationsAsync(cancellationToken);
+
     [MapsToApi(MetrcEndpoint.delete_sales_v1_delivery_id)]
     Task ISaleClient.DeleteDeliveryAsync(string licenseNumber, long id) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())

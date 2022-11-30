@@ -135,8 +135,8 @@ public class PlantController : ControllerBase
     public ActionResult GetPlantAdditivesTypes() => Ok();
 
     [HttpGet("waste/methods")]
-    [MapsToApi(MetrcEndpoint.get_plants_v1_waste_methods)]
-    [Authorize]
+    //[MapsToApi(MetrcEndpoint.get_plants_v1_waste_methods)]
+    [Authorize, Obsolete("This has been replaced by the GetPlantWasteMethodsAll method")]
     [ApiAuthorizationFilter]
     [ProducesResponseType(typeof(IEnumerable<PlantWasteMethod>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get plant waste methods")]
