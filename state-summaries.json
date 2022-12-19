@@ -544,6 +544,7 @@
         "Name": "Sales",
         "Endpoints": [
           "get_sales_v1_customertypes",
+          "get_sales_v1_patientregistration_locations",
           "get_sales_v1_receipts_active",
           "get_sales_v1_receipts_inactive",
           "get_sales_v1_receipts_id",

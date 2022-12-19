@@ -9753,7 +9753,7 @@ paths:
       tags:
         - Sale
       summary: Get patient registration locations
-      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, nj, oh, ok, or, ri, sd, wv'
+      description: '<b>Permissions Required</b>: <i>none</i></br><b>Available In</b>: ak, az, ca, co, dc, la, me, md, ma, mi, mn, ms, mo, mt, nv, nj, oh, ok, or, ri, sd, wv'
       operationId: GetPatientRegistrationLocations
       responses:
         '200':

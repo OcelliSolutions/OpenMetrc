@@ -235,7 +235,7 @@ internal static class MetrcEndpointExtensions
             MetrcEndpoint.get_sales_v1_deliveries_inactive => new[] {"az","co","dc","md","ma","mi","ms","mo","mt","nv","nj","or","ri","sd"},
             MetrcEndpoint.get_sales_v1_delivery_id => new[] {"az","co","dc","md","ma","mi","ms","mo","mt","nv","nj","or","ri","sd"},
             MetrcEndpoint.get_sales_v1_delivery_returnreasons => new[] {"az","co","dc","md","ma","mi","ms","mo","mt","nv","nj","or","ri","sd"},
-            MetrcEndpoint.get_sales_v1_patientregistration_locations => new[] {"ak","az","co","dc","la","me","md","ma","mi","mn","ms","mo","mt","nv","nj","oh","ok","or","ri","sd","wv"},
+            MetrcEndpoint.get_sales_v1_patientregistration_locations => new[] {"ak","az","ca","co","dc","la","me","md","ma","mi","mn","ms","mo","mt","nv","nj","oh","ok","or","ri","sd","wv"},
             MetrcEndpoint.get_sales_v1_receipts_active => new[] {"ak","az","ca","co","dc","la","me","md","ma","mi","mn","ms","mo","mt","nv","nj","oh","ok","or","ri","sd","wv"},
             MetrcEndpoint.get_sales_v1_receipts_id => new[] {"ak","az","ca","co","dc","la","me","md","ma","mi","mn","ms","mo","mt","nv","nj","oh","ok","or","ri","sd","wv"},
             MetrcEndpoint.get_sales_v1_receipts_inactive => new[] {"ak","az","ca","co","dc","la","me","md","ma","mi","mn","ms","mo","mt","nv","nj","oh","ok","or","ri","sd","wv"},

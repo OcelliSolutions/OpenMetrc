@@ -133,7 +133,7 @@ All endpoints should be mapped automatically in the NuGet package and OpenApi do
 | get_sales_v1_deliveries_inactive |  | x |  | x | x |  | x | x |  | x |  | x | x | x | x | x |  |  | x | x | x |  |
 | get_sales_v1_delivery_id |  | x |  | x | x |  | x | x |  | x |  | x | x | x | x | x |  |  | x | x | x |  |
 | get_sales_v1_delivery_returnreasons |  | x |  | x | x |  | x | x |  | x |  | x | x | x | x | x |  |  | x | x | x |  |
-| get_sales_v1_patientregistration_locations | x | x |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| get_sales_v1_patientregistration_locations | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | get_sales_v1_receipts_active | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | get_sales_v1_receipts_id | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | get_sales_v1_receipts_inactive | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
