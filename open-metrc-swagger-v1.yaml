@@ -1595,14 +1595,15 @@ paths:
       description: '<b>Permissions Required</b>: Manage Items</br><b>Available In</b>: ak, ca, co, dc, gu, la, me, md, ma, mi, mn, ms, mo, mt, nv, nj, oh, ok, or, ri, sd, wv'
       operationId: GetItemPhoto
       parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
         - name: licenseNumber
           in: query
           description: The license number of the facility for which to return the item photo.
-          required: true
-          schema:
-            type: string
-        - name: id
-          in: path
           required: true
           schema:
             type: string
@@ -4875,7 +4876,7 @@ paths:
         - PatientCheckIn
       summary: Update a patient check in
       description: '<b>Permissions Required</b>: Manage Patients Check Ins</br><b>Available In</b>: mo'
-      operationId: UpdatePatientCheckIn
+      operationId: DeletePatientCheckIn
       parameters:
         - name: id
           in: path
@@ -6929,7 +6930,9 @@ paths:
               schema:
                 type: array
                 items:
-                  type: string
+                  oneOf:
+                    - $ref: '#/components/schemas/PlantBatchWasteReason'
+                nullable: true
         '403':
           description: Forbidden
           content:
@@ -8810,7 +8813,9 @@ paths:
               schema:
                 type: array
                 items:
-                  type: string
+                  oneOf:
+                    - $ref: '#/components/schemas/JobTypeAttribute'
+                nullable: true
         '403':
           description: Forbidden
           content:
@@ -9515,9 +9520,7 @@ paths:
               schema:
                 type: array
                 items:
-                  oneOf:
-                    - $ref: '#/components/schemas/PaymentType'
-                nullable: true
+                  type: string
         '403':
           description: Forbidden
           content:
@@ -12322,7 +12325,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '200':
           description: Success
@@ -12390,7 +12393,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '200':
           description: Success
@@ -12458,7 +12461,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '200':
           description: Success
@@ -12526,7 +12529,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '200':
           description: Success
@@ -12594,7 +12597,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '200':
           description: Success
@@ -12662,7 +12665,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '200':
           description: Success
@@ -13016,7 +13019,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '403':
           description: Forbidden
@@ -13322,7 +13325,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '200':
           description: Success
@@ -13390,7 +13393,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '200':
           description: Success
@@ -13458,7 +13461,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '200':
           description: Success
@@ -13526,7 +13529,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '200':
           description: Success
@@ -13599,7 +13602,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '403':
           description: Forbidden
@@ -15457,6 +15460,70 @@ components:
         testsRequireLabSample:
           type: boolean
           nullable: true
+        restrictPlantBatchAdjustmentTimeHours:
+          type: integer
+          format: int32
+          nullable: true
+        canTakePlantBatchesOnTrip:
+          type: boolean
+          nullable: true
+        canTakePlantsOnTrip:
+          type: boolean
+          nullable: true
+        canTakeHarvestsOnTrip:
+          type: boolean
+          nullable: true
+        canTakePackagesOnTrip:
+          type: boolean
+          nullable: true
+        canSellFromPackagesOnTrip:
+          type: boolean
+          nullable: true
+        salesDeliveryAllowPlannedRoute:
+          type: boolean
+          nullable: true
+        salesDeliveryAllowAddress:
+          type: boolean
+          nullable: true
+        salesDeliveryAllowCity:
+          type: boolean
+          nullable: true
+        salesDeliveryAllowState:
+          type: boolean
+          nullable: true
+        salesDeliveryAllowCounty:
+          type: boolean
+          nullable: true
+        salesDeliveryAllowZip:
+          type: boolean
+          nullable: true
+        retailerDelivery:
+          type: boolean
+          nullable: true
+        retailerDeliveryAllowTradeSamples:
+          type: boolean
+          nullable: true
+        retailerDeliveryAllowDonations:
+          type: boolean
+          nullable: true
+        retailerDeliveryRequirePrice:
+          type: boolean
+          nullable: true
+        retailerDeliveryAllowPartialPackages:
+          type: boolean
+          nullable: true
+        canCreatePartialPackages:
+          type: boolean
+          nullable: true
+        canAdjustSourcePackagesWithPartials:
+          type: boolean
+          nullable: true
+        canReportOperationalExceptions:
+          type: boolean
+          nullable: true
+        canReportAdulteration:
+          type: boolean
+          nullable: true
       additionalProperties: { }
     FinishHarvestRequest:
       type: object
@@ -15626,6 +15693,9 @@ components:
           type: string
           description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
           format: date-time
+          nullable: true
+        isOnTrip:
+          type: boolean
           nullable: true
       additionalProperties: { }
     HarvestPlantRequest:
@@ -15822,6 +15892,31 @@ components:
             oneOf:
               - $ref: '#/components/schemas/Photo'
           nullable: true
+        isExpirationDateRequired:
+          type: boolean
+          nullable: true
+        isSellByDateRequired:
+          type: boolean
+          nullable: true
+        isUseByDateRequired:
+          type: boolean
+          nullable: true
+        itemBrandId:
+          type: integer
+          format: int64
+          nullable: true
+        allergens:
+          type: string
+          nullable: true
+        productPhotoDescription:
+          type: string
+          nullable: true
+        labelPhotoDescription:
+          type: string
+          nullable: true
+        packagingPhotoDescription:
+          type: string
+          nullable: true
       additionalProperties: { }
     ItemBrand:
       type: object
@@ -15916,6 +16011,36 @@ components:
           nullable: true
         canBeDestroyed:
           type: boolean
+          nullable: true
+        requiresAllergens:
+          type: boolean
+          nullable: true
+        requiresProductPhotoDescription:
+          type: boolean
+          nullable: true
+        requiresLabelPhotoDescription:
+          type: boolean
+          nullable: true
+        requiresPackagingPhotoDescription:
+          type: boolean
+          nullable: true
+        canBeRevised:
+          type: boolean
+          nullable: true
+      additionalProperties: { }
+    JobTypeAttribute:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        lastModified:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
           nullable: true
       additionalProperties: { }
     LabTest:
@@ -16354,6 +16479,15 @@ components:
           oneOf:
             - $ref: '#/components/schemas/Item'
           nullable: true
+        sourcePackageLabels:
+          type: string
+          nullable: true
+        isOnTrip:
+          type: boolean
+          nullable: true
+        isOnRetailerDelivery:
+          type: boolean
+          nullable: true
       additionalProperties: { }
     PackageAdjustReason:
       type: object
@@ -16363,6 +16497,16 @@ components:
           nullable: true
         requiresNote:
           type: boolean
+          nullable: true
+        requiresWasteWeight:
+          type: boolean
+          nullable: true
+        requiresImmatureWasteWeight:
+          type: boolean
+          nullable: true
+        requiresMatureWasteWeight:
+          type: boolean
+          nullable: true
       additionalProperties: { }
     Patient:
       required:
@@ -16476,9 +16620,6 @@ components:
         purchaseAmountDays:
           type: number
           format: double
-      additionalProperties: { }
-    PaymentType:
-      type: object
       additionalProperties: { }
     Photo:
       type: object
@@ -16607,6 +16748,13 @@ components:
           type: string
           description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
           format: date-time
+        groupTagTypeMax:
+          type: integer
+          format: int32
+          nullable: true
+        isOnTrip:
+          type: boolean
+          nullable: true
       additionalProperties: { }
     PlantAdditive:
       type: object
@@ -16764,6 +16912,31 @@ components:
           type: string
           description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
           format: date-time
+        isOnTrip:
+          type: boolean
+          nullable: true
+        isOnHold:
+          type: boolean
+          nullable: true
+      additionalProperties: { }
+    PlantBatchWasteReason:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        requiresNote:
+          type: boolean
+          nullable: true
+        requiresWasteWeight:
+          type: boolean
+          nullable: true
+        requiresImmatureWasteWeight:
+          type: boolean
+          nullable: true
+        requiresMatureWasteWeight:
+          type: boolean
+          nullable: true
       additionalProperties: { }
     PlantWasteMethod:
       type: object
@@ -16792,6 +16965,16 @@ components:
           nullable: true
         requiresNote:
           type: boolean
+          nullable: true
+        requiresWasteWeight:
+          type: boolean
+          nullable: true
+        requiresImmatureWasteWeight:
+          type: boolean
+          nullable: true
+        requiresMatureWasteWeight:
+          type: boolean
+          nullable: true
       additionalProperties: { }
     Processing:
       type: object
@@ -18186,6 +18369,9 @@ components:
           type: boolean
         requiresPackagesGrossWeight:
           type: boolean
+        transactionType:
+          type: string
+          nullable: true
       additionalProperties: { }
     UnfinishHarvestRequest:
       type: object

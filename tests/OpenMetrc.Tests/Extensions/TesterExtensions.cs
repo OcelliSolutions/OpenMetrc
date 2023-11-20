@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Threading;
 
 namespace OpenMetrc.Tests.Extensions;
+
 public static class TesterExtensions
 {
     public static T TryNTimes<T>(Func<T> func, int times)
@@ -14,10 +16,11 @@ public static class TesterExtensions
             {
                 if (--times <= 0)
                     throw;
-                Random random = new Random();
+                var random = new Random();
                 var milliseconds = random.Next(3, 10) * 1000;
-                System.Threading.Thread.Sleep(milliseconds);
+                Thread.Sleep(milliseconds);
             }
+
         throw new InvalidOperationException("Nothing returned");
     }
 }

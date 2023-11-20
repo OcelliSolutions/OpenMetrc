@@ -16,6 +16,7 @@ public partial class MetrcService : IMetrcService
     internal static ConcurrentDictionary<string, ILabTestClient> LabTestClients = new();
     internal static ConcurrentDictionary<string, ILocationClient> LocationClients = new();
     internal static ConcurrentDictionary<string, IPackageClient> PackageClients = new();
+    internal static ConcurrentDictionary<string, IPatientCheckInClient> PatientCheckInClients = new();
     internal static ConcurrentDictionary<string, IPatientClient> PatientClients = new();
     internal static ConcurrentDictionary<string, IPlantClient> PlantClients = new();
     internal static ConcurrentDictionary<string, IPlantBatchClient> PlantBatchClients = new();
@@ -56,6 +57,7 @@ public partial class MetrcService : IMetrcService
     protected ILabTestClient LabTestClient => LabTestClients[MetrcClientKey];
     protected ILocationClient LocationClient => LocationClients[MetrcClientKey];
     protected IPackageClient PackageClient => PackageClients[MetrcClientKey];
+    protected IPatientCheckInClient PatientCheckInClient => PatientCheckInClients[MetrcClientKey];
     protected IPatientClient PatientClient => PatientClients[MetrcClientKey];
     protected IPlantClient PlantClient => PlantClients[MetrcClientKey];
     protected IPlantBatchClient PlantBatchClient => PlantBatchClients[MetrcClientKey];
@@ -105,6 +107,8 @@ public partial class MetrcService : IMetrcService
                 new LocationClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
             PackageClients.TryAdd(MetrcClientKey,
                 new PackageClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            PatientCheckInClients.TryAdd(MetrcClientKey,
+                new PatientCheckInClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
             PatientClients.TryAdd(MetrcClientKey,
                 new PatientClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
             PlantClients.TryAdd(MetrcClientKey,
@@ -133,10 +137,11 @@ public partial class MetrcService : IMetrcService
     public ILabTestClient LabTests => this;
     public ILocationClient Locations => this;
     public IPackageClient Packages => this;
+    public IPatientCheckInClient PatientCheckIns => this;
     public IPatientClient Patients => this;
     public IPlantClient Plants => this;
     public IPlantBatchClient PlantBatches => this;
-    public IProcessingClient Processes => this;
+    public IProcessingClient Processing => this;
     public ISaleClient Sales => this;
     public IStrainClient Strains => this;
     public ITransferClient Transfers => this;

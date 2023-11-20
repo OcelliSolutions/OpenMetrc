@@ -1,58 +1,31 @@
-﻿using System;
+﻿namespace OpenMetrc.Tests.V1;
 
-namespace OpenMetrc.Tests.V1;
-
-public class UnitOfMeasureTests : IClassFixture<SharedFixture>
+public class UnitOfMeasureTests
+    (ITestOutputHelper testOutputHelper, SharedFixture sharedFixture) : IClassFixture<SharedFixture>
 {
-    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    public UnitOfMeasureTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
-    {
-        _testOutputHelper = testOutputHelper;
-        Fixture = sharedFixture;
-        _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
-    }
-
-    private SharedFixture Fixture { get; }
+    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper = new(testOutputHelper);
 
     [SkippableFact]
-    public void GetActiveUnitOfMeasuresAllAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    public void GetUnitsOfMeasureAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var wasTested = false;
-        var unauthorized = 0;
-        var timeout = 0;
-        foreach (var apiKey in Fixture.ApiKeys)
+        var testEndpointResult = new TestEndpointResult();
+
+
+        foreach (var apiKey in sharedFixture.ApiKeys)
             try
             {
-                var unitOfMeasures = Fixture.SafeExecutor(() => apiKey.MetrcService.UnitOfMeasures.GetUnitsOfMeasureAsync().Result);
+                var unitOfMeasures = sharedFixture.SafeExecutor(() =>
+                    apiKey.MetrcService.UnitOfMeasures.GetUnitsOfMeasureAsync().Result);
                 if (unitOfMeasures == null) continue;
-                wasTested = wasTested || unitOfMeasures.Any();
+                testEndpointResult.WasTested = testEndpointResult.WasTested || unitOfMeasures.Any();
                 foreach (var unitOfMeasure in unitOfMeasures)
                     _additionalPropertiesHelper.CheckAdditionalProperties(unitOfMeasure, string.Empty);
             }
             catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.Unauthorized || ex.Unavailable)
-                {
-                    unauthorized++;
-                    continue;
-                }
-                if (ex.Timeout)
-                {
-                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                    timeout++;
-                }
-                else
-                {
-                    _testOutputHelper.WriteLine(ex.Message);
-                    if (!string.IsNullOrWhiteSpace(ex.Response))
-                        _testOutputHelper.WriteLine(ex.Response);
-                }
+                sharedFixture.HandleTestEndpointException(ex, testEndpointResult, apiKey, testOutputHelper);
             }
 
-        Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
-        Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
-        Skip.IfNot(wasTested, "WARN: There were no testable UnitOfMeasures for any license");
+        sharedFixture.AlertIfSkippableTest(testEndpointResult);
     }
 }

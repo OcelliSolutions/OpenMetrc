@@ -49,7 +49,7 @@ public class TransferController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.Transfers })]
     [ProducesResponseType(typeof(IEnumerable<TransferDelivery>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get transfer deliveries")]
-    public ActionResult GetTransferDeliveries([Required] [SwaggerParameter("Transfer ID")] int id) => Ok();
+    public ActionResult GetTransferDeliveries([Required] [SwaggerParameter("Transfer ID")] long id) => Ok();
 
     [HttpGet("delivery/{id}/transporters")]
     [MapsToApi(MetrcEndpoint.get_transfers_v1_deliveries_id_transporters)]
@@ -57,7 +57,7 @@ public class TransferController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.Transfers })]
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryTransporter>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get transfer delivery transporters")]
-    public ActionResult GetTransferDeliveryTransporters([Required] [SwaggerParameter("Delivery ID")] int id) => Ok();
+    public ActionResult GetTransferDeliveryTransporters([Required] [SwaggerParameter("Delivery ID")] long id) => Ok();
 
     [HttpGet("delivery/{id}/transporters/details")]
     [MapsToApi(MetrcEndpoint.get_transfers_v1_deliveries_id_transporters_details)]
@@ -65,7 +65,7 @@ public class TransferController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.Transfers })]
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryTransporterDetail>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get transfer delivery transporters (detail)")]
-    public ActionResult GetTransferDeliveryTransportersDetail([Required] [SwaggerParameter("Delivery ID")] int id) =>
+    public ActionResult GetTransferDeliveryTransportersDetail([Required] [SwaggerParameter("Delivery ID")] long id) =>
         Ok();
 
     [HttpGet("delivery/{id}/packages")]
@@ -74,7 +74,7 @@ public class TransferController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.Transfers })]
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryPackage>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get transfer delivery packages")]
-    public ActionResult GetTransferDeliveryPackages([Required] [SwaggerParameter("Transfer Delivery ID")] int id) =>
+    public ActionResult GetTransferDeliveryPackages([Required] [SwaggerParameter("Transfer Delivery ID")] long id) =>
         Ok();
 
     [HttpGet("delivery/{id}/packages/wholesale")]
@@ -85,7 +85,7 @@ public class TransferController : ControllerBase
     [SwaggerOperation(Summary = "Get transfer delivery packages for wholesale")]
     public ActionResult GetTransferDeliveryPackagesWholesale(
         [Required] [SwaggerParameter("Transfer Delivery ID")]
-        int id) => Ok();
+        long id) => Ok();
 
     [HttpGet("delivery/package/{id}/requiredlabtestbatches")]
     [MapsToApi(MetrcEndpoint.get_transfers_v1_deliveries_package_id_requiredlabtestbatches)]
@@ -97,7 +97,7 @@ public class TransferController : ControllerBase
             "Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.")]
     public ActionResult GetTransferDeliveryPackagesThatRequireLabTest(
         [Required] [SwaggerParameter("Transfer Delivery Package ID")]
-        int id) => Ok();
+        long id) => Ok();
 
     [HttpGet("delivery/packages/states")]
     [MapsToApi(MetrcEndpoint.get_transfers_v1_deliveries_packages_states)]
@@ -143,7 +143,7 @@ public class TransferController : ControllerBase
     public ActionResult DeleteExternalIncomingTransfer(
         [Required] string licenseNumber,
         [Required] [SwaggerParameter("External Incoming Transfer ID")]
-        int id) => Ok();
+        long id) => Ok();
 
     #endregion External Incoming
 
@@ -169,7 +169,7 @@ public class TransferController : ControllerBase
     [ApiAuthorizationFilter(new[] { ApiPermission.TransferTemplates })]
     [ProducesResponseType(typeof(IEnumerable<TransferDelivery>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get transfer delivery templates")]
-    public ActionResult GetTransferDeliveryTemplate([Required] [SwaggerParameter("Template Transfer ID")] int id) =>
+    public ActionResult GetTransferDeliveryTemplate([Required] [SwaggerParameter("Template Transfer ID")] long id) =>
         Ok();
 
     [HttpGet("templates/delivery/{id}/transporters")]
@@ -180,7 +180,7 @@ public class TransferController : ControllerBase
     [SwaggerOperation(Summary = "Get transfer delivery transporter templates")]
     public ActionResult GetTransferDeliveryTransporterTemplates(
         [Required] [SwaggerParameter("Template Delivery ID")]
-        int id) => Ok();
+        long id) => Ok();
 
     [HttpGet("templates/delivery/{id}/transporters/details")]
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_deliveries_id_transporters_details)]
@@ -190,7 +190,7 @@ public class TransferController : ControllerBase
     [SwaggerOperation(Summary = "Get transfer delivery transporters (detail) templates")]
     public ActionResult GetTransferDeliveryTransportersDetailTemplates(
         [Required] [SwaggerParameter("Template Delivery ID")]
-        int id) => Ok();
+        long id) => Ok();
 
     [HttpGet("templates/delivery/{id}/packages")]
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_deliveries_id_packages)]
@@ -200,7 +200,7 @@ public class TransferController : ControllerBase
     [SwaggerOperation(Summary = "Get transfer delivery package templates")]
     public ActionResult GetTransferDeliveryPackagesTemplate(
         [Required] [SwaggerParameter("Template Transfer Delivery ID")]
-        int id) => Ok();
+        long id) => Ok();
 
     [HttpPost("templates")]
     [MapsToApi(MetrcEndpoint.post_transfers_v1_templates)]
@@ -228,7 +228,7 @@ public class TransferController : ControllerBase
     public ActionResult DeleteTransferTemplate(
         [Required] string licenseNumber,
         [Required] [SwaggerParameter("Transfer Transfer ID")]
-        int id) => Ok();
+        long id) => Ok();
 
     #endregion Templates
 }

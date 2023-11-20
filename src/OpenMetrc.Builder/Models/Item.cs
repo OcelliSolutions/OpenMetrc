@@ -40,4 +40,12 @@ public class Item
     public List<Photo>? ProductImages { get; set; }
     public List<Photo>? LabelImages { get; set; }
     public List<Photo>? PackagingImages { get; set; }
+    public bool? IsExpirationDateRequired { get; set; }
+    public bool? IsSellByDateRequired { get; set; }
+    public bool? IsUseByDateRequired { get; set; }
+    public long? ItemBrandId { get; set; }
+    public string? Allergens { get; set; }
+    public string? ProductPhotoDescription { get; set; }
+    public string? LabelPhotoDescription { get; set; }
+    public string? PackagingPhotoDescription { get; set; }
 }

@@ -172,7 +172,7 @@ public class ProcessingController : ControllerBase
     [MapsToApi(MetrcEndpoint.get_processing_v1_jobtypes_attributes)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageProcessingJob })]
-    [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IEnumerable<JobTypeAttribute>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get job type attributes")]
     public ActionResult GetJobTypeAttributes(
         [Required]

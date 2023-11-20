@@ -3,90 +3,133 @@ using System.Collections.Generic;
 
 namespace OpenMetrc.Tests.V1;
 
-public class SaleTests : IClassFixture<SharedFixture>
+public class SaleTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture) : IClassFixture<SharedFixture>
 {
-    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    public SaleTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
-    {
-        _testOutputHelper = testOutputHelper;
-        Fixture = sharedFixture;
-        _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
-    }
-
-    private SharedFixture Fixture { get; }
-
+    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper = new(testOutputHelper);
 
     [SkippableFact]
     public void GetSaleCustomerTypesAsync_ValidEndpoint_ShouldPass()
     {
-        var wasTested = false;
-        var unauthorized = 0;
-        var timeout = 0;
-        foreach (var apiKey in Fixture.ApiKeys)
+        var testEndpointResult = new TestEndpointResult();
+        foreach (var apiKey in sharedFixture.ApiKeys)
             try
             {
-                var saleReceipts = Fixture.SafeExecutor(() => apiKey.MetrcService.Sales.GetSaleCustomerTypesAsync().Result);
-                wasTested = wasTested || saleReceipts.Any();
+                var result =
+                    sharedFixture.SafeExecutor(() => apiKey.MetrcService.Sales.GetSaleCustomerTypesAsync().Result);
+                testEndpointResult.WasTested = testEndpointResult.WasTested || result.Any();
             }
             catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.Unauthorized || ex.Unavailable)
-                {
-                    unauthorized++;
-                    continue;
-                }
-                if (ex.Timeout)
-                {
-                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                    timeout++;
-                }
-                else
-                {
-                    _testOutputHelper.WriteLine(ex.Message);
-                    if (!string.IsNullOrWhiteSpace(ex.Response))
-                        _testOutputHelper.WriteLine(ex.Response);
-                }
+                sharedFixture.HandleTestEndpointException(ex, testEndpointResult, apiKey, testOutputHelper);
             }
-        Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
-        Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
-        Skip.IfNot(wasTested, "WARN: There were no testable SaleReceipts for any license");
+
+        sharedFixture.AlertIfSkippableTest(testEndpointResult);
     }
 
     [SkippableFact]
     public void GetPatientRegistrationLocationsAsync_ValidEndpoint_ShouldPass()
     {
-        var wasTested = false;
-        var unauthorized = 0;
-        var timeout = 0;
-        foreach (var apiKey in Fixture.ApiKeys)
+        var testEndpointResult = new TestEndpointResult();
+        foreach (var apiKey in sharedFixture.ApiKeys)
             try
             {
-                var patientRegistrationLocations = Fixture.SafeExecutor(() => apiKey.MetrcService.Sales.GetPatientRegistrationLocationsAsync().Result);
-                wasTested = wasTested || (patientRegistrationLocations ?? new List<PatientRegistrationLocation>()).Any();
+                var result = sharedFixture.SafeExecutor(() =>
+                    apiKey.MetrcService.Sales.GetPatientRegistrationLocationsAsync().Result);
+                testEndpointResult.WasTested = testEndpointResult.WasTested ||
+                                               (result ?? new List<PatientRegistrationLocation>()).Any();
             }
             catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.Unauthorized || ex.Unavailable)
-                {
-                    unauthorized++;
-                    continue;
-                }
-                if (ex.Timeout)
-                {
-                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                    timeout++;
-                }
-                else
-                {
-                    _testOutputHelper.WriteLine(ex.Message);
-                    if (!string.IsNullOrWhiteSpace(ex.Response))
-                        _testOutputHelper.WriteLine(ex.Response);
-                }
+                sharedFixture.HandleTestEndpointException(ex, testEndpointResult, apiKey, testOutputHelper);
             }
-        Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
-        Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
-        Skip.IfNot(wasTested, "WARN: There were no testable SaleReceipts for any license");
+
+        sharedFixture.AlertIfSkippableTest(testEndpointResult);
+    }
+
+    [SkippableFact]
+    public void GetDeliveryReturnReasonsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    {
+        var testEndpointResult = new TestEndpointResult();
+        foreach (var apiKey in sharedFixture.ApiKeys)
+            try
+            {
+                var result = sharedFixture.SafeExecutor(() =>
+                    apiKey.MetrcService.Sales.GetDeliveryReturnReasonsAsync().Result);
+                if (result == null) continue;
+                testEndpointResult.WasTested = testEndpointResult.WasTested || result.Any();
+                foreach (var item in result)
+                    _additionalPropertiesHelper.CheckAdditionalProperties(item, string.Empty);
+            }
+            catch (SharedFixture.TestExceptionWrapper ex)
+            {
+                sharedFixture.HandleTestEndpointException(ex, testEndpointResult, apiKey, testOutputHelper);
+            }
+
+        sharedFixture.AlertIfSkippableTest(testEndpointResult);
+    }
+
+    [SkippableFact]
+    public void GetCountiesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    {
+        var testEndpointResult = new TestEndpointResult();
+        foreach (var apiKey in sharedFixture.ApiKeys)
+            try
+            {
+                var result = sharedFixture.SafeExecutor(() => apiKey.MetrcService.Sales.GetCountiesAsync().Result);
+                if (result == null) continue;
+                testEndpointResult.WasTested = testEndpointResult.WasTested || result.Any();
+                foreach (var item in result)
+                    _additionalPropertiesHelper.CheckAdditionalProperties(item, string.Empty);
+            }
+            catch (SharedFixture.TestExceptionWrapper ex)
+            {
+                sharedFixture.HandleTestEndpointException(ex, testEndpointResult, apiKey, testOutputHelper);
+            }
+
+        sharedFixture.AlertIfSkippableTest(testEndpointResult);
+    }
+
+    [SkippableFact]
+    public void GetPaymentTypesAsync_ValidEndpoint_ShouldPass()
+    {
+        var testEndpointResult = new TestEndpointResult();
+        foreach (var apiKey in sharedFixture.ApiKeys)
+        foreach (var facility in apiKey.Facilities)
+            try
+            {
+                var result = sharedFixture.SafeExecutor(() =>
+                    apiKey.MetrcService.Sales.GetPaymentTypesAsync(facility.License.Number).Result);
+                if (result == null) continue;
+                testEndpointResult.WasTested = testEndpointResult.WasTested || result.Any();
+            }
+            catch (SharedFixture.TestExceptionWrapper ex)
+            {
+                sharedFixture.HandleTestEndpointException(ex, testEndpointResult, apiKey, testOutputHelper);
+            }
+
+        sharedFixture.AlertIfSkippableTest(testEndpointResult);
+    }
+
+    [SkippableFact]
+    public void GetTransactionsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
+    {
+        var testEndpointResult = new TestEndpointResult();
+        foreach (var apiKey in sharedFixture.ApiKeys)
+        foreach (var facility in apiKey.Facilities)
+            try
+            {
+                var result = sharedFixture.SafeExecutor(() =>
+                    apiKey.MetrcService.Sales.GetTransactionsAsync(facility.License.Number).Result);
+                if (result == null) continue;
+                testEndpointResult.WasTested = testEndpointResult.WasTested || result.Any();
+                foreach (var item in result)
+                    _additionalPropertiesHelper.CheckAdditionalProperties(item, facility.License.Number);
+            }
+            catch (SharedFixture.TestExceptionWrapper ex)
+            {
+                sharedFixture.HandleTestEndpointException(ex, testEndpointResult, apiKey, testOutputHelper);
+            }
+
+        sharedFixture.AlertIfSkippableTest(testEndpointResult);
     }
 }

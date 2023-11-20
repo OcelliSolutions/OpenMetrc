@@ -184,15 +184,15 @@ public partial class MetrcService : IProcessingClient
     #endregion Job Type
 
     [MapsToApi(MetrcEndpoint.get_processing_v1_jobtypes_attributes)]
-    Task<ICollection<string>> IProcessingClient.GetJobTypeAttributesAsync(string licenseNumber) =>
+    Task<ICollection<JobTypeAttribute>?> IProcessingClient.GetJobTypeAttributesAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<string>>(new List<string>())
+            ? Task.FromResult<ICollection<JobTypeAttribute>?>(new List<JobTypeAttribute>())
             : ProcessingClient.GetJobTypeAttributesAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_processing_v1_jobtypes_attributes)]
-    Task<ICollection<string>> IProcessingClient.GetJobTypeAttributesAsync(string licenseNumber, CancellationToken cancellationToken) =>
+    Task<ICollection<JobTypeAttribute>?> IProcessingClient.GetJobTypeAttributesAsync(string licenseNumber, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<string>>(new List<string>())
+            ? Task.FromResult<ICollection<JobTypeAttribute>?>(new List<JobTypeAttribute>())
             : ProcessingClient.GetJobTypeAttributesAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_processing_v1_jobtypes_categories)]

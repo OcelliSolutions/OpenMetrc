@@ -153,13 +153,13 @@ public partial class MetrcService : IPlantBatchClient
             ? Task.CompletedTask
             : PlantBatchClient.AddAdditiveToPlantBatchAsync(licenseNumber, body, cancellationToken);
 
-    [MapsToApi(MetrcEndpoint.delete_plants_v1)]
+    [MapsToApi(MetrcEndpoint.delete_plantbatches_v1)]
     Task IPlantBatchClient.DeletePlantBatchesAsync(string licenseNumber, IEnumerable<DestroyPlantBatchRequest> body) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : PlantBatchClient.DeletePlantBatchesAsync(licenseNumber, body);
 
-    [MapsToApi(MetrcEndpoint.delete_plants_v1)]
+    [MapsToApi(MetrcEndpoint.delete_plantbatches_v1)]
     Task IPlantBatchClient.DeletePlantBatchesAsync(string licenseNumber, IEnumerable<DestroyPlantBatchRequest> body,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
@@ -167,15 +167,15 @@ public partial class MetrcService : IPlantBatchClient
             : PlantBatchClient.DeletePlantBatchesAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_plantbatches_v1_waste_reasons)]
-    Task<ICollection<string>> IPlantBatchClient.GetPlantBatchWasteReasonsAsync(string licenseNumber) =>
+    Task<ICollection<PlantBatchWasteReason>?> IPlantBatchClient.GetPlantBatchWasteReasonsAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<string>>(new List<string>())
+            ? Task.FromResult<ICollection<PlantBatchWasteReason>?>(new List<PlantBatchWasteReason>())
             : PlantBatchClient.GetPlantBatchWasteReasonsAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_plantbatches_v1_waste_reasons)]
-    Task<ICollection<string>> IPlantBatchClient.GetPlantBatchWasteReasonsAsync(string licenseNumber, CancellationToken cancellationToken) =>
+    Task<ICollection<PlantBatchWasteReason>?> IPlantBatchClient.GetPlantBatchWasteReasonsAsync(string licenseNumber, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<string>>(new List<string>())
+            ? Task.FromResult<ICollection<PlantBatchWasteReason>?>(new List<PlantBatchWasteReason>())
             : PlantBatchClient.GetPlantBatchWasteReasonsAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_plantbatches_v1_waste)]

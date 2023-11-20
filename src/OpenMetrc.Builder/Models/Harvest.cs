@@ -30,4 +30,5 @@ public class Harvest
     public DateTime? FinishedDate { get; set; }
     public DateTime? ArchivedDate { get; set; }
     public DateTimeOffset? LastModified { get; set; }
+    public bool? IsOnTrip { get; set; }
 }

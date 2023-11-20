@@ -79,6 +79,7 @@ public class ItemController : ControllerBase
     [ProducesResponseType(typeof(Photo), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get item photo")]
     public ActionResult GetItemPhoto(
+        [Required] long id,
         [Required]
         [SwaggerParameter(Description =
             "The license number of the facility for which to return the item photo.")]

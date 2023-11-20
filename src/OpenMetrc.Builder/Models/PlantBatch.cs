@@ -34,4 +34,6 @@ public class PlantBatch
     public bool? MultiPlantBatch { get; set; }
     public DateTime? PlantedDate { get; set; }
     public DateTimeOffset LastModified { get; set; }
+    public bool? IsOnTrip { get; set; }
+    public bool? IsOnHold { get; set; }
 }

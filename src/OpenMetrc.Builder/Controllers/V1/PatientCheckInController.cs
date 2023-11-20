@@ -45,7 +45,7 @@ public class PatientCheckInController : ControllerBase
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManagePatientsCheckIns })]
     [SwaggerOperation(Summary = "Update a patient check in")]
-    public ActionResult UpdatePatientCheckIn(
+    public ActionResult DeletePatientCheckIn(
         [Required] long id,
         [Required] string licenseNumber) => Ok();
 }

@@ -1,14 +1,17 @@
 ﻿
+using System.Runtime.CompilerServices;
+
 namespace OpenMetrc.V1;
 
 public partial class MetrcService : IItemClient
 {
+    
     [MapsToApi(MetrcEndpoint.get_items_v1_id)]
     Task<Item> IItemClient.GetItemByIdAsync(long id, string? licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new Item())
             : ItemClient.GetItemByIdAsync(id, licenseNumber);
-
+    
     [MapsToApi(MetrcEndpoint.get_items_v1_id)]
     Task<Item> IItemClient.GetItemByIdAsync(long id, string? licenseNumber, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
@@ -79,16 +82,16 @@ public partial class MetrcService : IItemClient
             : ItemClient.GetItemBrandsAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_items_v1_photo_id)]
-    Task<Photo> IItemClient.GetItemPhotoAsync(string licenseNumber, string id) =>
+    Task<Photo> IItemClient.GetItemPhotoAsync(long id, string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new Photo())
-            : ItemClient.GetItemPhotoAsync(licenseNumber, id);
+            : ItemClient.GetItemPhotoAsync(id, licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_items_v1_photo_id)]
-    Task<Photo> IItemClient.GetItemPhotoAsync(string licenseNumber, string id, CancellationToken cancellationToken) =>
+    Task<Photo> IItemClient.GetItemPhotoAsync(long id, string licenseNumber, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new Photo())
-            : ItemClient.GetItemPhotoAsync(licenseNumber, id, cancellationToken);
+            : ItemClient.GetItemPhotoAsync(id, licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_items_v1_create)]
     Task IItemClient.CreateItemAsync(string licenseNumber, IEnumerable<CreateItemRequest> body) =>

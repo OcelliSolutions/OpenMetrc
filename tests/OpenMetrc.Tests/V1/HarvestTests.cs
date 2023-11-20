@@ -3,231 +3,148 @@ using System;
 
 namespace OpenMetrc.Tests.V1;
 
-public class HarvestTests : IClassFixture<SharedFixture>
+public class HarvestTests
+    (ITestOutputHelper testOutputHelper, SharedFixture sharedFixture) : IClassFixture<SharedFixture>
 {
-    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper;
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    public HarvestTests(ITestOutputHelper testOutputHelper, SharedFixture sharedFixture)
-    {
-        _testOutputHelper = testOutputHelper;
-        Fixture = sharedFixture;
-        _additionalPropertiesHelper = new AdditionalPropertiesHelper(testOutputHelper);
-    }
-
-    private SharedFixture Fixture { get; }
+    private readonly AdditionalPropertiesHelper _additionalPropertiesHelper = new(testOutputHelper);
 
     [SkippableFact]
     public void GetActiveHarvestsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var wasTested = false;
-        var unauthorized = 0;
-        var timeout = 0;
+        var testEndpointResult = new TestEndpointResult();
         var daysBack = -1;
-        foreach (var apiKey in Fixture.ApiKeys)
-            foreach (var facility in apiKey.Facilities)
-                do
-                    try
+        foreach (var apiKey in sharedFixture.ApiKeys)
+        foreach (var facility in apiKey.Facilities)
+            do
+                try
+                {
+                    var cmd = sharedFixture.SafeExecutor(() => apiKey.MetrcService.Harvests.GetActiveHarvestsAsync(
+                        facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
+
+                    if (facility.FacilityType.CanGrowPlants ?? false)
                     {
-                        var cmd = Fixture.SafeExecutor(() => apiKey.MetrcService.Harvests.GetActiveHarvestsAsync(
-                            facility.License.Number,
-                            DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
-
-                        if (facility.FacilityType.CanGrowPlants ?? false)
-                        {
-                            var harvests = cmd;
-                            if (harvests == null) continue;
-                            wasTested = wasTested || harvests.Any();
-                            foreach (var harvest in harvests.Take(10))
-                                _additionalPropertiesHelper.CheckAdditionalProperties(harvest, facility.License.Number);
-                        }
-                        else
-                            Assert.Throws<ApiException<ErrorResponse?>>(() => cmd);
-
-                        daysBack--;
-                        if (daysBack < -apiKey.DaysToTest) break;
+                        var harvests = cmd;
+                        if (harvests == null) continue;
+                        testEndpointResult.WasTested = testEndpointResult.WasTested || harvests.Any();
+                        foreach (var harvest in harvests.Take(10))
+                            _additionalPropertiesHelper.CheckAdditionalProperties(harvest, facility.License.Number);
                     }
-                    catch (SharedFixture.TestExceptionWrapper ex)
-                    {
-                        if (ex.Unauthorized || ex.Unavailable)
-                        {
-                            unauthorized++;
-                            break;
-                        }
+                    else
+                        Assert.Throws<ApiException<ErrorResponse?>>(() => cmd);
 
-                        if (ex.Timeout)
-                        {
-                            _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                            timeout++;
-                        }
-                        else
-                        {
-                            _testOutputHelper.WriteLine(ex.Message);
-                            if (!string.IsNullOrWhiteSpace(ex.Response))
-                                _testOutputHelper.WriteLine(ex.Response);
-                            break;
-                        }
-                    }
+                    daysBack--;
+                    if (daysBack < -apiKey.DaysToTest) break;
+                }
+                catch (SharedFixture.TestExceptionWrapper ex)
+                {
+                    sharedFixture.HandleTestEndpointException(ex, testEndpointResult, apiKey, testOutputHelper);
+                    break;
+                }
 
-                while (true);
+            while (true);
 
-        Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
-        Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
-        Skip.IfNot(wasTested, "WARN: There were no active harvests in the timespan selected for any license");
+        sharedFixture.AlertIfSkippableTest(testEndpointResult);
     }
 
     [SkippableFact]
     public void GetInactiveHarvestsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var wasTested = false;
-        var unauthorized = 0;
-        var timeout = 0;
+        var testEndpointResult = new TestEndpointResult();
         var daysBack = -1;
-        foreach (var apiKey in Fixture.ApiKeys)
-            foreach (var facility in apiKey.Facilities)
-                do
-                    try
+        foreach (var apiKey in sharedFixture.ApiKeys)
+        foreach (var facility in apiKey.Facilities)
+            do
+                try
+                {
+                    var cmd = sharedFixture.SafeExecutor(() => apiKey.MetrcService.Harvests.GetInactiveHarvestsAsync(
+                        facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
+
+                    if (facility.FacilityType.CanGrowPlants ?? false)
                     {
-                        var cmd = Fixture.SafeExecutor(() => apiKey.MetrcService.Harvests.GetInactiveHarvestsAsync(facility.License.Number,
-                            DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
-
-                        if (facility.FacilityType.CanGrowPlants ?? false)
-                        {
-                            var harvests = cmd;
-                            if (harvests == null) continue;
-                            wasTested = wasTested || harvests.Any();
-                            foreach (var harvest in harvests.Take(10))
-                                _additionalPropertiesHelper.CheckAdditionalProperties(harvest, facility.License.Number);
-                        }
-                        else
-                            Assert.Throws<ApiException<ErrorResponse?>>(() => cmd);
-
-                        daysBack--;
-                        if (daysBack < -apiKey.DaysToTest) break;
+                        var harvests = cmd;
+                        if (harvests == null) continue;
+                        testEndpointResult.WasTested = testEndpointResult.WasTested || harvests.Any();
+                        foreach (var harvest in harvests.Take(10))
+                            _additionalPropertiesHelper.CheckAdditionalProperties(harvest, facility.License.Number);
                     }
-                    catch (SharedFixture.TestExceptionWrapper ex)
-                    {
-                        if (ex.Unauthorized || ex.Unavailable)
-                        {
-                            unauthorized++;
-                            break;
-                        }
+                    else
+                        Assert.Throws<ApiException<ErrorResponse?>>(() => cmd);
 
-                        if (ex.Timeout)
-                        {
-                            _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                            timeout++;
-                        }
-                        else
-                        {
-                            _testOutputHelper.WriteLine(ex.Message);
-                            if (!string.IsNullOrWhiteSpace(ex.Response))
-                                _testOutputHelper.WriteLine(ex.Response);
-                            break;
-                        }
-                    }
-                while (true);
+                    daysBack--;
+                    if (daysBack < -apiKey.DaysToTest) break;
+                }
+                catch (SharedFixture.TestExceptionWrapper ex)
+                {
+                    sharedFixture.HandleTestEndpointException(ex, testEndpointResult, apiKey, testOutputHelper);
+                    break;
+                }
 
-        Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
-        Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
-        Skip.IfNot(wasTested, "WARN: There were no inactive harvests in the timespan selected for any license");
+            while (true);
+
+        sharedFixture.AlertIfSkippableTest(testEndpointResult);
     }
 
     [SkippableFact]
     public void GetOnHoldHarvestsAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var wasTested = false;
-        var unauthorized = 0;
-        var timeout = 0;
+        var testEndpointResult = new TestEndpointResult();
         var daysBack = -1;
-        foreach (var apiKey in Fixture.ApiKeys)
-            foreach (var facility in apiKey.Facilities)
-                do
-                    try
+        foreach (var apiKey in sharedFixture.ApiKeys)
+        foreach (var facility in apiKey.Facilities)
+            do
+                try
+                {
+                    var cmd = sharedFixture.SafeExecutor(() => apiKey.MetrcService.Harvests.GetOnHoldHarvestsAsync(
+                        facility.License.Number,
+                        DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
+
+                    if (facility.FacilityType.CanGrowPlants ?? false)
                     {
-                        var cmd = Fixture.SafeExecutor(() => apiKey.MetrcService.Harvests.GetOnHoldHarvestsAsync(facility.License.Number,
-                            DateTimeOffset.UtcNow.AddDays(daysBack), null).Result);
-
-                        if (facility.FacilityType.CanGrowPlants ?? false)
-                        {
-                            var harvests = cmd;
-                            if (harvests == null) continue;
-                            wasTested = wasTested || harvests.Any();
-                            foreach (var harvest in harvests.Take(10))
-                                _additionalPropertiesHelper.CheckAdditionalProperties(harvest, facility.License.Number);
-                        }
-                        else
-                            Assert.Throws<ApiException<ErrorResponse?>>(() => cmd);
-
-                        daysBack--;
-                        if (daysBack < -apiKey.DaysToTest) break;
+                        var harvests = cmd;
+                        if (harvests == null) continue;
+                        testEndpointResult.WasTested = testEndpointResult.WasTested || harvests.Any();
+                        foreach (var harvest in harvests.Take(10))
+                            _additionalPropertiesHelper.CheckAdditionalProperties(harvest, facility.License.Number);
                     }
-                    catch (SharedFixture.TestExceptionWrapper ex)
-                    {
-                        if (ex.Unauthorized || ex.Unavailable)
-                        {
-                            unauthorized++;
-                            break;
-                        }
+                    else
+                        Assert.Throws<ApiException<ErrorResponse?>>(() => cmd);
 
-                        if (ex.Timeout)
-                        {
-                            _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                            timeout++;
-                        }
-                        else
-                        {
-                            _testOutputHelper.WriteLine(ex.Message);
-                            if (!string.IsNullOrWhiteSpace(ex.Response))
-                                _testOutputHelper.WriteLine(ex.Response);
-                            break;
-                        }
-                    }
-                while (true);
+                    daysBack--;
+                    if (daysBack < -apiKey.DaysToTest) break;
+                }
+                catch (SharedFixture.TestExceptionWrapper ex)
+                {
+                    sharedFixture.HandleTestEndpointException(ex, testEndpointResult, apiKey, testOutputHelper);
+                    break;
+                }
 
-        Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
-        Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
-        Skip.IfNot(wasTested, "WARN: There were no on-hold harvests in the timespan selected for any license");
+            while (true);
+
+        sharedFixture.AlertIfSkippableTest(testEndpointResult);
     }
 
     [SkippableFact]
     public void GetHarvestWasteTypesAsync_AdditionalPropertiesAreEmpty_ShouldPass()
     {
-        var wasTested = false;
-        var unauthorized = 0;
-        var timeout = 0;
-        foreach (var apiKey in Fixture.ApiKeys)
+        var testEndpointResult = new TestEndpointResult();
+        foreach (var apiKey in sharedFixture.ApiKeys)
             try
             {
-                var cmd = Fixture.SafeExecutor(() => apiKey.MetrcService.Harvests.GetHarvestWasteTypesAsync().Result);
+                var cmd = sharedFixture.SafeExecutor(() =>
+                    apiKey.MetrcService.Harvests.GetHarvestWasteTypesAsync().Result);
 
                 if (cmd == null) continue;
-                wasTested = wasTested || cmd.Any();
+                testEndpointResult.WasTested = testEndpointResult.WasTested || cmd.Any();
                 foreach (var harvest in cmd)
                     _additionalPropertiesHelper.CheckAdditionalProperties(harvest, string.Empty);
             }
             catch (SharedFixture.TestExceptionWrapper ex)
             {
-                if (ex.Unauthorized || ex.Unavailable)
-                {
-                    unauthorized++;
-                    continue;
-                }
-                if (ex.Timeout)
-                {
-                    _testOutputHelper.WriteLine($@"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
-                    timeout++;
-                }
-                else
-                {
-                    _testOutputHelper.WriteLine(ex.Message);
-                    if (!string.IsNullOrWhiteSpace(ex.Response))
-                        _testOutputHelper.WriteLine(ex.Response);
-                }
+                sharedFixture.HandleTestEndpointException(ex, testEndpointResult, apiKey, testOutputHelper);
             }
 
-        Skip.If(!wasTested && unauthorized > 0, "WARN: All responses came back as 401 Unauthorized. Could not test.");
-        Skip.If(!wasTested && timeout > 0, "WARN: All responses timed out. Could not test.");
-        Skip.IfNot(wasTested, "WARN: There were no inactive harvests in the timespan selected for any license");
+        sharedFixture.AlertIfSkippableTest(testEndpointResult);
     }
 }

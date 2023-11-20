@@ -49,4 +49,7 @@ public class Package
     public DateTime? FinishedDate { get; set; }
     public DateTimeOffset LastModified { get; set; }
     public Item? Item { get; set; }
+    public string? SourcePackageLabels { get; set; }
+    public bool? IsOnTrip { get; set; }
+    public bool? IsOnRetailerDelivery { get; set; }
 }

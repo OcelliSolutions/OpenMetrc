@@ -29,4 +29,9 @@ public class ItemCategory
     public bool? RequiresPublicIngredients { get; set; }
     public bool? RequiresProductPhotos { get; set; }
     public bool? CanBeDestroyed { get; set; }
+    public bool? RequiresAllergens { get; set; }
+    public bool? RequiresProductPhotoDescription { get; set; }
+    public bool? RequiresLabelPhotoDescription { get; set; }
+    public bool? RequiresPackagingPhotoDescription { get; set; }
+    public bool? CanBeRevised { get; set; }
 }

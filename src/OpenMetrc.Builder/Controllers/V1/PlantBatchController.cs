@@ -76,7 +76,7 @@ public class PlantBatchController : ControllerBase
     [MapsToApi(MetrcEndpoint.get_plantbatches_v1_waste_reasons)]
     [Authorize]
     [ApiAuthorizationFilter()]
-    [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IEnumerable<PlantBatchWasteReason>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get plant batch waste reasons")]
     public ActionResult GetPlantBatchWasteReasons(
         [Required]

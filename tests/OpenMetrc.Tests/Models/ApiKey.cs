@@ -6,8 +6,9 @@ namespace OpenMetrc.Tests.Models;
 public class ApiKey
 {
     private OpenMetrcConfig _openMetrcConfig = null!;
+
     //internal MetrcService MetrcService = new(new OpenMetrcConfig("", "", ""));
-    internal MetrcService MetrcService = new(){OpenMetrcConfig = new OpenMetrcConfig("", "", "")};
+    internal MetrcService MetrcService = new() { OpenMetrcConfig = new OpenMetrcConfig("", "", "") };
 
     public ApiKey(OpenMetrcConfig openMetrcConfig)
     {
@@ -28,7 +29,7 @@ public class ApiKey
         set {
             _openMetrcConfig = value;
             //MetrcService = new MetrcService(value);
-            MetrcService = new MetrcService{OpenMetrcConfig = value};
+            MetrcService = new MetrcService { OpenMetrcConfig = value };
         }
     }
 
@@ -37,7 +38,10 @@ public class ApiKey
     public ICollection<Transfer?> IncomingTransfers { get; set; } = new HashSet<Transfer?>();
     public ICollection<Transfer?> OutgoingTransfers { get; set; } = new HashSet<Transfer?>();
     public ICollection<Transfer?> RejectedTransfers { get; set; } = new HashSet<Transfer?>();
-    public ICollection<Transfer?> Transfers => IncomingTransfers.Union(OutgoingTransfers).Union(RejectedTransfers).ToList();
+
+    public ICollection<Transfer?> Transfers =>
+        IncomingTransfers.Union(OutgoingTransfers).Union(RejectedTransfers).ToList();
+
     public ICollection<TransferDelivery> TransferDeliveries { get; set; } = new HashSet<TransferDelivery>();
 
     public ICollection<Transfer?> TransferTemplates { get; set; } = new HashSet<Transfer?>();

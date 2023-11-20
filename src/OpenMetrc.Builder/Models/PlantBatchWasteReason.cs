@@ -1,13 +1,8 @@
 ﻿namespace OpenMetrc.Builder.Models;
 
-public class PackageAdjustReason
+public class PlantBatchWasteReason
 {
-    public PackageAdjustReason()
-    {
-        Name = string.Empty;
-    }
-
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
     public bool? RequiresNote { get; set; }
     public bool? RequiresWasteWeight { get; set; }
     public bool? RequiresImmatureWasteWeight { get; set; }

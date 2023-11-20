@@ -285,16 +285,16 @@ public partial class MetrcService : ISaleClient
             : SaleClient.GetCountiesAsync(cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_sales_v1_paymenttypes)]
-    Task<ICollection<PaymentType>?> ISaleClient.GetPaymentTypesAsync(string licenseNumber) =>
+    Task<ICollection<string>> ISaleClient.GetPaymentTypesAsync(string licenseNumber) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<PaymentType>?>(new List<PaymentType>())
+            ? Task.FromResult<ICollection<string>>(new List<string>())
             : SaleClient.GetPaymentTypesAsync(licenseNumber);
 
     [MapsToApi(MetrcEndpoint.get_sales_v1_paymenttypes)]
-    Task<ICollection<PaymentType>?> ISaleClient.GetPaymentTypesAsync(string licenseNumber,
+    Task<ICollection<string>> ISaleClient.GetPaymentTypesAsync(string licenseNumber,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
-            ? Task.FromResult<ICollection<PaymentType>?>(new List<PaymentType>())
+            ? Task.FromResult<ICollection<string>>(new List<string>())
             : SaleClient.GetPaymentTypesAsync(licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.put_sales_v1_deliveries_hub)]
@@ -335,13 +335,15 @@ public partial class MetrcService : ISaleClient
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<DeliveryReturnReason>?>(new List<DeliveryReturnReason>())
             : SaleClient.GetDeliveryReturnReasonsAsync(cancellationToken);
-
-    public Task<ICollection<PatientRegistrationLocation>?> GetPatientRegistrationLocationsAsync() =>
+    
+    [MapsToApi(MetrcEndpoint.get_sales_v1_patientregistration_locations)]
+    Task<ICollection<PatientRegistrationLocation>?> ISaleClient.GetPatientRegistrationLocationsAsync() =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<PatientRegistrationLocation>?>(new List<PatientRegistrationLocation>())
             : SaleClient.GetPatientRegistrationLocationsAsync();
 
-    public Task<ICollection<PatientRegistrationLocation>?> GetPatientRegistrationLocationsAsync(
+    [MapsToApi(MetrcEndpoint.get_sales_v1_patientregistration_locations)]
+    Task<ICollection<PatientRegistrationLocation>?> ISaleClient.GetPatientRegistrationLocationsAsync(
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult<ICollection<PatientRegistrationLocation>?>(new List<PatientRegistrationLocation>())

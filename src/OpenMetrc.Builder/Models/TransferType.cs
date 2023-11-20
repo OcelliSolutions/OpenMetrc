@@ -14,4 +14,5 @@ public class TransferType
     public bool ForExternalOutgoingShipments { get; set; }
     public bool RequiresDestinationGrossWeight { get; set; }
     public bool RequiresPackagesGrossWeight { get; set; }
+    public string? TransactionType { get; set; }
 }

@@ -102,7 +102,7 @@ public class SaleController : ControllerBase
     [MapsToApi(MetrcEndpoint.get_sales_v1_paymenttypes)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.SalesDelivery })]
-    [ProducesResponseType(typeof(IEnumerable<PaymentType>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get payment types")]
     public ActionResult GetPaymentTypes([Required] string licenseNumber) => Ok();
 

@@ -20,7 +20,8 @@ public class SharedFixture : IDisposable
             var settings = JsonSerializer.Deserialize<ApiKeySetting>(apiKeysJson) ?? new ApiKeySetting();
             Debug.Assert(settings.OpenMetrcConfigs != null, "settings.OpenMetrcConfigs != null");
 
-            ApiKeys = settings.OpenMetrcConfigs.Select(c => new ApiKey(c){DaysToTest = settings.DaysToTest}).ToList();
+            ApiKeys = settings.OpenMetrcConfigs.Select(c => new ApiKey(c) { DaysToTest = settings.DaysToTest })
+                .ToList();
             Debug.Assert(ApiKeys != null, "Please specify some api keys in `api_keys.json` before testing");
         }
         catch (InvalidOperationException ex)
@@ -95,14 +96,14 @@ public class SharedFixture : IDisposable
         }
         catch (AggregateException ex)
         {
-            ex.Handle(ie =>
-            {
+            ex.Handle(ie => {
                 if (ie is ApiException<ErrorResponse> apiException)
                 {
                     if (apiException.StatusCode is StatusCodes.Status401Unauthorized
                         or StatusCodes.Status503ServiceUnavailable)
                         throw new TestExceptionWrapper(null, null, ex.InnerException, true);
-                    throw new TestExceptionWrapper(apiException.Result?.Message ?? apiException.Message, apiException.Response,
+                    throw new TestExceptionWrapper(apiException.Result?.Message ?? apiException.Message,
+                        apiException.Response,
                         ex.InnerException);
                 }
 
@@ -119,15 +120,44 @@ public class SharedFixture : IDisposable
         }
     }
 
-    public class TestExceptionWrapper: Exception
+    public TestEndpointResult HandleTestEndpointException(TestExceptionWrapper ex,
+        TestEndpointResult testEndpointResult, ApiKey apiKey, ITestOutputHelper testOutputHelper)
     {
-        public string? Response { get; }
-        public bool Unauthorized { get; }
-        public bool Unavailable { get; }
-        public bool CouldNotDeserialize { get; }
-        public bool Timeout { get; }
+        if (ex.Unauthorized || ex.Unavailable)
+        {
+            testEndpointResult.Unauthorized++;
+            return testEndpointResult;
+        }
 
-        public TestExceptionWrapper(string? message, string? response, Exception? innerException, bool unauthorized = false, bool unavailable = false, bool timeout = false, bool couldNotDeserialize = false) : base(message, innerException)
+        if (ex.Timeout)
+        {
+            testOutputHelper.WriteLine($"{apiKey.OpenMetrcConfig.SubDomain}: Timeout");
+            testEndpointResult.Timeout++;
+        }
+        else
+        {
+            testOutputHelper.WriteLine(ex.Message);
+            if (!string.IsNullOrWhiteSpace(ex.Response))
+                testOutputHelper.WriteLine(ex.Response);
+        }
+
+        return testEndpointResult;
+    }
+
+    public void AlertIfSkippableTest(TestEndpointResult testEndpointResult)
+    {
+        Skip.If(testEndpointResult is { WasTested: false, Unauthorized: > 0 },
+            "WARN: All responses came back as 401 Unauthorized. Could not test.");
+        Skip.If(testEndpointResult is { WasTested: false, Timeout: > 0 },
+            "WARN: All responses timed out. Could not test.");
+        Skip.IfNot(testEndpointResult.WasTested, "WARN: There were no testable Transfers for any license");
+    }
+
+    public class TestExceptionWrapper : Exception
+    {
+        public TestExceptionWrapper(string? message, string? response, Exception? innerException,
+            bool unauthorized = false, bool unavailable = false, bool timeout = false,
+            bool couldNotDeserialize = false) : base(message, innerException)
         {
             Response = response;
             Unauthorized = unauthorized;
@@ -135,8 +165,22 @@ public class SharedFixture : IDisposable
             CouldNotDeserialize = couldNotDeserialize;
             Timeout = timeout;
         }
+
         public TestExceptionWrapper(string? message, Exception? innerException) : base(message, innerException)
         {
         }
+
+        public string? Response { get; }
+        public bool Unauthorized { get; }
+        public bool Unavailable { get; }
+        public bool CouldNotDeserialize { get; }
+        public bool Timeout { get; }
     }
+}
+
+public class TestEndpointResult
+{
+    public bool WasTested { get; set; }
+    public int Unauthorized { get; set; }
+    public int Timeout { get; set; }
 }

@@ -62,4 +62,25 @@ public class FacilityType
     public bool? CanRecordProductForDestruction { get; set; }
     public bool? CanClonePlantBatches { get; set; }
     public bool? TestsRequireLabSample { get; set; }
+    public int? RestrictPlantBatchAdjustmentTimeHours { get; set; }
+    public bool? CanTakePlantBatchesOnTrip { get; set; }
+    public bool? CanTakePlantsOnTrip { get; set; }
+    public bool? CanTakeHarvestsOnTrip { get; set; }
+    public bool? CanTakePackagesOnTrip { get; set; }
+    public bool? CanSellFromPackagesOnTrip { get; set; }
+    public bool? SalesDeliveryAllowPlannedRoute { get; set; }
+    public bool? SalesDeliveryAllowAddress { get; set; }
+    public bool? SalesDeliveryAllowCity { get; set; }
+    public bool? SalesDeliveryAllowState { get; set; }
+    public bool? SalesDeliveryAllowCounty { get; set; }
+    public bool? SalesDeliveryAllowZip { get; set; }
+    public bool? RetailerDelivery { get; set; }
+    public bool? RetailerDeliveryAllowTradeSamples { get; set; }
+    public bool? RetailerDeliveryAllowDonations { get; set; }
+    public bool? RetailerDeliveryRequirePrice { get; set; }
+    public bool? RetailerDeliveryAllowPartialPackages { get; set; }
+    public bool? CanCreatePartialPackages { get; set; }
+    public bool? CanAdjustSourcePackagesWithPartials { get; set; }
+    public bool? CanReportOperationalExceptions { get; set; }
+    public bool? CanReportAdulteration { get; set; }
 }

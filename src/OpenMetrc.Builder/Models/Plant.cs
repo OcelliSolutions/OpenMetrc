@@ -33,4 +33,6 @@ public class Plant
     public string? DestroyedNote { get; set; }
     public string? DestroyedByUserName { get; set; }
     public DateTimeOffset LastModified { get; set; }
+    public int? GroupTagTypeMax { get; set; }
+    public bool? IsOnTrip { get; set; }
 }

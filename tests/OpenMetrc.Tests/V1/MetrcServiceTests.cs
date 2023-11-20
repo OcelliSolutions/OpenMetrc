@@ -37,8 +37,8 @@ public class MetrcServiceTests : IClassFixture<SharedFixture>
     [Fact]
     public void MetrcClient_AvailableStates_NoNewStates()
     {
-        var expectedStates = new List<string>() {
-            "ak", "az", "ca", "co", "dc", "la", "ma", "md", "me", "mi", "mn", "mo", "ms", "mt", "nj", "nv", "oh", "ok",
+        var expectedStates = new List<string> {
+            "ak", "ca", "co", "dc", "gu", "la", "ma", "md", "me", "mi", "mn", "mo", "ms", "mt", "nj", "nv", "oh", "ok",
             "or", "ri", "sd", "wv"
         };
         var actual = Fixture.ApiKeys[0].MetrcService.AvailableStates.ToList();
