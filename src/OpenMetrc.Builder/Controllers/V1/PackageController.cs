@@ -1,10 +1,13 @@
-﻿namespace OpenMetrc.Builder.Controllers.V1;
+﻿using Asp.Versioning;
+
+namespace OpenMetrc.Builder.Controllers.V1;
 
 [Route("packages/v1")]
+[ApiVersion("1")]
 [ApiController]
 public class PackageController : ControllerBase
 {
-    [HttpGet("{id:long}")]
+    [HttpGet("{id}")]
     [MapsToApi(MetrcEndpoint.get_packages_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages })]
@@ -164,6 +167,14 @@ public class PackageController : ControllerBase
     public ActionResult AdjustPackage([Required] string licenseNumber,
         [Required] List<AdjustPackageRequest> adjustPackageRequests) => Ok();
 
+    [HttpPost("remediate")]
+    [MapsToApi(MetrcEndpoint.post_packages_v1_remediate)]
+    [Authorize]
+    [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.ManagePackagesInventory })]
+    [SwaggerOperation(Summary = "Remediate packages")]
+    public ActionResult RemediatePackage([Required] string licenseNumber,
+        [Required] List<RemediatePackageRequest> remediatePackageRequests) => Ok();
+
     [HttpPost("finish")]
     [MapsToApi(MetrcEndpoint.post_packages_v1_finish)]
     [Authorize]
@@ -179,12 +190,4 @@ public class PackageController : ControllerBase
     [SwaggerOperation(Summary = "Unfinish packages")]
     public ActionResult UnfinishPackage([Required] string licenseNumber,
         [Required] List<UnfinishPackageRequest> unfinishPackageRequests) => Ok();
-
-    [HttpPost("remediate")]
-    [MapsToApi(MetrcEndpoint.post_packages_v1_remediate)]
-    [Authorize]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ViewPackages, ApiPermission.ManagePackagesInventory })]
-    [SwaggerOperation(Summary = "Remediate packages")]
-    public ActionResult RemediatePackage([Required] string licenseNumber,
-        [Required] List<RemediatePackageRequest> remediatePackageRequests) => Ok();
 }

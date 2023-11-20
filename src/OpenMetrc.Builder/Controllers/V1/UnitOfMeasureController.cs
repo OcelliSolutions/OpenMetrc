@@ -1,6 +1,9 @@
-﻿namespace OpenMetrc.Builder.Controllers.V1;
+﻿using Asp.Versioning;
+
+namespace OpenMetrc.Builder.Controllers.V1;
 
 [Route("unitsofmeasure/v1")]
+[ApiVersion("1")]
 [ApiController]
 public class UnitOfMeasureController : ControllerBase
 {

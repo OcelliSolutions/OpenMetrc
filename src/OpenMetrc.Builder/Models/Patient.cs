@@ -2,7 +2,7 @@
 
 public class Patient
 {
-    [Required] public int PatientId { get; set; }
+    [Required] public long PatientId { get; set; }
 
     public string? LicenseNumber { get; set; }
     public DateTime? RegistrationDate { get; set; }

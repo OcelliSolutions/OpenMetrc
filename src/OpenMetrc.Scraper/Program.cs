@@ -24,21 +24,30 @@ foreach (var state in states)
     htmlDoc.LoadHtml(content);
     var r = new Regex("(?:[^a-z0-9_]|(?<=['\"])s)",
         RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Compiled);
-    foreach (var link in htmlDoc.GetElementbyId("version-1-collapse").Descendants("a"))
+    var versions = new List<string>() { "version-1-collapse", "version-2-collapse" };
+    foreach (var version in versions)
     {
-        var hrefValue = link.GetAttributeValue("href", string.Empty);
-        var split = hrefValue.Split(new[] { '.' });
-        if (split.Length != 3) continue;
-        var sectionName = split[0].Replace("#", "");
-        var endpoint = r.Replace(split[1], string.Empty);
-        var section = stateSummary.Sections.FirstOrDefault(s => s.Name == sectionName);
-        if (section == null)
-        {
-            section = new Section(sectionName);
-            stateSummary.Sections.Add(section);
-        }
+        var doc = htmlDoc.GetElementbyId(version);
+        if (doc == null)
+            continue;
 
-        section.Endpoints.Add(endpoint);
+        foreach (var link in doc.Descendants("a"))
+        {
+            var hrefValue = link.GetAttributeValue("href", string.Empty);
+            var split = hrefValue.Split(new[] { '.' });
+            if (split.Length != 3) continue;
+            var sectionName = split[0].Replace("#", "");
+            var endpoint = r.Replace(split[1], string.Empty);
+            endpoint = endpoint.TrimEnd('_');
+            var section = stateSummary.Sections.FirstOrDefault(s => s.Name == sectionName);
+            if (section == null)
+            {
+                section = new Section(sectionName);
+                stateSummary.Sections.Add(section);
+            }
+
+            section.Endpoints.Add(endpoint);
+        }
     }
 
     // don't add a state that is only a placeholder or only has unit of measure.

@@ -2,7 +2,7 @@
 
 public class Strain
 {
-    [Required] public int Id { get; set; }
+    [Required] public long Id { get; set; }
 
     public string? Name { get; set; }
     public string? TestingStatus { get; set; }

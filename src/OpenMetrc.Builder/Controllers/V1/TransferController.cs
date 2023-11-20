@@ -1,6 +1,9 @@
-﻿namespace OpenMetrc.Builder.Controllers.V1;
+﻿using Asp.Versioning;
+
+namespace OpenMetrc.Builder.Controllers.V1;
 
 [Route("transfers/v1")]
+[ApiVersion("1")]
 [ApiController]
 public class TransferController : ControllerBase
 {
@@ -40,7 +43,7 @@ public class TransferController : ControllerBase
     [SwaggerOperation(Summary = "Get rejected transfers")]
     public ActionResult GetRejectedTransfers([Required] string licenseNumber) => Ok();
 
-    [HttpGet("{id:int}/deliveries")]
+    [HttpGet("{id}/deliveries")]
     [MapsToApi(MetrcEndpoint.get_transfers_v1_id_deliveries)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.Transfers })]
@@ -48,16 +51,16 @@ public class TransferController : ControllerBase
     [SwaggerOperation(Summary = "Get transfer deliveries")]
     public ActionResult GetTransferDeliveries([Required] [SwaggerParameter("Transfer ID")] int id) => Ok();
 
-    [HttpGet("delivery/{id:int}/transporters")]
-    [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_id_transporters)]
+    [HttpGet("delivery/{id}/transporters")]
+    [MapsToApi(MetrcEndpoint.get_transfers_v1_deliveries_id_transporters)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.Transfers })]
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryTransporter>), StatusCodes.Status200OK)]
     [SwaggerOperation(Summary = "Get transfer delivery transporters")]
     public ActionResult GetTransferDeliveryTransporters([Required] [SwaggerParameter("Delivery ID")] int id) => Ok();
 
-    [HttpGet("delivery/{id:int}/transporters/details")]
-    [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_id_transporters_details)]
+    [HttpGet("delivery/{id}/transporters/details")]
+    [MapsToApi(MetrcEndpoint.get_transfers_v1_deliveries_id_transporters_details)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.Transfers })]
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryTransporterDetail>), StatusCodes.Status200OK)]
@@ -65,8 +68,8 @@ public class TransferController : ControllerBase
     public ActionResult GetTransferDeliveryTransportersDetail([Required] [SwaggerParameter("Delivery ID")] int id) =>
         Ok();
 
-    [HttpGet("delivery/{id:int}/packages")]
-    [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_id_packages)]
+    [HttpGet("delivery/{id}/packages")]
+    [MapsToApi(MetrcEndpoint.get_transfers_v1_deliveries_id_packages)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.Transfers })]
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryPackage>), StatusCodes.Status200OK)]
@@ -74,8 +77,8 @@ public class TransferController : ControllerBase
     public ActionResult GetTransferDeliveryPackages([Required] [SwaggerParameter("Transfer Delivery ID")] int id) =>
         Ok();
 
-    [HttpGet("delivery/{id:int}/packages/wholesale")]
-    [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_id_packages_wholesale)]
+    [HttpGet("delivery/{id}/packages/wholesale")]
+    [MapsToApi(MetrcEndpoint.get_transfers_v1_deliveries_id_packages_wholesale)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.Transfers })]
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryPackageWholesale>), StatusCodes.Status200OK)]
@@ -84,8 +87,8 @@ public class TransferController : ControllerBase
         [Required] [SwaggerParameter("Transfer Delivery ID")]
         int id) => Ok();
 
-    [HttpGet("delivery/package/{id:int}/requiredlabtestbatches")]
-    [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_package_id_requiredlabtestbatches)]
+    [HttpGet("delivery/package/{id}/requiredlabtestbatches")]
+    [MapsToApi(MetrcEndpoint.get_transfers_v1_deliveries_package_id_requiredlabtestbatches)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.Transfers })]
     [ProducesResponseType(typeof(IEnumerable<RequiredLabTestBatch>), StatusCodes.Status200OK)]
@@ -97,7 +100,7 @@ public class TransferController : ControllerBase
         int id) => Ok();
 
     [HttpGet("delivery/packages/states")]
-    [MapsToApi(MetrcEndpoint.get_transfers_v1_delivery_packages_states)]
+    [MapsToApi(MetrcEndpoint.get_transfers_v1_deliveries_packages_states)]
     [Authorize]
     [ApiAuthorizationFilter]
     [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status200OK)]
@@ -132,7 +135,7 @@ public class TransferController : ControllerBase
         [Required] string licenseNumber,
         [Required] IEnumerable<UpdateTransferRequest> updateExternalIncomingTransferRequests) => Ok();
 
-    [HttpDelete("external/incoming/{id:int}")]
+    [HttpDelete("external/incoming/{id}")]
     [MapsToApi(MetrcEndpoint.delete_transfers_v1_external_incoming_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.Transfers })]
@@ -160,7 +163,7 @@ public class TransferController : ControllerBase
         DateTimeOffset? lastModifiedEnd
     ) => Ok();
 
-    [HttpGet("templates/{id:int}/deliveries")]
+    [HttpGet("templates/{id}/deliveries")]
     [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_id_deliveries)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.TransferTemplates })]
@@ -169,8 +172,8 @@ public class TransferController : ControllerBase
     public ActionResult GetTransferDeliveryTemplate([Required] [SwaggerParameter("Template Transfer ID")] int id) =>
         Ok();
 
-    [HttpGet("templates/delivery/{id:int}/transporters")]
-    [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_delivery_id_transporters)]
+    [HttpGet("templates/delivery/{id}/transporters")]
+    [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_deliveries_id_transporters)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.TransferTemplates })]
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryTransporter>), StatusCodes.Status200OK)]
@@ -179,8 +182,8 @@ public class TransferController : ControllerBase
         [Required] [SwaggerParameter("Template Delivery ID")]
         int id) => Ok();
 
-    [HttpGet("templates/delivery/{id:int}/transporters/details")]
-    [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_delivery_id_transporters_details)]
+    [HttpGet("templates/delivery/{id}/transporters/details")]
+    [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_deliveries_id_transporters_details)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.TransferTemplates })]
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryTransporterDetail>), StatusCodes.Status200OK)]
@@ -189,8 +192,8 @@ public class TransferController : ControllerBase
         [Required] [SwaggerParameter("Template Delivery ID")]
         int id) => Ok();
 
-    [HttpGet("templates/delivery/{id:int}/packages")]
-    [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_delivery_id_packages)]
+    [HttpGet("templates/delivery/{id}/packages")]
+    [MapsToApi(MetrcEndpoint.get_transfers_v1_templates_deliveries_id_packages)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.TransferTemplates })]
     [ProducesResponseType(typeof(IEnumerable<TransferDeliveryPackage>), StatusCodes.Status200OK)]
@@ -217,7 +220,7 @@ public class TransferController : ControllerBase
         [Required] string licenseNumber,
         [Required] IEnumerable<UpdateTransferRequest> updateTransferTemplateRequests) => Ok();
 
-    [HttpDelete("templates/{id:int}")]
+    [HttpDelete("templates/{id}")]
     [MapsToApi(MetrcEndpoint.delete_transfers_v1_templates_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.TransferTemplates })]
@@ -228,6 +231,4 @@ public class TransferController : ControllerBase
         int id) => Ok();
 
     #endregion Templates
-
-    //TODO: Create TransferController
 }

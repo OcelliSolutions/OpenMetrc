@@ -2,8 +2,8 @@
 
 public class LabTest
 {
-    public int PackageId { get; set; }
-    public int LabTestResultId { get; set; }
+    public long PackageId { get; set; }
+    public long LabTestResultId { get; set; }
     public string? LabFacilityLicenseNumber { get; set; }
     public string? LabFacilityName { get; set; }
     public string? SourcePackageLabel { get; set; }

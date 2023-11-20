@@ -1,10 +1,13 @@
-﻿namespace OpenMetrc.Builder.Controllers.V1;
+﻿using Asp.Versioning;
+
+namespace OpenMetrc.Builder.Controllers.V1;
 
 [Route("strains/v1")]
+[ApiVersion("1")]
 [ApiController]
 public class StrainController : ControllerBase
 {
-    [HttpGet("{id:long}")]
+    [HttpGet("{id}")]
     [MapsToApi(MetrcEndpoint.get_strains_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageStrains })]
@@ -48,7 +51,7 @@ public class StrainController : ControllerBase
         [Required] List<UpdateStrainRequest> updateStrainRequests) =>
         Ok();
 
-    [HttpDelete("{id:long}")]
+    [HttpDelete("{id}")]
     [MapsToApi(MetrcEndpoint.delete_strains_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageStrains })]

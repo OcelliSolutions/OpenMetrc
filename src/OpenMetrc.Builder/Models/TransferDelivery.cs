@@ -2,7 +2,7 @@
 
 public class TransferDelivery
 {
-    [Required] public int Id { get; set; }
+    [Required] public long Id { get; set; }
 
     public string? RecipientFacilityLicenseNumber { get; set; }
     public string? RecipientFacilityName { get; set; }

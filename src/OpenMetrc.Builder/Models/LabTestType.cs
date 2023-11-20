@@ -2,8 +2,7 @@
 
 public class LabTestType
 {
-    [Required] public int Id { get; set; }
-
+    [Required] public long Id { get; set; }
     public string? Name { get; set; }
     public bool? RequiresTestResult { get; set; }
     public bool? InformationalOnly { get; set; }

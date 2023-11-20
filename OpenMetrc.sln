@@ -9,7 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E37BB4F9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{23CD652A-0A69-48B3-B497-A20DEB311EE2}"
 	ProjectSection(SolutionItems) = preProject
-		open-metrc-swagger.yaml = open-metrc-swagger.yaml
+		open-metrc-swagger-v1.yaml = open-metrc-swagger-v1.yaml
+		open-metrc-swagger-v2.yaml = open-metrc-swagger-v2.yaml
 		readme.md = readme.md
 		state-summaries.json = state-summaries.json
 	EndProjectSection

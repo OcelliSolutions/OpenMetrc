@@ -8,7 +8,7 @@ public class UpdateTransferRequest
         ShipperName = string.Empty;
     }
 
-    public int TransferId { get; set; }
+    public long TransferId { get; set; }
 
     public string ShipperLicenseNumber { get; set; }
     public string ShipperName { get; set; }

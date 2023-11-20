@@ -2,7 +2,7 @@
 
 public class Transfer
 {
-    [Required] public int Id { get; set; }
+    [Required] public long Id { get; set; }
 
     public string? ManifestNumber { get; set; }
     public string? ShipmentLicenseType { get; set; }

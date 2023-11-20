@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PackageId>Ocelli.OpenMETRC</PackageId>
@@ -23,18 +23,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<OpenApiReference Include="../../open-metrc-swagger.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenMetrc" ClassName="{controller}Client" Link="OpenAPIs/open-metrc-swagger.yaml" OutputPath="MetrcClient.cs">
+		<OpenApiReference Include="../../open-metrc-swagger-v1.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenMetrc.V1" ClassName="{controller}Client" Link="OpenAPIs/open-metrc-swagger-v1.yaml" OutputPath="MetrcV1Client.cs">
 			<Options>/OperationGenerationMode:MultipleClientsFromFirstTagAndOperationId /GenerateClientInterfaces:true /GenerateOptionalPropertiesAsNullable:true /GenerateNullableReferenceTypes:true /DateType:System.DateTime /GenerateDataAnnotations </Options>
 		</OpenApiReference>
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
-		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="7.0.0">
+		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="8.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="NSwag.ApiDescription.Client" Version="13.18.0">
+		<PackageReference Include="NSwag.ApiDescription.Client" Version="13.20.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

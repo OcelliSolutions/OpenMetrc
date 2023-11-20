@@ -3,7 +3,7 @@
 public class FinishProcessingRequest
 {
     [Required]
-    public int Id { get; set; }
+    public long Id { get; set; }
     public DateTime? FinishDate { get; set; }
     public string? FinishNote { get; set; }
     public double? TotalCountWaste { get; set; }

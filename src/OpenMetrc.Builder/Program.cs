@@ -1,8 +1,12 @@
 using System.Net.Mime;
+using System.Reflection;
 using System.Text.Json;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +25,14 @@ builder.Services.AddControllers(options =>
 builder.Services.TryAddEnumerable(ServiceDescriptor
     .Transient<IApplicationModelProvider, ProduceResponseTypeModelProvider>());
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddApiVersioning(setup =>
+{
+    setup.DefaultApiVersion = new ApiVersion(1, 0);
+    setup.AssumeDefaultVersionWhenUnspecified = true;
+    setup.ReportApiVersions = true;
+});
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -32,6 +44,20 @@ builder.Services.AddSwaggerGen(c =>
                 "Please keep in mind that there are rate limits and other terms of use enforced by Franwell (METRC). This document is only designed to give developers a standard used for code generation and testing."
         }
     );
+
+    c.DocInclusionPredicate((docName, apiDesc) =>
+    {
+        if (!apiDesc.TryGetMethodInfo(out MethodInfo methodInfo))
+            return false;
+
+        var versions = methodInfo?.DeclaringType?
+            .GetCustomAttributes(true)
+            .OfType<ApiVersionAttribute>()
+            .SelectMany(attr => attr.Versions);
+
+        return versions!.Any(v => $"v{v}" == docName);
+    });
+
 
     //get all the available states that were detected by the scraper and add them as possible servers.
     var availableStates = DistinctStates().ToList();
@@ -94,8 +120,11 @@ var app = builder.Build();
 
 if (builder.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "METRC API v1"));
+    app.UseSwagger(options => options.RouteTemplate = "swagger/{documentName}/swagger.json");
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "METRC API v1");
+    });
 }
 
 app.UseAuthorization();

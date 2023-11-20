@@ -1,10 +1,13 @@
-﻿namespace OpenMetrc.Builder.Controllers.V1;
+﻿using Asp.Versioning;
+
+namespace OpenMetrc.Builder.Controllers.V1;
 
 [Route("harvests/v1")]
+[ApiVersion("1")]
 [ApiController]
 public class HarvestController : ControllerBase
 {
-    [HttpGet("{id:long}")]
+    [HttpGet("{id}")]
     [MapsToApi(MetrcEndpoint.get_harvests_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewHarvests })]

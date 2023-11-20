@@ -1,12 +1,15 @@
-﻿namespace OpenMetrc.Builder.Controllers.V1;
+﻿using Asp.Versioning;
+
+namespace OpenMetrc.Builder.Controllers.V1;
 
 [Route("processing/v1")]
+[ApiVersion("1")]
 [ApiController]
 public class ProcessingController : ControllerBase
 {
     #region Processing
 
-    [HttpGet("{id:long}")]
+    [HttpGet("{id}")]
     [MapsToApi(MetrcEndpoint.get_processing_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageProcessingJob })]
@@ -96,7 +99,7 @@ public class ProcessingController : ControllerBase
     public ActionResult UnfinishProcessing([Required] string licenseNumber,
         [Required] List<UnfinishProcessingRequest> unfinishProcessingRequests) => Ok();
 
-    [HttpDelete("{id:long}")]
+    [HttpDelete("{id}")]
     [MapsToApi(MetrcEndpoint.delete_processing_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageProcessingJob })]
@@ -158,7 +161,7 @@ public class ProcessingController : ControllerBase
     public ActionResult UpdateJobType([Required] string licenseNumber,
         [Required] List<ProcessingJobType> updateJobTypeRequests) => Ok();
 
-    [HttpDelete("jobtypes/{id:long}")]
+    [HttpDelete("jobtypes/{id}")]
     [MapsToApi(MetrcEndpoint.delete_processing_v1_jobtypes_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageProcessingJob })]

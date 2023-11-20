@@ -1,10 +1,13 @@
-﻿namespace OpenMetrc.Builder.Controllers.V1;
+﻿using Asp.Versioning;
+
+namespace OpenMetrc.Builder.Controllers.V1;
 
 [Route("locations/v1")]
+[ApiVersion("1")]
 [ApiController]
 public class LocationController : ControllerBase
 {
-    [HttpGet("{id:long}")]
+    [HttpGet("{id}")]
     [MapsToApi(MetrcEndpoint.get_locations_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageLocations })]
@@ -59,7 +62,7 @@ public class LocationController : ControllerBase
     public ActionResult UpdateLocation([Required] string licenseNumber,
         [Required] List<UpdateLocationRequest> updateLocationRequests) => Ok();
 
-    [HttpDelete("{id:long}")]
+    [HttpDelete("{id}")]
     [MapsToApi(MetrcEndpoint.delete_locations_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageLocations })]

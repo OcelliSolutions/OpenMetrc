@@ -8,7 +8,7 @@ public class UpdateLocationRequest
         LocationTypeName = string.Empty;
     }
 
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string Name { get; set; }
     public string LocationTypeName { get; set; }
 }

@@ -22,7 +22,7 @@ public class ApiAuthorizationFilter : ActionFilterAttribute
     {
         get
         {
-            if (_apiPermissions == null || !_apiPermissions.Any()) return "<i>none</i>";
+            if (_apiPermissions == null || _apiPermissions.Count == 0) return "<i>none</i>";
             var displayNames = _apiPermissions.Select(permission => permission.GetDisplayName());
             return string.Join(" • ", displayNames);
         }

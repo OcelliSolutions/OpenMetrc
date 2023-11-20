@@ -2,7 +2,7 @@
 
 public class PackageLabTestBatch
 {
-    public int PackageId { get; set; }
-    public int LabTestBatchId { get; set; }
+    public long PackageId { get; set; }
+    public long LabTestBatchId { get; set; }
     public string? LabTestBatchName { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using OpenMetrc.V1;
+using System.Collections.Generic;
 
 namespace OpenMetrc.Tests.Models;
 

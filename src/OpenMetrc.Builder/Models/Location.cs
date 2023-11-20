@@ -2,10 +2,10 @@
 
 public class Location
 {
-    [Required] public int Id { get; set; }
+    [Required] public long Id { get; set; }
 
     public string? Name { get; set; }
-    public int LocationTypeId { get; set; }
+    public long LocationTypeId { get; set; }
     public string? LocationTypeName { get; set; }
     public bool? ForPlantBatches { get; set; }
     public bool? ForPlants { get; set; }

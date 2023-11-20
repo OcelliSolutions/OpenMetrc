@@ -2,7 +2,7 @@
 using System.Web;
 
 // ReSharper disable once CheckNamespace
-namespace OpenMetrc;
+namespace OpenMetrc.V1;
 
 class RateLimitHttpMessageHandler : DelegatingHandler
 {

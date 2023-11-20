@@ -8,7 +8,7 @@ public class RenameHarvestRequest
         NewName = string.Empty;
     }
 
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string OldName { get; set; }
     public string NewName { get; set; }
 }

@@ -8,7 +8,7 @@ public class UpdateLabTestDocumentRequest
         DocumentFileBase64 = string.Empty;
     }
 
-    public int LabTestResultId { get; set; }
+    public long LabTestResultId { get; set; }
     public string DocumentFileName { get; set; }
     public string DocumentFileBase64 { get; set; }
 }

@@ -2,7 +2,7 @@
 
 public class SaleReceipt
 {
-    [Required] public int Id { get; set; }
+    [Required] public long Id { get; set; }
 
     public string? ReceiptNumber { get; set; }
     public DateTimeOffset SalesDateTime { get; set; }

@@ -2,7 +2,7 @@
 
 public class SaleDelivery
 {
-    [Required] public int Id { get; set; }
+    [Required] public long Id { get; set; }
 
     public string? DeliveryNumber { get; set; }
     public string? FacilityLicenseNumber { get; set; }

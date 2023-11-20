@@ -14,6 +14,8 @@ public enum ApiPermission
 
     [Display(Name = "Finish/Discontinue Harvests")]
     FinishDiscontinueHarvests,
+    [Display(Name = "Discontinue Harvest Waste")]
+    DiscontinueHarvestWaste,
 
     #endregion Harvest
 
@@ -40,6 +42,7 @@ public enum ApiPermission
 
     [Display(Name = "Manage Patients")] ManagePatients,
     [Display(Name = "Lookup Patients")] LookupPatients,
+    [Display(Name = "Manage Patients Check Ins")] ManagePatientsCheckIns,
 
     #endregion Patient
 
@@ -77,6 +80,9 @@ public enum ApiPermission
     [Display(Name = "Manicure/Harvest Veg/Flower Plants")]
     ManicureHarvestVegFlowerPlants,
 
+    [Display(Name = "Manage Plants Waste")]
+    ManagePlantsWaste,
+
     #endregion Plant
 
     #region Processing
@@ -89,6 +95,7 @@ public enum ApiPermission
 
     [Display(Name = "Sales Delivery")] SalesDelivery,
     [Display(Name = "Sales")] Sales,
+    [Display(Name = "Retailer Delivery")] RetailerDelivery,
 
     #endregion Sale
 

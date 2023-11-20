@@ -2,6 +2,6 @@
 
 public class FinishHarvestRequest
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public DateTime ActualDate { get; set; }
 }

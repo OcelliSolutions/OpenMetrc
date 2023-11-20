@@ -8,7 +8,7 @@ public class UpdateSaleReceiptRequest
         Transactions = new List<SaleReceiptTransaction>();
     }
 
-    public int Id { get; set; }
+    public long Id { get; set; }
     public DateTime SalesDateTime { get; set; }
     public string SalesCustomerType { get; set; }
     public string? PatientLicenseNumber { get; set; }

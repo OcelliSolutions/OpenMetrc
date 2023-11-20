@@ -1,10 +1,21 @@
-﻿namespace OpenMetrc.Builder.Controllers.V1;
+﻿using Asp.Versioning;
+
+namespace OpenMetrc.Builder.Controllers.V1;
 
 [Route("plants/v1")]
+[ApiVersion("1")]
 [ApiController]
 public class PlantController : ControllerBase
 {
-    [HttpGet("{id:long}")]
+    [HttpGet("additives/types")]
+    [MapsToApi(MetrcEndpoint.get_plants_v1_additives_types)]
+    [Authorize]
+    [ApiAuthorizationFilter]
+    [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status200OK)]
+    [SwaggerOperation(Summary = "Get plant additive types")]
+    public ActionResult GetPlantAdditivesTypes() => Ok();
+
+    [HttpGet("{id}")]
     [MapsToApi(MetrcEndpoint.get_plants_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ViewVegFlowerPlants })]
@@ -126,31 +137,6 @@ public class PlantController : ControllerBase
         [Required] [SwaggerParameter(Description = "The license number of the facility for plant growth phases.")]
         string licenseNumber) => Ok();
 
-    [HttpGet("additives/types")]
-    [MapsToApi(MetrcEndpoint.get_plants_v1_additives_types)]
-    [Authorize]
-    [ApiAuthorizationFilter]
-    [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status200OK)]
-    [SwaggerOperation(Summary = "Get plant additive types")]
-    public ActionResult GetPlantAdditivesTypes() => Ok();
-
-    [HttpGet("waste/methods")]
-    //[MapsToApi(MetrcEndpoint.get_plants_v1_waste_methods)]
-    [Authorize, Obsolete("This has been replaced by the GetPlantWasteMethodsAll method")]
-    [ApiAuthorizationFilter]
-    [ProducesResponseType(typeof(IEnumerable<PlantWasteMethod>), StatusCodes.Status200OK)]
-    [SwaggerOperation(Summary = "Get plant waste methods")]
-    public ActionResult GetPlantWasteMethods() => Ok();
-
-
-    [HttpGet("waste/methods/all")]
-    [MapsToApi(MetrcEndpoint.get_plants_v1_waste_methods_all)]
-    [Authorize]
-    [ApiAuthorizationFilter]
-    [ProducesResponseType(typeof(IEnumerable<PlantWasteMethod>), StatusCodes.Status200OK)]
-    [SwaggerOperation(Summary = "Get all plant waste method properties")]
-    public ActionResult GetPlantWasteMethodsAll() => Ok();
-
     [HttpGet("waste/reasons")]
     [MapsToApi(MetrcEndpoint.get_plants_v1_waste_reasons)]
     [Authorize]
@@ -160,31 +146,6 @@ public class PlantController : ControllerBase
     public ActionResult GetPlantWasteReasons(
         [Required] [SwaggerParameter(Description = "The license number of the facility for plant waste reasons.")]
         string licenseNumber) => Ok();
-
-    [HttpPost("moveplants")]
-    [MapsToApi(MetrcEndpoint.post_plants_v1_moveplants)]
-    [Authorize]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ViewVegFlowerPlants, ApiPermission.ManageVegFlowerPlantsInventory })]
-    [SwaggerOperation(Summary = "Move a plant")]
-    public ActionResult MovePlant([Required] string licenseNumber,
-        [Required] List<MovePlantRequest> movePlantRequests) => Ok();
-
-    [HttpPost("changegrowthphases")]
-    [MapsToApi(MetrcEndpoint.post_plants_v1_changegrowthphases)]
-    [Authorize]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ViewVegFlowerPlants, ApiPermission.ManageVegFlowerPlantsInventory })]
-    [SwaggerOperation(Summary = "Change a plant's growth phase")]
-    public ActionResult ChangePlantGrowthPhase([Required] string licenseNumber,
-        [Required] List<ChangePlantGrowthPhaseRequest> changePlantGrowthPhaseRequests) => Ok();
-
-    [HttpPost("destroyplants")]
-    [MapsToApi(MetrcEndpoint.post_plants_v1_destroyplants)]
-    [Authorize]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ViewVegFlowerPlants, ApiPermission.DestroyVegFlowerPlants })]
-    [SwaggerOperation(Summary = "Destroy a plant")]
-    public ActionResult DestroyPlant([Required] string licenseNumber,
-        [Required] List<DestroyPlantRequest> destroyPlantRequests) =>
-        Ok();
 
     [HttpPost("additives")]
     [MapsToApi(MetrcEndpoint.post_plants_v1_additives)]
@@ -227,6 +188,30 @@ public class PlantController : ControllerBase
     public ActionResult CreatePlantBatchFromPlantPackage([Required] string licenseNumber,
         [Required] List<CreatePlantBatchFromPlantPackageRequest> createPlantBatchFromPlantPackageRequests) => Ok();
 
+    [HttpPost("manicureplants")]
+    [MapsToApi(MetrcEndpoint.post_plants_v1_manicureplants)]
+    [Authorize]
+    [ApiAuthorizationFilter(new[] { ApiPermission.ViewImmaturePlants, ApiPermission.ManicureHarvestVegFlowerPlants })]
+    [SwaggerOperation(Summary = "Manicure plants")]
+    public ActionResult ManicurePlant([Required] string licenseNumber,
+        [Required] List<ManicurePlantRequest> manicurePlantRequest) => Ok();
+
+    [HttpPost("moveplants")]
+    [MapsToApi(MetrcEndpoint.post_plants_v1_moveplants)]
+    [Authorize]
+    [ApiAuthorizationFilter(new[] { ApiPermission.ViewVegFlowerPlants, ApiPermission.ManageVegFlowerPlantsInventory })]
+    [SwaggerOperation(Summary = "Move a plant")]
+    public ActionResult MovePlant([Required] string licenseNumber,
+        [Required] List<MovePlantRequest> movePlantRequests) => Ok();
+
+    [HttpPost("changegrowthphases")]
+    [MapsToApi(MetrcEndpoint.post_plants_v1_changegrowthphases)]
+    [Authorize]
+    [ApiAuthorizationFilter(new[] { ApiPermission.ViewVegFlowerPlants, ApiPermission.ManageVegFlowerPlantsInventory })]
+    [SwaggerOperation(Summary = "Change a plant's growth phase")]
+    public ActionResult ChangePlantGrowthPhase([Required] string licenseNumber,
+        [Required] List<ChangePlantGrowthPhaseRequest> changePlantGrowthPhaseRequests) => Ok();
+
     [HttpPost("harvestplants")]
     [MapsToApi(MetrcEndpoint.post_plants_v1_harvestplants)]
     [Authorize]
@@ -236,11 +221,28 @@ public class PlantController : ControllerBase
         [Required] List<HarvestPlantRequest> harvestPlantRequests) =>
         Ok();
 
-    [HttpPost("manicureplants")]
-    [MapsToApi(MetrcEndpoint.post_plants_v1_manicureplants)]
+    [HttpDelete]
+    [MapsToApi(MetrcEndpoint.delete_plants_v1)]
     [Authorize]
-    [ApiAuthorizationFilter(new[] { ApiPermission.ViewImmaturePlants, ApiPermission.ManicureHarvestVegFlowerPlants })]
-    [SwaggerOperation(Summary = "Manicure plants")]
-    public ActionResult ManicurePlant([Required] string licenseNumber,
-        [Required] List<ManicurePlantRequest> manicurePlantRequest) => Ok();
+    [ApiAuthorizationFilter(new[] { ApiPermission.ViewVegFlowerPlants, ApiPermission.DestroyVegFlowerPlants })]
+    [SwaggerOperation(Summary = "Destroy a plant")]
+    public ActionResult DeletePlant([Required] string licenseNumber,
+        [Required] List<DestroyPlantRequest> destroyPlantRequests) =>
+        Ok();
+
+    [HttpPost("waste")]
+    [MapsToApi(MetrcEndpoint.post_plants_v1_waste)]
+    [Authorize]
+    [ApiAuthorizationFilter]
+    [SwaggerOperation(Summary = "Create plant waste")]
+    public ActionResult CreatePlantWaste([Required] string licenseNumber,
+        [Required] List<CreatePlantWasteRequest> destroyPlantRequests) => Ok();
+
+    [HttpGet("waste/methods/all")]
+    [MapsToApi(MetrcEndpoint.get_plants_v1_waste_methods_all)]
+    [Authorize]
+    [ApiAuthorizationFilter]
+    [ProducesResponseType(typeof(IEnumerable<PlantWasteMethod>), StatusCodes.Status200OK)]
+    [SwaggerOperation(Summary = "Get all plant waste method properties")]
+    public ActionResult GetPlantWasteMethodsAll() => Ok();
 }

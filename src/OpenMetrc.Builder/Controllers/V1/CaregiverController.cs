@@ -1,10 +1,13 @@
-﻿namespace OpenMetrc.Builder.Controllers.V1;
+﻿using Asp.Versioning;
+
+namespace OpenMetrc.Builder.Controllers.V1;
 
 [Route("caregivers/v1")]
+[ApiVersion("1")]
 [ApiController]
 public class CaregiverController : ControllerBase
 {
-    [HttpGet("{caregiverLicenseNumber}")]
+    [HttpGet("status/{caregiverLicenseNumber}")]
     [MapsToApi(MetrcEndpoint.get_caregivers_v1_status_caregiverLicenseNumber)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.LookupCaregivers })]

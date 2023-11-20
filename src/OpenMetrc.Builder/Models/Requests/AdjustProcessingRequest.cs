@@ -3,7 +3,7 @@
 public class AdjustProcessingRequest
 {
     [Required]
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string? AdjustmentReason { get; set; }
     public DateTime? AdjustmentDate { get; set; }
     public string? AdjustmentNote { get; set; }

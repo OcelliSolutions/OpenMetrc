@@ -1,10 +1,13 @@
-﻿namespace OpenMetrc.Builder.Controllers.V1;
+﻿using Asp.Versioning;
+
+namespace OpenMetrc.Builder.Controllers.V1;
 
 [Route("items/v1")]
+[ApiVersion("1")]
 [ApiController]
 public class ItemController : ControllerBase
 {
-    [HttpGet("{id:long}")]
+    [HttpGet("{id}")]
     [MapsToApi(MetrcEndpoint.get_items_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageItems })]
@@ -69,7 +72,7 @@ public class ItemController : ControllerBase
         string licenseNumber
     ) => Ok();
 
-    [HttpGet("photo/{id:long}")]
+    [HttpGet("photo/{id}")]
     [MapsToApi(MetrcEndpoint.get_items_v1_photo_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageItems })]
@@ -107,7 +110,7 @@ public class ItemController : ControllerBase
     public ActionResult CreatePhoto([Required] string licenseNumber,
         [Required] List<CreatePhotoRequest> createPhotoRequests) => Ok();
 
-    [HttpDelete("{id:long}")]
+    [HttpDelete("{id}")]
     [MapsToApi(MetrcEndpoint.delete_items_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManageItems })]

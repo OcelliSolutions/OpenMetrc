@@ -3,5 +3,5 @@
 public class UnfinishProcessingRequest
 {
     [Required]
-    public int Id { get; set; }
+    public long Id { get; set; }
 }

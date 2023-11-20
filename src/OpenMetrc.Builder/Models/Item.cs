@@ -2,7 +2,7 @@
 
 public class Item
 {
-    [Required] public int Id { get; set; }
+    [Required] public long Id { get; set; }
     public string? Name { get; set; }
     public string? ProductCategoryName { get; set; }
     public string? ProductCategoryType { get; set; }

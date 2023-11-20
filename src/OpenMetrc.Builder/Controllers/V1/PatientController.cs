@@ -1,10 +1,13 @@
-﻿namespace OpenMetrc.Builder.Controllers.V1;
+﻿using Asp.Versioning;
+
+namespace OpenMetrc.Builder.Controllers.V1;
 
 [Route("patients/v1")]
+[ApiVersion("1")]
 [ApiController]
 public class PatientController : ControllerBase
 {
-    [HttpGet("{id:long}")]
+    [HttpGet("{id}")]
     [MapsToApi(MetrcEndpoint.get_patients_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManagePatients })]
@@ -59,7 +62,7 @@ public class PatientController : ControllerBase
     public ActionResult UpdatePatient([Required] string licenseNumber,
         [Required] List<UpdatePatientRequest> updatePatientRequests) => Ok();
 
-    [HttpDelete("{id:long}")]
+    [HttpDelete("{id}")]
     [MapsToApi(MetrcEndpoint.delete_patients_v1_id)]
     [Authorize]
     [ApiAuthorizationFilter(new[] { ApiPermission.ManagePatients })]

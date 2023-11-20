@@ -2,7 +2,7 @@
 
 public class SaleTransaction
 {
-    public int PackageId { get; set; }
+    public long PackageId { get; set; }
     public string? PackageLabel { get; set; }
     public string? ProductName { get; set; }
     public string? ProductCategoryName { get; set; }
