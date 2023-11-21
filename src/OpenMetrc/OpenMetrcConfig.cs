@@ -2,6 +2,8 @@
 using System.Text.Json.Serialization;
 
 [assembly: InternalsVisibleTo("OpenMetrc.Tests")]
+[assembly: InternalsVisibleTo("OpenMetrc.Tests.V1")]
+[assembly: InternalsVisibleTo("OpenMetrc.Tests.V2")]
 namespace OpenMetrc;
 
 public class OpenMetrcConfig
