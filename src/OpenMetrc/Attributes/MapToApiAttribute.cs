@@ -1,6 +1,6 @@
 ﻿// ReSharper disable once CheckNamespace
 
-namespace OpenMetrc.V1;
+namespace OpenMetrc;
 
 [AttributeUsage(AttributeTargets.Method)]
 class MapsToApiAttribute : Attribute

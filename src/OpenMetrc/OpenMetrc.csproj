@@ -26,6 +26,9 @@
 		<OpenApiReference Include="../../open-metrc-swagger-v1.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenMetrc.V1" ClassName="{controller}Client" Link="OpenAPIs/open-metrc-swagger-v1.yaml" OutputPath="MetrcV1Client.cs">
 			<Options>/OperationGenerationMode:MultipleClientsFromFirstTagAndOperationId /GenerateClientInterfaces:true /GenerateOptionalPropertiesAsNullable:true /GenerateNullableReferenceTypes:true /DateType:System.DateTime /GenerateDataAnnotations </Options>
 		</OpenApiReference>
+    <OpenApiReference Include="../../open-metrc-swagger-v2.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenMetrc.V2" ClassName="{controller}Client" Link="OpenAPIs/open-metrc-swagger-v2.yaml" OutputPath="MetrcV2Client.cs">
+      <Options>/OperationGenerationMode:MultipleClientsFromFirstTagAndOperationId /GenerateClientInterfaces:true /GenerateOptionalPropertiesAsNullable:true /GenerateNullableReferenceTypes:true /DateType:System.DateTime /GenerateDataAnnotations </Options>
+    </OpenApiReference>
 	</ItemGroup>
 
 	<ItemGroup>

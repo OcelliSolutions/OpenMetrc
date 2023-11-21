@@ -397,7 +397,6 @@ internal enum MetrcEndpoint
 	put_transfers_v2_external_incoming,
 	put_transfers_v2_templates_outgoing
 }
-
 internal static class MetrcEndpointExtensions
 {
     public static IEnumerable<string> GetStates(MetrcEndpoint endpoint)

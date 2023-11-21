@@ -36,6 +36,9 @@ public enum ApiPermission
     [Display(Name = "Manage Package Notes")]
     ManagePackageNotes,
 
+    [Display(Name = "View Package Source Harvests")]
+    ViewPackageSourceHarvests,
+
     #endregion Package
 
     #region Patient
@@ -83,6 +86,9 @@ public enum ApiPermission
     [Display(Name = "Manage Plants Waste")]
     ManagePlantsWaste,
 
+    [Display(Name= "View Plant")]
+    ViewPlant,
+
     #endregion Plant
 
     #region Processing
@@ -107,4 +113,5 @@ public enum ApiPermission
     [Display(Name = "Transfer Templates")] TransferTemplates,
 
     #endregion Transfer
+
 }

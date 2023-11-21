@@ -1,13 +1,14 @@
-using System.Net.Mime;
-using System.Reflection;
-using System.Text.Json;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Net.Mime;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Text.Json;
 
+[assembly: InternalsVisibleTo("OpenMetrc.Builder.Tests")]
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers(options =>
@@ -39,6 +40,15 @@ builder.Services.AddSwaggerGen(c =>
         {
             Title = "METRC API",
             Version = "v1",
+            Description =
+                "This document is created and maintained by the community and is designed to be a non-state specific specification. Please refer to your regions documentation for specific details and deviations. https://api-<state/province code>.metrc.com/documentation." +
+                "Please keep in mind that there are rate limits and other terms of use enforced by Franwell (METRC). This document is only designed to give developers a standard used for code generation and testing."
+        }
+    );
+    c.SwaggerDoc("v2", new OpenApiInfo
+        {
+            Title = "METRC API",
+            Version = "v2",
             Description =
                 "This document is created and maintained by the community and is designed to be a non-state specific specification. Please refer to your regions documentation for specific details and deviations. https://api-<state/province code>.metrc.com/documentation." +
                 "Please keep in mind that there are rate limits and other terms of use enforced by Franwell (METRC). This document is only designed to give developers a standard used for code generation and testing."
@@ -124,6 +134,7 @@ if (builder.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "METRC API v1");
+        c.SwaggerEndpoint("/swagger/v2/swagger.json", "METRC API v2");
     });
 }
 
