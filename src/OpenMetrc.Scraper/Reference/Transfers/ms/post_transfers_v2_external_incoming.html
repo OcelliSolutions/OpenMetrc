@@ -1,0 +1,128 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="transfers">
+		Transfers
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-ms.metrc.com/</code></h3>
+	<h3 id="post_transfers_v2_external_incoming">POST /transfers/v2/external/incoming</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Transfers</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number for which to create a shipment plan.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /transfers/v2/external/incoming?licenseNumber=123-ABC<code>[
+  {
+    "ShipperLicenseNumber": "123-ABC",
+    "ShipperName": "Lofty Med-Cultivation B",
+    "ShipperMainPhoneNumber": "123-456-7890",
+    "ShipperAddress1": "123 Real Street",
+    "ShipperAddress2": null,
+    "ShipperAddressCity": "Somewhere",
+    "ShipperAddressState": "CO",
+    "ShipperAddressPostalCode": null,
+    "TransporterFacilityLicenseNumber": null,
+    "DriverOccupationalLicenseNumber": null,
+    "DriverName": null,
+    "DriverLicenseNumber": null,
+    "PhoneNumberForQuestions": null,
+    "VehicleMake": null,
+    "VehicleModel": null,
+    "VehicleLicensePlateNumber": null,
+    "Destinations": [
+      {
+        "RecipientLicenseNumber": "123-XYZ",
+        "TransferTypeName": "Transfer",
+        "PlannedRoute": "I will drive down the road to the place.",
+        "EstimatedDepartureDateTime": "2018-03-06T09:15:00.000",
+        "EstimatedArrivalDateTime": "2018-03-06T12:24:00.000",
+        "GrossWeight": null,
+        "GrossUnitOfWeightId": null,
+        "Transporters": [
+          {
+            "TransporterFacilityLicenseNumber": "123-ABC",
+            "DriverOccupationalLicenseNumber": "50",
+            "DriverName": "X",
+            "DriverLicenseNumber": "5",
+            "DriverLayoverLeg": null,
+            "PhoneNumberForQuestions": "18005555555",
+            "VehicleMake": "X",
+            "VehicleModel": "X",
+            "VehicleLicensePlateNumber": "X",
+            "IsLayover": false,
+            "EstimatedDepartureDateTime": "2018-03-06T12:00:00.000",
+            "EstimatedArrivalDateTime": "2018-03-06T21:00:00.000",
+            "TransporterDetails": [
+              {
+                "DriverOccupationalLicenseNumber": "50",
+                "DriverName": "X",
+                "DriverLicenseNumber": "5",
+                "DriverLayoverLeg": null,
+                "VehicleMake": "X",
+                "VehicleModel": "X",
+                "VehicleLicensePlateNumber": "X"
+              }
+            ]
+          }
+        ],
+        "Packages": [
+          {
+            "ItemName": "Buds",
+            "Quantity": 10.0,
+            "UnitOfMeasureName": "Ounces",
+            "PackagedDate": "2018-02-04T00:00:00Z",
+            "ExpirationDate": null,
+            "SellByDate": null,
+            "UseByDate": null,
+            "GrossWeight": null,
+            "GrossUnitOfWeightName": null,
+            "WholesalePrice": null
+          },
+          {
+            "ItemName": "Buds",
+            "Quantity": 9.5,
+            "UnitOfMeasureName": "Ounces",
+            "PackagedDate": "2018-03-06T00:00:00Z",
+            "ExpirationDate": null,
+            "SellByDate": null,
+            "UseByDate": null,
+            "GrossWeight": null,
+            "GrossUnitOfWeightName": null,
+            "WholesalePrice": null
+          }
+        ]
+      }
+    ]
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Ids": [
+    1
+  ],
+  "Warnings": null
+}</code></pre>
+</section>

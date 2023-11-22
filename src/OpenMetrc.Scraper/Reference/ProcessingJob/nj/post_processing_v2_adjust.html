@@ -1,0 +1,89 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="processingjob">
+		Processing Job
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-nj.metrc.com/</code></h3>
+	<h3 id="post_processing_v2_adjust">POST /processing/v2/adjust</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Processing Job</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility to adjust the processing job.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /processing/v2/adjust?licenseNumber=123-ABC<code>[
+  {
+    "Id": 0,
+    "AdjustmentReason": "Data Entry",
+    "AdjustmentDate": "2021-11-01T00:00:00Z",
+    "AdjustmentNote": null,
+    "CountUnitOfMeasureName": null,
+    "VolumeUnitOfMeasureName": "Fluid Ounces",
+    "WeightUnitOfMeasureName": "Ounces",
+    "Packages": [
+      {
+        "Label": "ABCDEF012345670000010042",
+        "Quantity": 1.0,
+        "UnitOfMeasure": "Grams"
+      },
+      {
+        "Label": "ABCDEF012345670000010043",
+        "Quantity": 3.0,
+        "UnitOfMeasure": "Liters"
+      }
+    ]
+  },
+  {
+    "Id": 0,
+    "AdjustmentReason": "Data Entry",
+    "AdjustmentDate": "2021-11-01T00:00:00Z",
+    "AdjustmentNote": null,
+    "CountUnitOfMeasureName": "Each",
+    "VolumeUnitOfMeasureName": "Fluid Ounces",
+    "WeightUnitOfMeasureName": null,
+    "Packages": [
+      {
+        "Label": "ABCDEF012345670000010042",
+        "Quantity": 1.0,
+        "UnitOfMeasure": "Each"
+      },
+      {
+        "Label": "ABCDEF012345670000010043",
+        "Quantity": 3.0,
+        "UnitOfMeasure": "Liters"
+      }
+    ]
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Ids": [
+    1,
+    2
+  ],
+  "Warnings": null
+}</code></pre>
+</section>

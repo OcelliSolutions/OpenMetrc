@@ -1,0 +1,65 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="plants">
+		Plants
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-mo.metrc.com/</code></h3>
+	<h3 id="post_plants_v2_manicure">POST /plants/v2/manicure</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Veg/Flower Plants</strong></td></tr><tr><td><strong>Manicure/Harvest Veg/Flower Plants</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to record the list of plants manicured.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /plants/v2/manicure?licenseNumber=123-ABC<code>[
+  {
+    "Plant": "ABCDEF012345670000000001",
+    "Weight": 100.23,
+    "UnitOfWeight": "Grams",
+    "DryingLocation": "Plants Location",
+    "HarvestName": null,
+    "PatientLicenseNumber": "X00001",
+    "ActualDate": "2015-12-15"
+  },
+  {
+    "Plant": "ABCDEF012345670000000001",
+    "Weight": 50.10,
+    "UnitOfWeight": "Grams",
+    "DryingLocation": "Plants Location",
+    "HarvestName": "2015-12-15-Harvest Location-M",
+    "PatientLicenseNumber": "X00002",
+    "ActualDate": "2015-12-15"
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Ids": [
+    1,
+    2
+  ],
+  "Warnings": null
+}</code></pre>
+</section>

@@ -1,0 +1,3020 @@
+swagger: 2.0
+info:
+  title: METRC API
+  version: v1
+paths:
+  /caregivers/v1/status/{caregiverLicenseNumber}:
+    get:
+      tags:
+      - CaregiversStatus
+      operationId: GetCaregiverStatus
+      parameters:
+      - type: string
+        name: caregiverLicenseNumber
+        in: path
+        required: true
+        description: Route parameter caregiverLicenseNumber
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the Facility under which to get the Caregiver status.
+      responses:
+        200:
+          description: Ok
+  /employees/v1/:
+    get:
+      tags:
+      - Employees
+      operationId: GetEmployees
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /facilities/v1/:
+    get:
+      tags:
+      - Facilities
+      operationId: GetFacilities
+      responses:
+        200:
+          description: Ok
+  /harvests/v1/active:
+    get:
+      tags:
+      - Harvests
+      operationId: GetHarvestActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active harvests.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /harvests/v1/{id}:
+    get:
+      tags:
+      - Harvests
+      operationId: GetHarvests
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Harvest will be validated against the specified License Number. If not specified, the Harvest will be validated against all of the User's current Facilities. Please note that if the Harvest is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /harvests/v1/inactive:
+    get:
+      tags:
+      - Harvests
+      operationId: GetHarvestInactive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of inactive harvests.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /harvests/v1/onhold:
+    get:
+      tags:
+      - Harvests
+      operationId: GetHarvestOnhold
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of harvests on hold.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /harvests/v1/waste/types:
+    get:
+      tags:
+      - Harvests
+      operationId: GetHarvestWasteTypes
+      responses:
+        200:
+          description: Ok
+  /harvests/v1/create/packages:
+    post:
+      tags:
+      - Harvests
+      operationId: PostHarvestCreatePackages
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /harvests/v1/create/packages/testing:
+    post:
+      tags:
+      - Harvests
+      operationId: PostHarvestCreatePackageTesting
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /harvests/v1/finish:
+    post:
+      tags:
+      - Harvests
+      operationId: PostHarvestFinish
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /harvests/v1/removewaste:
+    post:
+      tags:
+      - Harvests
+      operationId: PostHarvestRemovewaste
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /harvests/v1/unfinish:
+    post:
+      tags:
+      - Harvests
+      operationId: PostHarvestUnfinish
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /harvests/v1/move:
+    put:
+      tags:
+      - Harvests
+      operationId: PutHarvestMove
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /harvests/v1/rename:
+    put:
+      tags:
+      - Harvests
+      operationId: PutHarvestRename
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /items/v1/{id}:
+    delete:
+      tags:
+      - Items
+      operationId: DeleteItems
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    get:
+      tags:
+      - Items
+      operationId: GetItems
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Item will be validated against the specified License Number. If not specified, the Item will be validated against all of the User's current Facilities. Please note that if the Item is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /items/v1/active:
+    get:
+      tags:
+      - Items
+      operationId: GetItemActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active items.
+      responses:
+        200:
+          description: Ok
+  /items/v1/brands:
+    get:
+      tags:
+      - Items
+      operationId: GetItemBrands
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active item brands.
+      responses:
+        200:
+          description: Ok
+  /items/v1/categories:
+    get:
+      tags:
+      - Items
+      operationId: GetItemCategories
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Categories will be retrived for the specified License Number. If not specified, the all Item Categories will be returned.
+      responses:
+        200:
+          description: Ok
+  /items/v1/inactive:
+    get:
+      tags:
+      - Items
+      operationId: GetItemInactive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of inactive items.
+      responses:
+        200:
+          description: Ok
+  /items/v1/photo/{id}:
+    get:
+      tags:
+      - Items
+      operationId: GetItemPhoto
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: The file system id of the image to return.
+      responses:
+        200:
+          description: Ok
+  /items/v1/create:
+    post:
+      tags:
+      - Items
+      operationId: PostItemCreate
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /items/v1/photo:
+    post:
+      tags:
+      - Items
+      operationId: PostItemPhoto
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /items/v1/update:
+    post:
+      tags:
+      - Items
+      operationId: PostItemUpdate
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /labtests/v1/labtestdocument/{id}:
+    get:
+      tags:
+      - LabTests
+      operationId: GetLabtestLabtestdocument
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: LabTestDocumentFileId
+      responses:
+        200:
+          description: Ok
+  /labtests/v1/results:
+    get:
+      tags:
+      - LabTests
+      operationId: GetLabtestResults
+      parameters:
+      - type: string
+        name: packageId
+        in: query
+        required: true
+        description: ''
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /labtests/v1/states:
+    get:
+      tags:
+      - LabTests
+      operationId: GetLabtestStates
+      responses:
+        200:
+          description: Ok
+  /labtests/v1/types:
+    get:
+      tags:
+      - LabTests
+      operationId: GetLabtestTypes
+      responses:
+        200:
+          description: Ok
+  /labtests/v1/record:
+    post:
+      tags:
+      - LabTests
+      operationId: PostLabtestRecord
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /labtests/v1/labtestdocument:
+    put:
+      tags:
+      - LabTests
+      operationId: PutLabtestLabtestdocument
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /labtests/v1/results/release:
+    put:
+      tags:
+      - LabTests
+      operationId: PutLabtestResultRelease
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /locations/v1/{id}:
+    delete:
+      tags:
+      - Locations
+      operationId: DeleteLocations
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    get:
+      tags:
+      - Locations
+      operationId: GetLocations
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Location will be validated against the specified License Number. If not specified, the Location will be validated against all of the User's current Facilities. Please note that if the Location is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /locations/v1/active:
+    get:
+      tags:
+      - Locations
+      operationId: GetLocationActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active locations.
+      responses:
+        200:
+          description: Ok
+  /locations/v1/types:
+    get:
+      tags:
+      - Locations
+      operationId: GetLocationTypes
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active location types.
+      responses:
+        200:
+          description: Ok
+  /locations/v1/create:
+    post:
+      tags:
+      - Locations
+      operationId: PostLocationCreate
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /locations/v1/update:
+    post:
+      tags:
+      - Locations
+      operationId: PostLocationUpdate
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /packages/v1/active:
+    get:
+      tags:
+      - Packages
+      operationId: GetPackageActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active packages.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /packages/v1/adjust/reasons:
+    get:
+      tags:
+      - Packages
+      operationId: GetPackageAdjustReasons
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /packages/v1/{id}:
+    get:
+      tags:
+      - Packages
+      operationId: GetPackages
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Package will be validated against the specified License Number. If not specified, the Package will be validated against all of the User's current Facilities. Please note that if the Package is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /packages/v1/inactive:
+    get:
+      tags:
+      - Packages
+      operationId: GetPackageInactive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of inactive packages.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /packages/v1/{label}:
+    get:
+      tags:
+      - Packages
+      operationId: GetPackages2
+      parameters:
+      - type: string
+        name: label
+        in: path
+        required: true
+        description: Route parameter label
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Package will be validated against the specified License Number. If not specified, the Package will be validated against all of the User's current Facilities. Please note that if the Package is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /packages/v1/onhold:
+    get:
+      tags:
+      - Packages
+      operationId: GetPackageOnhold
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of packages on hold.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /packages/v1/types:
+    get:
+      tags:
+      - Packages
+      operationId: GetPackageTypes
+      responses:
+        200:
+          description: Ok
+  /packages/v1/adjust:
+    post:
+      tags:
+      - Packages
+      operationId: PostPackageAdjust
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /packages/v1/change/item:
+    post:
+      tags:
+      - Packages
+      operationId: PostPackageChangeItem
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /packages/v1/change/locations:
+    post:
+      tags:
+      - Packages
+      operationId: PostPackageChangeLocations
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /packages/v1/create:
+    post:
+      tags:
+      - Packages
+      operationId: PostPackageCreate
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /packages/v1/create/plantings:
+    post:
+      tags:
+      - Packages
+      operationId: PostPackageCreatePlantings
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /packages/v1/create/testing:
+    post:
+      tags:
+      - Packages
+      operationId: PostPackageCreateTesting
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /packages/v1/finish:
+    post:
+      tags:
+      - Packages
+      operationId: PostPackageFinish
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /packages/v1/remediate:
+    post:
+      tags:
+      - Packages
+      operationId: PostPackageRemediate
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /packages/v1/unfinish:
+    post:
+      tags:
+      - Packages
+      operationId: PostPackageUnfinish
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /packages/v1/change/note:
+    put:
+      tags:
+      - Packages
+      operationId: PutPackageChangeNote
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /patient-checkins/v1/{id}:
+    delete:
+      tags:
+      - PatientCheckIns
+      operationId: DeletePatientCheckins
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /patient-checkins/v1/:
+    get:
+      tags:
+      - PatientCheckIns
+      operationId: GetPatientCheckins
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      - type: string
+        name: checkinDateStart
+        in: query
+        description: ''
+      - type: string
+        name: checkinDateEnd
+        in: query
+        description: ''
+      responses:
+        200:
+          description: Ok
+    post:
+      tags:
+      - PatientCheckIns
+      operationId: PostPatientCheckins
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    put:
+      tags:
+      - PatientCheckIns
+      operationId: PutPatientCheckins
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /patient-checkins/v1/locations:
+    get:
+      tags:
+      - PatientCheckIns
+      operationId: GetPatientCheckinsLocations
+      responses:
+        200:
+          description: Ok
+  /patients/v1/{id}:
+    delete:
+      tags:
+      - Patients
+      operationId: DeletePatients
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    get:
+      tags:
+      - Patients
+      operationId: GetPatients
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Patient will be validated against the specified License Number. If not specified, the Patient will be validated against all of the User's current Facilities. Please note that if the Patient is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /patients/v1/active:
+    get:
+      tags:
+      - Patients
+      operationId: GetPatientActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active patients.
+      responses:
+        200:
+          description: Ok
+  /patients/v1/add:
+    post:
+      tags:
+      - Patients
+      operationId: PostPatientAdd
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /patients/v1/update:
+    post:
+      tags:
+      - Patients
+      operationId: PostPatientUpdate
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /patients/v1/statuses/{patientLicenseNumber}:
+    get:
+      tags:
+      - PatientsStatus
+      operationId: GetPatientStatuses
+      parameters:
+      - type: string
+        name: patientLicenseNumber
+        in: path
+        required: true
+        description: Route parameter patientLicenseNumber
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the Facility under which to get the Patient Status.
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/:
+    delete:
+      tags:
+      - PlantBatches
+      operationId: DeletePlantbatches
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/active:
+    get:
+      tags:
+      - PlantBatches
+      operationId: GetPlantbatchActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active plant groups.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/{id}:
+    get:
+      tags:
+      - PlantBatches
+      operationId: GetPlantbatches
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Plant Batch will be validated against the specified License Number. If not specified, the Plant Batch will be validated against all of the User's current Facilities. Please note that if the Plant Batch is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/inactive:
+    get:
+      tags:
+      - PlantBatches
+      operationId: GetPlantbatchInactive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of inactive plant groups.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/types:
+    get:
+      tags:
+      - PlantBatches
+      operationId: GetPlantbatchTypes
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/waste/reasons:
+    get:
+      tags:
+      - PlantBatches
+      operationId: GetPlantbatchWasteReasons
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/additives:
+    post:
+      tags:
+      - PlantBatches
+      operationId: PostPlantbatchAdditives
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to record plant additives.
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/adjust:
+    post:
+      tags:
+      - PlantBatches
+      operationId: PostPlantbatchAdjust
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/changegrowthphase:
+    post:
+      tags:
+      - PlantBatches
+      operationId: PostPlantbatchChangegrowthphase
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/createpackages:
+    post:
+      tags:
+      - PlantBatches
+      operationId: PostPlantbatchCreatepackages
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      - type: string
+        name: isFromMotherPlant
+        in: query
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/createplantings:
+    post:
+      tags:
+      - PlantBatches
+      operationId: PostPlantbatchCreateplantings
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/create/packages/frommotherplant:
+    post:
+      tags:
+      - PlantBatches
+      operationId: PostPlantbatchCreatePackageFrommotherplant
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/split:
+    post:
+      tags:
+      - PlantBatches
+      operationId: PostPlantbatchSplit
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/waste:
+    post:
+      tags:
+      - PlantBatches
+      operationId: PostPlantbatchWaste
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plantbatches/v1/moveplantbatches:
+    put:
+      tags:
+      - PlantBatches
+      operationId: PutPlantbatchMoveplantbatches
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plants/v1/:
+    delete:
+      tags:
+      - Plants
+      operationId: DeletePlants
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plants/v1/additives:
+    get:
+      tags:
+      - Plants
+      operationId: GetPlantAdditives
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to record plant additives.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+    post:
+      tags:
+      - Plants
+      operationId: PostPlantAdditives
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to record plant additives.
+      responses:
+        200:
+          description: Ok
+  /plants/v1/additives/types:
+    get:
+      tags:
+      - Plants
+      operationId: GetPlantAdditiveTypes
+      responses:
+        200:
+          description: Ok
+  /plants/v1/flowering:
+    get:
+      tags:
+      - Plants
+      operationId: GetPlantFlowering
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of flowering plants.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /plants/v1/growthphases:
+    get:
+      tags:
+      - Plants
+      operationId: GetPlantGrowthphases
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of available Plant Growth Phases.
+      responses:
+        200:
+          description: Ok
+  /plants/v1/{id}:
+    get:
+      tags:
+      - Plants
+      operationId: GetPlants
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Plant will be validated against the specified License Number. If not specified, the Plant will be validated against all of the User's current Facilities. Please note that if the Plant is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /plants/v1/inactive:
+    get:
+      tags:
+      - Plants
+      operationId: GetPlantInactive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of inactive plants.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /plants/v1/{label}:
+    get:
+      tags:
+      - Plants
+      operationId: GetPlants2
+      parameters:
+      - type: string
+        name: label
+        in: path
+        required: true
+        description: Route parameter label
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Plant will be validated against the specified License Number. If not specified, the Plant will be validated against all of the User's current Facilities. Please note that if the Plant is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /plants/v1/onhold:
+    get:
+      tags:
+      - Plants
+      operationId: GetPlantOnhold
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of plants on hold.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /plants/v1/vegetative:
+    get:
+      tags:
+      - Plants
+      operationId: GetPlantVegetative
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of vegetating plants.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /plants/v1/waste/methods/all:
+    get:
+      tags:
+      - Plants
+      operationId: GetPlantWasteMethodAll
+      responses:
+        200:
+          description: Ok
+  /plants/v1/waste/reasons:
+    get:
+      tags:
+      - Plants
+      operationId: GetPlantWasteReasons
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plants/v1/additives/bylocation:
+    post:
+      tags:
+      - Plants
+      operationId: PostPlantAdditiveBylocation
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to record plant additives.
+      responses:
+        200:
+          description: Ok
+  /plants/v1/changegrowthphases:
+    post:
+      tags:
+      - Plants
+      operationId: PostPlantChangegrowthphases
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plants/v1/create/plantbatch/packages:
+    post:
+      tags:
+      - Plants
+      operationId: PostPlantCreatePlantbatchPackages
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plants/v1/create/plantings:
+    post:
+      tags:
+      - Plants
+      operationId: PostPlantCreatePlantings
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plants/v1/harvestplants:
+    post:
+      tags:
+      - Plants
+      operationId: PostPlantHarvestplants
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plants/v1/manicureplants:
+    post:
+      tags:
+      - Plants
+      operationId: PostPlantManicureplants
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plants/v1/moveplants:
+    post:
+      tags:
+      - Plants
+      operationId: PostPlantMoveplants
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /plants/v1/waste:
+    post:
+      tags:
+      - Plants
+      operationId: PostPlantWaste
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /processing/v1/{id}:
+    delete:
+      tags:
+      - ProcessingJob
+      operationId: DeleteProcessing
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    get:
+      tags:
+      - ProcessingJob
+      operationId: GetProcessing
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: The license number of the facility for which to return the list of active items.
+      responses:
+        200:
+          description: Ok
+  /processing/v1/jobtypes/{id}:
+    delete:
+      tags:
+      - ProcessingJob
+      operationId: DeleteProcessingJobtypes
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /processing/v1/active:
+    get:
+      tags:
+      - ProcessingJob
+      operationId: GetProcessingActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active items.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: ''
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /processing/v1/inactive:
+    get:
+      tags:
+      - ProcessingJob
+      operationId: GetProcessingInactive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active items.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: ''
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /processing/v1/jobtypes/active:
+    get:
+      tags:
+      - ProcessingJob
+      operationId: GetProcessingJobtypeActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active items.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: ''
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /processing/v1/jobtypes/attributes:
+    get:
+      tags:
+      - ProcessingJob
+      operationId: GetProcessingJobtypeAttributes
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active items.
+      responses:
+        200:
+          description: Ok
+  /processing/v1/jobtypes/categories:
+    get:
+      tags:
+      - ProcessingJob
+      operationId: GetProcessingJobtypeCategories
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active items.
+      responses:
+        200:
+          description: Ok
+  /processing/v1/jobtypes/inactive:
+    get:
+      tags:
+      - ProcessingJob
+      operationId: GetProcessingJobtypeInactive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of inactive items.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: ''
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /processing/v1/adjust:
+    post:
+      tags:
+      - ProcessingJob
+      operationId: PostProcessingAdjust
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /processing/v1/createpackages:
+    post:
+      tags:
+      - ProcessingJob
+      operationId: PostProcessingCreatepackages
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /processing/v1/jobtypes:
+    post:
+      tags:
+      - ProcessingJob
+      operationId: PostProcessingJobtypes
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    put:
+      tags:
+      - ProcessingJob
+      operationId: PutProcessingJobtypes
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /processing/v1/start:
+    post:
+      tags:
+      - ProcessingJob
+      operationId: PostProcessingStart
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /processing/v1/finish:
+    put:
+      tags:
+      - ProcessingJob
+      operationId: PutProcessingFinish
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /processing/v1/unfinish:
+    put:
+      tags:
+      - ProcessingJob
+      operationId: PutProcessingUnfinish
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/receipts/{id}:
+    delete:
+      tags:
+      - Sales
+      operationId: DeleteSaleReceipts
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleReceipts
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Sales Receipt will be validated against the specified License Number. If not specified, the Sales Receipt will be validated against all of the User's current Facilities. Please note that if the Sales Receipt is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /sales/v1/customertypes:
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleCustomertypes
+      responses:
+        200:
+          description: Ok
+  /sales/v1/patientregistration/locations:
+    get:
+      tags:
+      - Sales
+      operationId: GetSalePatientregistrationLocations
+      responses:
+        200:
+          description: Ok
+  /sales/v1/receipts/active:
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleReceiptActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      - type: string
+        name: salesDateStart
+        in: query
+        description: The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+      - type: string
+        name: salesDateEnd
+        in: query
+        description: The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+      responses:
+        200:
+          description: Ok
+  /sales/v1/receipts/inactive:
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleReceiptInactive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      - type: string
+        name: salesDateStart
+        in: query
+        description: The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+      - type: string
+        name: salesDateEnd
+        in: query
+        description: The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+      responses:
+        200:
+          description: Ok
+  /sales/v1/transactions:
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleTransactions
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of dates with sales transactions.
+      responses:
+        200:
+          description: Ok
+  /sales/v1/transactions/{salesDateStart}/{salesDateEnd}:
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleTransactions2
+      parameters:
+      - type: string
+        name: salesDateStart
+        in: path
+        required: true
+        description: Route parameter salesDateStart
+      - type: string
+        name: salesDateEnd
+        in: path
+        required: true
+        description: Route parameter salesDateEnd
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of sales transactions for the specified date range.
+      responses:
+        200:
+          description: Ok
+  /sales/v1/receipts:
+    post:
+      tags:
+      - Sales
+      operationId: PostSaleReceipts
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    put:
+      tags:
+      - Sales
+      operationId: PutSaleReceipts
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/transactions/{date}:
+    post:
+      tags:
+      - Sales
+      operationId: PostSaleTransactions
+      parameters:
+      - type: string
+        name: date
+        in: path
+        required: true
+        description: Route parameter date
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to append the sales transactions on the specified date.
+      responses:
+        200:
+          description: Ok
+    put:
+      tags:
+      - Sales
+      operationId: PutSaleTransactions
+      parameters:
+      - type: string
+        name: date
+        in: path
+        required: true
+        description: Route parameter date
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to update the sales transactions on the specified date.
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/hub/accept:
+    put:
+      tags:
+      - Sales
+      operationId: PutSaleDeliveryHubAccept
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/hub/depart:
+    put:
+      tags:
+      - Sales
+      operationId: PutSaleDeliveryHubDepart
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/hub/verifyID:
+    put:
+      tags:
+      - Sales
+      operationId: PutSaleDeliveryHubVerifyid
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/{id}:
+    delete:
+      tags:
+      - Sales
+      operationId: DeleteSaleDeliveries
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleDeliveries
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Sales Delivery will be validated against the specified License Number. If not specified, the Sales Delivery will be validated against all of the User's current Facilities. Please note that if the Sales Delivery is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/retailer/{id}:
+    delete:
+      tags:
+      - Sales
+      operationId: DeleteSaleDeliveryRetailer
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleDeliveryRetailer
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Sales Delivery will be validated against the specified License Number. If not specified, the Sales Delivery will be validated against all of the User's current Facilities. Please note that if the Sales Delivery is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /sales/v1/counties:
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleCounties
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/active:
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleDeliveryActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      - type: string
+        name: salesDateStart
+        in: query
+        description: The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+      - type: string
+        name: salesDateEnd
+        in: query
+        description: The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/inactive:
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleDeliveryInactive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      - type: string
+        name: salesDateStart
+        in: query
+        description: The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+      - type: string
+        name: salesDateEnd
+        in: query
+        description: The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/retailer/active:
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleDeliveryRetailerActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp.
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp.
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/retailer/inactive:
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleDeliveryRetailerInactive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp.
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp.
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/returnreasons:
+    get:
+      tags:
+      - Sales
+      operationId: GetSaleDeliveryReturnreasons
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/paymenttypes:
+    get:
+      tags:
+      - Sales
+      operationId: GetSalePaymenttypes
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries:
+    post:
+      tags:
+      - Sales
+      operationId: PostSaleDeliveries
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    put:
+      tags:
+      - Sales
+      operationId: PutSaleDeliveries
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/retailer:
+    post:
+      tags:
+      - Sales
+      operationId: PostSaleDeliveryRetailer
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    put:
+      tags:
+      - Sales
+      operationId: PutSaleDeliveryRetailer
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/retailer/depart:
+    post:
+      tags:
+      - Sales
+      operationId: PostSaleDeliveryRetailerDepart
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/retailer/end:
+    post:
+      tags:
+      - Sales
+      operationId: PostSaleDeliveryRetailerEnd
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/retailer/restock:
+    post:
+      tags:
+      - Sales
+      operationId: PostSaleDeliveryRetailerRestock
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/retailer/sale:
+    post:
+      tags:
+      - Sales
+      operationId: PostSaleDeliveryRetailerSale
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/complete:
+    put:
+      tags:
+      - Sales
+      operationId: PutSaleDeliveryComplete
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/hub:
+    put:
+      tags:
+      - Sales
+      operationId: PutSaleDeliveryHub
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /strains/v1/{id}:
+    delete:
+      tags:
+      - Strains
+      operationId: DeleteStrains
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    get:
+      tags:
+      - Strains
+      operationId: GetStrains
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Strain will be validated against the specified License Number. If not specified, the Strain will be validated against all of the User's current Facilities. Please note that if the Strain is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+      responses:
+        200:
+          description: Ok
+  /strains/v1/active:
+    get:
+      tags:
+      - Strains
+      operationId: GetStrainActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of active strains.
+      responses:
+        200:
+          description: Ok
+  /strains/v1/create:
+    post:
+      tags:
+      - Strains
+      operationId: PostStrainCreate
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /strains/v1/update:
+    post:
+      tags:
+      - Strains
+      operationId: PostStrainUpdate
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/external/incoming/{id}:
+    delete:
+      tags:
+      - Transfers
+      operationId: DeleteTransferExternalIncoming
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/templates/{id}:
+    delete:
+      tags:
+      - Transfers
+      operationId: DeleteTransferTemplates
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/deliveries/{id}/packages:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferDeliveryPackages
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/deliveries/{id}/packages/wholesale:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferDeliveryPackageWholesale
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/deliveries/{id}/transporters:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferDeliveryTransporters
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/deliveries/{id}/transporters/details:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferDeliveryTransporterDetails
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/deliveries/packages/states:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferDeliveryPackageStates
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/deliveries/package/{id}/requiredlabtestbatches:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferDeliveryPackageRequiredlabtestbatches
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/{id}/deliveries:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferDeliveries
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/incoming:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferIncoming
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/outgoing:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferOutgoing
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/rejected:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferRejected
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/templates:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferTemplates
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp
+      responses:
+        200:
+          description: Ok
+    post:
+      tags:
+      - Transfers
+      operationId: PostTransferTemplates
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    put:
+      tags:
+      - Transfers
+      operationId: PutTransferTemplates
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/templates/deliveries/{id}/packages:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferTemplateDeliveryPackages
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/templates/deliveries/{id}/transporters:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferTemplateDeliveryTransporters
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/templates/deliveries/{id}/transporters/details:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferTemplateDeliveryTransporterDetails
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/templates/{id}/deliveries:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferTemplateDeliveries
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/types:
+    get:
+      tags:
+      - Transfers
+      operationId: GetTransferTypes
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /transfers/v1/external/incoming:
+    post:
+      tags:
+      - Transfers
+      operationId: PostTransferExternalIncoming
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+    put:
+      tags:
+      - Transfers
+      operationId: PutTransferExternalIncoming
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+      responses:
+        200:
+          description: Ok
+  /unitsofmeasure/v1/active:
+    get:
+      tags:
+      - UnitsOfMeasure
+      operationId: GetUnitsofmeasureActive
+      responses:
+        200:
+          description: Ok
+definitions:
+  PostHarvestCreatePackagesRequest:
+    additionalProperties: {}
+  PostHarvestCreatePackageTestingRequest:
+    additionalProperties: {}
+  PostHarvestFinishRequest:
+    additionalProperties: {}
+  PostHarvestRemovewasteRequest:
+    additionalProperties: {}
+  PostHarvestUnfinishRequest:
+    additionalProperties: {}
+  PutHarvestMoveRequest:
+    additionalProperties: {}
+  PutHarvestRenameRequest:
+    additionalProperties: {}
+  PostItemCreateRequest:
+    additionalProperties: {}
+  PostItemPhotoRequest:
+    additionalProperties: {}
+  PostItemUpdateRequest:
+    additionalProperties: {}
+  PostLabtestRecordRequest:
+    additionalProperties: {}
+  PutLabtestLabtestdocumentRequest:
+    additionalProperties: {}
+  PutLabtestResultReleaseRequest:
+    additionalProperties: {}
+  PostLocationCreateRequest:
+    additionalProperties: {}
+  PostLocationUpdateRequest:
+    additionalProperties: {}
+  PostPackageAdjustRequest:
+    additionalProperties: {}
+  PostPackageChangeItemRequest:
+    additionalProperties: {}
+  PostPackageChangeLocationsRequest:
+    additionalProperties: {}
+  PostPackageCreateRequest:
+    additionalProperties: {}
+  PostPackageCreatePlantingsRequest:
+    additionalProperties: {}
+  PostPackageCreateTestingRequest:
+    additionalProperties: {}
+  PostPackageFinishRequest:
+    additionalProperties: {}
+  PostPackageRemediateRequest:
+    additionalProperties: {}
+  PostPackageUnfinishRequest:
+    additionalProperties: {}
+  PutPackageChangeNoteRequest:
+    additionalProperties: {}
+  PostPatientCheckinsRequest:
+    additionalProperties: {}
+  PutPatientCheckinsRequest:
+    additionalProperties: {}
+  PostPatientAddRequest:
+    additionalProperties: {}
+  PostPatientUpdateRequest:
+    additionalProperties: {}
+  DeletePlantbatchesRequest:
+    additionalProperties: {}
+  PostPlantbatchAdditivesRequest:
+    additionalProperties: {}
+  PostPlantbatchAdjustRequest:
+    additionalProperties: {}
+  PostPlantbatchChangegrowthphaseRequest:
+    additionalProperties: {}
+  PostPlantbatchCreatepackagesRequest:
+    additionalProperties: {}
+  PostPlantbatchCreateplantingsRequest:
+    additionalProperties: {}
+  PostPlantbatchCreatePackageFrommotherplantRequest:
+    additionalProperties: {}
+  PostPlantbatchSplitRequest:
+    additionalProperties: {}
+  PostPlantbatchWasteRequest:
+    additionalProperties: {}
+  PutPlantbatchMoveplantbatchesRequest:
+    additionalProperties: {}
+  DeletePlantsRequest:
+    additionalProperties: {}
+  PostPlantAdditivesRequest:
+    additionalProperties: {}
+  PostPlantAdditiveBylocationRequest:
+    additionalProperties: {}
+  PostPlantChangegrowthphasesRequest:
+    additionalProperties: {}
+  PostPlantCreatePlantbatchPackagesRequest:
+    additionalProperties: {}
+  PostPlantCreatePlantingsRequest:
+    additionalProperties: {}
+  PostPlantHarvestplantsRequest:
+    additionalProperties: {}
+  PostPlantManicureplantsRequest:
+    additionalProperties: {}
+  PostPlantMoveplantsRequest:
+    additionalProperties: {}
+  PostPlantWasteRequest:
+    additionalProperties: {}
+  PostProcessingAdjustRequest:
+    additionalProperties: {}
+  PostProcessingCreatepackagesRequest:
+    additionalProperties: {}
+  PostProcessingJobtypesRequest:
+    additionalProperties: {}
+  PostProcessingStartRequest:
+    additionalProperties: {}
+  PutProcessingFinishRequest:
+    additionalProperties: {}
+  PutProcessingJobtypesRequest:
+    additionalProperties: {}
+  PutProcessingUnfinishRequest:
+    additionalProperties: {}
+  PostSaleReceiptsRequest:
+    additionalProperties: {}
+  PostSaleTransactionsRequest:
+    additionalProperties: {}
+  PutSaleDeliveryHubAcceptRequest:
+    additionalProperties: {}
+  PutSaleDeliveryHubDepartRequest:
+    additionalProperties: {}
+  PutSaleDeliveryHubVerifyidRequest:
+    additionalProperties: {}
+  PutSaleReceiptsRequest:
+    additionalProperties: {}
+  PutSaleTransactionsRequest:
+    additionalProperties: {}
+  PostSaleDeliveriesRequest:
+    additionalProperties: {}
+  PostSaleDeliveryRetailerRequest:
+    additionalProperties: {}
+  PostSaleDeliveryRetailerDepartRequest:
+    additionalProperties: {}
+  PostSaleDeliveryRetailerEndRequest:
+    additionalProperties: {}
+  PostSaleDeliveryRetailerRestockRequest:
+    additionalProperties: {}
+  PostSaleDeliveryRetailerSaleRequest:
+    additionalProperties: {}
+  PutSaleDeliveriesRequest:
+    additionalProperties: {}
+  PutSaleDeliveryCompleteRequest:
+    additionalProperties: {}
+  PutSaleDeliveryHubRequest:
+    additionalProperties: {}
+  PutSaleDeliveryRetailerRequest:
+    additionalProperties: {}
+  PostStrainCreateRequest:
+    additionalProperties: {}
+  PostStrainUpdateRequest:
+    additionalProperties: {}
+  PostTransferExternalIncomingRequest:
+    additionalProperties: {}
+  PostTransferTemplatesRequest:
+    additionalProperties: {}
+  PutTransferExternalIncomingRequest:
+    additionalProperties: {}
+  PutTransferTemplatesRequest:
+    additionalProperties: {}

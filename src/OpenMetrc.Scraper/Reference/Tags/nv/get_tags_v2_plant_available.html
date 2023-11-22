@@ -1,0 +1,59 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="tags">
+		Tags
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-nv.metrc.com/</code></h3>
+	<h3 id="get_tags_v2_plant_available">GET /tags/v2/plant/available</h3>
+	<p>Returns a list of available Plant Tags. NOTE: This is a premium endpoint.</p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td class="text-muted"><em>None</em></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number for which to return available tags.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /tags/v2/plant/available?licenseNumber=123-ABC</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>[
+  {
+    "Id": 101,
+    "TagTypeName": "MedicalPlant",
+    "GroupTagTypeId": null,
+    "GroupTagTypeName": null,
+    "MaxGroupSize": 0,
+    "FacilityId": 0,
+    "Label": "ABCDEF012345670000010001"
+  },
+  {
+    "Id": 102,
+    "TagTypeName": "MedicalPlant",
+    "GroupTagTypeId": null,
+    "GroupTagTypeName": null,
+    "MaxGroupSize": 0,
+    "FacilityId": 0,
+    "Label": "ABCDEF012345670000010002"
+  }
+]</code></pre>
+</section>

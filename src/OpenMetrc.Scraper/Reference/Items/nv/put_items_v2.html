@@ -1,0 +1,149 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="items">
+		Items
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-nv.metrc.com/</code></h3>
+	<h3 id="put_items_v2_">PUT /items/v2/</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Items</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for the Item updates.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>PUT /items/v2/?licenseNumber=123-ABC<code>[
+  {
+    "Id": 1,
+    "Name": "Buds Item",
+    "ItemCategory": "Buds",
+    "UnitOfMeasure": "Ounces",
+    "Strain": "String Hill Kush",
+    "ItemBrand": null,
+    "AdministrationMethod": null,
+    "UnitCbdPercent": null,
+    "UnitCbdContent": null,
+    "UnitCbdContentUnitOfMeasure": null,
+    "UnitCbdContentDose": null,
+    "UnitCbdContentDoseUnitOfMeasure": null,
+    "UnitThcPercent": null,
+    "UnitThcContent": null,
+    "UnitThcContentUnitOfMeasure": null,
+    "UnitThcContentDose": null,
+    "UnitThcContentDoseUnitOfMeasure": null,
+    "UnitVolume": null,
+    "UnitVolumeUnitOfMeasure": null,
+    "UnitWeight": null,
+    "UnitWeightUnitOfMeasure": null,
+    "ServingSize": null,
+    "SupplyDurationDays": null,
+    "NumberOfDoses": null,
+    "PublicIngredients": null,
+    "ItemIngredients": null,
+    "Description": null,
+    "Allergens": null,
+    "ProductImageFileSystemIds": null,
+    "ProductPhotoDescription": null,
+    "LabelImageFileSystemIds": null,
+    "LabelPhotoDescription": null,
+    "PackagingImageFileSystemIds": null,
+    "PackagingPhotoDescription": null
+  },
+  {
+    "Id": 2,
+    "Name": "Extract Spray Paint",
+    "ItemCategory": "Concentrate (Each)",
+    "UnitOfMeasure": "Each",
+    "Strain": null,
+    "ItemBrand": null,
+    "AdministrationMethod": null,
+    "UnitCbdPercent": null,
+    "UnitCbdContent": null,
+    "UnitCbdContentUnitOfMeasure": null,
+    "UnitCbdContentDose": null,
+    "UnitCbdContentDoseUnitOfMeasure": null,
+    "UnitThcPercent": null,
+    "UnitThcContent": null,
+    "UnitThcContentUnitOfMeasure": null,
+    "UnitThcContentDose": null,
+    "UnitThcContentDoseUnitOfMeasure": null,
+    "UnitVolume": 100.0,
+    "UnitVolumeUnitOfMeasure": "Milliliters",
+    "UnitWeight": null,
+    "UnitWeightUnitOfMeasure": null,
+    "ServingSize": null,
+    "SupplyDurationDays": null,
+    "NumberOfDoses": null,
+    "PublicIngredients": null,
+    "ItemIngredients": null,
+    "Description": null,
+    "Allergens": "Allergens",
+    "ProductImageFileSystemIds": null,
+    "ProductPhotoDescription": "Product Photo Description",
+    "LabelImageFileSystemIds": null,
+    "LabelPhotoDescription": "Label Photo Description",
+    "PackagingImageFileSystemIds": null,
+    "PackagingPhotoDescription": "Packaging Photo Description"
+  },
+  {
+    "Id": 2,
+    "Name": "Concentrate Extract",
+    "ItemCategory": "Concentrate (Each)",
+    "UnitOfMeasure": "Each",
+    "Strain": null,
+    "ItemBrand": null,
+    "AdministrationMethod": null,
+    "UnitCbdPercent": null,
+    "UnitCbdContent": null,
+    "UnitCbdContentUnitOfMeasure": null,
+    "UnitCbdContentDose": null,
+    "UnitCbdContentDoseUnitOfMeasure": null,
+    "UnitThcPercent": null,
+    "UnitThcContent": 10.0,
+    "UnitThcContentUnitOfMeasure": "Milligrams",
+    "UnitThcContentDose": 5.0,
+    "UnitThcContentDoseUnitOfMeasure": "Milligrams",
+    "UnitVolume": null,
+    "UnitVolumeUnitOfMeasure": null,
+    "UnitWeight": 100.0,
+    "UnitWeightUnitOfMeasure": "Milligrams",
+    "ServingSize": null,
+    "SupplyDurationDays": null,
+    "NumberOfDoses": 2,
+    "PublicIngredients": null,
+    "ItemIngredients": null,
+    "Description": null,
+    "Allergens": null,
+    "ProductImageFileSystemIds": null,
+    "ProductPhotoDescription": null,
+    "LabelImageFileSystemIds": null,
+    "LabelPhotoDescription": null,
+    "PackagingImageFileSystemIds": null,
+    "PackagingPhotoDescription": null
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><span class=	ext-muted"><em>No response</em></span></pre>
+</section>

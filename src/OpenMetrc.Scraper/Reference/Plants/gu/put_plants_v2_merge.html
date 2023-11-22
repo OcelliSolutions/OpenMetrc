@@ -1,0 +1,51 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="plants">
+		Plants
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-gu.metrc.com/</code></h3>
+	<h3 id="put_plants_v2_merge">PUT /plants/v2/merge</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Veg/Flower Plants</strong></td></tr><tr><td><strong>Manicure/Harvest Veg/Flower Plants</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to update the list of plants merged.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>PUT /plants/v2/merge?licenseNumber=123-ABC<code>[
+  {
+    "TargetPlantGroupLabel": "ABCDEF012345670000000001",
+    "SourcePlantGroupLabel": "ABCDEF012345670000000002",
+    "MergeDate": "2015-12-15"
+  },
+  {
+    "TargetPlantGroupLabel": "ABCDEF012345670000000003",
+    "SourcePlantGroupLabel": "ABCDEF012345670000000004",
+    "MergeDate": "2015-12-16"
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><span class=	ext-muted"><em>No response</em></span></pre>
+</section>

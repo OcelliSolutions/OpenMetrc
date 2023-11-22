@@ -1,0 +1,137 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="sales">
+		Sales
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-sd.metrc.com/</code></h3>
+	<h3 id="get_sales_v1_transactions_{salesDateStart}_{salesDateEnd}">GET /sales/v1/transactions/{salesDateStart}/{salesDateEnd}</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Sales</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return the list of sales transactions for the specified date range.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /sales/v1/transactions/2015-01-08/2015-01-10?licenseNumber=123-ABC</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>[
+  {
+    "PackageId": 71,
+    "TripId": null,
+    "TripManifestNumber": null,
+    "PackageLabel": "ABCDEF012345670000010331",
+    "ProductName": "Shake",
+    "ProductCategoryName": null,
+    "ItemStrainName": null,
+    "ItemUnitCbdPercent": null,
+    "ItemUnitCbdContent": null,
+    "ItemUnitCbdContentUnitOfMeasureName": null,
+    "ItemUnitCbdContentDose": null,
+    "ItemUnitCbdContentDoseUnitOfMeasureName": null,
+    "ItemUnitThcPercent": null,
+    "ItemUnitThcContent": null,
+    "ItemUnitThcContentUnitOfMeasureName": null,
+    "ItemUnitThcContentDose": null,
+    "ItemUnitThcContentDoseUnitOfMeasureName": null,
+    "ItemUnitVolume": null,
+    "ItemUnitVolumeUnitOfMeasureName": null,
+    "ItemUnitWeight": null,
+    "ItemUnitWeightUnitOfMeasureName": null,
+    "ItemServingSize": null,
+    "ItemSupplyDurationDays": null,
+    "ItemUnitQuantity": null,
+    "ItemUnitQuantityUnitOfMeasureName": null,
+    "QuantitySold": 1.0,
+    "UnitOfMeasureName": "Ounces",
+    "UnitOfMeasureAbbreviation": "oz",
+    "UnitThcPercent": null,
+    "UnitThcContent": null,
+    "UnitWeight": null,
+    "TotalPrice": 9.99,
+    "SalesDeliveryState": null,
+    "ArchivedDate": null,
+    "RecordedDateTime": "0001-01-01T00:00:00+00:00",
+    "RecordedByUserName": null,
+    "LastModified": "0001-01-01T00:00:00+00:00",
+    "InvoiceNumber": null,
+    "Price": null,
+    "ExciseTax": null,
+    "CityTax": null,
+    "CountyTax": null,
+    "MunicipalTax": null,
+    "DiscountAmount": null,
+    "SubTotal": null,
+    "SalesTax": null
+  },
+  {
+    "PackageId": 72,
+    "TripId": null,
+    "TripManifestNumber": null,
+    "PackageLabel": "ABCDEF012345670000010332",
+    "ProductName": "Shake",
+    "ProductCategoryName": null,
+    "ItemStrainName": null,
+    "ItemUnitCbdPercent": null,
+    "ItemUnitCbdContent": null,
+    "ItemUnitCbdContentUnitOfMeasureName": null,
+    "ItemUnitCbdContentDose": null,
+    "ItemUnitCbdContentDoseUnitOfMeasureName": null,
+    "ItemUnitThcPercent": null,
+    "ItemUnitThcContent": null,
+    "ItemUnitThcContentUnitOfMeasureName": null,
+    "ItemUnitThcContentDose": null,
+    "ItemUnitThcContentDoseUnitOfMeasureName": null,
+    "ItemUnitVolume": null,
+    "ItemUnitVolumeUnitOfMeasureName": null,
+    "ItemUnitWeight": null,
+    "ItemUnitWeightUnitOfMeasureName": null,
+    "ItemServingSize": null,
+    "ItemSupplyDurationDays": null,
+    "ItemUnitQuantity": null,
+    "ItemUnitQuantityUnitOfMeasureName": null,
+    "QuantitySold": 1.0,
+    "UnitOfMeasureName": "Ounces",
+    "UnitOfMeasureAbbreviation": "oz",
+    "UnitThcPercent": null,
+    "UnitThcContent": null,
+    "UnitWeight": null,
+    "TotalPrice": 9.99,
+    "SalesDeliveryState": null,
+    "ArchivedDate": null,
+    "RecordedDateTime": "0001-01-01T00:00:00+00:00",
+    "RecordedByUserName": null,
+    "LastModified": "0001-01-01T00:00:00+00:00",
+    "InvoiceNumber": null,
+    "Price": null,
+    "ExciseTax": null,
+    "CityTax": null,
+    "CountyTax": null,
+    "MunicipalTax": null,
+    "DiscountAmount": null,
+    "SubTotal": null,
+    "SalesTax": null
+  }
+]</code></pre>
+</section>

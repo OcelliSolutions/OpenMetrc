@@ -1,0 +1,61 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="plants">
+		Plants
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-mt.metrc.com/</code></h3>
+	<h3 id="post_plants_v1_create_plantings">POST /plants/v1/create/plantings</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Immature Plants</strong></td></tr><tr><td><strong>Manage Immature Plants Inventory</strong></td></tr><tr><td><strong>View Veg/Flower Plants</strong></td></tr><tr><td><strong>Manage Veg/Flower Plants Inventory</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /plants/v1/create/plantings?licenseNumber=123-ABC<code>[
+  {
+    "PlantLabel": "ABCDEF012345670000010011",
+    "PlantBatchName": "Demo Plant Batch 1",
+    "PlantBatchType": "Clone",
+    "PlantCount": 3,
+    "LocationName": null,
+    "StrainName": "Spring Hill Kush",
+    "PatientLicenseNumber": "X00001",
+    "ActualDate": "2016-10-18T13:11:03Z"
+  },
+  {
+    "PlantLabel": "ABCDEF012345670000010012",
+    "PlantBatchName": "Demo Plant Batch 2",
+    "PlantBatchType": "Seed",
+    "PlantCount": 2,
+    "LocationName": null,
+    "StrainName": "Spring Hill Kush",
+    "PatientLicenseNumber": "X00002",
+    "ActualDate": "2016-10-18T13:11:03Z"
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><span class=	ext-muted"><em>No response</em></span></pre>
+</section>

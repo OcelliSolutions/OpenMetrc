@@ -1,0 +1,65 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="transfers">
+		Transfers
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-ak.metrc.com/</code></h3>
+	<h3 id="get_transfers_v1_deliveries_{id}_packages_wholesale">GET /transfers/v1/deliveries/{id}/packages/wholesale</h3>
+	<p><strong>Please note:</strong> The <code>{id}</code> parameter above represents a Transfer Delivery ID, not a Manifest Number.</p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Transfers</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td class="text-muted"><em>No parameters</em></td><td></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /transfers/v1/deliveries/2/packages/wholesale</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>[
+  {
+    "PackageId": 1,
+    "PackageLabel": "ABCDEF012345670000010026",
+    "ShipperWholesalePrice": null,
+    "ReceiverWholesalePrice": null
+  },
+  {
+    "PackageId": 2,
+    "PackageLabel": "ABCDEF012345670000010027",
+    "ShipperWholesalePrice": 3.50,
+    "ReceiverWholesalePrice": null
+  },
+  {
+    "PackageId": 3,
+    "PackageLabel": "ABCDEF012345670000010028",
+    "ShipperWholesalePrice": 3.50,
+    "ReceiverWholesalePrice": 3.50
+  },
+  {
+    "PackageId": 4,
+    "PackageLabel": "ABCDEF012345670000010029",
+    "ShipperWholesalePrice": 3.50,
+    "ReceiverWholesalePrice": 7.00
+  }
+]</code></pre>
+</section>

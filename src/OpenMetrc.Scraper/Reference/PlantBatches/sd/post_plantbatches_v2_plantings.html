@@ -1,0 +1,85 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="plantbatches">
+		Plant Batches
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-sd.metrc.com/</code></h3>
+	<h3 id="post_plantbatches_v2_plantings">POST /plantbatches/v2/plantings</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Immature Plants</strong></td></tr><tr><td><strong>Manage Immature Plants Inventory</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to create the plantings.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /plantbatches/v2/plantings?licenseNumber=123-ABC<code>[
+  {
+    "Name": "B. Kush 5-30",
+    "Type": "Clone",
+    "Count": 25,
+    "Strain": "Spring Hill Kush",
+    "Location": null,
+    "PatientLicenseNumber": "X00001",
+    "ActualDate": "2022-02-15",
+    "SourcePlantBatches": null
+  },
+  {
+    "Name": "B. Kush 5-31",
+    "Type": "Seed",
+    "Count": 50,
+    "Strain": "Spring Hill Kush",
+    "Location": null,
+    "PatientLicenseNumber": "X00002",
+    "ActualDate": "2022-02-15",
+    "SourcePlantBatches": null
+  },
+  {
+    "Name": "B. Kush 5-32",
+    "Type": "Seed",
+    "Count": 3,
+    "Strain": "Spring Hill Kush",
+    "Location": null,
+    "PatientLicenseNumber": "X00002",
+    "ActualDate": "2022-02-15",
+    "SourcePlantBatches": [
+      {
+        "PlantBatchName": "Red Crush"
+      },
+      {
+        "PlantBatchName": "Blue Dream"
+      }
+    ]
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Ids": [
+    1,
+    2,
+    3
+  ],
+  "Warnings": null
+}</code></pre>
+</section>

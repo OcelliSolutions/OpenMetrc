@@ -1,0 +1,59 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="plantbatches">
+		Plant Batches
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-wv.metrc.com/</code></h3>
+	<h3 id="post_plantbatches_v1_changegrowthphase">POST /plantbatches/v1/changegrowthphase</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Immature Plants</strong></td></tr><tr><td><strong>Manage Immature Plants Inventory</strong></td></tr><tr><td><strong>View Veg/Flower Plants</strong></td></tr><tr><td><strong>Manage Veg/Flower Plants Inventory</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /plantbatches/v1/changegrowthphase?licenseNumber=123-ABC<code>[
+  {
+    "Name": "AK-47 Clone 1/31/2017",
+    "Count": 25,
+    "StartingTag": "ABCDEF012345670000020401",
+    "GrowthPhase": "Flowering",
+    "NewLocation": "Plants Location",
+    "GrowthDate": "2015-12-15",
+    "PatientLicenseNumber": "X00001"
+  },
+  {
+    "Name": "AK-47 Clone 1/31/2017",
+    "Count": 25,
+    "StartingTag": "ABCDEF012345670000020427",
+    "GrowthPhase": "Vegetative",
+    "NewLocation": "Harvest Location",
+    "GrowthDate": "2015-12-15",
+    "PatientLicenseNumber": "X00002"
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><span class=	ext-muted"><em>No response</em></span></pre>
+</section>

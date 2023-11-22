@@ -1,0 +1,133 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="sales">
+		Sales
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-ma.metrc.com/</code></h3>
+	<h3 id="get_sales_v1_deliveries_inactive">GET /sales/v1/deliveries/inactive</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Sales Delivery</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td></td></tr><tr><td><strong>salesDateStart</strong><br><span class="text-muted"><em>optional</em></span></td><td>The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.</td></tr><tr><td><strong>salesDateEnd</strong><br><span class="text-muted"><em>optional</em></span></td><td>The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.</td></tr><tr><td><strong>lastModifiedStart</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.</td></tr><tr><td><strong>lastModifiedEnd</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /sales/v1/deliveries/inactive?licenseNumber=123-ABC&lastModifiedStart=2018-01-17T06:30:00Z&lastModifiedEnd=2018-01-17T17:30:00Z</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>[
+  {
+    "Id": 1,
+    "DeliveryNumber": null,
+    "FacilityLicenseNumber": null,
+    "FacilityName": null,
+    "TransporterFacilityId": null,
+    "TransporterFacilityLicenseNumber": null,
+    "TransporterFacilityName": null,
+    "SalesDateTime": "2016-01-01T17:35:45.000",
+    "SalesCustomerType": "Consumer",
+    "PatientLicenseNumber": null,
+    "ConsumerId": "456DEF",
+    "DriverEmployeeId": "1",
+    "DriverName": "John Doe",
+    "DriversLicenseNumber": "1",
+    "VehicleMake": "Car",
+    "VehicleModel": "Small",
+    "VehicleLicensePlateNumber": "000000",
+    "RecipientName": null,
+    "RecipientAddressStreet1": "1 Someplace Road",
+    "RecipientAddressStreet2": "Ste 9",
+    "RecipientAddressCity": "Denver",
+    "RecipientAddressCounty": null,
+    "RecipientAddressState": "CO",
+    "RecipientAddressPostalCode": "11111",
+    "PlannedRoute": "Drive to destination.",
+    "Direction": "Undesignated",
+    "EstimatedDepartureDateTime": "2017-04-04T11:00:00.000",
+    "ActualDepartureDateTime": null,
+    "EstimatedArrivalDateTime": "2017-04-04T13:00:00.000",
+    "ActualArrivalDateTime": null,
+    "EstimatedReturnDepartureDateTime": null,
+    "ActualReturnDepartureDateTime": null,
+    "EstimatedReturnArrivalDateTime": null,
+    "ActualReturnArrivalDateTime": null,
+    "TotalPackages": 0,
+    "TotalPrice": 0.0,
+    "AcceptedDateTime": null,
+    "Transactions": [],
+    "CompletedDateTime": null,
+    "SalesDeliveryState": "Undesignated",
+    "VoidedDate": null,
+    "RecordedDateTime": "0001-01-01T00:00:00+00:00",
+    "RecordedByUserName": null,
+    "LastModified": "0001-01-01T00:00:00+00:00"
+  },
+  {
+    "Id": 2,
+    "DeliveryNumber": null,
+    "FacilityLicenseNumber": null,
+    "FacilityName": null,
+    "TransporterFacilityId": null,
+    "TransporterFacilityLicenseNumber": null,
+    "TransporterFacilityName": null,
+    "SalesDateTime": "2016-01-02T17:37:23.000",
+    "SalesCustomerType": "Consumer",
+    "PatientLicenseNumber": null,
+    "ConsumerId": "123ABC",
+    "DriverEmployeeId": "1",
+    "DriverName": "John Doe",
+    "DriversLicenseNumber": "1",
+    "VehicleMake": "Car",
+    "VehicleModel": "Small",
+    "VehicleLicensePlateNumber": "000000",
+    "RecipientName": null,
+    "RecipientAddressStreet1": "1 Someplace Road",
+    "RecipientAddressStreet2": "Ste 9",
+    "RecipientAddressCity": "Denver",
+    "RecipientAddressCounty": null,
+    "RecipientAddressState": "CO",
+    "RecipientAddressPostalCode": "11111",
+    "PlannedRoute": "Drive to destination.",
+    "Direction": "Undesignated",
+    "EstimatedDepartureDateTime": "2017-04-04T11:00:00.000",
+    "ActualDepartureDateTime": null,
+    "EstimatedArrivalDateTime": "2017-04-04T13:00:00.000",
+    "ActualArrivalDateTime": null,
+    "EstimatedReturnDepartureDateTime": null,
+    "ActualReturnDepartureDateTime": null,
+    "EstimatedReturnArrivalDateTime": null,
+    "ActualReturnArrivalDateTime": null,
+    "TotalPackages": 0,
+    "TotalPrice": 0.0,
+    "AcceptedDateTime": null,
+    "Transactions": [],
+    "CompletedDateTime": null,
+    "SalesDeliveryState": "Undesignated",
+    "VoidedDate": null,
+    "RecordedDateTime": "0001-01-01T00:00:00+00:00",
+    "RecordedByUserName": null,
+    "LastModified": "0001-01-01T00:00:00+00:00"
+  }
+]</code></pre>
+</section>

@@ -1,0 +1,77 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="patientsstatus">
+		Patients Status
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-mi.metrc.com/</code></h3>
+	<h3 id="get_patients_v2_statuses_{patientLicenseNumber}">GET /patients/v2/statuses/{patientLicenseNumber}</h3>
+	<p>Data returned by this endpoint is cached for up to one minute.</p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Lookup Patients</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the Facility under which to get the Patient Status.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /patients/v2/statuses/PTN-123-456?licenseNumber=123-ABC</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>[
+  {
+    "PatientLicenseNumber": "PTN-123-456",
+    "IdentificationMethod": null,
+    "Active": true,
+    "FlowerOuncesAllowed": 0.0,
+    "ThcOuncesAllowed": 0.0,
+    "ConcentrateOuncesAllowed": 0.0,
+    "InfusedOuncesAllowed": 0.0,
+    "FlowerOuncesPurchased": 0.0,
+    "ThcOuncesPurchased": 0.0,
+    "ConcentrateOuncesPurchased": 0.0,
+    "InfusedOuncesPurchased": 0.0,
+    "FlowerOuncesAvailable": 10.0,
+    "ThcOuncesAvailable": 1.0,
+    "ConcentrateOuncesAvailable": 0.0,
+    "InfusedOuncesAvailable": 0.0,
+    "PurchaseAmountDays": 1.0
+  },
+  {
+    "PatientLicenseNumber": "PTN-123-456",
+    "IdentificationMethod": null,
+    "Active": true,
+    "FlowerOuncesAllowed": 0.0,
+    "ThcOuncesAllowed": 0.0,
+    "ConcentrateOuncesAllowed": 0.0,
+    "InfusedOuncesAllowed": 0.0,
+    "FlowerOuncesPurchased": 0.0,
+    "ThcOuncesPurchased": 0.0,
+    "ConcentrateOuncesPurchased": 0.0,
+    "InfusedOuncesPurchased": 0.0,
+    "FlowerOuncesAvailable": 120.0,
+    "ThcOuncesAvailable": 10.0,
+    "ConcentrateOuncesAvailable": 0.0,
+    "InfusedOuncesAvailable": 0.0,
+    "PurchaseAmountDays": 31.0
+  }
+]</code></pre>
+</section>

@@ -1,0 +1,77 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="patients">
+		Patients
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-mt.metrc.com/</code></h3>
+	<h3 id="post_patients_v2_">POST /patients/v2/</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Patients</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to record the list of patients.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /patients/v2/?licenseNumber=123-ABC<code>[
+  {
+    "LicenseNumber": "000001",
+    "LicenseEffectiveStartDate": "2015-06-21",
+    "LicenseEffectiveEndDate": "2016-06-15",
+    "RecommendedPlants": 6,
+    "RecommendedSmokableQuantity": 2.0,
+    "FlowerOuncesAllowed": null,
+    "ThcOuncesAllowed": null,
+    "ConcentrateOuncesAllowed": null,
+    "InfusedOuncesAllowed": null,
+    "MaxFlowerThcPercentAllowed": null,
+    "MaxConcentrateThcPercentAllowed": null,
+    "HasSalesLimitExemption": false,
+    "ActualDate": "2015-12-15"
+  },
+  {
+    "LicenseNumber": "000002",
+    "LicenseEffectiveStartDate": "2015-06-21",
+    "LicenseEffectiveEndDate": "2016-06-15",
+    "RecommendedPlants": 6,
+    "RecommendedSmokableQuantity": 2.0,
+    "FlowerOuncesAllowed": null,
+    "ThcOuncesAllowed": null,
+    "ConcentrateOuncesAllowed": null,
+    "InfusedOuncesAllowed": null,
+    "MaxFlowerThcPercentAllowed": null,
+    "MaxConcentrateThcPercentAllowed": null,
+    "HasSalesLimitExemption": false,
+    "ActualDate": "2015-12-15"
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Ids": [
+    1,
+    2
+  ],
+  "Warnings": null
+}</code></pre>
+</section>

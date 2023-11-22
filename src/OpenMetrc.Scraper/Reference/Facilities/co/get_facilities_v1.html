@@ -1,0 +1,247 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="facilities">
+		Facilities
+	</h1>
+	<p class="lead">A Facility represents a building licensed for the growing, processing, and/or selling of product.</p>
+
+	<h3>Server: <code>https://api-co.metrc.com/</code></h3>
+	<h3 id="get_facilities_v1_">GET /facilities/v1/</h3>
+	<p>This endpoint provides a list of facilities for which the authenticated user has access.</p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td class="text-muted"><em>None</em></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td class="text-muted"><em>No parameters</em></td><td></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /facilities/v1/</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>[
+  {
+    "HireDate": "0001-01-01",
+    "IsOwner": false,
+    "IsManager": true,
+    "Occupations": [],
+    "Name": "Cultivation LLC",
+    "Alias": "Cultivation on Road St",
+    "DisplayName": "Cultivation on Road St",
+    "CredentialedDate": "1969-08-15",
+    "SupportActivationDate": null,
+    "SupportExpirationDate": null,
+    "SupportLastPaidDate": null,
+    "FacilityType": {
+      "IsMedical": false,
+      "IsRetail": true,
+      "IsHemp": false,
+      "RestrictHarvestPlantRestoreTimeHours": null,
+      "TotalMemberPatientsAllowed": null,
+      "RestrictWholesalePriceEditDays": null,
+      "RestrictPlantBatchAdjustmentTimeHours": null,
+      "CanGrowPlants": false,
+      "CanCreateOpeningBalancePlantBatches": false,
+      "CanClonePlantBatches": false,
+      "CanTagPlantBatches": false,
+      "CanAssignLocationsToPlantBatches": false,
+      "PlantsRequirePatientAffiliation": false,
+      "PlantBatchesCanContainMotherPlants": false,
+      "CanUpdatePlantStrains": false,
+      "CanTrackVegetativePlants": false,
+      "CanCreateImmaturePlantPackagesFromPlants": false,
+      "CanPackageVegetativePlants": false,
+      "CanPackageWaste": false,
+      "CanReportHarvestSchedules": false,
+      "CanSubmitHarvestsForTesting": false,
+      "CanRequireHarvestSampleLabTestBatches": false,
+      "CanReportStrainProperties": false,
+      "CanCreateOpeningBalancePackages": false,
+      "CanCreateDerivedPackages": false,
+      "CanAssignLocationsToPackages": false,
+      "CanUpdateLocationsOnPackages": false,
+      "PackagesRequirePatientAffiliation": false,
+      "CanCreateTradeSamplePackages": false,
+      "CanDonatePackages": false,
+      "CanSubmitPackagesForTesting": false,
+      "CanCreateProcessValidationPackages": false,
+      "CanRequirePackageSampleLabTestBatches": false,
+      "CanRequestProductRemediation": false,
+      "CanRemediatePackagesWithFailedLabResults": false,
+      "CanInfuseProducts": false,
+      "CanRecordProcessingJobs": false,
+      "CanRecordProductForDestruction": false,
+      "CanDestroyProduct": false,
+      "CanTestPackages": false,
+      "TestsRequireLabSample": false,
+      "CanTransferFromExternalFacilities": false,
+      "CanSellToConsumers": false,
+      "CanSellToPatients": false,
+      "CanSellToExternalPatients": false,
+      "CanSellToCaregivers": false,
+      "CanTakePlantBatchesOnTrip": false,
+      "CanTakePlantsOnTrip": false,
+      "CanTakeHarvestsOnTrip": false,
+      "CanTakePackagesOnTrip": false,
+      "CanSellFromPackagesOnTrip": false,
+      "AdvancedSales": false,
+      "SalesRequirePatientNumber": false,
+      "SalesRequireExternalPatientNumber": false,
+      "SalesRequireExternalPatientIdentificationMethod": false,
+      "SalesRequireCaregiverNumber": false,
+      "SalesRequireCaregiverPatientNumber": false,
+      "CanDeliverSalesToConsumers": false,
+      "SalesDeliveryAllowPlannedRoute": false,
+      "SalesDeliveryAllowAddress": false,
+      "SalesDeliveryAllowCity": false,
+      "SalesDeliveryAllowState": false,
+      "SalesDeliveryAllowCounty": false,
+      "SalesDeliveryAllowZip": false,
+      "SalesDeliveryRequireConsumerId": false,
+      "CanDeliverSalesToPatients": false,
+      "SalesDeliveryRequirePatientNumber": false,
+      "SalesDeliveryRequireRecipientName": false,
+      "IsSalesDeliveryHub": false,
+      "CanHaveMemberPatients": false,
+      "CanReportPatientCheckIns": false,
+      "CanSpecifyPatientSalesLimitExemption": false,
+      "CanReportPatientsAdverseResponses": false,
+      "RetailerDelivery": false,
+      "RetailerDeliveryAllowTradeSamples": false,
+      "RetailerDeliveryAllowDonations": false,
+      "RetailerDeliveryRequirePrice": false,
+      "RetailerDeliveryAllowPartialPackages": false,
+      "CanCreatePartialPackages": false,
+      "CanAdjustSourcePackagesWithPartials": false,
+      "CanReportOperationalExceptions": false,
+      "CanReportAdulteration": false
+    },
+    "License": {
+      "Number": "403-X0001",
+      "StartDate": "2013-06-28",
+      "EndDate": "2015-12-28",
+      "LicenseType": "Medical Cultivation"
+    }
+  },
+  {
+    "HireDate": "0001-01-01",
+    "IsOwner": false,
+    "IsManager": true,
+    "Occupations": [],
+    "Name": "Dispensary LLC",
+    "Alias": "Med Store",
+    "DisplayName": "Med Store",
+    "CredentialedDate": "1969-08-15",
+    "SupportActivationDate": null,
+    "SupportExpirationDate": null,
+    "SupportLastPaidDate": null,
+    "FacilityType": {
+      "IsMedical": false,
+      "IsRetail": true,
+      "IsHemp": false,
+      "RestrictHarvestPlantRestoreTimeHours": null,
+      "TotalMemberPatientsAllowed": null,
+      "RestrictWholesalePriceEditDays": null,
+      "RestrictPlantBatchAdjustmentTimeHours": null,
+      "CanGrowPlants": false,
+      "CanCreateOpeningBalancePlantBatches": false,
+      "CanClonePlantBatches": false,
+      "CanTagPlantBatches": false,
+      "CanAssignLocationsToPlantBatches": false,
+      "PlantsRequirePatientAffiliation": false,
+      "PlantBatchesCanContainMotherPlants": false,
+      "CanUpdatePlantStrains": false,
+      "CanTrackVegetativePlants": false,
+      "CanCreateImmaturePlantPackagesFromPlants": false,
+      "CanPackageVegetativePlants": false,
+      "CanPackageWaste": false,
+      "CanReportHarvestSchedules": false,
+      "CanSubmitHarvestsForTesting": false,
+      "CanRequireHarvestSampleLabTestBatches": false,
+      "CanReportStrainProperties": false,
+      "CanCreateOpeningBalancePackages": false,
+      "CanCreateDerivedPackages": false,
+      "CanAssignLocationsToPackages": false,
+      "CanUpdateLocationsOnPackages": false,
+      "PackagesRequirePatientAffiliation": false,
+      "CanCreateTradeSamplePackages": false,
+      "CanDonatePackages": false,
+      "CanSubmitPackagesForTesting": false,
+      "CanCreateProcessValidationPackages": false,
+      "CanRequirePackageSampleLabTestBatches": false,
+      "CanRequestProductRemediation": false,
+      "CanRemediatePackagesWithFailedLabResults": false,
+      "CanInfuseProducts": false,
+      "CanRecordProcessingJobs": false,
+      "CanRecordProductForDestruction": false,
+      "CanDestroyProduct": false,
+      "CanTestPackages": false,
+      "TestsRequireLabSample": false,
+      "CanTransferFromExternalFacilities": false,
+      "CanSellToConsumers": false,
+      "CanSellToPatients": false,
+      "CanSellToExternalPatients": false,
+      "CanSellToCaregivers": false,
+      "CanTakePlantBatchesOnTrip": false,
+      "CanTakePlantsOnTrip": false,
+      "CanTakeHarvestsOnTrip": false,
+      "CanTakePackagesOnTrip": false,
+      "CanSellFromPackagesOnTrip": false,
+      "AdvancedSales": false,
+      "SalesRequirePatientNumber": false,
+      "SalesRequireExternalPatientNumber": false,
+      "SalesRequireExternalPatientIdentificationMethod": false,
+      "SalesRequireCaregiverNumber": false,
+      "SalesRequireCaregiverPatientNumber": false,
+      "CanDeliverSalesToConsumers": false,
+      "SalesDeliveryAllowPlannedRoute": false,
+      "SalesDeliveryAllowAddress": false,
+      "SalesDeliveryAllowCity": false,
+      "SalesDeliveryAllowState": false,
+      "SalesDeliveryAllowCounty": false,
+      "SalesDeliveryAllowZip": false,
+      "SalesDeliveryRequireConsumerId": false,
+      "CanDeliverSalesToPatients": false,
+      "SalesDeliveryRequirePatientNumber": false,
+      "SalesDeliveryRequireRecipientName": false,
+      "IsSalesDeliveryHub": false,
+      "CanHaveMemberPatients": false,
+      "CanReportPatientCheckIns": false,
+      "CanSpecifyPatientSalesLimitExemption": false,
+      "CanReportPatientsAdverseResponses": false,
+      "RetailerDelivery": false,
+      "RetailerDeliveryAllowTradeSamples": false,
+      "RetailerDeliveryAllowDonations": false,
+      "RetailerDeliveryRequirePrice": false,
+      "RetailerDeliveryAllowPartialPackages": false,
+      "CanCreatePartialPackages": false,
+      "CanAdjustSourcePackagesWithPartials": false,
+      "CanReportOperationalExceptions": false,
+      "CanReportAdulteration": false
+    },
+    "License": {
+      "Number": "402-X0002",
+      "StartDate": "2012-08-15",
+      "EndDate": "2015-11-15",
+      "LicenseType": "Medical Dispensary"
+    }
+  }
+]</code></pre>
+</section>

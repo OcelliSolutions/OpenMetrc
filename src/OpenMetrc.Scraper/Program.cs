@@ -1,5 +1,6 @@
 ﻿using OpenMetrc.Scraper;
 using OpenMetrc.Scraper.Models;
+using System.Collections.Concurrent;
 
 //all possible states and province codes that METRC could be operating in.
 var states = new List<string>
@@ -8,22 +9,57 @@ var states = new List<string>
     "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "ms", "mo", "mt", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd",
     "oh", "ok", "or", "pa", "pr", "ri", "sc", "sd", "tn", "tx", "ut", "vt", "vi", "va", "wa", "wv", "wi", "wy"
 };
-var stateSummaries = new List<StateSummary>();
-var stateCounter = 0.0;
-foreach (var state in states)
+var stateSummaries = new ConcurrentBag<StateSummary>();
+double stateCounter = 0;
+var consoleLock = new object();
+var errors = new ConcurrentBag<Exception>();
+
+StateService.DeleteReferenceDocuments();
+
+Parallel.ForEach(states, (state) =>
 {
-    stateCounter++;
-    Console.Write("\rScanning: {0} {1:P}   ", state, stateCounter / states.Count);
+    try
+    {
+        var stateSummary = StateService.ProcessState(state).Result;
 
-    var stateSummary = await StateService.ProcessState(state);
+        // Thread-safe increment of the counter and console update
+        lock (consoleLock)
+        {
+            stateCounter++;
+            Console.Write("\rScanning: {0} {1:P}   ", state, stateCounter / states.Count);
+        }
 
-    // don't add a state that is only a placeholder or only has unit of measure.
-    if (stateSummary.Sections.Count <= 1)
-        continue;
-    stateSummaries.Add(stateSummary);
+        stateSummaries.Add(stateSummary);
+    }
+    catch (Exception ex)
+    {
+        errors.Add(ex);
+    }
+});
+
+if (!errors.IsEmpty)
+{
+    Console.WriteLine();
+    Console.ForegroundColor = ConsoleColor.Red;
+    foreach (var exception in errors)
+    {
+        Console.WriteLine(exception.Message);
+    }
+    Console.ResetColor();
+    Console.WriteLine();
 }
 
-await StateService.WriteStateSummary(stateSummaries);
+await StateService.WriteStateSummary(stateSummaries.ToList()); // Convert ConcurrentBag to List
+
+
+var v1Document = OpenApiService.CreateOpenApiDocument("../../../Reference", "v1");
+await OpenApiService.WriteOpenApiDocument(v1Document);
+var v2Document = OpenApiService.CreateOpenApiDocument("../../../Reference", "v2");
+await OpenApiService.WriteOpenApiDocument(v2Document);
+
+
+await OpenApiService.CreateController(v1Document, "V1");
+
 Console.WriteLine($@"Summary: 
 States Found: {stateSummaries.Count}");
 Console.ResetColor();

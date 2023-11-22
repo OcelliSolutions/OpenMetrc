@@ -1,0 +1,53 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="plants">
+		Plants
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-co.metrc.com/</code></h3>
+	<h3 id="post_plants_v1_moveplants">POST /plants/v1/moveplants</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Veg/Flower Plants</strong></td></tr><tr><td><strong>Manage Veg/Flower Plants Inventory</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /plants/v1/moveplants?licenseNumber=123-ABC<code>[
+  {
+    "Id": null,
+    "Label": "ABCDEF012345670000000001",
+    "Location": "Plants Location",
+    "ActualDate": "2015-12-15"
+  },
+  {
+    "Id": 2,
+    "Label": null,
+    "Location": "Plants Location",
+    "ActualDate": "2015-12-15"
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><span class=	ext-muted"><em>No response</em></span></pre>
+</section>

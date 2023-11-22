@@ -1,0 +1,72 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="patients">
+		Patients
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-nv.metrc.com/</code></h3>
+	<h3 id="get_patients_v2_active">GET /patients/v2/active</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Patients</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return the list of active patients.</td></tr><tr><td><strong>pageNumber</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of the data page from which to return data.</td></tr><tr><td><strong>pageSize</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /patients/v2/active?licenseNumber=123-ABC&pageNumber=1&pageSize=10</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Data": [
+    {
+      "PatientId": 1,
+      "LicenseNumber": "000001",
+      "RegistrationDate": "2015-01-08",
+      "LicenseEffectiveStartDate": "2014-07-12",
+      "LicenseEffectiveEndDate": "2015-07-07",
+      "RecommendedPlants": 6,
+      "RecommendedSmokableQuantity": 2.0,
+      "HasSalesLimitExemption": false,
+      "OtherFacilitiesCount": 1
+    },
+    {
+      "PatientId": 2,
+      "LicenseNumber": "000002",
+      "RegistrationDate": "2015-01-08",
+      "LicenseEffectiveStartDate": "2014-07-12",
+      "LicenseEffectiveEndDate": "2015-07-07",
+      "RecommendedPlants": 6,
+      "RecommendedSmokableQuantity": 2.0,
+      "HasSalesLimitExemption": false,
+      "OtherFacilitiesCount": 1
+    }
+  ],
+  "Total": 2,
+  "TotalRecords": 2,
+  "PageSize": 2,
+  "RecordsOnPage": 2,
+  "Page": 1,
+  "CurrentPage": 1,
+  "TotalPages": 1
+}</code></pre>
+</section>

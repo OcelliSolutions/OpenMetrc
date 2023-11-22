@@ -1,0 +1,50 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="patients">
+		Patients
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-nj.metrc.com/</code></h3>
+	<h3 id="get_patients_v1_{id}">GET /patients/v1/{id}</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Patients</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br><span class="text-muted"><em>optional</em></span></td><td>If specified, the Patient will be validated against the specified License Number. If not specified, the Patient will be validated against all of the User's current Facilities. Please note that if the Patient is not valid for the specified License Number, a <code>401 Unauthorized</code> status will be returned.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /patients/v1/1?licenseNumber=123-ABC</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "PatientId": 1,
+  "LicenseNumber": "000001",
+  "RegistrationDate": "2015-01-08",
+  "LicenseEffectiveStartDate": "2014-07-12",
+  "LicenseEffectiveEndDate": "2015-07-07",
+  "RecommendedPlants": 6,
+  "RecommendedSmokableQuantity": 2.0,
+  "HasSalesLimitExemption": false,
+  "OtherFacilitiesCount": 1
+}</code></pre>
+</section>

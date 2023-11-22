@@ -1,0 +1,114 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="plants">
+		Plants
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-md.metrc.com/</code></h3>
+	<h3 id="get_plants_v2_flowering">GET /plants/v2/flowering</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Veg/Flower Plants</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return the list of flowering plants.</td></tr><tr><td><strong>pageNumber</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of the data page from which to return data.</td></tr><tr><td><strong>pageSize</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</td></tr><tr><td><strong>lastModifiedStart</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified start timestamp</td></tr><tr><td><strong>lastModifiedEnd</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified end timestamp</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /plants/v2/flowering?licenseNumber=123-ABC&lastModifiedStart=2018-01-17T06:30:00Z&lastModifiedEnd=2018-01-17T17:30:00Z&pageNumber=1&pageSize=10</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Data": [
+    {
+      "Id": 10011,
+      "Label": "ABCDEF012345670000010011",
+      "State": "Tracked",
+      "GrowthPhase": "Flowering",
+      "GroupTagTypeMax": 0,
+      "PlantBatchId": 2,
+      "PlantBatchName": "Demo Plant Batch",
+      "PlantBatchTypeId": 2,
+      "PlantBatchTypeName": "Clone",
+      "StrainId": 1,
+      "StrainName": "Spring Hill Kush",
+      "LocationId": 2,
+      "LocationName": "Plants Location",
+      "LocationTypeName": null,
+      "PatientLicenseNumber": null,
+      "HarvestId": null,
+      "HarvestedUnitOfWeightName": null,
+      "HarvestedUnitOfWeightAbbreviation": null,
+      "HarvestedWetWeight": null,
+      "HarvestCount": 0,
+      "IsOnHold": false,
+      "IsOnTrip": false,
+      "PlantedDate": "2014-10-10",
+      "VegetativeDate": "2014-10-20",
+      "FloweringDate": "2014-11-09",
+      "HarvestedDate": null,
+      "DestroyedDate": null,
+      "DestroyedNote": null,
+      "DestroyedByUserName": null,
+      "LastModified": "0001-01-01T00:00:00+00:00"
+    },
+    {
+      "Id": 10012,
+      "Label": "ABCDEF012345670000010012",
+      "State": "Tracked",
+      "GrowthPhase": "Flowering",
+      "GroupTagTypeMax": 0,
+      "PlantBatchId": 2,
+      "PlantBatchName": "Demo Plant Batch",
+      "PlantBatchTypeId": 2,
+      "PlantBatchTypeName": "Clone",
+      "StrainId": 1,
+      "StrainName": "Spring Hill Kush",
+      "LocationId": 2,
+      "LocationName": "Plants Location",
+      "LocationTypeName": null,
+      "PatientLicenseNumber": null,
+      "HarvestId": null,
+      "HarvestedUnitOfWeightName": null,
+      "HarvestedUnitOfWeightAbbreviation": null,
+      "HarvestedWetWeight": null,
+      "HarvestCount": 0,
+      "IsOnHold": false,
+      "IsOnTrip": false,
+      "PlantedDate": "2014-10-10",
+      "VegetativeDate": "2014-10-20",
+      "FloweringDate": "2014-11-09",
+      "HarvestedDate": null,
+      "DestroyedDate": null,
+      "DestroyedNote": null,
+      "DestroyedByUserName": null,
+      "LastModified": "0001-01-01T00:00:00+00:00"
+    }
+  ],
+  "Total": 2,
+  "TotalRecords": 2,
+  "PageSize": 2,
+  "RecordsOnPage": 2,
+  "Page": 1,
+  "CurrentPage": 1,
+  "TotalPages": 1
+}</code></pre>
+</section>

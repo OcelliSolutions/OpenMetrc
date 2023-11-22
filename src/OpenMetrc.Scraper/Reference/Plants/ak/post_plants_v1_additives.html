@@ -1,0 +1,97 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="plants">
+		Plants
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-ak.metrc.com/</code></h3>
+	<h3 id="post_plants_v1_additives">POST /plants/v1/additives</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Plants Additives</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to record plant additives.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /plants/v1/additives?licenseNumber=123-ABC<code>[
+  {
+    "AdditiveType": "Fertilizer",
+    "ProductTradeName": "Wonder Sprout",
+    "EpaRegistrationNumber": null,
+    "ProductSupplier": "G Labs",
+    "ApplicationDevice": "GreatDistributor 210lb",
+    "TotalAmountApplied": 5.0,
+    "TotalAmountUnitOfMeasure": "Gallons",
+    "ActiveIngredients": [
+      {
+        "Name": "Phosphorous",
+        "Percentage": 30.0
+      },
+      {
+        "Name": "Nitrogen",
+        "Percentage": 15.0
+      },
+      {
+        "Name": "Potassium",
+        "Percentage": 15.0
+      }
+    ],
+    "PlantLabels": [
+      "ABCDEF012345670000010011",
+      "ABCDEF012345670000010012"
+    ],
+    "ActualDate": "2019-12-15"
+  },
+  {
+    "AdditiveType": "Pesticide",
+    "ProductTradeName": "Pure Triazine",
+    "EpaRegistrationNumber": null,
+    "ProductSupplier": "G Labs",
+    "ApplicationDevice": "GreatDistributor 210lb",
+    "TotalAmountApplied": 5.0,
+    "TotalAmountUnitOfMeasure": "Gallons",
+    "ActiveIngredients": [
+      {
+        "Name": "Phosphorous",
+        "Percentage": 30.0
+      },
+      {
+        "Name": "Nitrogen",
+        "Percentage": 15.0
+      },
+      {
+        "Name": "Potassium",
+        "Percentage": 15.0
+      }
+    ],
+    "PlantLabels": [
+      "ABCDEF012345670000010013",
+      "ABCDEF012345670000010014"
+    ],
+    "ActualDate": "2019-12-15"
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><span class=	ext-muted"><em>No response</em></span></pre>
+</section>

@@ -1,0 +1,104 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="plantbatches">
+		Plant Batches
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-me.metrc.com/</code></h3>
+	<h3 id="get_plantbatches_v2_inactive">GET /plantbatches/v2/inactive</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Immature Plants</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return the list of inactive plant batches.</td></tr><tr><td><strong>pageNumber</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of the data page from which to return data.</td></tr><tr><td><strong>pageSize</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</td></tr><tr><td><strong>lastModifiedStart</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified start timestamp</td></tr><tr><td><strong>lastModifiedEnd</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified end timestamp</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /plantbatches/v2/inactive?licenseNumber=123-ABC&lastModifiedStart=2018-01-17T06:30:00Z&lastModifiedEnd=2018-01-17T17:30:00Z&pageNumber=1&pageSize=10</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Data": [
+    {
+      "Id": 7,
+      "Name": "Demo Plant Batch 3",
+      "PlantBatchTypeId": 1,
+      "PlantBatchTypeName": "Seed",
+      "LocationId": null,
+      "LocationName": null,
+      "LocationTypeName": null,
+      "StrainId": 1,
+      "StrainName": "Spring Hill Kush",
+      "PatientLicenseNumber": null,
+      "UntrackedCount": 0,
+      "TrackedCount": 100,
+      "PackagedCount": 0,
+      "DestroyedCount": 20,
+      "SourcePackageId": null,
+      "SourcePackageLabel": null,
+      "SourcePlantId": null,
+      "SourcePlantLabel": null,
+      "SourcePlantBatchIds": [],
+      "SourcePlantBatchNames": null,
+      "MultiPlantBatch": false,
+      "PlantedDate": "2014-10-10",
+      "IsOnTrip": false,
+      "LastModified": "0001-01-01T00:00:00+00:00",
+      "IsOnHold": false
+    },
+    {
+      "Id": 8,
+      "Name": "Demo Plant Batch 4",
+      "PlantBatchTypeId": 2,
+      "PlantBatchTypeName": "Clone",
+      "LocationId": null,
+      "LocationName": null,
+      "LocationTypeName": null,
+      "StrainId": 1,
+      "StrainName": "Spring Hill Kush",
+      "PatientLicenseNumber": null,
+      "UntrackedCount": 0,
+      "TrackedCount": 75,
+      "PackagedCount": 0,
+      "DestroyedCount": 35,
+      "SourcePackageId": null,
+      "SourcePackageLabel": null,
+      "SourcePlantId": null,
+      "SourcePlantLabel": null,
+      "SourcePlantBatchIds": [],
+      "SourcePlantBatchNames": null,
+      "MultiPlantBatch": false,
+      "PlantedDate": "2014-10-10",
+      "IsOnTrip": false,
+      "LastModified": "0001-01-01T00:00:00+00:00",
+      "IsOnHold": false
+    }
+  ],
+  "Total": 2,
+  "TotalRecords": 2,
+  "PageSize": 2,
+  "RecordsOnPage": 2,
+  "Page": 1,
+  "CurrentPage": 1,
+  "TotalPages": 1
+}</code></pre>
+</section>

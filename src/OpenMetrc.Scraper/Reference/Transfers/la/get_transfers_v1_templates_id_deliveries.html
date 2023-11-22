@@ -1,0 +1,76 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="transfers">
+		Transfers
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-la.metrc.com/</code></h3>
+	<h3 id="get_transfers_v1_templates_{id}_deliveries">GET /transfers/v1/templates/{id}/deliveries</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Transfer Templates</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td class="text-muted"><em>No parameters</em></td><td></td></tr>
+		</tbody>
+	</table>
+		<h4>This endpoint has obsolete properties <span class="oi oi-warning"></span></h4>
+		<table class="table">
+			<thead>
+				<tr>
+					<th style="width: 20%;">Old</th>
+					<th>New</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr><td>ShipmentPackages.ProductName</td><td>ItemName</td></tr><tr><td>ShipmentPackages.ProductCategoryName</td><td>ItemCategoryName</td></tr>
+			</tbody>
+		</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /transfers/v1/templates/1/deliveries</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>[
+  {
+    "Id": 1,
+    "RecipientFacilityLicenseNumber": "123-ABC",
+    "RecipientFacilityName": "Lofty Med-Cultivation A",
+    "ShipmentTypeName": "Transfer",
+    "ShipmentTransactionType": "Standard",
+    "EstimatedDepartureDateTime": "2016-10-11T14:48:30.000",
+    "ActualDepartureDateTime": null,
+    "EstimatedArrivalDateTime": "2016-10-11T16:50:00.000",
+    "ActualArrivalDateTime": null,
+    "GrossWeight": null,
+    "GrossUnitOfWeightId": null,
+    "GrossUnitOfWeightName": null,
+    "PlannedRoute": "I will use this route.",
+    "DeliveryPackageCount": 7,
+    "DeliveryReceivedPackageCount": 0,
+    "ReceivedDateTime": "2016-10-11T16:42:19-05:00",
+    "EstimatedReturnDepartureDateTime": null,
+    "ActualReturnDepartureDateTime": null,
+    "EstimatedReturnArrivalDateTime": null,
+    "ActualReturnArrivalDateTime": null,
+    "RejectedPackagesReturned": false
+  }
+]</code></pre>
+</section>

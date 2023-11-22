@@ -1,0 +1,59 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="plants">
+		Plants
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-mt.metrc.com/</code></h3>
+	<h3 id="post_plants_v1_harvestplants">POST /plants/v1/harvestplants</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Veg/Flower Plants</strong></td></tr><tr><td><strong>Manicure/Harvest Veg/Flower Plants</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /plants/v1/harvestplants?licenseNumber=123-ABC<code>[
+  {
+    "Plant": "ABCDEF012345670000010011",
+    "Weight": 100.23,
+    "UnitOfWeight": "Grams",
+    "DryingLocation": "Harvest Location",
+    "HarvestName": "2015-12-15-Harvest Location-H",
+    "PatientLicenseNumber": "X00001",
+    "ActualDate": "2015-12-15"
+  },
+  {
+    "Plant": "ABCDEF012345670000010012",
+    "Weight": 10.15,
+    "UnitOfWeight": "Grams",
+    "DryingLocation": "Harvest Location",
+    "HarvestName": null,
+    "PatientLicenseNumber": "X00002",
+    "ActualDate": "2015-12-15"
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><span class=	ext-muted"><em>No response</em></span></pre>
+</section>

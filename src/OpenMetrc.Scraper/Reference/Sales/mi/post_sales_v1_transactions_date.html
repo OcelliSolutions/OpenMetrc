@@ -1,0 +1,81 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="sales">
+		Sales
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-mi.metrc.com/</code></h3>
+	<h3 id="post_sales_v1_transactions_{date}">POST /sales/v1/transactions/{date}</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Sales</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to append the sales transactions on the specified date.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /sales/v1/transactions/2015-01-08?licenseNumber=123-ABC<code>[
+  {
+    "PackageLabel": "ABCDEF012345670000010331",
+    "Quantity": 1.0,
+    "UnitOfMeasure": "Ounces",
+    "TotalAmount": 9.99,
+    "UnitThcPercent": null,
+    "UnitThcContent": null,
+    "UnitThcContentUnitOfMeasure": null,
+    "UnitWeight": null,
+    "UnitWeightUnitOfMeasure": null,
+    "InvoiceNumber": null,
+    "Price": null,
+    "ExciseTax": null,
+    "CityTax": null,
+    "CountyTax": null,
+    "MunicipalTax": null,
+    "DiscountAmount": null,
+    "SubTotal": null,
+    "SalesTax": null
+  },
+  {
+    "PackageLabel": "ABCDEF012345670000010332",
+    "Quantity": 1.0,
+    "UnitOfMeasure": "Ounces",
+    "TotalAmount": 9.99,
+    "UnitThcPercent": null,
+    "UnitThcContent": null,
+    "UnitThcContentUnitOfMeasure": null,
+    "UnitWeight": null,
+    "UnitWeightUnitOfMeasure": null,
+    "InvoiceNumber": null,
+    "Price": null,
+    "ExciseTax": null,
+    "CityTax": null,
+    "CountyTax": null,
+    "MunicipalTax": null,
+    "DiscountAmount": null,
+    "SubTotal": null,
+    "SalesTax": null
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><span class=	ext-muted"><em>No response</em></span></pre>
+</section>

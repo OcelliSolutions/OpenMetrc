@@ -1,0 +1,51 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="transfers">
+		Transfers
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-ak.metrc.com/</code></h3>
+	<h3 id="get_transfers_v1_deliveries_package_{id}_requiredlabtestbatches">GET /transfers/v1/deliveries/package/{id}/requiredlabtestbatches</h3>
+	<p><strong>Please note:</strong> The <code>{id}</code> parameter above represents a Transfer Delivery Package ID, not a Manifest Number.</p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Transfers</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td class="text-muted"><em>No parameters</em></td><td></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /transfers/v1/deliveries/package/2/requiredlabtestbatches</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>[
+  {
+    "PackageId": 2,
+    "LabTestBatchId": 1,
+    "LabTestBatchName": "Cannabinoids"
+  },
+  {
+    "PackageId": 2,
+    "LabTestBatchId": 2,
+    "LabTestBatchName": "Category I Residual Pesticides (required)"
+  }
+]</code></pre>
+</section>

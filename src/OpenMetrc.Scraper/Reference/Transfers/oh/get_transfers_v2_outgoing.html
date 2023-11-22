@@ -1,0 +1,96 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="transfers">
+		Transfers
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-oh.metrc.com/</code></h3>
+	<h3 id="get_transfers_v2_outgoing">GET /transfers/v2/outgoing</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Transfers</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return outgoing transfers.</td></tr><tr><td><strong>pageNumber</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of the data page from which to return data.</td></tr><tr><td><strong>pageSize</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</td></tr><tr><td><strong>lastModifiedStart</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified start timestamp</td></tr><tr><td><strong>lastModifiedEnd</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified end timestamp</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /transfers/v2/outgoing?licenseNumber=123-ABC&lastModifiedStart=2018-01-17T06:30:00Z&lastModifiedEnd=2018-01-17T17:30:00Z&pageNumber=1&pageSize=10</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Data": [
+    {
+      "Id": 1,
+      "ManifestNumber": "0000000001",
+      "ShipmentLicenseType": 0,
+      "ShipperFacilityLicenseNumber": "123-ABC",
+      "ShipperFacilityName": "Lofty Med-Cultivation B",
+      "Name": null,
+      "TransporterFacilityLicenseNumber": "123-BCD",
+      "TransporterFacilityName": "Lofty Med-Dispensary",
+      "DriverName": "X",
+      "DriverOccupationalLicenseNumber": "",
+      "DriverVehicleLicenseNumber": "",
+      "VehicleMake": "X",
+      "VehicleModel": "X",
+      "VehicleLicensePlateNumber": "X",
+      "DeliveryCount": 1,
+      "ReceivedDeliveryCount": 0,
+      "PackageCount": 7,
+      "ReceivedPackageCount": 0,
+      "ContainsPlantPackage": false,
+      "ContainsProductPackage": false,
+      "ContainsTradeSample": false,
+      "ContainsDonation": false,
+      "ContainsTestingSample": false,
+      "ContainsProductRequiresRemediation": false,
+      "ContainsRemediatedProductPackage": false,
+      "CreatedDateTime": "2016-10-10T08:20:45-04:00",
+      "CreatedByUserName": null,
+      "LastModified": "0001-01-01T00:00:00+00:00",
+      "DeliveryId": 0,
+      "RecipientFacilityLicenseNumber": null,
+      "RecipientFacilityName": null,
+      "ShipmentTypeName": null,
+      "ShipmentTransactionType": null,
+      "EstimatedDepartureDateTime": "0001-01-01T00:00:00.000",
+      "ActualDepartureDateTime": null,
+      "EstimatedArrivalDateTime": "0001-01-01T00:00:00.000",
+      "ActualArrivalDateTime": null,
+      "DeliveryPackageCount": 0,
+      "DeliveryReceivedPackageCount": 0,
+      "ReceivedDateTime": null,
+      "EstimatedReturnDepartureDateTime": null,
+      "ActualReturnDepartureDateTime": null,
+      "EstimatedReturnArrivalDateTime": null,
+      "ActualReturnArrivalDateTime": null
+    }
+  ],
+  "Total": 1,
+  "TotalRecords": 1,
+  "PageSize": 1,
+  "RecordsOnPage": 1,
+  "Page": 1,
+  "CurrentPage": 1,
+  "TotalPages": 1
+}</code></pre>
+</section>

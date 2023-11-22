@@ -1,0 +1,51 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="plantbatches">
+		Plant Batches
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-dc.metrc.com/</code></h3>
+	<h3 id="put_plantbatches_v2_location">PUT /plantbatches/v2/location</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Immature Plants</strong></td></tr><tr><td><strong>Manage Immature Plants</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to change the location of the plant batch.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>PUT /plantbatches/v2/location?licenseNumber=123-ABC<code>[
+  {
+    "Name": "AK-47 Clone 1/31/2017",
+    "Location": "Plants Location",
+    "MoveDate": "2015-12-15"
+  },
+  {
+    "Name": "Metrc Bliss 5/30/2018",
+    "Location": "Plants Location",
+    "MoveDate": "2018-01-05"
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><span class=	ext-muted"><em>No response</em></span></pre>
+</section>

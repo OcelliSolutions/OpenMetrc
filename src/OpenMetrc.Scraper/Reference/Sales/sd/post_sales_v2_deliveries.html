@@ -1,0 +1,112 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="sales">
+		Sales
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-sd.metrc.com/</code></h3>
+	<h3 id="post_sales_v2_deliveries">POST /sales/v2/deliveries</h3>
+	<p><strong>Please note:</strong> The <code>SalesDateTime</code> field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Sales Delivery</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to record deliveries.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /sales/v2/deliveries?licenseNumber=123-ABC<code>[
+  {
+    "TransporterFacilityLicenseNumber": "1",
+    "SalesDateTime": "2017-04-04T10:10:19.000",
+    "SalesCustomerType": "Consumer",
+    "PatientLicenseNumber": null,
+    "ConsumerId": null,
+    "DriverEmployeeId": "1",
+    "DriverName": "John Doe",
+    "DriversLicenseNumber": "1",
+    "PhoneNumberForQuestions": "+1-123-456-7890",
+    "VehicleMake": "Car",
+    "VehicleModel": "Small",
+    "VehicleLicensePlateNumber": "000000",
+    "RecipientName": null,
+    "RecipientAddressStreet1": "1 Someplace Road",
+    "RecipientAddressStreet2": "Ste 9",
+    "RecipientAddressCity": "Denver",
+    "RecipientAddressCounty": null,
+    "RecipientAddressState": "CO",
+    "RecipientAddressPostalCode": "11111",
+    "PlannedRoute": "Drive to destination.",
+    "EstimatedDepartureDateTime": "2017-04-04T11:00:00.000",
+    "EstimatedArrivalDateTime": "2017-04-04T13:00:00.000",
+    "Transactions": [
+      {
+        "PackageLabel": "ABCDEF012345670000000001",
+        "Quantity": 1.0,
+        "UnitOfMeasure": "Ounces",
+        "TotalAmount": 9.99,
+        "UnitThcPercent": null,
+        "UnitThcContent": null,
+        "UnitThcContentUnitOfMeasure": null,
+        "UnitWeight": null,
+        "UnitWeightUnitOfMeasure": null,
+        "InvoiceNumber": null,
+        "Price": null,
+        "ExciseTax": null,
+        "CityTax": null,
+        "CountyTax": null,
+        "MunicipalTax": null,
+        "DiscountAmount": null,
+        "SubTotal": null,
+        "SalesTax": null
+      },
+      {
+        "PackageLabel": "ABCDEF012345670000000002",
+        "Quantity": 1.0,
+        "UnitOfMeasure": "Ounces",
+        "TotalAmount": 9.99,
+        "UnitThcPercent": null,
+        "UnitThcContent": null,
+        "UnitThcContentUnitOfMeasure": null,
+        "UnitWeight": null,
+        "UnitWeightUnitOfMeasure": null,
+        "InvoiceNumber": null,
+        "Price": null,
+        "ExciseTax": null,
+        "CityTax": null,
+        "CountyTax": null,
+        "MunicipalTax": null,
+        "DiscountAmount": null,
+        "SubTotal": null,
+        "SalesTax": null
+      }
+    ]
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Ids": [
+    1
+  ],
+  "Warnings": null
+}</code></pre>
+</section>

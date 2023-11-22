@@ -150,5 +150,6 @@ static IEnumerable<string?> DistinctStates()
     var stateSummaries = JsonSerializer.Deserialize<List<StateSummary>>(jsonString)!;
 
     return (from ss in stateSummaries
+            where ss.Sections.Length > 1
         select ss.State).Distinct().OrderBy(e => e);
 }

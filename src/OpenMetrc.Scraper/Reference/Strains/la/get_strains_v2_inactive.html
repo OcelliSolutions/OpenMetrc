@@ -1,0 +1,61 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="strains">
+		Strains
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-la.metrc.com/</code></h3>
+	<h3 id="get_strains_v2_inactive">GET /strains/v2/inactive</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Strains</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The License Number of the Facility for which to return the list of inactive Strains.</td></tr><tr><td><strong>pageNumber</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of the data page from which to return data.</td></tr><tr><td><strong>pageSize</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /strains/v2/inactive?licenseNumber=123-ABC&pageNumber=1&pageSize=10</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Data": [
+    {
+      "Id": 201,
+      "Name": "Spring Hill Kush",
+      "TestingStatus": "ThirdParty",
+      "ThcLevel": null,
+      "CbdLevel": null,
+      "IndicaPercentage": 60.0,
+      "SativaPercentage": 40.0,
+      "IsUsed": false,
+      "Genetics": "60% Indica / 40% Sativa"
+    }
+  ],
+  "Total": 1,
+  "TotalRecords": 1,
+  "PageSize": 1,
+  "RecordsOnPage": 1,
+  "Page": 1,
+  "CurrentPage": 1,
+  "TotalPages": 1
+}</code></pre>
+</section>

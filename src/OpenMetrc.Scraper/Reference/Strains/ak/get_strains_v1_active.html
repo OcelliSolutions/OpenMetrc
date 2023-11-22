@@ -1,0 +1,52 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="strains">
+		Strains
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-ak.metrc.com/</code></h3>
+	<h3 id="get_strains_v1_active">GET /strains/v1/active</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Strains</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return the list of active strains.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /strains/v1/active?licenseNumber=123-ABC</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>[
+  {
+    "Id": 201,
+    "Name": "Spring Hill Kush",
+    "TestingStatus": "ThirdParty",
+    "ThcLevel": null,
+    "CbdLevel": null,
+    "IndicaPercentage": 60.0,
+    "SativaPercentage": 40.0,
+    "IsUsed": false,
+    "Genetics": "60% Indica / 40% Sativa"
+  }
+]</code></pre>
+</section>

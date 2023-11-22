@@ -1,0 +1,106 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="harvests">
+		Harvests
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-sd.metrc.com/</code></h3>
+	<h3 id="get_harvests_v2_onhold">GET /harvests/v2/onhold</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Harvests</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return the list of harvests on hold.</td></tr><tr><td><strong>pageNumber</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of the data page from which to return data.</td></tr><tr><td><strong>pageSize</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</td></tr><tr><td><strong>lastModifiedStart</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified start timestamp</td></tr><tr><td><strong>lastModifiedEnd</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified end timestamp</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /harvests/v2/onhold?licenseNumber=123-ABC&lastModifiedStart=2018-01-17T06:30:00Z&lastModifiedEnd=2018-01-17T17:30:00Z&pageNumber=1&pageSize=10</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Data": [
+    {
+      "Id": 1,
+      "Name": "2014-11-19-Harvest Location-M",
+      "HarvestType": "Product",
+      "SourceStrainCount": 0,
+      "SourceStrainNames": null,
+      "Strains": [],
+      "DryingLocationId": 1,
+      "DryingLocationName": "Harvest Location",
+      "DryingLocationTypeName": null,
+      "PatientLicenseNumber": null,
+      "CurrentWeight": 0.0,
+      "TotalWasteWeight": 0.0,
+      "PlantCount": 70,
+      "TotalWetWeight": 40.0,
+      "TotalRestoredWeight": 0.0,
+      "PackageCount": 15,
+      "TotalPackagedWeight": 0.0,
+      "UnitOfWeightName": "Ounces",
+      "LabTestingState": null,
+      "LabTestingStateDate": null,
+      "IsOnHold": true,
+      "HarvestStartDate": "2014-11-19",
+      "FinishedDate": null,
+      "ArchivedDate": null,
+      "IsOnTrip": false,
+      "LastModified": "2014-11-19T00:00:00+00:00"
+    },
+    {
+      "Id": 2,
+      "Name": "2014-11-19-Harvest Location-H",
+      "HarvestType": "WholePlant",
+      "SourceStrainCount": 0,
+      "SourceStrainNames": null,
+      "Strains": [],
+      "DryingLocationId": 1,
+      "DryingLocationName": "Harvest Location",
+      "DryingLocationTypeName": null,
+      "PatientLicenseNumber": null,
+      "CurrentWeight": 0.0,
+      "TotalWasteWeight": 0.0,
+      "PlantCount": 70,
+      "TotalWetWeight": 40.0,
+      "TotalRestoredWeight": 0.0,
+      "PackageCount": 17,
+      "TotalPackagedWeight": 0.0,
+      "UnitOfWeightName": "Ounces",
+      "LabTestingState": null,
+      "LabTestingStateDate": null,
+      "IsOnHold": true,
+      "HarvestStartDate": "2014-11-19",
+      "FinishedDate": null,
+      "ArchivedDate": null,
+      "IsOnTrip": false,
+      "LastModified": "2014-11-19T00:00:00+00:00"
+    }
+  ],
+  "Total": 2,
+  "TotalRecords": 2,
+  "PageSize": 2,
+  "RecordsOnPage": 2,
+  "Page": 1,
+  "CurrentPage": 1,
+  "TotalPages": 1
+}</code></pre>
+</section>

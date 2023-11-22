@@ -1,0 +1,66 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="plantbatches">
+		Plant Batches
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-gu.metrc.com/</code></h3>
+	<h3 id="get_plantbatches_v2_{id}">GET /plantbatches/v2/{id}</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Immature Plants</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br><span class="text-muted"><em>optional</em></span></td><td>If specified, the Plant Batch will be validated against the specified License Number. If not specified, the Plant Batch will be validated against all of the User's current Facilities. Please note that if the Plant Batch is not valid for the specified License Number, a <code>401 Unauthorized</code> status will be returned.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /plantbatches/v2/5?licenseNumber=123-ABC</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Id": 5,
+  "Name": "Demo Plant Batch 1",
+  "PlantBatchTypeId": 1,
+  "PlantBatchTypeName": "Seed",
+  "LocationId": null,
+  "LocationName": null,
+  "LocationTypeName": null,
+  "StrainId": 1,
+  "StrainName": "Spring Hill Kush",
+  "PatientLicenseNumber": null,
+  "UntrackedCount": 80,
+  "TrackedCount": 10,
+  "PackagedCount": 0,
+  "DestroyedCount": 40,
+  "SourcePackageId": null,
+  "SourcePackageLabel": null,
+  "SourcePlantId": null,
+  "SourcePlantLabel": null,
+  "SourcePlantBatchIds": [],
+  "SourcePlantBatchNames": null,
+  "MultiPlantBatch": false,
+  "PlantedDate": "2014-10-10",
+  "IsOnTrip": false,
+  "LastModified": "0001-01-01T00:00:00+00:00",
+  "IsOnHold": false
+}</code></pre>
+</section>

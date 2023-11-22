@@ -1,0 +1,63 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="harvests">
+		Harvests
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-nj.metrc.com/</code></h3>
+	<h3 id="put_harvests_v2_restore_harvestedplants">PUT /harvests/v2/restore/harvestedplants</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Harvests</strong></td></tr><tr><td><strong>Finish/Discontinue Harvests</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return the list of harvests restored.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>PUT /harvests/v2/restore/harvestedplants?licenseNumber=123-ABC<code>[
+  {
+    "HarvestId": 1,
+    "PlantTags": [
+      "ABCDEF012345670000010100",
+      "ABCDEF012345670000010101",
+      "ABCDEF012345670000010102"
+    ]
+  },
+  {
+    "HarvestId": 2,
+    "PlantTags": [
+      "ABCDEF012345670000010200",
+      "ABCDEF012345670000010201",
+      "ABCDEF012345670000010202"
+    ]
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Ids": [
+    1,
+    2
+  ],
+  "Warnings": null
+}</code></pre>
+</section>

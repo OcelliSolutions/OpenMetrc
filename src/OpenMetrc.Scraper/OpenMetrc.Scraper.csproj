@@ -9,6 +9,14 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.54" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.20.0" />
+    <PackageReference Include="NSwag.Core.Yaml" Version="13.20.0" />
+    <PackageReference Include="PluralizeService.Core" Version="1.2.21147.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="OpenApi\" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,66 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="processingjob">
+		Processing Job
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-ri.metrc.com/</code></h3>
+	<h3 id="get_processing_v2_jobtypes_categories">GET /processing/v2/jobtypes/categories</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Processing Job</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return the list of processing job type categories.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /processing/v2/jobtypes/categories?licenseNumber=123-ABC</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Data": [
+    {
+      "Id": 1,
+      "Name": "Buds"
+    },
+    {
+      "Id": 2,
+      "Name": "Immature Plants"
+    },
+    {
+      "Id": 3,
+      "Name": "Infused"
+    },
+    {
+      "Id": 4,
+      "Name": "Infused Liquid"
+    }
+  ],
+  "Total": 4,
+  "TotalRecords": 4,
+  "PageSize": 4,
+  "RecordsOnPage": 4,
+  "Page": 1,
+  "CurrentPage": 1,
+  "TotalPages": 1
+}</code></pre>
+</section>

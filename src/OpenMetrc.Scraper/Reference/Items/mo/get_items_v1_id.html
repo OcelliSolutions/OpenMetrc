@@ -1,0 +1,87 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="items">
+		Items
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-mo.metrc.com/</code></h3>
+	<h3 id="get_items_v1_{id}">GET /items/v1/{id}</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Items</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br><span class="text-muted"><em>optional</em></span></td><td>If specified, the Item will be validated against the specified License Number. If not specified, the Item will be validated against all of the User's current Facilities. Please note that if the Item is not valid for the specified License Number, a <code>401 Unauthorized</code> status will be returned.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /items/v1/1?licenseNumber=123-ABC</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>{
+  "Id": 1,
+  "Name": "Buds",
+  "ProductCategoryName": "Buds",
+  "ProductCategoryType": "Buds",
+  "IsExpirationDateRequired": false,
+  "IsSellByDateRequired": false,
+  "IsUseByDateRequired": false,
+  "QuantityType": "WeightBased",
+  "DefaultLabTestingState": "NotSubmitted",
+  "UnitOfMeasureName": "Ounces",
+  "ApprovalStatus": "Approved",
+  "ApprovalStatusDateTime": "0001-01-01T00:00:00+00:00",
+  "StrainId": 1,
+  "StrainName": "Spring Hill Kush",
+  "ItemBrandId": 0,
+  "ItemBrandName": null,
+  "AdministrationMethod": null,
+  "UnitCbdPercent": null,
+  "UnitCbdContent": null,
+  "UnitCbdContentUnitOfMeasureName": null,
+  "UnitCbdContentDose": null,
+  "UnitCbdContentDoseUnitOfMeasureName": null,
+  "UnitThcPercent": null,
+  "UnitThcContent": null,
+  "UnitThcContentUnitOfMeasureName": null,
+  "UnitThcContentDose": null,
+  "UnitThcContentDoseUnitOfMeasureName": null,
+  "UnitVolume": null,
+  "UnitVolumeUnitOfMeasureName": null,
+  "UnitWeight": null,
+  "UnitWeightUnitOfMeasureName": null,
+  "ServingSize": null,
+  "SupplyDurationDays": null,
+  "NumberOfDoses": null,
+  "UnitQuantity": null,
+  "UnitQuantityUnitOfMeasureName": null,
+  "PublicIngredients": null,
+  "Description": null,
+  "Allergens": null,
+  "ProductImages": [],
+  "ProductPhotoDescription": null,
+  "LabelImages": [],
+  "LabelPhotoDescription": null,
+  "PackagingImages": [],
+  "PackagingPhotoDescription": null,
+  "IsUsed": false
+}</code></pre>
+</section>

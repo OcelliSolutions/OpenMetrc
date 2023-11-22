@@ -203,6 +203,25 @@
     ]
   },
   {
+    "State": "al",
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "ar",
+    "Sections": []
+  },
+  {
+    "State": "az",
+    "Sections": []
+  },
+  {
     "State": "ca",
     "Sections": [
       {
@@ -1043,6 +1062,14 @@
     ]
   },
   {
+    "State": "ct",
+    "Sections": []
+  },
+  {
+    "State": "cz",
+    "Sections": []
+  },
+  {
     "State": "dc",
     "Sections": [
       {
@@ -1454,6 +1481,25 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "de",
+    "Sections": []
+  },
+  {
+    "State": "fl",
+    "Sections": []
+  },
+  {
+    "State": "ga",
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
         ]
       }
     ]
@@ -1940,6 +1986,41 @@
     ]
   },
   {
+    "State": "hi",
+    "Sections": []
+  },
+  {
+    "State": "ia",
+    "Sections": []
+  },
+  {
+    "State": "id",
+    "Sections": []
+  },
+  {
+    "State": "il",
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "in",
+    "Sections": []
+  },
+  {
+    "State": "ks",
+    "Sections": []
+  },
+  {
+    "State": "ky",
+    "Sections": []
+  },
+  {
     "State": "la",
     "Sections": [
       {
@@ -2322,7 +2403,7 @@
     ]
   },
   {
-    "State": "me",
+    "State": "ma",
     "Sections": [
       {
         "Name": "Employees",
@@ -2482,6 +2563,21 @@
           "put_packages_v2_finish",
           "put_packages_v2_unfinish",
           "delete_packages_v2_id"
+        ]
+      },
+      {
+        "Name": "Patients",
+        "Endpoints": [
+          "get_patients_v1_id",
+          "get_patients_v1_active",
+          "post_patients_v1_add",
+          "post_patients_v1_update",
+          "delete_patients_v1_id",
+          "get_patients_v2_id",
+          "get_patients_v2_active",
+          "post_patients_v2",
+          "put_patients_v2",
+          "delete_patients_v2_id"
         ]
       },
       {
@@ -3147,7 +3243,7 @@
     ]
   },
   {
-    "State": "ma",
+    "State": "me",
     "Sections": [
       {
         "Name": "Employees",
@@ -3307,21 +3403,6 @@
           "put_packages_v2_finish",
           "put_packages_v2_unfinish",
           "delete_packages_v2_id"
-        ]
-      },
-      {
-        "Name": "Patients",
-        "Endpoints": [
-          "get_patients_v1_id",
-          "get_patients_v1_active",
-          "post_patients_v1_add",
-          "post_patients_v1_update",
-          "delete_patients_v1_id",
-          "get_patients_v2_id",
-          "get_patients_v2_active",
-          "post_patients_v2",
-          "put_patients_v2",
-          "delete_patients_v2_id"
         ]
       },
       {
@@ -4342,15 +4423,8 @@
     ]
   },
   {
-    "State": "ms",
+    "State": "mo",
     "Sections": [
-      {
-        "Name": "CaregiversStatus",
-        "Endpoints": [
-          "get_caregivers_v1_status_caregiverLicenseNumber",
-          "get_caregivers_v2_status_caregiverLicenseNumber"
-        ]
-      },
       {
         "Name": "Employees",
         "Endpoints": [
@@ -4512,25 +4586,25 @@
         ]
       },
       {
+        "Name": "PatientCheckIns",
+        "Endpoints": [
+          "get_patientcheckins_v1_locations",
+          "get_patientcheckins_v1",
+          "post_patientcheckins_v1",
+          "put_patientcheckins_v1",
+          "delete_patientcheckins_v1_id",
+          "get_patientcheckins_v2_locations",
+          "get_patientcheckins_v2",
+          "post_patientcheckins_v2",
+          "put_patientcheckins_v2",
+          "delete_patientcheckins_v2_id"
+        ]
+      },
+      {
         "Name": "PatientsStatus",
         "Endpoints": [
           "get_patients_v1_statuses_patientLicenseNumber",
           "get_patients_v2_statuses_patientLicenseNumber"
-        ]
-      },
-      {
-        "Name": "Patients",
-        "Endpoints": [
-          "get_patients_v1_id",
-          "get_patients_v1_active",
-          "post_patients_v1_add",
-          "post_patients_v1_update",
-          "delete_patients_v1_id",
-          "get_patients_v2_id",
-          "get_patients_v2_active",
-          "post_patients_v2",
-          "put_patients_v2",
-          "delete_patients_v2_id"
         ]
       },
       {
@@ -4780,8 +4854,15 @@
     ]
   },
   {
-    "State": "mo",
+    "State": "ms",
     "Sections": [
+      {
+        "Name": "CaregiversStatus",
+        "Endpoints": [
+          "get_caregivers_v1_status_caregiverLicenseNumber",
+          "get_caregivers_v2_status_caregiverLicenseNumber"
+        ]
+      },
       {
         "Name": "Employees",
         "Endpoints": [
@@ -4943,25 +5024,25 @@
         ]
       },
       {
-        "Name": "PatientCheckIns",
-        "Endpoints": [
-          "get_patientcheckins_v1_locations",
-          "get_patientcheckins_v1",
-          "post_patientcheckins_v1",
-          "put_patientcheckins_v1",
-          "delete_patientcheckins_v1_id",
-          "get_patientcheckins_v2_locations",
-          "get_patientcheckins_v2",
-          "post_patientcheckins_v2",
-          "put_patientcheckins_v2",
-          "delete_patientcheckins_v2_id"
-        ]
-      },
-      {
         "Name": "PatientsStatus",
         "Endpoints": [
           "get_patients_v1_statuses_patientLicenseNumber",
           "get_patients_v2_statuses_patientLicenseNumber"
+        ]
+      },
+      {
+        "Name": "Patients",
+        "Endpoints": [
+          "get_patients_v1_id",
+          "get_patients_v1_active",
+          "post_patients_v1_add",
+          "post_patients_v1_update",
+          "delete_patients_v1_id",
+          "get_patients_v2_id",
+          "get_patients_v2_active",
+          "post_patients_v2",
+          "put_patients_v2",
+          "delete_patients_v2_id"
         ]
       },
       {
@@ -5642,428 +5723,20 @@
     ]
   },
   {
-    "State": "nv",
-    "Sections": [
-      {
-        "Name": "Employees",
-        "Endpoints": [
-          "get_employees_v1",
-          "get_employees_v2"
-        ]
-      },
-      {
-        "Name": "Facilities",
-        "Endpoints": [
-          "get_facilities_v1",
-          "get_facilities_v2"
-        ]
-      },
-      {
-        "Name": "Harvests",
-        "Endpoints": [
-          "get_harvests_v1_id",
-          "get_harvests_v1_active",
-          "get_harvests_v1_onhold",
-          "get_harvests_v1_inactive",
-          "get_harvests_v1_waste_types",
-          "post_harvests_v1_create_packages",
-          "post_harvests_v1_create_packages_testing",
-          "put_harvests_v1_move",
-          "post_harvests_v1_removewaste",
-          "put_harvests_v1_rename",
-          "post_harvests_v1_finish",
-          "post_harvests_v1_unfinish",
-          "get_harvests_v2_id",
-          "get_harvests_v2_active",
-          "get_harvests_v2_onhold",
-          "get_harvests_v2_inactive",
-          "get_harvests_v2_waste",
-          "get_harvests_v2_waste_types",
-          "post_harvests_v2_packages_testing",
-          "post_harvests_v2_packages",
-          "put_harvests_v2_location",
-          "post_harvests_v2_waste",
-          "put_harvests_v2_rename",
-          "put_harvests_v2_finish",
-          "put_harvests_v2_unfinish",
-          "put_harvests_v2_restore_harvestedplants",
-          "delete_harvests_v2_waste_id"
-        ]
-      },
-      {
-        "Name": "Items",
-        "Endpoints": [
-          "get_items_v1_id",
-          "get_items_v1_active",
-          "get_items_v1_inactive",
-          "get_items_v1_categories",
-          "get_items_v1_brands",
-          "get_items_v1_photo_id",
-          "post_items_v1_create",
-          "post_items_v1_update",
-          "post_items_v1_photo",
-          "delete_items_v1_id",
-          "get_items_v2_id",
-          "get_items_v2_active",
-          "get_items_v2_inactive",
-          "get_items_v2_categories",
-          "get_items_v2_brands",
-          "get_items_v2_photo_id",
-          "post_items_v2",
-          "put_items_v2",
-          "post_items_v2_photo",
-          "delete_items_v2_id",
-          "delete_items_v2_brand_id",
-          "post_items_v2_brand",
-          "put_items_v2_brand"
-        ]
-      },
-      {
-        "Name": "LabTests",
-        "Endpoints": [
-          "get_labtests_v1_states",
-          "get_labtests_v1_types",
-          "get_labtests_v1_results",
-          "post_labtests_v1_record",
-          "put_labtests_v1_labtestdocument",
-          "put_labtests_v1_results_release",
-          "get_labtests_v1_labtestdocument_id",
-          "get_labtests_v2_states",
-          "get_labtests_v2_batches",
-          "get_labtests_v2_types",
-          "get_labtests_v2_results",
-          "post_labtests_v2_record",
-          "put_labtests_v2_labtestdocument",
-          "put_labtests_v2_results_release",
-          "get_labtests_v2_labtestdocument_id"
-        ]
-      },
-      {
-        "Name": "Locations",
-        "Endpoints": [
-          "get_locations_v1_id",
-          "get_locations_v1_active",
-          "get_locations_v1_types",
-          "post_locations_v1_create",
-          "post_locations_v1_update",
-          "delete_locations_v1_id",
-          "get_locations_v2_id",
-          "get_locations_v2_active",
-          "get_locations_v2_inactive",
-          "get_locations_v2_types",
-          "post_locations_v2",
-          "put_locations_v2",
-          "delete_locations_v2_id"
-        ]
-      },
-      {
-        "Name": "Packages",
-        "Endpoints": [
-          "get_packages_v1_id",
-          "get_packages_v1_label",
-          "get_packages_v1_active",
-          "get_packages_v1_onhold",
-          "get_packages_v1_inactive",
-          "get_packages_v1_types",
-          "get_packages_v1_adjust_reasons",
-          "post_packages_v1_create",
-          "post_packages_v1_create_testing",
-          "post_packages_v1_create_plantings",
-          "post_packages_v1_change_item",
-          "put_packages_v1_change_note",
-          "post_packages_v1_change_locations",
-          "post_packages_v1_adjust",
-          "post_packages_v1_finish",
-          "post_packages_v1_unfinish",
-          "post_packages_v1_remediate",
-          "get_packages_v2_id",
-          "get_packages_v2_id_source_harvests",
-          "get_packages_v2_label",
-          "get_packages_v2_active",
-          "get_packages_v2_onhold",
-          "get_packages_v2_inactive",
-          "get_packages_v2_intransit",
-          "get_packages_v2_labsamples",
-          "get_packages_v2_types",
-          "get_packages_v2_adjust_reasons",
-          "post_packages_v2",
-          "post_packages_v2_testing",
-          "post_packages_v2_plantings",
-          "put_packages_v2_donation_flag",
-          "put_packages_v2_donation_unflag",
-          "put_packages_v2_item",
-          "put_packages_v2_note",
-          "put_packages_v2_location",
-          "put_packages_v2_labtests_required",
-          "put_packages_v2_tradesample_flag",
-          "put_packages_v2_tradesample_unflag",
-          "post_packages_v2_adjust",
-          "put_packages_v2_remediate",
-          "put_packages_v2_finish",
-          "put_packages_v2_unfinish",
-          "delete_packages_v2_id"
-        ]
-      },
-      {
-        "Name": "Patients",
-        "Endpoints": [
-          "get_patients_v1_id",
-          "get_patients_v1_active",
-          "post_patients_v1_add",
-          "post_patients_v1_update",
-          "delete_patients_v1_id",
-          "get_patients_v2_id",
-          "get_patients_v2_active",
-          "post_patients_v2",
-          "put_patients_v2",
-          "delete_patients_v2_id"
-        ]
-      },
-      {
-        "Name": "PlantBatches",
-        "Endpoints": [
-          "get_plantbatches_v1_id",
-          "get_plantbatches_v1_active",
-          "get_plantbatches_v1_inactive",
-          "get_plantbatches_v1_types",
-          "post_plantbatches_v1_adjust",
-          "post_plantbatches_v1_createplantings",
-          "post_plantbatches_v1_createpackages",
-          "post_plantbatches_v1_split",
-          "post_plantbatches_v1_create_packages_frommotherplant",
-          "post_plantbatches_v1_changegrowthphase",
-          "put_plantbatches_v1_moveplantbatches",
-          "post_plantbatches_v1_additives",
-          "post_plantbatches_v1_waste",
-          "delete_plantbatches_v1",
-          "get_plantbatches_v1_waste_reasons",
-          "get_plantbatches_v2_id",
-          "get_plantbatches_v2_active",
-          "get_plantbatches_v2_inactive",
-          "get_plantbatches_v2_types",
-          "delete_plantbatches_v2",
-          "get_plantbatches_v2_waste_reasons",
-          "post_plantbatches_v2_waste",
-          "post_plantbatches_v2_adjust",
-          "post_plantbatches_v2_additives",
-          "post_plantbatches_v2_plantings",
-          "post_plantbatches_v2_packages",
-          "post_plantbatches_v2_packages_frommotherplant",
-          "post_plantbatches_v2_split",
-          "post_plantbatches_v2_growthphase",
-          "put_plantbatches_v2_tag",
-          "put_plantbatches_v2_strain",
-          "put_plantbatches_v2_location"
-        ]
-      },
-      {
-        "Name": "Plants",
-        "Endpoints": [
-          "get_plants_v1_id",
-          "get_plants_v1_label",
-          "get_plants_v1_vegetative",
-          "get_plants_v1_flowering",
-          "get_plants_v1_onhold",
-          "get_plants_v1_inactive",
-          "get_plants_v1_additives",
-          "get_plants_v1_growthphases",
-          "get_plants_v1_additives_types",
-          "get_plants_v1_waste_methods_all",
-          "get_plants_v1_waste_reasons",
-          "post_plants_v1_moveplants",
-          "post_plants_v1_changegrowthphases",
-          "delete_plants_v1",
-          "post_plants_v1_additives",
-          "post_plants_v1_waste",
-          "post_plants_v1_additives_bylocation",
-          "post_plants_v1_create_plantings",
-          "post_plants_v1_create_plantbatch_packages",
-          "post_plants_v1_manicureplants",
-          "post_plants_v1_harvestplants",
-          "get_plants_v2_additives_types",
-          "get_plants_v2_id",
-          "get_plants_v2_label",
-          "get_plants_v2_vegetative",
-          "get_plants_v2_flowering",
-          "get_plants_v2_onhold",
-          "get_plants_v2_inactive",
-          "get_plants_v2_additives",
-          "get_plants_v2_growthphases",
-          "get_plants_v2_waste_reasons",
-          "post_plants_v2_additives",
-          "post_plants_v2_additives_bylocation",
-          "post_plants_v2_plantings",
-          "post_plants_v2_plantbatch_packages",
-          "post_plants_v2_manicure",
-          "put_plants_v2_location",
-          "put_plants_v2_growthphase",
-          "put_plants_v2_tag",
-          "put_plants_v2_strain",
-          "put_plants_v2_harvest",
-          "put_plants_v2_merge",
-          "delete_plants_v2",
-          "post_plants_v2_waste",
-          "get_plants_v2_waste_methods_all",
-          "put_plants_v2_split"
-        ]
-      },
-      {
-        "Name": "Sales",
-        "Endpoints": [
-          "get_sales_v1_customertypes",
-          "get_sales_v1_patientregistration_locations",
-          "get_sales_v1_deliveries_active",
-          "get_sales_v1_deliveries_inactive",
-          "get_sales_v1_deliveries_id",
-          "get_sales_v1_deliveries_returnreasons",
-          "post_sales_v1_deliveries",
-          "put_sales_v1_deliveries",
-          "put_sales_v1_deliveries_hub",
-          "put_sales_v1_deliveries_hub_accept",
-          "put_sales_v1_deliveries_complete",
-          "put_sales_v1_deliveries_hub_depart",
-          "put_sales_v1_deliveries_hub_verifyID",
-          "delete_sales_v1_deliveries_id",
-          "get_sales_v1_counties",
-          "get_sales_v1_paymenttypes",
-          "get_sales_v1_receipts_active",
-          "get_sales_v1_receipts_inactive",
-          "get_sales_v1_receipts_id",
-          "post_sales_v1_receipts",
-          "put_sales_v1_receipts",
-          "delete_sales_v1_receipts_id",
-          "get_sales_v1_transactions",
-          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
-          "post_sales_v1_transactions_date",
-          "put_sales_v1_transactions_date",
-          "get_sales_v1_deliveries_retailer_active",
-          "get_sales_v1_deliveries_retailer_inactive",
-          "get_sales_v1_deliveries_retailer_id",
-          "post_sales_v1_deliveries_retailer",
-          "put_sales_v1_deliveries_retailer",
-          "delete_sales_v1_deliveries_retailer_id",
-          "post_sales_v1_deliveries_retailer_depart",
-          "post_sales_v1_deliveries_retailer_restock",
-          "post_sales_v1_deliveries_retailer_sale",
-          "post_sales_v1_deliveries_retailer_end",
-          "get_sales_v2_customertypes",
-          "get_sales_v2_patientregistration_locations",
-          "get_sales_v2_deliveries_id",
-          "get_sales_v2_deliveries_active",
-          "get_sales_v2_deliveries_inactive",
-          "get_sales_v2_deliveries_returnreasons",
-          "get_sales_v2_counties",
-          "get_sales_v2_paymenttypes",
-          "get_sales_v2_receipts_id",
-          "get_sales_v2_receipts_active",
-          "get_sales_v2_receipts_inactive",
-          "post_sales_v2_deliveries",
-          "post_sales_v2_receipts",
-          "put_sales_v2_deliveries_hub",
-          "put_sales_v2_deliveries_hub_accept",
-          "put_sales_v2_deliveries_complete",
-          "put_sales_v2_deliveries_hub_depart",
-          "put_sales_v2_deliveries_hub_verifyID",
-          "put_sales_v2_deliveries",
-          "put_sales_v2_receipts",
-          "put_sales_v2_receipts_finalize",
-          "put_sales_v2_receipts_unfinalize",
-          "delete_sales_v2_deliveries_id",
-          "delete_sales_v2_receipts_id",
-          "get_sales_v2_deliveries_retailer_active",
-          "get_sales_v2_deliveries_retailer_inactive",
-          "get_sales_v2_deliveries_retailer_id",
-          "post_sales_v2_deliveries_retailer",
-          "put_sales_v2_deliveries_retailer",
-          "delete_sales_v2_deliveries_retailer_id",
-          "post_sales_v2_deliveries_retailer_depart",
-          "post_sales_v2_deliveries_retailer_restock",
-          "post_sales_v2_deliveries_retailer_sale",
-          "post_sales_v2_deliveries_retailer_end"
-        ]
-      },
-      {
-        "Name": "Strains",
-        "Endpoints": [
-          "get_strains_v1_id",
-          "get_strains_v1_active",
-          "post_strains_v1_create",
-          "post_strains_v1_update",
-          "delete_strains_v1_id",
-          "get_strains_v2_id",
-          "get_strains_v2_active",
-          "get_strains_v2_inactive",
-          "post_strains_v2",
-          "put_strains_v2",
-          "delete_strains_v2_id"
-        ]
-      },
-      {
-        "Name": "Transfers",
-        "Endpoints": [
-          "get_transfers_v1_incoming",
-          "get_transfers_v1_outgoing",
-          "get_transfers_v1_rejected",
-          "get_transfers_v1_id_deliveries",
-          "get_transfers_v1_deliveries_id_transporters",
-          "get_transfers_v1_deliveries_id_transporters_details",
-          "get_transfers_v1_deliveries_id_packages",
-          "get_transfers_v1_deliveries_id_packages_wholesale",
-          "get_transfers_v1_deliveries_package_id_requiredlabtestbatches",
-          "get_transfers_v1_deliveries_packages_states",
-          "post_transfers_v1_external_incoming",
-          "put_transfers_v1_external_incoming",
-          "delete_transfers_v1_external_incoming_id",
-          "get_transfers_v1_templates",
-          "get_transfers_v1_templates_id_deliveries",
-          "get_transfers_v1_templates_deliveries_id_transporters",
-          "get_transfers_v1_templates_deliveries_id_transporters_details",
-          "get_transfers_v1_templates_deliveries_id_packages",
-          "post_transfers_v1_templates",
-          "put_transfers_v1_templates",
-          "delete_transfers_v1_templates_id",
-          "get_transfers_v1_types",
-          "get_transfers_v2_hub",
-          "get_transfers_v2_incoming",
-          "get_transfers_v2_outgoing",
-          "get_transfers_v2_rejected",
-          "get_transfers_v2_id_deliveries",
-          "get_transfers_v2_deliveries_id_transporters",
-          "get_transfers_v2_deliveries_id_transporters_details",
-          "get_transfers_v2_deliveries_id_packages",
-          "get_transfers_v2_deliveries_id_packages_wholesale",
-          "get_transfers_v2_deliveries_package_id_requiredlabtestbatches",
-          "get_transfers_v2_deliveries_packages_states",
-          "get_transfers_v2_templates_outgoing",
-          "get_transfers_v2_templates_outgoing_id_deliveries",
-          "get_transfers_v2_templates_outgoing_deliveries_id_transporters",
-          "get_transfers_v2_templates_outgoing_deliveries_id_transporters_details",
-          "get_transfers_v2_templates_outgoing_deliveries_id_packages",
-          "get_transfers_v2_types",
-          "post_transfers_v2_external_incoming",
-          "post_transfers_v2_templates_outgoing",
-          "put_transfers_v2_external_incoming",
-          "put_transfers_v2_templates_outgoing",
-          "delete_transfers_v2_external_incoming_id",
-          "delete_transfers_v2_templates_outgoing_id"
-        ]
-      },
-      {
-        "Name": "UnitsOfMeasure",
-        "Endpoints": [
-          "get_unitsofmeasure_v1_active",
-          "get_unitsofmeasure_v2_active",
-          "get_unitsofmeasure_v2_inactive"
-        ]
-      },
-      {
-        "Name": "Tags",
-        "Endpoints": [
-          "get_tags_v2_plant_available",
-          "get_tags_v2_package_available"
-        ]
-      }
-    ]
+    "State": "nc",
+    "Sections": []
+  },
+  {
+    "State": "nd",
+    "Sections": []
+  },
+  {
+    "State": "ne",
+    "Sections": []
+  },
+  {
+    "State": "nh",
+    "Sections": []
   },
   {
     "State": "nj",
@@ -6545,6 +6218,438 @@
         ]
       }
     ]
+  },
+  {
+    "State": "nm",
+    "Sections": []
+  },
+  {
+    "State": "nv",
+    "Sections": [
+      {
+        "Name": "Employees",
+        "Endpoints": [
+          "get_employees_v1",
+          "get_employees_v2"
+        ]
+      },
+      {
+        "Name": "Facilities",
+        "Endpoints": [
+          "get_facilities_v1",
+          "get_facilities_v2"
+        ]
+      },
+      {
+        "Name": "Harvests",
+        "Endpoints": [
+          "get_harvests_v1_id",
+          "get_harvests_v1_active",
+          "get_harvests_v1_onhold",
+          "get_harvests_v1_inactive",
+          "get_harvests_v1_waste_types",
+          "post_harvests_v1_create_packages",
+          "post_harvests_v1_create_packages_testing",
+          "put_harvests_v1_move",
+          "post_harvests_v1_removewaste",
+          "put_harvests_v1_rename",
+          "post_harvests_v1_finish",
+          "post_harvests_v1_unfinish",
+          "get_harvests_v2_id",
+          "get_harvests_v2_active",
+          "get_harvests_v2_onhold",
+          "get_harvests_v2_inactive",
+          "get_harvests_v2_waste",
+          "get_harvests_v2_waste_types",
+          "post_harvests_v2_packages_testing",
+          "post_harvests_v2_packages",
+          "put_harvests_v2_location",
+          "post_harvests_v2_waste",
+          "put_harvests_v2_rename",
+          "put_harvests_v2_finish",
+          "put_harvests_v2_unfinish",
+          "put_harvests_v2_restore_harvestedplants",
+          "delete_harvests_v2_waste_id"
+        ]
+      },
+      {
+        "Name": "Items",
+        "Endpoints": [
+          "get_items_v1_id",
+          "get_items_v1_active",
+          "get_items_v1_inactive",
+          "get_items_v1_categories",
+          "get_items_v1_brands",
+          "get_items_v1_photo_id",
+          "post_items_v1_create",
+          "post_items_v1_update",
+          "post_items_v1_photo",
+          "delete_items_v1_id",
+          "get_items_v2_id",
+          "get_items_v2_active",
+          "get_items_v2_inactive",
+          "get_items_v2_categories",
+          "get_items_v2_brands",
+          "get_items_v2_photo_id",
+          "post_items_v2",
+          "put_items_v2",
+          "post_items_v2_photo",
+          "delete_items_v2_id",
+          "delete_items_v2_brand_id",
+          "post_items_v2_brand",
+          "put_items_v2_brand"
+        ]
+      },
+      {
+        "Name": "LabTests",
+        "Endpoints": [
+          "get_labtests_v1_states",
+          "get_labtests_v1_types",
+          "get_labtests_v1_results",
+          "post_labtests_v1_record",
+          "put_labtests_v1_labtestdocument",
+          "put_labtests_v1_results_release",
+          "get_labtests_v1_labtestdocument_id",
+          "get_labtests_v2_states",
+          "get_labtests_v2_batches",
+          "get_labtests_v2_types",
+          "get_labtests_v2_results",
+          "post_labtests_v2_record",
+          "put_labtests_v2_labtestdocument",
+          "put_labtests_v2_results_release",
+          "get_labtests_v2_labtestdocument_id"
+        ]
+      },
+      {
+        "Name": "Locations",
+        "Endpoints": [
+          "get_locations_v1_id",
+          "get_locations_v1_active",
+          "get_locations_v1_types",
+          "post_locations_v1_create",
+          "post_locations_v1_update",
+          "delete_locations_v1_id",
+          "get_locations_v2_id",
+          "get_locations_v2_active",
+          "get_locations_v2_inactive",
+          "get_locations_v2_types",
+          "post_locations_v2",
+          "put_locations_v2",
+          "delete_locations_v2_id"
+        ]
+      },
+      {
+        "Name": "Packages",
+        "Endpoints": [
+          "get_packages_v1_id",
+          "get_packages_v1_label",
+          "get_packages_v1_active",
+          "get_packages_v1_onhold",
+          "get_packages_v1_inactive",
+          "get_packages_v1_types",
+          "get_packages_v1_adjust_reasons",
+          "post_packages_v1_create",
+          "post_packages_v1_create_testing",
+          "post_packages_v1_create_plantings",
+          "post_packages_v1_change_item",
+          "put_packages_v1_change_note",
+          "post_packages_v1_change_locations",
+          "post_packages_v1_adjust",
+          "post_packages_v1_finish",
+          "post_packages_v1_unfinish",
+          "post_packages_v1_remediate",
+          "get_packages_v2_id",
+          "get_packages_v2_id_source_harvests",
+          "get_packages_v2_label",
+          "get_packages_v2_active",
+          "get_packages_v2_onhold",
+          "get_packages_v2_inactive",
+          "get_packages_v2_intransit",
+          "get_packages_v2_labsamples",
+          "get_packages_v2_types",
+          "get_packages_v2_adjust_reasons",
+          "post_packages_v2",
+          "post_packages_v2_testing",
+          "post_packages_v2_plantings",
+          "put_packages_v2_donation_flag",
+          "put_packages_v2_donation_unflag",
+          "put_packages_v2_item",
+          "put_packages_v2_note",
+          "put_packages_v2_location",
+          "put_packages_v2_labtests_required",
+          "put_packages_v2_tradesample_flag",
+          "put_packages_v2_tradesample_unflag",
+          "post_packages_v2_adjust",
+          "put_packages_v2_remediate",
+          "put_packages_v2_finish",
+          "put_packages_v2_unfinish",
+          "delete_packages_v2_id"
+        ]
+      },
+      {
+        "Name": "Patients",
+        "Endpoints": [
+          "get_patients_v1_id",
+          "get_patients_v1_active",
+          "post_patients_v1_add",
+          "post_patients_v1_update",
+          "delete_patients_v1_id",
+          "get_patients_v2_id",
+          "get_patients_v2_active",
+          "post_patients_v2",
+          "put_patients_v2",
+          "delete_patients_v2_id"
+        ]
+      },
+      {
+        "Name": "PlantBatches",
+        "Endpoints": [
+          "get_plantbatches_v1_id",
+          "get_plantbatches_v1_active",
+          "get_plantbatches_v1_inactive",
+          "get_plantbatches_v1_types",
+          "post_plantbatches_v1_adjust",
+          "post_plantbatches_v1_createplantings",
+          "post_plantbatches_v1_createpackages",
+          "post_plantbatches_v1_split",
+          "post_plantbatches_v1_create_packages_frommotherplant",
+          "post_plantbatches_v1_changegrowthphase",
+          "put_plantbatches_v1_moveplantbatches",
+          "post_plantbatches_v1_additives",
+          "post_plantbatches_v1_waste",
+          "delete_plantbatches_v1",
+          "get_plantbatches_v1_waste_reasons",
+          "get_plantbatches_v2_id",
+          "get_plantbatches_v2_active",
+          "get_plantbatches_v2_inactive",
+          "get_plantbatches_v2_types",
+          "delete_plantbatches_v2",
+          "get_plantbatches_v2_waste_reasons",
+          "post_plantbatches_v2_waste",
+          "post_plantbatches_v2_adjust",
+          "post_plantbatches_v2_additives",
+          "post_plantbatches_v2_plantings",
+          "post_plantbatches_v2_packages",
+          "post_plantbatches_v2_packages_frommotherplant",
+          "post_plantbatches_v2_split",
+          "post_plantbatches_v2_growthphase",
+          "put_plantbatches_v2_tag",
+          "put_plantbatches_v2_strain",
+          "put_plantbatches_v2_location"
+        ]
+      },
+      {
+        "Name": "Plants",
+        "Endpoints": [
+          "get_plants_v1_id",
+          "get_plants_v1_label",
+          "get_plants_v1_vegetative",
+          "get_plants_v1_flowering",
+          "get_plants_v1_onhold",
+          "get_plants_v1_inactive",
+          "get_plants_v1_additives",
+          "get_plants_v1_growthphases",
+          "get_plants_v1_additives_types",
+          "get_plants_v1_waste_methods_all",
+          "get_plants_v1_waste_reasons",
+          "post_plants_v1_moveplants",
+          "post_plants_v1_changegrowthphases",
+          "delete_plants_v1",
+          "post_plants_v1_additives",
+          "post_plants_v1_waste",
+          "post_plants_v1_additives_bylocation",
+          "post_plants_v1_create_plantings",
+          "post_plants_v1_create_plantbatch_packages",
+          "post_plants_v1_manicureplants",
+          "post_plants_v1_harvestplants",
+          "get_plants_v2_additives_types",
+          "get_plants_v2_id",
+          "get_plants_v2_label",
+          "get_plants_v2_vegetative",
+          "get_plants_v2_flowering",
+          "get_plants_v2_onhold",
+          "get_plants_v2_inactive",
+          "get_plants_v2_additives",
+          "get_plants_v2_growthphases",
+          "get_plants_v2_waste_reasons",
+          "post_plants_v2_additives",
+          "post_plants_v2_additives_bylocation",
+          "post_plants_v2_plantings",
+          "post_plants_v2_plantbatch_packages",
+          "post_plants_v2_manicure",
+          "put_plants_v2_location",
+          "put_plants_v2_growthphase",
+          "put_plants_v2_tag",
+          "put_plants_v2_strain",
+          "put_plants_v2_harvest",
+          "put_plants_v2_merge",
+          "delete_plants_v2",
+          "post_plants_v2_waste",
+          "get_plants_v2_waste_methods_all",
+          "put_plants_v2_split"
+        ]
+      },
+      {
+        "Name": "Sales",
+        "Endpoints": [
+          "get_sales_v1_customertypes",
+          "get_sales_v1_patientregistration_locations",
+          "get_sales_v1_deliveries_active",
+          "get_sales_v1_deliveries_inactive",
+          "get_sales_v1_deliveries_id",
+          "get_sales_v1_deliveries_returnreasons",
+          "post_sales_v1_deliveries",
+          "put_sales_v1_deliveries",
+          "put_sales_v1_deliveries_hub",
+          "put_sales_v1_deliveries_hub_accept",
+          "put_sales_v1_deliveries_complete",
+          "put_sales_v1_deliveries_hub_depart",
+          "put_sales_v1_deliveries_hub_verifyID",
+          "delete_sales_v1_deliveries_id",
+          "get_sales_v1_counties",
+          "get_sales_v1_paymenttypes",
+          "get_sales_v1_receipts_active",
+          "get_sales_v1_receipts_inactive",
+          "get_sales_v1_receipts_id",
+          "post_sales_v1_receipts",
+          "put_sales_v1_receipts",
+          "delete_sales_v1_receipts_id",
+          "get_sales_v1_transactions",
+          "get_sales_v1_transactions_salesDateStart_salesDateEnd",
+          "post_sales_v1_transactions_date",
+          "put_sales_v1_transactions_date",
+          "get_sales_v1_deliveries_retailer_active",
+          "get_sales_v1_deliveries_retailer_inactive",
+          "get_sales_v1_deliveries_retailer_id",
+          "post_sales_v1_deliveries_retailer",
+          "put_sales_v1_deliveries_retailer",
+          "delete_sales_v1_deliveries_retailer_id",
+          "post_sales_v1_deliveries_retailer_depart",
+          "post_sales_v1_deliveries_retailer_restock",
+          "post_sales_v1_deliveries_retailer_sale",
+          "post_sales_v1_deliveries_retailer_end",
+          "get_sales_v2_customertypes",
+          "get_sales_v2_patientregistration_locations",
+          "get_sales_v2_deliveries_id",
+          "get_sales_v2_deliveries_active",
+          "get_sales_v2_deliveries_inactive",
+          "get_sales_v2_deliveries_returnreasons",
+          "get_sales_v2_counties",
+          "get_sales_v2_paymenttypes",
+          "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_active",
+          "get_sales_v2_receipts_inactive",
+          "post_sales_v2_deliveries",
+          "post_sales_v2_receipts",
+          "put_sales_v2_deliveries_hub",
+          "put_sales_v2_deliveries_hub_accept",
+          "put_sales_v2_deliveries_complete",
+          "put_sales_v2_deliveries_hub_depart",
+          "put_sales_v2_deliveries_hub_verifyID",
+          "put_sales_v2_deliveries",
+          "put_sales_v2_receipts",
+          "put_sales_v2_receipts_finalize",
+          "put_sales_v2_receipts_unfinalize",
+          "delete_sales_v2_deliveries_id",
+          "delete_sales_v2_receipts_id",
+          "get_sales_v2_deliveries_retailer_active",
+          "get_sales_v2_deliveries_retailer_inactive",
+          "get_sales_v2_deliveries_retailer_id",
+          "post_sales_v2_deliveries_retailer",
+          "put_sales_v2_deliveries_retailer",
+          "delete_sales_v2_deliveries_retailer_id",
+          "post_sales_v2_deliveries_retailer_depart",
+          "post_sales_v2_deliveries_retailer_restock",
+          "post_sales_v2_deliveries_retailer_sale",
+          "post_sales_v2_deliveries_retailer_end"
+        ]
+      },
+      {
+        "Name": "Strains",
+        "Endpoints": [
+          "get_strains_v1_id",
+          "get_strains_v1_active",
+          "post_strains_v1_create",
+          "post_strains_v1_update",
+          "delete_strains_v1_id",
+          "get_strains_v2_id",
+          "get_strains_v2_active",
+          "get_strains_v2_inactive",
+          "post_strains_v2",
+          "put_strains_v2",
+          "delete_strains_v2_id"
+        ]
+      },
+      {
+        "Name": "Transfers",
+        "Endpoints": [
+          "get_transfers_v1_incoming",
+          "get_transfers_v1_outgoing",
+          "get_transfers_v1_rejected",
+          "get_transfers_v1_id_deliveries",
+          "get_transfers_v1_deliveries_id_transporters",
+          "get_transfers_v1_deliveries_id_transporters_details",
+          "get_transfers_v1_deliveries_id_packages",
+          "get_transfers_v1_deliveries_id_packages_wholesale",
+          "get_transfers_v1_deliveries_package_id_requiredlabtestbatches",
+          "get_transfers_v1_deliveries_packages_states",
+          "post_transfers_v1_external_incoming",
+          "put_transfers_v1_external_incoming",
+          "delete_transfers_v1_external_incoming_id",
+          "get_transfers_v1_templates",
+          "get_transfers_v1_templates_id_deliveries",
+          "get_transfers_v1_templates_deliveries_id_transporters",
+          "get_transfers_v1_templates_deliveries_id_transporters_details",
+          "get_transfers_v1_templates_deliveries_id_packages",
+          "post_transfers_v1_templates",
+          "put_transfers_v1_templates",
+          "delete_transfers_v1_templates_id",
+          "get_transfers_v1_types",
+          "get_transfers_v2_hub",
+          "get_transfers_v2_incoming",
+          "get_transfers_v2_outgoing",
+          "get_transfers_v2_rejected",
+          "get_transfers_v2_id_deliveries",
+          "get_transfers_v2_deliveries_id_transporters",
+          "get_transfers_v2_deliveries_id_transporters_details",
+          "get_transfers_v2_deliveries_id_packages",
+          "get_transfers_v2_deliveries_id_packages_wholesale",
+          "get_transfers_v2_deliveries_package_id_requiredlabtestbatches",
+          "get_transfers_v2_deliveries_packages_states",
+          "get_transfers_v2_templates_outgoing",
+          "get_transfers_v2_templates_outgoing_id_deliveries",
+          "get_transfers_v2_templates_outgoing_deliveries_id_transporters",
+          "get_transfers_v2_templates_outgoing_deliveries_id_transporters_details",
+          "get_transfers_v2_templates_outgoing_deliveries_id_packages",
+          "get_transfers_v2_types",
+          "post_transfers_v2_external_incoming",
+          "post_transfers_v2_templates_outgoing",
+          "put_transfers_v2_external_incoming",
+          "put_transfers_v2_templates_outgoing",
+          "delete_transfers_v2_external_incoming_id",
+          "delete_transfers_v2_templates_outgoing_id"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active",
+          "get_unitsofmeasure_v2_active",
+          "get_unitsofmeasure_v2_inactive"
+        ]
+      },
+      {
+        "Name": "Tags",
+        "Endpoints": [
+          "get_tags_v2_plant_available",
+          "get_tags_v2_package_available"
+        ]
+      }
+    ]
+  },
+  {
+    "State": "ny",
+    "Sections": []
   },
   {
     "State": "oh",
@@ -7742,6 +7847,14 @@
     ]
   },
   {
+    "State": "pa",
+    "Sections": []
+  },
+  {
+    "State": "pr",
+    "Sections": []
+  },
+  {
     "State": "ri",
     "Sections": [
       {
@@ -8223,6 +8336,10 @@
     ]
   },
   {
+    "State": "sc",
+    "Sections": []
+  },
+  {
     "State": "sd",
     "Sections": [
       {
@@ -8661,6 +8778,38 @@
     ]
   },
   {
+    "State": "tn",
+    "Sections": []
+  },
+  {
+    "State": "tx",
+    "Sections": []
+  },
+  {
+    "State": "ut",
+    "Sections": []
+  },
+  {
+    "State": "va",
+    "Sections": []
+  },
+  {
+    "State": "vi",
+    "Sections": []
+  },
+  {
+    "State": "vt",
+    "Sections": []
+  },
+  {
+    "State": "wa",
+    "Sections": []
+  },
+  {
+    "State": "wi",
+    "Sections": []
+  },
+  {
     "State": "wv",
     "Sections": [
       {
@@ -9048,5 +9197,9 @@
         ]
       }
     ]
+  },
+  {
+    "State": "wy",
+    "Sections": []
   }
 ]

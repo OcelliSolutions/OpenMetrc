@@ -1,0 +1,61 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="locations">
+		Locations
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-ak.metrc.com/</code></h3>
+	<h3 id="get_locations_v1_active">GET /locations/v1/active</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Locations</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return the list of active locations.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /locations/v1/active?licenseNumber=123-ABC</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>[
+  {
+    "Id": 1,
+    "Name": "Harvest Location",
+    "LocationTypeId": 1,
+    "LocationTypeName": "Default",
+    "ForPlantBatches": true,
+    "ForPlants": true,
+    "ForHarvests": true,
+    "ForPackages": true
+  },
+  {
+    "Id": 2,
+    "Name": "Plants Location",
+    "LocationTypeId": 2,
+    "LocationTypeName": "Planting Station",
+    "ForPlantBatches": false,
+    "ForPlants": true,
+    "ForHarvests": false,
+    "ForPackages": false
+  }
+]</code></pre>
+</section>

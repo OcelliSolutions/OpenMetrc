@@ -1,0 +1,181 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="harvests">
+		Harvests
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-gu.metrc.com/</code></h3>
+	<h3 id="post_harvests_v1_create_packages_testing">POST /harvests/v1/create/packages/testing</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>View Harvests</strong></td></tr><tr><td><strong>Manage Harvests</strong></td></tr><tr><td><strong>View Packages</strong></td></tr><tr><td><strong>Create/Submit/Discontinue Packages</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /harvests/v1/create/packages/testing?licenseNumber=123-ABC<code>[
+  {
+    "Tag": "ABCDEF012345670000020201",
+    "Location": null,
+    "Item": "Buds",
+    "UnitOfWeight": "Grams",
+    "PatientLicenseNumber": "X00001",
+    "Note": "This is a note.",
+    "IsProductionBatch": false,
+    "ProductionBatchNumber": null,
+    "IsTradeSample": false,
+    "IsDonation": false,
+    "ProductRequiresRemediation": false,
+    "RemediateProduct": false,
+    "RemediationMethodId": null,
+    "RemediationDate": null,
+    "RemediationSteps": null,
+    "ActualDate": "2015-12-15",
+    "ExpirationDate": null,
+    "SellByDate": null,
+    "UseByDate": null,
+    "Ingredients": [
+      {
+        "HarvestId": 2,
+        "HarvestName": null,
+        "Weight": 100.23,
+        "UnitOfWeight": "Grams"
+      },
+      {
+        "HarvestId": null,
+        "HarvestName": "2018-04-03-Harvest Location-M",
+        "Weight": 25.1,
+        "UnitOfWeight": "Grams"
+      }
+    ]
+  },
+  {
+    "Tag": "ABCDEF012345670000020202",
+    "Location": null,
+    "Item": "Buds",
+    "UnitOfWeight": "Grams",
+    "PatientLicenseNumber": "X00001",
+    "Note": "This is a note.",
+    "IsProductionBatch": false,
+    "ProductionBatchNumber": null,
+    "IsTradeSample": true,
+    "IsDonation": false,
+    "ProductRequiresRemediation": false,
+    "RemediateProduct": false,
+    "RemediationMethodId": null,
+    "RemediationDate": null,
+    "RemediationSteps": null,
+    "ActualDate": "2015-12-15",
+    "ExpirationDate": null,
+    "SellByDate": null,
+    "UseByDate": null,
+    "Ingredients": [
+      {
+        "HarvestId": 2,
+        "HarvestName": null,
+        "Weight": 100.23,
+        "UnitOfWeight": "Grams"
+      },
+      {
+        "HarvestId": null,
+        "HarvestName": "2018-04-03-Harvest Location-M",
+        "Weight": 25.1,
+        "UnitOfWeight": "Grams"
+      }
+    ]
+  },
+  {
+    "Tag": "ABCDEF012345670000020203",
+    "Location": null,
+    "Item": "Shake",
+    "UnitOfWeight": "Grams",
+    "PatientLicenseNumber": "",
+    "Note": null,
+    "IsProductionBatch": true,
+    "ProductionBatchNumber": "PB-2015-12-15",
+    "IsTradeSample": false,
+    "IsDonation": false,
+    "ProductRequiresRemediation": false,
+    "RemediateProduct": false,
+    "RemediationMethodId": null,
+    "RemediationDate": null,
+    "RemediationSteps": null,
+    "ActualDate": "2015-12-15",
+    "ExpirationDate": null,
+    "SellByDate": null,
+    "UseByDate": null,
+    "Ingredients": [
+      {
+        "HarvestId": null,
+        "HarvestName": "2018-04-03-Harvest Location-M",
+        "Weight": 50.0,
+        "UnitOfWeight": "Grams"
+      },
+      {
+        "HarvestId": 4,
+        "HarvestName": null,
+        "Weight": 1.0,
+        "UnitOfWeight": "Grams"
+      }
+    ]
+  },
+  {
+    "Tag": "ABCDEF012345670000020204",
+    "Location": null,
+    "Item": "Shake",
+    "UnitOfWeight": "Grams",
+    "PatientLicenseNumber": "X00002",
+    "Note": null,
+    "IsProductionBatch": true,
+    "ProductionBatchNumber": "PB-2015-12-15",
+    "IsTradeSample": true,
+    "IsDonation": false,
+    "ProductRequiresRemediation": false,
+    "RemediateProduct": false,
+    "RemediationMethodId": null,
+    "RemediationDate": null,
+    "RemediationSteps": null,
+    "ActualDate": "2015-12-15",
+    "ExpirationDate": null,
+    "SellByDate": null,
+    "UseByDate": null,
+    "Ingredients": [
+      {
+        "HarvestId": null,
+        "HarvestName": "2018-04-03-Harvest Location-M",
+        "Weight": 50.0,
+        "UnitOfWeight": "Grams"
+      },
+      {
+        "HarvestId": 4,
+        "HarvestName": null,
+        "Weight": 1.0,
+        "UnitOfWeight": "Grams"
+      }
+    ]
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><span class=	ext-muted"><em>No response</em></span></pre>
+</section>

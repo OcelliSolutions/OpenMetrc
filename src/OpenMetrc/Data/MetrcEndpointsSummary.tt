@@ -49,6 +49,7 @@ All endpoints should be mapped automatically in the NuGet package and OpenApi do
 
 IEnumerable<string> GetDistinctStates(){
     return (from ss in stateSummaries
+            where ss["Sections"].Count() > 1
             select ss["State"].ToString().ToUpper()).Distinct().OrderBy(e => e);
 }
 

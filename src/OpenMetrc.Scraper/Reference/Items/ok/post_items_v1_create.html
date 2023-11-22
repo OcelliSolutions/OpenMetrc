@@ -1,0 +1,152 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="items">
+		Items
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-ok.metrc.com/</code></h3>
+	<h3 id="post_items_v1_create">POST /items/v1/create</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Items</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>POST /items/v1/create?licenseNumber=123-ABC<code>[
+  {
+    "ItemCategory": "Buds",
+    "Name": "Buds Item",
+    "UnitOfMeasure": "Ounces",
+    "Strain": "Spring Hill Kush",
+    "ItemBrand": null,
+    "AdministrationMethod": null,
+    "UnitCbdPercent": null,
+    "UnitCbdContent": null,
+    "UnitCbdContentUnitOfMeasure": null,
+    "UnitCbdContentDose": null,
+    "UnitCbdContentDoseUnitOfMeasure": null,
+    "UnitThcPercent": null,
+    "UnitThcContent": null,
+    "UnitThcContentUnitOfMeasure": null,
+    "UnitThcContentDose": null,
+    "UnitThcContentDoseUnitOfMeasure": null,
+    "UnitVolume": null,
+    "UnitVolumeUnitOfMeasure": null,
+    "UnitWeight": null,
+    "UnitWeightUnitOfMeasure": null,
+    "ServingSize": null,
+    "SupplyDurationDays": null,
+    "NumberOfDoses": null,
+    "PublicIngredients": null,
+    "ItemIngredients": null,
+    "Description": null,
+    "Allergens": null,
+    "ProductImageFileSystemIds": null,
+    "ProductPhotoDescription": null,
+    "LabelImageFileSystemIds": null,
+    "LabelPhotoDescription": null,
+    "PackagingImageFileSystemIds": null,
+    "PackagingPhotoDescription": null
+  },
+  {
+    "ItemCategory": "Infused (edible)",
+    "Name": "Infused Item",
+    "UnitOfMeasure": "Each",
+    "Strain": null,
+    "ItemBrand": null,
+    "AdministrationMethod": null,
+    "UnitCbdPercent": null,
+    "UnitCbdContent": null,
+    "UnitCbdContentUnitOfMeasure": null,
+    "UnitCbdContentDose": null,
+    "UnitCbdContentDoseUnitOfMeasure": null,
+    "UnitThcPercent": null,
+    "UnitThcContent": 10.0,
+    "UnitThcContentUnitOfMeasure": "Milligrams",
+    "UnitThcContentDose": null,
+    "UnitThcContentDoseUnitOfMeasure": null,
+    "UnitVolume": null,
+    "UnitVolumeUnitOfMeasure": null,
+    "UnitWeight": 150.0,
+    "UnitWeightUnitOfMeasure": "Milligrams",
+    "ServingSize": null,
+    "SupplyDurationDays": null,
+    "NumberOfDoses": null,
+    "PublicIngredients": null,
+    "ItemIngredients": null,
+    "Description": null,
+    "Allergens": "Allergens",
+    "ProductImageFileSystemIds": [
+      5
+    ],
+    "ProductPhotoDescription": "Product Photo Description",
+    "LabelImageFileSystemIds": [
+      3
+    ],
+    "LabelPhotoDescription": "Label Photo Description",
+    "PackagingImageFileSystemIds": [
+      22
+    ],
+    "PackagingPhotoDescription": "Packaging Photo Description"
+  },
+  {
+    "ItemCategory": "Infused (edible)",
+    "Name": "Infused Juice",
+    "UnitOfMeasure": "Each",
+    "Strain": null,
+    "ItemBrand": null,
+    "AdministrationMethod": null,
+    "UnitCbdPercent": null,
+    "UnitCbdContent": null,
+    "UnitCbdContentUnitOfMeasure": null,
+    "UnitCbdContentDose": null,
+    "UnitCbdContentDoseUnitOfMeasure": null,
+    "UnitThcPercent": null,
+    "UnitThcContent": 10.0,
+    "UnitThcContentUnitOfMeasure": "Milligrams",
+    "UnitThcContentDose": 5.0,
+    "UnitThcContentDoseUnitOfMeasure": "Milligrams",
+    "UnitVolume": 150.0,
+    "UnitVolumeUnitOfMeasure": "Milliliters",
+    "UnitWeight": null,
+    "UnitWeightUnitOfMeasure": null,
+    "ServingSize": null,
+    "SupplyDurationDays": null,
+    "NumberOfDoses": 2,
+    "PublicIngredients": null,
+    "ItemIngredients": null,
+    "Description": null,
+    "Allergens": null,
+    "ProductImageFileSystemIds": null,
+    "ProductPhotoDescription": null,
+    "LabelImageFileSystemIds": null,
+    "LabelPhotoDescription": null,
+    "PackagingImageFileSystemIds": null,
+    "PackagingPhotoDescription": null
+  }
+]</code></pre>
+
+	<h4>Example Response</h4>
+	<pre><span class=	ext-muted"><em>No response</em></span></pre>
+</section>
