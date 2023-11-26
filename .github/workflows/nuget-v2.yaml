@@ -23,14 +23,14 @@ jobs:
         with:
           dotnet-version: "8.0.x"
 
+      - name: "Write testing api keys to file"
+        run: 'echo "$METRC_API_KEYS" > tests/OpenMetrc.V2.Tests/api_keys.json'
+        shell: bash
+        env:
+          METRC_API_KEYS: ${{secrets.METRC_API_KEYS}}
+
       - name: "Restore packages"
         run: dotnet restore
-
-      #- name: "Write testing api keys to file"
-      #  run: 'echo "$METRC_API_KEYS" > tests/OpenMetrc.V2.Tests/api_keys.json'
-      #  shell: bash
-      #  env:
-      #    METRC_API_KEYS: ${{secrets.METRC_API_KEYS}}
 
       - name: "Build projects"
         run: dotnet build --no-restore --configuration Release
