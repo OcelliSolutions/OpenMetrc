@@ -8,14 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.54" />
     <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.20.0" />
     <PackageReference Include="NSwag.Core.Yaml" Version="13.20.0" />
-    <PackageReference Include="PluralizeService.Core" Version="1.2.21147.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="OpenApi\" />
+    <ProjectReference Include="..\OpenMetrc.V1.Builder\OpenMetrc.V1.Builder.csproj">
+      <TreatAsUsed>true</TreatAsUsed>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenMetrc.V2.Builder\OpenMetrc.V2.Builder.csproj">
+      <TreatAsUsed>true</TreatAsUsed>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>

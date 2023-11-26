@@ -1,4 +1,5 @@
 ﻿namespace OpenMetrc.Scraper;
+
 internal static class StringService
 {
     // convert a string to title case.
@@ -7,8 +8,16 @@ internal static class StringService
         var newWord = true;
         foreach (var c in s)
         {
-            if (newWord) { yield return char.ToUpper(c); newWord = false; }
-            else yield return c;
+            if (newWord)
+            {
+                yield return char.ToUpper(c);
+                newWord = false;
+            }
+            else
+            {
+                yield return c;
+            }
+
             if (c == ' ') newWord = true;
         }
     }

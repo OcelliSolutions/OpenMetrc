@@ -1,24 +1,16 @@
 ﻿using OpenMetrc.V1.Tests.Fixtures;
-using System.Collections.Generic;
 
 namespace OpenMetrc.V1.Tests.Services;
 
-public class MetrcServiceTests : IClassFixture<SharedFixture>
+public class MetrcServiceTests(SharedFixture sharedFixture) : IClassFixture<SharedFixture>
 {
-    public MetrcServiceTests(SharedFixture sharedFixture)
-    {
-        Fixture = sharedFixture;
-    }
-
-    private SharedFixture Fixture { get; }
-
     [SkippableFact]
     public async Task MetrcClient_ChangeCredentials_ShouldCascade()
     {
-        Skip.If(Fixture.ApiKeys.Count < 2, "WARN: At least two sample API Keys are required for this test.");
+        Skip.If(sharedFixture.ApiKeys.Count < 2, "WARN: At least two sample API Keys are required for this test.");
 
-        var client0 = Fixture.ApiKeys[0];
-        var client1 = Fixture.ApiKeys[1];
+        var client0 = sharedFixture.ApiKeys[0];
+        var client1 = sharedFixture.ApiKeys[1];
         var facilities0 = await client0.MetrcService.Facilities.GetFacilitiesAsync();
 
         client0.OpenMetrcConfig = client1.OpenMetrcConfig;

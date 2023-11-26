@@ -6,6 +6,8 @@ OpenMETRC is two part project. The first is an OpenAPI specification for the MET
 * Rate Limiting
 * State/Endpoint Validation
 
+*With the rollout of the V2 of the API, this project is now split into two versions*
+
 The [METRC State &amp; Endpoint Coverage](src/OpenMetrc/Data/MetrcEndpointsSummary.md) report will show the coverage of this application. _Currently, only GET endpoints are tested although POST, PUT, and DELETE are implemented as well._
 
 ## Installation
@@ -13,7 +15,8 @@ The [METRC State &amp; Endpoint Coverage](src/OpenMetrc/Data/MetrcEndpointsSumma
 OpenMETRC is [available on NuGet](https://github.com/codecooper/OpenMetrc/). Use the package manager console in Visual Studio to install it:
 
 ```powershell
-Install-Package OpenMETRC
+Install-Package OpenMETRC.V1
+Install-Package OpenMETRC.V2
 ```
 
 If you're using .NET Core, you can use the `dotnet` command from your favorite shell:
@@ -98,11 +101,28 @@ The first step is to create an OpenAPI spec for a library that you do not own. S
 
 Given a list of all possible states that METRC may be deployed do, scrape the documentation sites and compile a list (`state-summaries.json`) of all the states and the endpoints that they expose.
 
-### [OpenMETRC: Builder](src/OpenMetrc.Builder/readme.md)
+### [OpenMETRC: Builder]
+
+The Builder is the place where the scraped OpenAPI spec is turned into a regular .NET web api project and is used to suppliment the scaped code. Use this project to do the following:
+
+* Overide non-standard parameters
+* Assign the requst and response objects
+* Assign the response codes
+* A gut check to ensure that the code from the scaper is valid
+
+#### [OpenMETRC: Builder.Domain](src/OpenMetrc.Builder.Domain/readme.md)
+
+Domain models, requests, and responses for METRC.
+
+#### [OpenMETRC: Builder.Common](src/OpenMetrc.Builder.Common/readme.md)
+
+Common tools and filters used by the Builder apps.
+
+#### [OpenMETRC: Builder](src/open-metrc-builder.md)
 
 This project is an OpenAPI spec builder for the METRC platform. This uses several helpers to ensure that all endpoints scraped and are mapped to controllers and endpoints with the appropriate return types and error structures. The final result of this tool is `open-metrc-swagger.yaml`. This file can use used by any platform for code generation.
 
-### [OpenMETRC](src/OpenMetrc/readme.md)
+### [OpenMETRC](src/open-metrc.md)
 
 The core NuGet package and final product.
 

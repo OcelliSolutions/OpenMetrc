@@ -43,7 +43,7 @@ public class EndpointCoverage
             .Where(ev => usedEnumsCount.GetValueOrDefault(ev) != 1)
             .ToList();
 
-        Assert.True(!incorrectlyUsedEnums.Any(),
+        Assert.True(incorrectlyUsedEnums.Count == 0,
             $"The following enum values ({incorrectlyUsedEnums.Count}) are not correctly used (should be used exactly once): {string.Join(", ", incorrectlyUsedEnums)}");
     }
 }

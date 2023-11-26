@@ -4,15 +4,8 @@ using System.Text.Json;
 
 namespace OpenMetrc.V1.Tests.Helpers;
 
-public class AdditionalPropertiesHelper
+public class AdditionalPropertiesHelper(ITestOutputHelper testOutputHelper)
 {
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    public AdditionalPropertiesHelper(ITestOutputHelper testOutputHelper)
-    {
-        _testOutputHelper = testOutputHelper;
-    }
-
     public void CheckAdditionalProperties(object? obj, string path)
     {
         if (obj == null) return;
@@ -36,7 +29,7 @@ public class AdditionalPropertiesHelper
                     .ToList();
 
                 if (nonNullProperties.Count == 0) continue;
-                _testOutputHelper.WriteLine("{0}: {1}", currentPath, JsonSerializer.Serialize(nonNullProperties));
+                testOutputHelper.WriteLine("{0}: {1}", currentPath, JsonSerializer.Serialize(nonNullProperties));
 
                 Assert.Empty(nonNullProperties);
             }

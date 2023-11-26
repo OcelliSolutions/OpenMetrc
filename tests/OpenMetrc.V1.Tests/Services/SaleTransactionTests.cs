@@ -37,6 +37,7 @@ public class SaleTransactionTests
     {
         var testEndpointResult = new TestEndpointResult();
         var daysBack = -1;
+        var today = DateOnly.FromDateTime(DateTime.Now);
         foreach (var apiKey in sharedFixture.ApiKeys)
             foreach (var facility in apiKey.Facilities)
                 do
@@ -44,8 +45,8 @@ public class SaleTransactionTests
                     {
                         var saleTransactions = sharedFixture.SafeExecutor(() => apiKey.MetrcService.Sales
                             .GetSaleTransactionByDateRangeAsync(
-                                DateTime.UtcNow.AddDays(daysBack - 1),
-                                DateTime.UtcNow.AddDays(daysBack),
+                                today.AddDays(daysBack - 1),
+                                today.AddDays(daysBack),
                                 facility.License.Number).Result);
                         if (saleTransactions == null) continue;
                         testEndpointResult.WasTested = testEndpointResult.WasTested || saleTransactions.Any();

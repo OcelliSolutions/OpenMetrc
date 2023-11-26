@@ -1,4 +1,5 @@
 ﻿namespace OpenMetrc.Scraper.Models;
+
 internal class Section
 {
     public Section(string name)

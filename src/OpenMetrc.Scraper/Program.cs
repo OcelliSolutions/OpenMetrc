@@ -1,6 +1,6 @@
-﻿using OpenMetrc.Scraper;
+﻿using System.Collections.Concurrent;
+using OpenMetrc.Scraper;
 using OpenMetrc.Scraper.Models;
-using System.Collections.Concurrent;
 
 //all possible states and province codes that METRC could be operating in.
 var states = new List<string>
@@ -13,10 +13,10 @@ var stateSummaries = new ConcurrentBag<StateSummary>();
 double stateCounter = 0;
 var consoleLock = new object();
 var errors = new ConcurrentBag<Exception>();
-/*
+
 StateService.DeleteReferenceDocuments();
 
-Parallel.ForEach(states, (state) =>
+Parallel.ForEach(states, state =>
 {
     try
     {
@@ -41,16 +41,13 @@ if (!errors.IsEmpty)
 {
     Console.WriteLine();
     Console.ForegroundColor = ConsoleColor.Red;
-    foreach (var exception in errors)
-    {
-        Console.WriteLine(exception.Message);
-    }
+    foreach (var exception in errors) Console.WriteLine(exception.Message);
     Console.ResetColor();
     Console.WriteLine();
 }
 
-await StateService.WriteStateSummary(stateSummaries.ToList()); // Convert ConcurrentBag to List
-*/
+await StateService.WriteStateSummary(stateSummaries.ToList());
+
 
 var v1Document = OpenApiService.CreateOpenApiDocument("../../../Reference", "v1");
 await OpenApiService.WriteOpenApiDocument(v1Document);

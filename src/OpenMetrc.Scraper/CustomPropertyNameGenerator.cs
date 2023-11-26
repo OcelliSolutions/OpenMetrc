@@ -2,6 +2,7 @@
 using NJsonSchema.CodeGeneration;
 
 namespace OpenMetrc.Scraper;
+
 internal class CustomPropertyNameGenerator : IPropertyNameGenerator
 {
     /// <summary>Generates the property name.</summary>

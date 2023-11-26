@@ -1,18 +1,17 @@
-﻿using HtmlAgilityPack;
-using OpenMetrc.Scraper.Models;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using HtmlAgilityPack;
+using OpenMetrc.Scraper.Models;
 
 namespace OpenMetrc.Scraper;
+
 internal static class StateService
 {
     // This ensures that any states that have gone offline or have removed endpoints are taken care of
-    internal static void DeleteReferenceDocuments()
-    {
+    internal static void DeleteReferenceDocuments() =>
         // Ensure the directory exists
         Directory.Delete("../../../Reference", true);
-    }
 
     internal static async Task<StateSummary> ProcessState(string state)
     {
@@ -25,7 +24,7 @@ internal static class StateService
 
         var regex = new Regex("(?:[^a-z0-9_-]|(?<=['\"])s)",
             RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Compiled);
-        var versions = new List<string>() { "version-1-collapse", "version-2-collapse" };
+        var versions = new List<string> { "version-1-collapse", "version-2-collapse" };
 
         await ProcessHtmlDocumentAsync(htmlDoc, versions, regex, stateSummary);
         return stateSummary;
@@ -34,7 +33,8 @@ internal static class StateService
     internal static async Task WriteStateSummary(List<StateSummary> stateSummaries)
     {
         const string path = "../../../../../state-summaries.json";
-        await File.WriteAllTextAsync(path, FormatJsonText(JsonSerializer.Serialize(stateSummaries.OrderBy(s => s.State))));
+        await File.WriteAllTextAsync(path,
+            FormatJsonText(JsonSerializer.Serialize(stateSummaries.OrderBy(s => s.State))));
 
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(@$"A summary of all METRC states has been written to: {path}");
@@ -56,17 +56,15 @@ internal static class StateService
     }
 
 
-    private static async Task ProcessHtmlDocumentAsync(HtmlDocument htmlDoc, List<string> versions, Regex regex, StateSummary stateSummary)
+    private static async Task ProcessHtmlDocumentAsync(HtmlDocument htmlDoc, List<string> versions, Regex regex,
+        StateSummary stateSummary)
     {
         foreach (var version in versions)
         {
             var doc = htmlDoc.GetElementbyId(version);
             if (doc == null) continue;
 
-            foreach (var link in doc.Descendants("a"))
-            {
-                await ProcessLinkAsync(link, regex, stateSummary);
-            }
+            foreach (var link in doc.Descendants("a")) await ProcessLinkAsync(link, regex, stateSummary);
         }
     }
 
@@ -80,12 +78,9 @@ internal static class StateService
         var endpoint = regex.Replace(split[1], string.Empty).TrimEnd('_');
 
         var section = stateSummary.Sections.FirstOrDefault(s => s.Name == sectionName)
-            ?? new Section(sectionName);
+                      ?? new Section(sectionName);
 
-        if (!stateSummary.Sections.Contains(section))
-        {
-            stateSummary.Sections.Add(section);
-        }
+        if (!stateSummary.Sections.Contains(section)) stateSummary.Sections.Add(section);
 
         section.Endpoints.Add(endpoint);
         var endpointContent = await GetEndpointContentAsync(stateSummary.State, sectionName, $"{split[1]}.{split[2]}");

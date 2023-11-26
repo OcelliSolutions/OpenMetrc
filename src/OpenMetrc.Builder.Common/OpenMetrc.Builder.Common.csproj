@@ -5,10 +5,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\nuget\Swashbuckle.AspNetCore.SwaggerGen\Swashbuckle.AspNetCore.SwaggerGen.csproj" />
     <ProjectReference Include="..\OpenMetrc.Builder.Domain\OpenMetrc.Builder.Domain.csproj" />

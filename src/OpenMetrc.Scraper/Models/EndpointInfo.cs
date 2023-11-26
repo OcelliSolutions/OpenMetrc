@@ -1,4 +1,5 @@
 ﻿namespace OpenMetrc.Scraper.Models;
+
 internal class EndpointInfo
 {
     public string ReferenceId { get; set; } = null!;

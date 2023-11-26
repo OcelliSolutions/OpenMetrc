@@ -13,7 +13,7 @@ public class FacilityTests
         foreach (var apiKey in sharedFixture.ApiKeys)
             try
             {
-                testEndpointResult.WasTested = testEndpointResult.WasTested || apiKey.Facilities.Any();
+                testEndpointResult.WasTested = testEndpointResult.WasTested || apiKey.Facilities.Count != 0;
                 foreach (var facility in apiKey.Facilities)
                     _additionalPropertiesHelper.CheckAdditionalProperties(facility, facility.License.Number);
             }
@@ -41,7 +41,7 @@ public class FacilityTests
                 testEndpointResult.Unauthorized++;
             }
 
-        Skip.If(!testEndpointResult.WasTested && testEndpointResult.Unauthorized > 0,
+        Skip.If(testEndpointResult is { WasTested: false, Unauthorized: > 0 },
             "WARN: All responses came back as 401 Unauthorized. Could not test.");
         Skip.IfNot(testEndpointResult.WasTested, "WARN: No facilities were returned.");
     }

@@ -3,12 +3,7 @@
 namespace OpenMetrc.V1.Tests.Attributes;
 
 [AttributeUsage(AttributeTargets.Method)]
-public class TestPriorityAttribute : Attribute
+public class TestPriorityAttribute(int priority) : Attribute
 {
-    public TestPriorityAttribute(int priority)
-    {
-        Priority = priority;
-    }
-
-    public int Priority { get; private set; }
+    public int Priority { get; private set; } = priority;
 }

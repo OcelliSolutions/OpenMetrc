@@ -12,7 +12,7 @@ internal class ParameterInfo
     public string? Format { get; set; }
     public OpenApiParameterKind Kind { get; set; }
 
-    public OpenApiParameter OpenApiParameter => new OpenApiParameter()
+    public OpenApiParameter OpenApiParameter => new()
     {
         Name = Name,
         IsRequired = !IsOptional,

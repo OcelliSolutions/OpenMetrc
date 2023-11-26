@@ -1,4 +1,6 @@
-﻿using HtmlAgilityPack;
+﻿using System.Globalization;
+using System.Text.RegularExpressions;
+using HtmlAgilityPack;
 using NJsonSchema;
 using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
@@ -7,28 +9,30 @@ using NSwag.CodeGeneration.CSharp.Models;
 using NSwag.CodeGeneration.OperationNameGenerators;
 using OpenMetrc.Scraper.Models;
 using PluralizeService.Core;
-using System.Globalization;
-using System.Text.RegularExpressions;
 
 namespace OpenMetrc.Scraper;
-internal class OpenApiService
+
+internal partial class OpenApiService
 {
-    private static readonly Dictionary<string,string> OperationIds = new();
+    private static readonly Dictionary<string, string> OperationIds = new();
     private static readonly List<string> Int32Params = new() { "pageNumber", "pageSize" };
     private static readonly List<string> Int64Params = new() { "id", "packageId", "harvestId" };
     private static readonly List<string> BoolParams = new() { "isFromMotherPlant" };
     private static readonly List<string> DateTimeParams = new() { "lastModifiedStart", "lastModifiedEnd" };
-    private static readonly List<string> DateOnlyParams = new() { "checkinDateStart", "checkinDateEnd", "salesDateStart", "salesDateEnd", "date" };
+
+    private static readonly List<string> DateOnlyParams = new()
+        { "checkinDateStart", "checkinDateEnd", "salesDateStart", "salesDateEnd", "date" };
+
+    private static readonly char[] Separator = { '_', '-', ' ' };
 
     internal static OpenApiDocument CreateOpenApiDocument(string baseDirectory, string version)
     {
         var document = new OpenApiDocument
         {
-            Info = new OpenApiInfo { Title = "METRC API", Version = version },
-            Components = { Schemas  = {  }}
+            Info = new OpenApiInfo { Title = "METRC API", Version = version }
         };
 
-        var filePattern =$"*_{version}*.html";
+        var filePattern = $"*_{version}*.html";
         var filePaths = Directory.GetFiles(baseDirectory, filePattern, SearchOption.AllDirectories);
 
         foreach (var filePath in filePaths)
@@ -40,25 +44,22 @@ internal class OpenApiService
 
             var endpointInfo = ExtractEndpointInfo(htmlDoc);
 
-            if (!document.Paths.ContainsKey(endpointInfo.Url))
+            if (!document.Paths.TryGetValue(endpointInfo.Url, out var value))
             {
-                document.Paths.Add(endpointInfo.Url, new OpenApiPathItem());
+                value ??= new OpenApiPathItem();
+                document.Paths.Add(endpointInfo.Url, value);
             }
 
             var operation = new OpenApiOperation
             {
                 Summary = GetEndpointSummary(htmlDoc),
                 Description = GetEndpointRemarks(htmlDoc),
-                OperationId = endpointInfo.OperationId,
-                
+                OperationId = endpointInfo.OperationId
             };
-            foreach (var parameter in endpointInfo.Parameters)
-            {
-                operation.Parameters.Add(parameter.OpenApiParameter);
-            }
-            
-            operation.Responses.Add("200", new OpenApiResponse() { Description = "Ok"});
-            
+            foreach (var parameter in endpointInfo.Parameters) operation.Parameters.Add(parameter.OpenApiParameter);
+
+            operation.Responses.Add("200", new OpenApiResponse { Description = "Ok" });
+
             // Rest of your code
             operation.ExternalDocumentation = new OpenApiExternalDocumentation
             {
@@ -68,7 +69,7 @@ internal class OpenApiService
                 }
             };
             operation.Tags.Add(section);
-            document.Paths[endpointInfo.Url].TryAdd(endpointInfo.HttpMethod, operation);
+            value.TryAdd(endpointInfo.HttpMethod, operation);
         }
 
         return document;
@@ -86,7 +87,8 @@ internal class OpenApiService
         var endpointInfo = new EndpointInfo();
 
         // Extract the HTTP method and URL
-        var endpointHeader = htmlDoc.DocumentNode.SelectSingleNode("//h3[contains(@id, 'get_') or contains(@id, 'post_') or contains(@id, 'put_') or contains(@id, 'delete_')]");
+        var endpointHeader = htmlDoc.DocumentNode.SelectSingleNode(
+            "//h3[contains(@id, 'get_') or contains(@id, 'post_') or contains(@id, 'put_') or contains(@id, 'delete_')]");
         if (endpointHeader != null)
         {
             // Extract the operation ID from the id attribute of the h3 tag
@@ -103,7 +105,7 @@ internal class OpenApiService
         }
 
         // Extract route parameters from URL
-        var routeParamsMatches = Regex.Matches(endpointInfo.Url, @"\{([^\}]+)\}");
+        var routeParamsMatches = InlineRouteParameterRegex().Matches(endpointInfo.Url);
         foreach (Match match in routeParamsMatches)
         {
             var paramName = match.Groups[1].Value;
@@ -114,6 +116,7 @@ internal class OpenApiService
                 paramType = JsonObjectType.Integer;
                 paramFormat = "int64";
             }
+
             if (Int32Params.Contains(paramName))
                 paramType = JsonObjectType.Integer;
             if (BoolParams.Contains(paramName))
@@ -137,9 +140,10 @@ internal class OpenApiService
         }
 
         // Extract Parameters
-        var parameterTables = htmlDoc.DocumentNode.SelectNodes("//h4[contains(text(), 'Parameters')]/following-sibling::table[1]/tbody/tr");
+        var parameterTables =
+            htmlDoc.DocumentNode.SelectNodes(
+                "//h4[contains(text(), 'Parameters')]/following-sibling::table[1]/tbody/tr");
         if (parameterTables != null)
-        {
             foreach (var row in parameterTables)
             {
                 var paramName = row.SelectSingleNode("td[1]").InnerText.Trim();
@@ -147,7 +151,7 @@ internal class OpenApiService
                 var paramFormat = string.Empty;
 
                 paramName = paramName.Replace("optional", "");
-                if(paramName == "No parameters")
+                if (paramName == "No parameters")
                     continue;
 
                 if (Int64Params.Contains(paramName))
@@ -155,11 +159,9 @@ internal class OpenApiService
                     paramType = JsonObjectType.Integer;
                     paramFormat = "int64";
                 }
-                if (BoolParams.Contains(paramName))
-                {
-                    paramType = JsonObjectType.Boolean;
-                }
-                
+
+                if (BoolParams.Contains(paramName)) paramType = JsonObjectType.Boolean;
+
                 var parameterInfo = new ParameterInfo
                 {
                     Name = paramName,
@@ -174,29 +176,27 @@ internal class OpenApiService
                     parameterInfo.Type = JsonObjectType.Integer;
                 if (DateOnlyParams.Contains(paramName))
                     parameterInfo.Format = "date";
-                if (DateTimeParams.Contains(paramName) || row.InnerHtml.Contains("timestamp", StringComparison.OrdinalIgnoreCase))
+                if (DateTimeParams.Contains(paramName) ||
+                    row.InnerHtml.Contains("timestamp", StringComparison.OrdinalIgnoreCase))
                     parameterInfo.Format = "date-time";
 
                 endpointInfo.Parameters.Add(parameterInfo);
             }
-        }
 
         // Extract Example Request
         if (!endpointInfo.OperationId.StartsWith("Get"))
         {
-            var exampleRequest = htmlDoc.DocumentNode.SelectSingleNode("//h4[contains(text(), 'Example Request')]/following-sibling::pre/code");
-            if (exampleRequest != null)
-            {
-                endpointInfo.ExampleRequest = exampleRequest.InnerText.Trim();
-            }
+            var exampleRequest =
+                htmlDoc.DocumentNode.SelectSingleNode(
+                    "//h4[contains(text(), 'Example Request')]/following-sibling::pre/code");
+            if (exampleRequest != null) endpointInfo.ExampleRequest = exampleRequest.InnerText.Trim();
         }
 
         // Extract Example Response
-        var exampleResponse = htmlDoc.DocumentNode.SelectSingleNode("//h4[contains(text(), 'Example Response')]/following-sibling::pre/code");
-        if (exampleResponse != null)
-        {
-            endpointInfo.ExampleResponse = exampleResponse.InnerText.Trim();
-        }
+        var exampleResponse =
+            htmlDoc.DocumentNode.SelectSingleNode(
+                "//h4[contains(text(), 'Example Response')]/following-sibling::pre/code");
+        if (exampleResponse != null) endpointInfo.ExampleResponse = exampleResponse.InnerText.Trim();
 
         return endpointInfo;
     }
@@ -212,16 +212,19 @@ internal class OpenApiService
     {
         // scrape the permissions table to get all query parameters
         var permissionsList = new List<string>();
-        var permissionsTable = htmlDoc.DocumentNode.SelectNodes("//h4[contains(text(), 'Permissions Required')]/following-sibling::table[1]/tbody/tr");
+        var permissionsTable =
+            htmlDoc.DocumentNode.SelectNodes(
+                "//h4[contains(text(), 'Permissions Required')]/following-sibling::table[1]/tbody/tr");
         if (permissionsTable == null)
             return permissionsList.Count == 0 ? "<i>none</i>" : string.Join(" • ", permissionsList);
 
         foreach (var row in permissionsTable)
         {
             var permission = row.SelectSingleNode("td[1]").InnerText.Trim();
-                
-            var removeStrings = new List<string>(){"<strong>", "</strong>", "<em>", "</em>"};
-            permission = removeStrings.Aggregate(permission, (current, removeString) => current.Replace(removeString, string.Empty));
+
+            var removeStrings = new List<string> { "<strong>", "</strong>", "<em>", "</em>" };
+            permission = removeStrings.Aggregate(permission,
+                (current, removeString) => current.Replace(removeString, string.Empty));
 
             if (permission == "None")
                 continue;
@@ -231,7 +234,8 @@ internal class OpenApiService
         var printedPermissions = permissionsList.Count == 0 ? "<i>none</i>" : string.Join(" • ", permissionsList);
 
         // The sub-description is after the endpoint in the documentation
-        var descriptionNode = htmlDoc.DocumentNode.SelectSingleNode("//h3[contains(@id, 'get_') or contains(@id, 'post_') or contains(@id, 'put_') or contains(@id, 'delete_')]/following-sibling::p");
+        var descriptionNode = htmlDoc.DocumentNode.SelectSingleNode(
+            "//h3[contains(@id, 'get_') or contains(@id, 'post_') or contains(@id, 'put_') or contains(@id, 'delete_')]/following-sibling::p");
         var description = descriptionNode.InnerText.Trim();
 
         description +=
@@ -246,53 +250,51 @@ internal class OpenApiService
 
         var originalOperationId = operationId;
 
-        var stringReplacement = new Dictionary<string, string>()
+        var stringReplacement = new Dictionary<string, string>
         {
-            {"_{id}", "_by_id" },
-            {"_{salesDateStart}_{salesDateEnd}", "_by_date_range"},
-            {"_{label}", "_by_label" },
-            {"labtestdocument", "lab_test_document"},
-            {"labtest", "lab_test"},
-            {"labsample", "lab_sample"},
-            {"removewaste", "remove_waste"},
-            {"checkins", "check_ins"},
-            {"moveplantbatch", "move_plant_batch"},
-            {"plantbatch", "plant_batch"},
-            {"changegrowthphase", "change_growth_phase"},
-            {"growthphase", "growth_phase"},
-            {"createpackages", "create_packages"},
-            {"createplantings", "create_plantings"},
-            {"frommotherplant", "from_mother_plant"},
-            {"onhold", "on_hold"},
-            {"bylocation", "by_location"},
-            {"harvestplants", "harvest_plants"},
-            {"manicureplants", "manicure_plants"},
-            {"moveplants", "move_plants"},
-            {"jobtype", "job_type"},
-            {"customertype", "customer_type"},
-            {"patientregistration", "patient_registration"},
-            {"verifyID", "verify_id"},
-            {"returnreason", "return_reason"},
-            {"paymenttype", "payment_type"},
-            {"requiredlab", "required_lab"},
-            {"testbatch", "test_batch"},
-            {"unitsofmeasure", "units_of_measure"},
-            {"harvestedplants", "harvested_plants"},
-            {"tradesample","trade_sample"},
-            {"wastemethod","waste_method"}
+            { "_{id}", "_by_id" },
+            { "_{salesDateStart}_{salesDateEnd}", "_by_date_range" },
+            { "_{label}", "_by_label" },
+            { "labtestdocument", "lab_test_document" },
+            { "labtest", "lab_test" },
+            { "labsample", "lab_sample" },
+            { "removewaste", "remove_waste" },
+            { "checkins", "check_ins" },
+            { "moveplantbatch", "move_plant_batch" },
+            { "plantbatch", "plant_batch" },
+            { "changegrowthphase", "change_growth_phase" },
+            { "growthphase", "growth_phase" },
+            { "createpackages", "create_packages" },
+            { "createplantings", "create_plantings" },
+            { "frommotherplant", "from_mother_plant" },
+            { "onhold", "on_hold" },
+            { "bylocation", "by_location" },
+            { "harvestplants", "harvest_plants" },
+            { "manicureplants", "manicure_plants" },
+            { "moveplants", "move_plants" },
+            { "jobtype", "job_type" },
+            { "customertype", "customer_type" },
+            { "patientregistration", "patient_registration" },
+            { "verifyID", "verify_id" },
+            { "returnreason", "return_reason" },
+            { "paymenttype", "payment_type" },
+            { "requiredlab", "required_lab" },
+            { "testbatch", "test_batch" },
+            { "unitsofmeasure", "units_of_measure" },
+            { "harvestedplants", "harvested_plants" },
+            { "tradesample", "trade_sample" },
+            { "wastemethod", "waste_method" }
         };
 
         foreach (var pair in stringReplacement)
-        {
             operationId = operationId.Replace(pair.Key, pair.Value, StringComparison.InvariantCultureIgnoreCase);
-        }
 
         // Replace placeholders with descriptive text or remove them
         //operationId = operationId.Replace("{", "").Replace("}", "");
-        operationId = Regex.Replace(operationId, @"\{.*?\}", "");
+        operationId = CurlyBraceParameterRegex().Replace(operationId, "");
 
         // Remove versions like "V1", "V2", etc.
-        operationId = Regex.Replace(operationId, @"_v\d+", "", RegexOptions.IgnoreCase);
+        operationId = InlineVersionRegex().Replace(operationId, "");
 
         operationId = operationId.TrimEnd('_');
         //if (!operationId.ToLower().EndsWith(section.ToLower()))
@@ -320,8 +322,6 @@ internal class OpenApiService
         return operationId;
     }
 
-    private static readonly char[] Separator = new[] { '_', '-', ' ' };
-
     private static string ConvertToProperCase(string str)
     {
         if (string.IsNullOrEmpty(str))
@@ -336,16 +336,16 @@ internal class OpenApiService
     {
         const string controllerName = "MetrcBase";
         var controllerNamespace = $"OpenMetrc.{version}.Builder.Controllers";
-        var modelNamespace = "OpenMetrc.Builder.Domain";
-        var requestNamespace = "OpenMetrc.Builder.Domain.Requests";
+        const string requestNamespace = "OpenMetrc.Builder.Domain.Requests";
         try
         {
-            var settings = new CSharpControllerGeneratorSettings()
+            var settings = new CSharpControllerGeneratorSettings
             {
                 OperationNameGenerator = new MultipleClientsFromFirstTagAndOperationIdGenerator(),
                 GenerateClientInterfaces = true,
                 GenerateOptionalParameters = true,
-                AdditionalNamespaceUsages = new[] { "System.Text.Json", "OpenMetrc.Builder.Domain", "OpenMetrc.Builder.Domain.Requests" },
+                AdditionalNamespaceUsages = new[]
+                    { "System.Text.Json", "OpenMetrc.Builder.Domain", "OpenMetrc.Builder.Domain.Requests" },
                 ControllerTarget = CSharpControllerTarget.AspNetCore,
                 ControllerStyle = CSharpControllerStyle.Abstract,
                 CodeGeneratorSettings =
@@ -370,16 +370,16 @@ internal class OpenApiService
             var code = generator.GenerateFile();
 
             //Declare a new input parameter for POST and PUT methods.
-            var keyWords = new List<string>()
+            var keyWords = new List<string>
             {
                 "Post", "Put"
             };
             foreach (var keyWord in keyWords)
-            {
-                code = Regex.Replace(code, $@"Task ({keyWord}\w+)\(", $@"Task $1([System.ComponentModel.DataAnnotations.Required] List<{requestNamespace}.$1Request> request, ");
-            }
-            
-            code = Regex.Replace(code, $@"Task (Delete\w+)\(\[Microsoft.AspNetCore.Mvc.FromQuery\] string licenseNumber", $@"Task $1([System.ComponentModel.DataAnnotations.Required] List<{requestNamespace}.$1Request> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber");
+                code = Regex.Replace(code, $@"Task ({keyWord}\w+)\(",
+                    $@"Task $1([System.ComponentModel.DataAnnotations.Required] List<{requestNamespace}.$1Request> request, ");
+
+            code = DeleteMethodRegex().Replace(code,
+                $@"Task $1([System.ComponentModel.DataAnnotations.Required] List<{requestNamespace}.$1Request> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber");
 
             // The controller code is using the wrong enum values for the Http methods.
             code = code.Replace("HttpDELETE", "HttpDelete")
@@ -405,5 +405,17 @@ internal class OpenApiService
             Console.ResetColor();
         }
     }
+
+    [GeneratedRegex(@"\{([^\}]+)\}")]
+    private static partial Regex InlineRouteParameterRegex();
+
+    [GeneratedRegex(@"\{.*?\}")]
+    private static partial Regex CurlyBraceParameterRegex();
+
+    [GeneratedRegex(@"Task (Delete\w+)\(\[Microsoft.AspNetCore.Mvc.FromQuery\] string licenseNumber")]
+    private static partial Regex DeleteMethodRegex();
+
+    [GeneratedRegex(@"_v\d+", RegexOptions.IgnoreCase, "en-US")]
+    private static partial Regex InlineVersionRegex();
     //TODO: figure out how to get the scraped permissions into the new controller code.
 }

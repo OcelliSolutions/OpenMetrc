@@ -49,8 +49,8 @@ public class SharedFixture : IDisposable
                 var facilities = await key.MetrcService.Facilities.GetFacilitiesAsync();
                 
                 var sampleFacilities = facilities?.Where(f => f.IsOwner ?? false).Take(3).ToList() ?? new List<Facility>();
-                sampleFacilities.AddRange(facilities?.Where(f => f.FacilityType.CanGrowPlants ?? false).Take(3));
-                sampleFacilities.AddRange(facilities?.Where(f => f.FacilityType.CanSellToPatients ?? false).Take(3));
+                sampleFacilities.AddRange(facilities?.Where(f => f.FacilityType.CanGrowPlants ?? false).Take(3)!);
+                sampleFacilities.AddRange(facilities?.Where(f => f.FacilityType.CanSellToPatients ?? false).Take(3)!);
                 key.Facilities = sampleFacilities;
             }
             catch (ApiException<ErrorResponse?> ex)

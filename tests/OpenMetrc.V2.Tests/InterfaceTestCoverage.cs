@@ -1,5 +1,4 @@
-﻿using OpenMetrc.V2;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace OpenMetrc.V2.Tests;
 
@@ -87,7 +86,7 @@ public class InterfaceTestCoverage
             .Where(ev => usedEnumsCount.GetValueOrDefault(ev) != 2)
             .ToList();
 
-        Assert.True(!incorrectlyUsedEnums.Any(),
+        Assert.True(incorrectlyUsedEnums.Count == 0,
             $"The following enum values are not correctly used (should be used exactly twice): {string.Join(", ", incorrectlyUsedEnums)}");
     }
 }
