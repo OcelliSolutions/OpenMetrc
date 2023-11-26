@@ -7,6 +7,10 @@ paths:
     get:
       tags:
       - CaregiversStatus
+      summary: ''
+      description: 'Data returned by this endpoint is cached for up to one minute.</br><b>Permissions Required</b>: Lookup Caregivers'
+      externalDocs:
+        x-doc-key: get_caregivers_v1_status_{caregiverLicenseNumber}
       operationId: GetCaregiverStatus
       parameters:
       - type: string
@@ -14,11 +18,13 @@ paths:
         in: path
         required: true
         description: Route parameter caregiverLicenseNumber
+        format: ''
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the Facility under which to get the Caregiver status.
+        format: ''
       responses:
         200:
           description: Ok
@@ -26,6 +32,10 @@ paths:
     get:
       tags:
       - Employees
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Employees'
+      externalDocs:
+        x-doc-key: get_employees_v1_
       operationId: GetEmployees
       parameters:
       - type: string
@@ -33,6 +43,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -40,6 +51,10 @@ paths:
     get:
       tags:
       - Facilities
+      summary: A Facility represents a building licensed for the growing, processing, and/or selling of product.
+      description: 'This endpoint provides a list of facilities for which the authenticated user has access.</br><b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_facilities_v1_
       operationId: GetFacilities
       responses:
         200:
@@ -48,6 +63,10 @@ paths:
     get:
       tags:
       - Harvests
+      summary: ''
+      description: '<b>Permissions Required</b>: View Harvests'
+      externalDocs:
+        x-doc-key: get_harvests_v1_active
       operationId: GetHarvestActive
       parameters:
       - type: string
@@ -55,14 +74,17 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of active harvests.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -70,17 +92,23 @@ paths:
     get:
       tags:
       - Harvests
-      operationId: GetHarvests
+      summary: ''
+      description: '<b>Permissions Required</b>: View Harvests'
+      externalDocs:
+        x-doc-key: get_harvests_v1_{id}
+      operationId: GetHarvestById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Harvest will be validated against the specified License Number. If not specified, the Harvest will be validated against all of the User's current Facilities. Please note that if the Harvest is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -88,6 +116,10 @@ paths:
     get:
       tags:
       - Harvests
+      summary: ''
+      description: '<b>Permissions Required</b>: View Harvests'
+      externalDocs:
+        x-doc-key: get_harvests_v1_inactive
       operationId: GetHarvestInactive
       parameters:
       - type: string
@@ -95,14 +127,17 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of inactive harvests.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -110,21 +145,28 @@ paths:
     get:
       tags:
       - Harvests
-      operationId: GetHarvestOnhold
+      summary: ''
+      description: '<b>Permissions Required</b>: View Harvests'
+      externalDocs:
+        x-doc-key: get_harvests_v1_onhold
+      operationId: GetHarvestOnHold
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to return the list of harvests on hold.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -132,6 +174,10 @@ paths:
     get:
       tags:
       - Harvests
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_harvests_v1_waste_types
       operationId: GetHarvestWasteTypes
       responses:
         200:
@@ -140,6 +186,10 @@ paths:
     post:
       tags:
       - Harvests
+      summary: ''
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests • View Packages • Create/Submit/Discontinue Packages'
+      externalDocs:
+        x-doc-key: post_harvests_v1_create_packages
       operationId: PostHarvestCreatePackages
       parameters:
       - type: string
@@ -147,6 +197,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -154,6 +205,10 @@ paths:
     post:
       tags:
       - Harvests
+      summary: ''
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests • View Packages • Create/Submit/Discontinue Packages'
+      externalDocs:
+        x-doc-key: post_harvests_v1_create_packages_testing
       operationId: PostHarvestCreatePackageTesting
       parameters:
       - type: string
@@ -161,6 +216,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -168,6 +224,10 @@ paths:
     post:
       tags:
       - Harvests
+      summary: ''
+      description: '<b>Permissions Required</b>: View Harvests • Finish/Discontinue Harvests'
+      externalDocs:
+        x-doc-key: post_harvests_v1_finish
       operationId: PostHarvestFinish
       parameters:
       - type: string
@@ -175,6 +235,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -182,13 +243,18 @@ paths:
     post:
       tags:
       - Harvests
-      operationId: PostHarvestRemovewaste
+      summary: ''
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests'
+      externalDocs:
+        x-doc-key: post_harvests_v1_removewaste
+      operationId: PostHarvestRemoveWaste
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -196,6 +262,10 @@ paths:
     post:
       tags:
       - Harvests
+      summary: ''
+      description: '<b>Permissions Required</b>: View Harvests • Finish/Discontinue Harvests'
+      externalDocs:
+        x-doc-key: post_harvests_v1_unfinish
       operationId: PostHarvestUnfinish
       parameters:
       - type: string
@@ -203,6 +273,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -210,6 +281,10 @@ paths:
     put:
       tags:
       - Harvests
+      summary: ''
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests'
+      externalDocs:
+        x-doc-key: put_harvests_v1_move
       operationId: PutHarvestMove
       parameters:
       - type: string
@@ -217,6 +292,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -224,6 +300,10 @@ paths:
     put:
       tags:
       - Harvests
+      summary: ''
+      description: '<b>Permissions Required</b>: View Harvests • Manage Harvests'
+      externalDocs:
+        x-doc-key: put_harvests_v1_rename
       operationId: PutHarvestRename
       parameters:
       - type: string
@@ -231,6 +311,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -238,35 +319,47 @@ paths:
     delete:
       tags:
       - Items
-      operationId: DeleteItems
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Items'
+      externalDocs:
+        x-doc-key: delete_items_v1_{id}
+      operationId: DeleteItemById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     get:
       tags:
       - Items
-      operationId: GetItems
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Items'
+      externalDocs:
+        x-doc-key: get_items_v1_{id}
+      operationId: GetItemById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Item will be validated against the specified License Number. If not specified, the Item will be validated against all of the User's current Facilities. Please note that if the Item is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -274,6 +367,10 @@ paths:
     get:
       tags:
       - Items
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Items'
+      externalDocs:
+        x-doc-key: get_items_v1_active
       operationId: GetItemActive
       parameters:
       - type: string
@@ -281,6 +378,7 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of active items.
+        format: ''
       responses:
         200:
           description: Ok
@@ -288,6 +386,10 @@ paths:
     get:
       tags:
       - Items
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Items'
+      externalDocs:
+        x-doc-key: get_items_v1_brands
       operationId: GetItemBrands
       parameters:
       - type: string
@@ -295,6 +397,7 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of active item brands.
+        format: ''
       responses:
         200:
           description: Ok
@@ -302,12 +405,17 @@ paths:
     get:
       tags:
       - Items
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_items_v1_categories
       operationId: GetItemCategories
       parameters:
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Categories will be retrived for the specified License Number. If not specified, the all Item Categories will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -315,6 +423,10 @@ paths:
     get:
       tags:
       - Items
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Items'
+      externalDocs:
+        x-doc-key: get_items_v1_inactive
       operationId: GetItemInactive
       parameters:
       - type: string
@@ -322,6 +434,7 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of inactive items.
+        format: ''
       responses:
         200:
           description: Ok
@@ -329,17 +442,23 @@ paths:
     get:
       tags:
       - Items
-      operationId: GetItemPhoto
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Items'
+      externalDocs:
+        x-doc-key: get_items_v1_photo_{id}
+      operationId: GetItemPhotoById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: The file system id of the image to return.
+        format: ''
       responses:
         200:
           description: Ok
@@ -347,6 +466,10 @@ paths:
     post:
       tags:
       - Items
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Items'
+      externalDocs:
+        x-doc-key: post_items_v1_create
       operationId: PostItemCreate
       parameters:
       - type: string
@@ -354,6 +477,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -361,6 +485,10 @@ paths:
     post:
       tags:
       - Items
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Items'
+      externalDocs:
+        x-doc-key: post_items_v1_photo
       operationId: PostItemPhoto
       parameters:
       - type: string
@@ -368,6 +496,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -375,6 +504,10 @@ paths:
     post:
       tags:
       - Items
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Items'
+      externalDocs:
+        x-doc-key: post_items_v1_update
       operationId: PostItemUpdate
       parameters:
       - type: string
@@ -382,6 +515,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -389,18 +523,24 @@ paths:
     get:
       tags:
       - LabTests
-      operationId: GetLabtestLabtestdocument
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory'
+      externalDocs:
+        x-doc-key: get_labtests_v1_labtestdocument_{id}
+      operationId: GetLabTestLabTestDocumentById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: LabTestDocumentFileId
+        format: ''
       responses:
         200:
           description: Ok
@@ -408,18 +548,24 @@ paths:
     get:
       tags:
       - LabTests
-      operationId: GetLabtestResults
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages'
+      externalDocs:
+        x-doc-key: get_labtests_v1_results
+      operationId: GetLabTestResults
       parameters:
-      - type: string
+      - type: integer
         name: packageId
         in: query
         required: true
         description: ''
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -427,7 +573,11 @@ paths:
     get:
       tags:
       - LabTests
-      operationId: GetLabtestStates
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_labtests_v1_states
+      operationId: GetLabTestStates
       responses:
         200:
           description: Ok
@@ -435,7 +585,11 @@ paths:
     get:
       tags:
       - LabTests
-      operationId: GetLabtestTypes
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_labtests_v1_types
+      operationId: GetLabTestTypes
       responses:
         200:
           description: Ok
@@ -443,13 +597,18 @@ paths:
     post:
       tags:
       - LabTests
-      operationId: PostLabtestRecord
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory'
+      externalDocs:
+        x-doc-key: post_labtests_v1_record
+      operationId: PostLabTestRecord
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -457,13 +616,18 @@ paths:
     put:
       tags:
       - LabTests
-      operationId: PutLabtestLabtestdocument
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory'
+      externalDocs:
+        x-doc-key: put_labtests_v1_labtestdocument
+      operationId: PutLabTestLabTestDocument
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -471,13 +635,18 @@ paths:
     put:
       tags:
       - LabTests
-      operationId: PutLabtestResultRelease
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory'
+      externalDocs:
+        x-doc-key: put_labtests_v1_results_release
+      operationId: PutLabTestResultRelease
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -485,35 +654,47 @@ paths:
     delete:
       tags:
       - Locations
-      operationId: DeleteLocations
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Locations'
+      externalDocs:
+        x-doc-key: delete_locations_v1_{id}
+      operationId: DeleteLocationById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     get:
       tags:
       - Locations
-      operationId: GetLocations
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Locations'
+      externalDocs:
+        x-doc-key: get_locations_v1_{id}
+      operationId: GetLocationById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Location will be validated against the specified License Number. If not specified, the Location will be validated against all of the User's current Facilities. Please note that if the Location is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -521,6 +702,10 @@ paths:
     get:
       tags:
       - Locations
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Locations'
+      externalDocs:
+        x-doc-key: get_locations_v1_active
       operationId: GetLocationActive
       parameters:
       - type: string
@@ -528,6 +713,7 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of active locations.
+        format: ''
       responses:
         200:
           description: Ok
@@ -535,6 +721,10 @@ paths:
     get:
       tags:
       - Locations
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Locations'
+      externalDocs:
+        x-doc-key: get_locations_v1_types
       operationId: GetLocationTypes
       parameters:
       - type: string
@@ -542,6 +732,7 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of active location types.
+        format: ''
       responses:
         200:
           description: Ok
@@ -549,6 +740,10 @@ paths:
     post:
       tags:
       - Locations
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Locations'
+      externalDocs:
+        x-doc-key: post_locations_v1_create
       operationId: PostLocationCreate
       parameters:
       - type: string
@@ -556,6 +751,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -563,6 +759,10 @@ paths:
     post:
       tags:
       - Locations
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Locations'
+      externalDocs:
+        x-doc-key: post_locations_v1_update
       operationId: PostLocationUpdate
       parameters:
       - type: string
@@ -570,6 +770,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -577,6 +778,10 @@ paths:
     get:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages'
+      externalDocs:
+        x-doc-key: get_packages_v1_active
       operationId: GetPackageActive
       parameters:
       - type: string
@@ -584,14 +789,17 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of active packages.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -599,6 +807,10 @@ paths:
     get:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_packages_v1_adjust_reasons
       operationId: GetPackageAdjustReasons
       parameters:
       - type: string
@@ -606,6 +818,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -613,17 +826,23 @@ paths:
     get:
       tags:
       - Packages
-      operationId: GetPackages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages'
+      externalDocs:
+        x-doc-key: get_packages_v1_{id}
+      operationId: GetPackageById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Package will be validated against the specified License Number. If not specified, the Package will be validated against all of the User's current Facilities. Please note that if the Package is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -631,6 +850,10 @@ paths:
     get:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages'
+      externalDocs:
+        x-doc-key: get_packages_v1_inactive
       operationId: GetPackageInactive
       parameters:
       - type: string
@@ -638,14 +861,17 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of inactive packages.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -653,17 +879,23 @@ paths:
     get:
       tags:
       - Packages
-      operationId: GetPackages2
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages'
+      externalDocs:
+        x-doc-key: get_packages_v1_{label}
+      operationId: GetPackageByLabel
       parameters:
       - type: string
         name: label
         in: path
         required: true
         description: Route parameter label
+        format: ''
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Package will be validated against the specified License Number. If not specified, the Package will be validated against all of the User's current Facilities. Please note that if the Package is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -671,21 +903,28 @@ paths:
     get:
       tags:
       - Packages
-      operationId: GetPackageOnhold
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages'
+      externalDocs:
+        x-doc-key: get_packages_v1_onhold
+      operationId: GetPackageOnHold
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to return the list of packages on hold.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -693,6 +932,10 @@ paths:
     get:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_packages_v1_types
       operationId: GetPackageTypes
       responses:
         200:
@@ -701,6 +944,10 @@ paths:
     post:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory'
+      externalDocs:
+        x-doc-key: post_packages_v1_adjust
       operationId: PostPackageAdjust
       parameters:
       - type: string
@@ -708,6 +955,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -715,6 +963,10 @@ paths:
     post:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages'
+      externalDocs:
+        x-doc-key: post_packages_v1_change_item
       operationId: PostPackageChangeItem
       parameters:
       - type: string
@@ -722,6 +974,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -729,6 +982,10 @@ paths:
     post:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages'
+      externalDocs:
+        x-doc-key: post_packages_v1_change_locations
       operationId: PostPackageChangeLocations
       parameters:
       - type: string
@@ -736,6 +993,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -743,6 +1001,10 @@ paths:
     post:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages'
+      externalDocs:
+        x-doc-key: post_packages_v1_create
       operationId: PostPackageCreate
       parameters:
       - type: string
@@ -750,6 +1012,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -757,6 +1020,10 @@ paths:
     post:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants • View Packages • Manage Packages Inventory'
+      externalDocs:
+        x-doc-key: post_packages_v1_create_plantings
       operationId: PostPackageCreatePlantings
       parameters:
       - type: string
@@ -764,6 +1031,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -771,6 +1039,10 @@ paths:
     post:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages'
+      externalDocs:
+        x-doc-key: post_packages_v1_create_testing
       operationId: PostPackageCreateTesting
       parameters:
       - type: string
@@ -778,6 +1050,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -785,6 +1058,10 @@ paths:
     post:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory'
+      externalDocs:
+        x-doc-key: post_packages_v1_finish
       operationId: PostPackageFinish
       parameters:
       - type: string
@@ -792,6 +1069,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -799,6 +1077,10 @@ paths:
     post:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory'
+      externalDocs:
+        x-doc-key: post_packages_v1_remediate
       operationId: PostPackageRemediate
       parameters:
       - type: string
@@ -806,6 +1088,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -813,6 +1096,10 @@ paths:
     post:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory'
+      externalDocs:
+        x-doc-key: post_packages_v1_unfinish
       operationId: PostPackageUnfinish
       parameters:
       - type: string
@@ -820,6 +1107,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -827,6 +1115,10 @@ paths:
     put:
       tags:
       - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory • Manage Package Notes'
+      externalDocs:
+        x-doc-key: put_packages_v1_change_note
       operationId: PutPackageChangeNote
       parameters:
       - type: string
@@ -834,6 +1126,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -841,18 +1134,24 @@ paths:
     delete:
       tags:
       - PatientCheckIns
-      operationId: DeletePatientCheckins
+      summary: ''
+      description: '<b>Permissions Required</b>: ManagePatientsCheckIns'
+      externalDocs:
+        x-doc-key: delete_patient-checkins_v1_{id}
+      operationId: DeletePatientCheckInById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -860,47 +1159,64 @@ paths:
     get:
       tags:
       - PatientCheckIns
-      operationId: GetPatientCheckins
+      summary: ''
+      description: '<b>Permissions Required</b>: ManagePatientsCheckIns'
+      externalDocs:
+        x-doc-key: get_patient-checkins_v1_
+      operationId: GetPatientCheckIns
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       - type: string
         name: checkinDateStart
         in: query
         description: ''
+        format: date
       - type: string
         name: checkinDateEnd
         in: query
         description: ''
+        format: date
       responses:
         200:
           description: Ok
     post:
       tags:
       - PatientCheckIns
-      operationId: PostPatientCheckins
+      summary: ''
+      description: '<b>Permissions Required</b>: ManagePatientsCheckIns'
+      externalDocs:
+        x-doc-key: post_patient-checkins_v1_
+      operationId: PostPatientCheckIns
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     put:
       tags:
       - PatientCheckIns
-      operationId: PutPatientCheckins
+      summary: ''
+      description: '<b>Permissions Required</b>: ManagePatientsCheckIns'
+      externalDocs:
+        x-doc-key: put_patient-checkins_v1_
+      operationId: PutPatientCheckIns
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -908,7 +1224,11 @@ paths:
     get:
       tags:
       - PatientCheckIns
-      operationId: GetPatientCheckinsLocations
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_patient-checkins_v1_locations
+      operationId: GetPatientCheckInLocations
       responses:
         200:
           description: Ok
@@ -916,35 +1236,47 @@ paths:
     delete:
       tags:
       - Patients
-      operationId: DeletePatients
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Patients'
+      externalDocs:
+        x-doc-key: delete_patients_v1_{id}
+      operationId: DeletePatientById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     get:
       tags:
       - Patients
-      operationId: GetPatients
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Patients'
+      externalDocs:
+        x-doc-key: get_patients_v1_{id}
+      operationId: GetPatientById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Patient will be validated against the specified License Number. If not specified, the Patient will be validated against all of the User's current Facilities. Please note that if the Patient is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -952,6 +1284,10 @@ paths:
     get:
       tags:
       - Patients
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Patients'
+      externalDocs:
+        x-doc-key: get_patients_v1_active
       operationId: GetPatientActive
       parameters:
       - type: string
@@ -959,6 +1295,7 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of active patients.
+        format: ''
       responses:
         200:
           description: Ok
@@ -966,6 +1303,10 @@ paths:
     post:
       tags:
       - Patients
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Patients'
+      externalDocs:
+        x-doc-key: post_patients_v1_add
       operationId: PostPatientAdd
       parameters:
       - type: string
@@ -973,6 +1314,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -980,6 +1322,10 @@ paths:
     post:
       tags:
       - Patients
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Patients'
+      externalDocs:
+        x-doc-key: post_patients_v1_update
       operationId: PostPatientUpdate
       parameters:
       - type: string
@@ -987,6 +1333,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -994,6 +1341,10 @@ paths:
     get:
       tags:
       - PatientsStatus
+      summary: ''
+      description: 'Data returned by this endpoint is cached for up to one minute.</br><b>Permissions Required</b>: Lookup Patients'
+      externalDocs:
+        x-doc-key: get_patients_v1_statuses_{patientLicenseNumber}
       operationId: GetPatientStatuses
       parameters:
       - type: string
@@ -1001,11 +1352,13 @@ paths:
         in: path
         required: true
         description: Route parameter patientLicenseNumber
+        format: ''
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the Facility under which to get the Patient Status.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1013,13 +1366,18 @@ paths:
     delete:
       tags:
       - PlantBatches
-      operationId: DeletePlantbatches
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants • Destroy Immature Plants'
+      externalDocs:
+        x-doc-key: delete_plantbatches_v1_
+      operationId: DeletePlantBatches
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1027,21 +1385,28 @@ paths:
     get:
       tags:
       - PlantBatches
-      operationId: GetPlantbatchActive
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants'
+      externalDocs:
+        x-doc-key: get_plantbatches_v1_active
+      operationId: GetPlantBatchActive
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to return the list of active plant groups.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -1049,17 +1414,23 @@ paths:
     get:
       tags:
       - PlantBatches
-      operationId: GetPlantbatches
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants'
+      externalDocs:
+        x-doc-key: get_plantbatches_v1_{id}
+      operationId: GetPlantBatchById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Plant Batch will be validated against the specified License Number. If not specified, the Plant Batch will be validated against all of the User's current Facilities. Please note that if the Plant Batch is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1067,21 +1438,28 @@ paths:
     get:
       tags:
       - PlantBatches
-      operationId: GetPlantbatchInactive
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants'
+      externalDocs:
+        x-doc-key: get_plantbatches_v1_inactive
+      operationId: GetPlantBatchInactive
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to return the list of inactive plant groups.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -1089,7 +1467,11 @@ paths:
     get:
       tags:
       - PlantBatches
-      operationId: GetPlantbatchTypes
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_plantbatches_v1_types
+      operationId: GetPlantBatchTypes
       responses:
         200:
           description: Ok
@@ -1097,13 +1479,18 @@ paths:
     get:
       tags:
       - PlantBatches
-      operationId: GetPlantbatchWasteReasons
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_plantbatches_v1_waste_reasons
+      operationId: GetPlantBatchWasteReasons
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1111,13 +1498,18 @@ paths:
     post:
       tags:
       - PlantBatches
-      operationId: PostPlantbatchAdditives
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Plants Additives'
+      externalDocs:
+        x-doc-key: post_plantbatches_v1_additives
+      operationId: PostPlantBatchAdditives
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to record plant additives.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1125,13 +1517,18 @@ paths:
     post:
       tags:
       - PlantBatches
-      operationId: PostPlantbatchAdjust
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory'
+      externalDocs:
+        x-doc-key: post_plantbatches_v1_adjust
+      operationId: PostPlantBatchAdjust
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1139,13 +1536,18 @@ paths:
     post:
       tags:
       - PlantBatches
-      operationId: PostPlantbatchChangegrowthphase
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory'
+      externalDocs:
+        x-doc-key: post_plantbatches_v1_changegrowthphase
+      operationId: PostPlantBatchChangeGrowthPhase
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1153,17 +1555,23 @@ paths:
     post:
       tags:
       - PlantBatches
-      operationId: PostPlantbatchCreatepackages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Packages • Create/Submit/Discontinue Packages'
+      externalDocs:
+        x-doc-key: post_plantbatches_v1_createpackages
+      operationId: PostPlantBatchCreatePackages
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
-      - type: string
+        format: ''
+      - type: boolean
         name: isFromMotherPlant
         in: query
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1171,13 +1579,18 @@ paths:
     post:
       tags:
       - PlantBatches
-      operationId: PostPlantbatchCreateplantings
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory'
+      externalDocs:
+        x-doc-key: post_plantbatches_v1_createplantings
+      operationId: PostPlantBatchCreatePlantings
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1185,13 +1598,18 @@ paths:
     post:
       tags:
       - PlantBatches
-      operationId: PostPlantbatchCreatePackageFrommotherplant
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Packages • Create/Submit/Discontinue Packages'
+      externalDocs:
+        x-doc-key: post_plantbatches_v1_create_packages_frommotherplant
+      operationId: PostPlantBatchCreatePackageFromMotherPlant
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1199,13 +1617,18 @@ paths:
     post:
       tags:
       - PlantBatches
-      operationId: PostPlantbatchSplit
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory'
+      externalDocs:
+        x-doc-key: post_plantbatches_v1_split
+      operationId: PostPlantBatchSplit
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1213,13 +1636,18 @@ paths:
     post:
       tags:
       - PlantBatches
-      operationId: PostPlantbatchWaste
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Plants Waste'
+      externalDocs:
+        x-doc-key: post_plantbatches_v1_waste
+      operationId: PostPlantBatchWaste
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1227,13 +1655,18 @@ paths:
     put:
       tags:
       - PlantBatches
-      operationId: PutPlantbatchMoveplantbatches
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants'
+      externalDocs:
+        x-doc-key: put_plantbatches_v1_moveplantbatches
+      operationId: PutPlantBatchMovePlantBatches
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1241,6 +1674,10 @@ paths:
     delete:
       tags:
       - Plants
+      summary: ''
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Destroy Veg/Flower Plants'
+      externalDocs:
+        x-doc-key: delete_plants_v1_
       operationId: DeletePlants
       parameters:
       - type: string
@@ -1248,6 +1685,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1255,6 +1693,10 @@ paths:
     get:
       tags:
       - Plants
+      summary: ''
+      description: '<b>Permissions Required</b>: View/Manage Plants Additives'
+      externalDocs:
+        x-doc-key: get_plants_v1_additives
       operationId: GetPlantAdditives
       parameters:
       - type: string
@@ -1262,20 +1704,27 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to record plant additives.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
     post:
       tags:
       - Plants
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Plants Additives'
+      externalDocs:
+        x-doc-key: post_plants_v1_additives
       operationId: PostPlantAdditives
       parameters:
       - type: string
@@ -1283,6 +1732,7 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to record plant additives.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1290,6 +1740,10 @@ paths:
     get:
       tags:
       - Plants
+      summary: ''
+      description: '<b>Permissions Required</b>: '
+      externalDocs:
+        x-doc-key: get_plants_v1_additives_types
       operationId: GetPlantAdditiveTypes
       responses:
         200:
@@ -1298,6 +1752,10 @@ paths:
     get:
       tags:
       - Plants
+      summary: ''
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants'
+      externalDocs:
+        x-doc-key: get_plants_v1_flowering
       operationId: GetPlantFlowering
       parameters:
       - type: string
@@ -1305,14 +1763,17 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of flowering plants.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -1320,13 +1781,18 @@ paths:
     get:
       tags:
       - Plants
-      operationId: GetPlantGrowthphases
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_plants_v1_growthphases
+      operationId: GetPlantGrowthPhases
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to return the list of available Plant Growth Phases.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1334,17 +1800,23 @@ paths:
     get:
       tags:
       - Plants
-      operationId: GetPlants
+      summary: ''
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants'
+      externalDocs:
+        x-doc-key: get_plants_v1_{id}
+      operationId: GetPlantById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Plant will be validated against the specified License Number. If not specified, the Plant will be validated against all of the User's current Facilities. Please note that if the Plant is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1352,6 +1824,10 @@ paths:
     get:
       tags:
       - Plants
+      summary: ''
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants'
+      externalDocs:
+        x-doc-key: get_plants_v1_inactive
       operationId: GetPlantInactive
       parameters:
       - type: string
@@ -1359,14 +1835,17 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of inactive plants.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -1374,17 +1853,23 @@ paths:
     get:
       tags:
       - Plants
-      operationId: GetPlants2
+      summary: ''
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants'
+      externalDocs:
+        x-doc-key: get_plants_v1_{label}
+      operationId: GetPlantByLabel
       parameters:
       - type: string
         name: label
         in: path
         required: true
         description: Route parameter label
+        format: ''
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Plant will be validated against the specified License Number. If not specified, the Plant will be validated against all of the User's current Facilities. Please note that if the Plant is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1392,21 +1877,28 @@ paths:
     get:
       tags:
       - Plants
-      operationId: GetPlantOnhold
+      summary: ''
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants'
+      externalDocs:
+        x-doc-key: get_plants_v1_onhold
+      operationId: GetPlantOnHold
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to return the list of plants on hold.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -1414,6 +1906,10 @@ paths:
     get:
       tags:
       - Plants
+      summary: ''
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants'
+      externalDocs:
+        x-doc-key: get_plants_v1_vegetative
       operationId: GetPlantVegetative
       parameters:
       - type: string
@@ -1421,14 +1917,17 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of vegetating plants.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -1436,6 +1935,10 @@ paths:
     get:
       tags:
       - Plants
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_plants_v1_waste_methods_all
       operationId: GetPlantWasteMethodAll
       responses:
         200:
@@ -1444,6 +1947,10 @@ paths:
     get:
       tags:
       - Plants
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_plants_v1_waste_reasons
       operationId: GetPlantWasteReasons
       parameters:
       - type: string
@@ -1451,6 +1958,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1458,13 +1966,18 @@ paths:
     post:
       tags:
       - Plants
-      operationId: PostPlantAdditiveBylocation
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Plants • Manage Plants Additives'
+      externalDocs:
+        x-doc-key: post_plants_v1_additives_bylocation
+      operationId: PostPlantAdditiveByLocation
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to record plant additives.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1472,13 +1985,18 @@ paths:
     post:
       tags:
       - Plants
-      operationId: PostPlantChangegrowthphases
+      summary: ''
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Manage Veg/Flower Plants Inventory'
+      externalDocs:
+        x-doc-key: post_plants_v1_changegrowthphases
+      operationId: PostPlantChangeGrowthPhases
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1486,13 +2004,18 @@ paths:
     post:
       tags:
       - Plants
-      operationId: PostPlantCreatePlantbatchPackages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory • View Packages • Create/Submit/Discontinue Packages'
+      externalDocs:
+        x-doc-key: post_plants_v1_create_plantbatch_packages
+      operationId: PostPlantCreatePlantBatchPackages
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1500,6 +2023,10 @@ paths:
     post:
       tags:
       - Plants
+      summary: ''
+      description: '<b>Permissions Required</b>: View Immature Plants • Manage Immature Plants Inventory • View Veg/Flower Plants • Manage Veg/Flower Plants Inventory'
+      externalDocs:
+        x-doc-key: post_plants_v1_create_plantings
       operationId: PostPlantCreatePlantings
       parameters:
       - type: string
@@ -1507,6 +2034,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1514,13 +2042,18 @@ paths:
     post:
       tags:
       - Plants
-      operationId: PostPlantHarvestplants
+      summary: ''
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Manicure/Harvest Veg/Flower Plants'
+      externalDocs:
+        x-doc-key: post_plants_v1_harvestplants
+      operationId: PostPlantHarvestPlants
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1528,13 +2061,18 @@ paths:
     post:
       tags:
       - Plants
-      operationId: PostPlantManicureplants
+      summary: ''
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Manicure/Harvest Veg/Flower Plants'
+      externalDocs:
+        x-doc-key: post_plants_v1_manicureplants
+      operationId: PostPlantManicurePlants
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1542,13 +2080,18 @@ paths:
     post:
       tags:
       - Plants
-      operationId: PostPlantMoveplants
+      summary: ''
+      description: '<b>Permissions Required</b>: View Veg/Flower Plants • Manage Veg/Flower Plants Inventory'
+      externalDocs:
+        x-doc-key: post_plants_v1_moveplants
+      operationId: PostPlantMovePlants
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1556,6 +2099,10 @@ paths:
     post:
       tags:
       - Plants
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Plants Waste'
+      externalDocs:
+        x-doc-key: post_plants_v1_waste
       operationId: PostPlantWaste
       parameters:
       - type: string
@@ -1563,6 +2110,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1570,35 +2118,47 @@ paths:
     delete:
       tags:
       - ProcessingJob
-      operationId: DeleteProcessing
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: delete_processing_v1_{id}
+      operationId: DeleteProcessingById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     get:
       tags:
       - ProcessingJob
-      operationId: GetProcessing
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: get_processing_v1_{id}
+      operationId: GetProcessingById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: The license number of the facility for which to return the list of active items.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1606,18 +2166,24 @@ paths:
     delete:
       tags:
       - ProcessingJob
-      operationId: DeleteProcessingJobtypes
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: delete_processing_v1_jobtypes_{id}
+      operationId: DeleteProcessingJobTypeById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1625,6 +2191,10 @@ paths:
     get:
       tags:
       - ProcessingJob
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: get_processing_v1_active
       operationId: GetProcessingActive
       parameters:
       - type: string
@@ -1632,14 +2202,17 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of active items.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: ''
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: ''
+        format: date-time
       responses:
         200:
           description: Ok
@@ -1647,6 +2220,10 @@ paths:
     get:
       tags:
       - ProcessingJob
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: get_processing_v1_inactive
       operationId: GetProcessingInactive
       parameters:
       - type: string
@@ -1654,14 +2231,17 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of active items.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: ''
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: ''
+        format: date-time
       responses:
         200:
           description: Ok
@@ -1669,21 +2249,28 @@ paths:
     get:
       tags:
       - ProcessingJob
-      operationId: GetProcessingJobtypeActive
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: get_processing_v1_jobtypes_active
+      operationId: GetProcessingJobTypeActive
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to return the list of active items.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: ''
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: ''
+        format: date-time
       responses:
         200:
           description: Ok
@@ -1691,13 +2278,18 @@ paths:
     get:
       tags:
       - ProcessingJob
-      operationId: GetProcessingJobtypeAttributes
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: get_processing_v1_jobtypes_attributes
+      operationId: GetProcessingJobTypeAttributes
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to return the list of active items.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1705,13 +2297,18 @@ paths:
     get:
       tags:
       - ProcessingJob
-      operationId: GetProcessingJobtypeCategories
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: get_processing_v1_jobtypes_categories
+      operationId: GetProcessingJobTypeCategories
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to return the list of active items.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1719,21 +2316,28 @@ paths:
     get:
       tags:
       - ProcessingJob
-      operationId: GetProcessingJobtypeInactive
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: get_processing_v1_jobtypes_inactive
+      operationId: GetProcessingJobTypeInactive
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to return the list of inactive items.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: ''
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: ''
+        format: date-time
       responses:
         200:
           description: Ok
@@ -1741,6 +2345,10 @@ paths:
     post:
       tags:
       - ProcessingJob
+      summary: ''
+      description: '<b>Permissions Required</b>: ManageProcessingJobs'
+      externalDocs:
+        x-doc-key: post_processing_v1_adjust
       operationId: PostProcessingAdjust
       parameters:
       - type: string
@@ -1748,6 +2356,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1755,13 +2364,18 @@ paths:
     post:
       tags:
       - ProcessingJob
-      operationId: PostProcessingCreatepackages
+      summary: ''
+      description: '<b>Permissions Required</b>: ManageProcessingJobs'
+      externalDocs:
+        x-doc-key: post_processing_v1_createpackages
+      operationId: PostProcessingCreatePackages
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1769,26 +2383,36 @@ paths:
     post:
       tags:
       - ProcessingJob
-      operationId: PostProcessingJobtypes
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: post_processing_v1_jobtypes
+      operationId: PostProcessingJobTypes
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     put:
       tags:
       - ProcessingJob
-      operationId: PutProcessingJobtypes
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: put_processing_v1_jobtypes
+      operationId: PutProcessingJobTypes
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1796,6 +2420,10 @@ paths:
     post:
       tags:
       - ProcessingJob
+      summary: ''
+      description: '<b>Permissions Required</b>: ManageProcessingJobs'
+      externalDocs:
+        x-doc-key: post_processing_v1_start
       operationId: PostProcessingStart
       parameters:
       - type: string
@@ -1803,6 +2431,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1810,6 +2439,10 @@ paths:
     put:
       tags:
       - ProcessingJob
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: put_processing_v1_finish
       operationId: PutProcessingFinish
       parameters:
       - type: string
@@ -1817,6 +2450,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1824,6 +2458,10 @@ paths:
     put:
       tags:
       - ProcessingJob
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Processing Job'
+      externalDocs:
+        x-doc-key: put_processing_v1_unfinish
       operationId: PutProcessingUnfinish
       parameters:
       - type: string
@@ -1831,6 +2469,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -1838,35 +2477,47 @@ paths:
     delete:
       tags:
       - Sales
-      operationId: DeleteSaleReceipts
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: delete_sales_v1_receipts_{id}
+      operationId: DeleteSaleReceiptById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     get:
       tags:
       - Sales
-      operationId: GetSaleReceipts
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: get_sales_v1_receipts_{id}
+      operationId: GetSaleReceiptById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Sales Receipt will be validated against the specified License Number. If not specified, the Sales Receipt will be validated against all of the User's current Facilities. Please note that if the Sales Receipt is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1874,7 +2525,11 @@ paths:
     get:
       tags:
       - Sales
-      operationId: GetSaleCustomertypes
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_sales_v1_customertypes
+      operationId: GetSaleCustomerTypes
       responses:
         200:
           description: Ok
@@ -1882,7 +2537,11 @@ paths:
     get:
       tags:
       - Sales
-      operationId: GetSalePatientregistrationLocations
+      summary: ''
+      description: '<b>Permissions Required</b>: '
+      externalDocs:
+        x-doc-key: get_sales_v1_patientregistration_locations
+      operationId: GetSalePatientRegistrationLocations
       responses:
         200:
           description: Ok
@@ -1890,6 +2549,10 @@ paths:
     get:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: get_sales_v1_receipts_active
       operationId: GetSaleReceiptActive
       parameters:
       - type: string
@@ -1897,22 +2560,27 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       - type: string
         name: salesDateStart
         in: query
         description: The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+        format: date-time
       - type: string
         name: salesDateEnd
         in: query
         description: The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+        format: date-time
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+        format: date-time
       responses:
         200:
           description: Ok
@@ -1920,6 +2588,10 @@ paths:
     get:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: get_sales_v1_receipts_inactive
       operationId: GetSaleReceiptInactive
       parameters:
       - type: string
@@ -1927,22 +2599,27 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       - type: string
         name: salesDateStart
         in: query
         description: The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+        format: date-time
       - type: string
         name: salesDateEnd
         in: query
         description: The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+        format: date-time
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+        format: date-time
       responses:
         200:
           description: Ok
@@ -1950,6 +2627,10 @@ paths:
     get:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: get_sales_v1_transactions
       operationId: GetSaleTransactions
       parameters:
       - type: string
@@ -1957,6 +2638,7 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of dates with sales transactions.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1964,23 +2646,30 @@ paths:
     get:
       tags:
       - Sales
-      operationId: GetSaleTransactions2
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: get_sales_v1_transactions_{salesDateStart}_{salesDateEnd}
+      operationId: GetSaleTransactionByDateRange
       parameters:
       - type: string
         name: salesDateStart
         in: path
         required: true
         description: Route parameter salesDateStart
+        format: date
       - type: string
         name: salesDateEnd
         in: path
         required: true
         description: Route parameter salesDateEnd
+        format: date
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to return the list of sales transactions for the specified date range.
+        format: ''
       responses:
         200:
           description: Ok
@@ -1988,6 +2677,10 @@ paths:
     post:
       tags:
       - Sales
+      summary: ''
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: post_sales_v1_receipts
       operationId: PostSaleReceipts
       parameters:
       - type: string
@@ -1995,12 +2688,17 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     put:
       tags:
       - Sales
+      summary: ''
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: put_sales_v1_receipts
       operationId: PutSaleReceipts
       parameters:
       - type: string
@@ -2008,6 +2706,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2015,6 +2714,10 @@ paths:
     post:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: post_sales_v1_transactions_{date}
       operationId: PostSaleTransactions
       parameters:
       - type: string
@@ -2022,17 +2725,23 @@ paths:
         in: path
         required: true
         description: Route parameter date
+        format: date
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to append the sales transactions on the specified date.
+        format: ''
       responses:
         200:
           description: Ok
     put:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: put_sales_v1_transactions_{date}
       operationId: PutSaleTransactions
       parameters:
       - type: string
@@ -2040,11 +2749,13 @@ paths:
         in: path
         required: true
         description: Route parameter date
+        format: date
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: The license number of the facility for which to update the sales transactions on the specified date.
+        format: ''
       responses:
         200:
           description: Ok
@@ -2052,6 +2763,10 @@ paths:
     put:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: put_sales_v1_deliveries_hub_accept
       operationId: PutSaleDeliveryHubAccept
       parameters:
       - type: string
@@ -2059,6 +2774,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2066,6 +2782,10 @@ paths:
     put:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: put_sales_v1_deliveries_hub_depart
       operationId: PutSaleDeliveryHubDepart
       parameters:
       - type: string
@@ -2073,6 +2793,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2080,13 +2801,18 @@ paths:
     put:
       tags:
       - Sales
-      operationId: PutSaleDeliveryHubVerifyid
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: put_sales_v1_deliveries_hub_verifyID
+      operationId: PutSaleDeliveryHubVerifyId
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2094,35 +2820,47 @@ paths:
     delete:
       tags:
       - Sales
-      operationId: DeleteSaleDeliveries
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales Delivery'
+      externalDocs:
+        x-doc-key: delete_sales_v1_deliveries_{id}
+      operationId: DeleteSaleDeliveryById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     get:
       tags:
       - Sales
-      operationId: GetSaleDeliveries
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales Delivery'
+      externalDocs:
+        x-doc-key: get_sales_v1_deliveries_{id}
+      operationId: GetSaleDeliveryById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Sales Delivery will be validated against the specified License Number. If not specified, the Sales Delivery will be validated against all of the User's current Facilities. Please note that if the Sales Delivery is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -2130,35 +2868,47 @@ paths:
     delete:
       tags:
       - Sales
-      operationId: DeleteSaleDeliveryRetailer
+      summary: ''
+      description: '<b>Permissions Required</b>: Retailer Delivery'
+      externalDocs:
+        x-doc-key: delete_sales_v1_deliveries_retailer_{id}
+      operationId: DeleteSaleDeliveryRetailerById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     get:
       tags:
       - Sales
-      operationId: GetSaleDeliveryRetailer
+      summary: ''
+      description: '<b>Permissions Required</b>: Retailer Delivery'
+      externalDocs:
+        x-doc-key: get_sales_v1_deliveries_retailer_{id}
+      operationId: GetSaleDeliveryRetailerById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Sales Delivery will be validated against the specified License Number. If not specified, the Sales Delivery will be validated against all of the User's current Facilities. Please note that if the Sales Delivery is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -2166,6 +2916,10 @@ paths:
     get:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_sales_v1_counties
       operationId: GetSaleCounties
       responses:
         200:
@@ -2174,6 +2928,10 @@ paths:
     get:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales Delivery'
+      externalDocs:
+        x-doc-key: get_sales_v1_deliveries_active
       operationId: GetSaleDeliveryActive
       parameters:
       - type: string
@@ -2181,22 +2939,27 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       - type: string
         name: salesDateStart
         in: query
         description: The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+        format: date-time
       - type: string
         name: salesDateEnd
         in: query
         description: The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+        format: date-time
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+        format: date-time
       responses:
         200:
           description: Ok
@@ -2204,6 +2967,10 @@ paths:
     get:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales Delivery'
+      externalDocs:
+        x-doc-key: get_sales_v1_deliveries_inactive
       operationId: GetSaleDeliveryInactive
       parameters:
       - type: string
@@ -2211,22 +2978,27 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       - type: string
         name: salesDateStart
         in: query
         description: The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+        format: date-time
       - type: string
         name: salesDateEnd
         in: query
         description: The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+        format: date-time
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+        format: date-time
       responses:
         200:
           description: Ok
@@ -2234,6 +3006,10 @@ paths:
     get:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Retailer Delivery'
+      externalDocs:
+        x-doc-key: get_sales_v1_deliveries_retailer_active
       operationId: GetSaleDeliveryRetailerActive
       parameters:
       - type: string
@@ -2241,14 +3017,17 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp.
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp.
+        format: date-time
       responses:
         200:
           description: Ok
@@ -2256,6 +3035,10 @@ paths:
     get:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Retailer Delivery'
+      externalDocs:
+        x-doc-key: get_sales_v1_deliveries_retailer_inactive
       operationId: GetSaleDeliveryRetailerInactive
       parameters:
       - type: string
@@ -2263,14 +3046,17 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp.
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp.
+        format: date-time
       responses:
         200:
           description: Ok
@@ -2278,13 +3064,18 @@ paths:
     get:
       tags:
       - Sales
-      operationId: GetSaleDeliveryReturnreasons
+      summary: ''
+      description: '<b>Permissions Required</b>: '
+      externalDocs:
+        x-doc-key: get_sales_v1_deliveries_returnreasons
+      operationId: GetSaleDeliveryReturnReasons
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2292,13 +3083,18 @@ paths:
     get:
       tags:
       - Sales
-      operationId: GetSalePaymenttypes
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales Delivery'
+      externalDocs:
+        x-doc-key: get_sales_v1_paymenttypes
+      operationId: GetSalePaymentTypes
       parameters:
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2306,6 +3102,10 @@ paths:
     post:
       tags:
       - Sales
+      summary: ''
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales Delivery'
+      externalDocs:
+        x-doc-key: post_sales_v1_deliveries
       operationId: PostSaleDeliveries
       parameters:
       - type: string
@@ -2313,12 +3113,17 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     put:
       tags:
       - Sales
+      summary: ''
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales Delivery'
+      externalDocs:
+        x-doc-key: put_sales_v1_deliveries
       operationId: PutSaleDeliveries
       parameters:
       - type: string
@@ -2326,6 +3131,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2333,6 +3139,10 @@ paths:
     post:
       tags:
       - Sales
+      summary: ''
+      description: 'Please note: The DateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      externalDocs:
+        x-doc-key: post_sales_v1_deliveries_retailer
       operationId: PostSaleDeliveryRetailer
       parameters:
       - type: string
@@ -2340,12 +3150,17 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     put:
       tags:
       - Sales
+      summary: ''
+      description: 'Please note: The DateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      externalDocs:
+        x-doc-key: put_sales_v1_deliveries_retailer
       operationId: PutSaleDeliveryRetailer
       parameters:
       - type: string
@@ -2353,6 +3168,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2360,6 +3176,10 @@ paths:
     post:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Retailer Delivery'
+      externalDocs:
+        x-doc-key: post_sales_v1_deliveries_retailer_depart
       operationId: PostSaleDeliveryRetailerDepart
       parameters:
       - type: string
@@ -2367,6 +3187,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2374,6 +3195,10 @@ paths:
     post:
       tags:
       - Sales
+      summary: ''
+      description: 'Please note: The ActualArrivalDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      externalDocs:
+        x-doc-key: post_sales_v1_deliveries_retailer_end
       operationId: PostSaleDeliveryRetailerEnd
       parameters:
       - type: string
@@ -2381,6 +3206,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2388,6 +3214,10 @@ paths:
     post:
       tags:
       - Sales
+      summary: ''
+      description: 'Please note: The DateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      externalDocs:
+        x-doc-key: post_sales_v1_deliveries_retailer_restock
       operationId: PostSaleDeliveryRetailerRestock
       parameters:
       - type: string
@@ -2395,6 +3225,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2402,6 +3233,10 @@ paths:
     post:
       tags:
       - Sales
+      summary: ''
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      externalDocs:
+        x-doc-key: post_sales_v1_deliveries_retailer_sale
       operationId: PostSaleDeliveryRetailerSale
       parameters:
       - type: string
@@ -2409,6 +3244,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2416,6 +3252,10 @@ paths:
     put:
       tags:
       - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales Delivery'
+      externalDocs:
+        x-doc-key: put_sales_v1_deliveries_complete
       operationId: PutSaleDeliveryComplete
       parameters:
       - type: string
@@ -2423,6 +3263,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2430,6 +3271,10 @@ paths:
     put:
       tags:
       - Sales
+      summary: ''
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales Delivery'
+      externalDocs:
+        x-doc-key: put_sales_v1_deliveries_hub
       operationId: PutSaleDeliveryHub
       parameters:
       - type: string
@@ -2437,6 +3282,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2444,35 +3290,47 @@ paths:
     delete:
       tags:
       - Strains
-      operationId: DeleteStrains
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Strains'
+      externalDocs:
+        x-doc-key: delete_strains_v1_{id}
+      operationId: DeleteStrainById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     get:
       tags:
       - Strains
-      operationId: GetStrains
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Strains'
+      externalDocs:
+        x-doc-key: get_strains_v1_{id}
+      operationId: GetStrainById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         description: If specified, the Strain will be validated against the specified License Number. If not specified, the Strain will be validated against all of the User's current Facilities. Please note that if the Strain is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
       responses:
         200:
           description: Ok
@@ -2480,6 +3338,10 @@ paths:
     get:
       tags:
       - Strains
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Strains'
+      externalDocs:
+        x-doc-key: get_strains_v1_active
       operationId: GetStrainActive
       parameters:
       - type: string
@@ -2487,6 +3349,7 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of active strains.
+        format: ''
       responses:
         200:
           description: Ok
@@ -2494,6 +3357,10 @@ paths:
     post:
       tags:
       - Strains
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Strains'
+      externalDocs:
+        x-doc-key: post_strains_v1_create
       operationId: PostStrainCreate
       parameters:
       - type: string
@@ -2501,6 +3368,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2508,6 +3376,10 @@ paths:
     post:
       tags:
       - Strains
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Strains'
+      externalDocs:
+        x-doc-key: post_strains_v1_update
       operationId: PostStrainUpdate
       parameters:
       - type: string
@@ -2515,6 +3387,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2522,18 +3395,24 @@ paths:
     delete:
       tags:
       - Transfers
-      operationId: DeleteTransferExternalIncoming
+      summary: ''
+      description: '<b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: delete_transfers_v1_external_incoming_{id}
+      operationId: DeleteTransferExternalIncomingById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2541,18 +3420,24 @@ paths:
     delete:
       tags:
       - Transfers
-      operationId: DeleteTransferTemplates
+      summary: ''
+      description: '<b>Permissions Required</b>: Transfer Templates'
+      externalDocs:
+        x-doc-key: delete_transfers_v1_templates_{id}
+      operationId: DeleteTransferTemplateById
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       - type: string
         name: licenseNumber
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2560,13 +3445,18 @@ paths:
     get:
       tags:
       - Transfers
-      operationId: GetTransferDeliveryPackages
+      summary: ''
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: get_transfers_v1_deliveries_{id}_packages
+      operationId: GetTransferDeliveryByIdPackages
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       responses:
         200:
           description: Ok
@@ -2574,13 +3464,18 @@ paths:
     get:
       tags:
       - Transfers
-      operationId: GetTransferDeliveryPackageWholesale
+      summary: ''
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: get_transfers_v1_deliveries_{id}_packages_wholesale
+      operationId: GetTransferDeliveryByIdPackageWholesale
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       responses:
         200:
           description: Ok
@@ -2588,13 +3483,18 @@ paths:
     get:
       tags:
       - Transfers
-      operationId: GetTransferDeliveryTransporters
+      summary: ''
+      description: 'Please note: that the {id} parameter above represents a Shipment Delivery ID.</br><b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: get_transfers_v1_deliveries_{id}_transporters
+      operationId: GetTransferDeliveryByIdTransporters
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       responses:
         200:
           description: Ok
@@ -2602,13 +3502,18 @@ paths:
     get:
       tags:
       - Transfers
-      operationId: GetTransferDeliveryTransporterDetails
+      summary: ''
+      description: 'Please note: The {id} parameter above represents a Shipment Delivery ID.</br><b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: get_transfers_v1_deliveries_{id}_transporters_details
+      operationId: GetTransferDeliveryByIdTransporterDetails
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       responses:
         200:
           description: Ok
@@ -2616,6 +3521,10 @@ paths:
     get:
       tags:
       - Transfers
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_transfers_v1_deliveries_packages_states
       operationId: GetTransferDeliveryPackageStates
       responses:
         200:
@@ -2624,13 +3533,18 @@ paths:
     get:
       tags:
       - Transfers
-      operationId: GetTransferDeliveryPackageRequiredlabtestbatches
+      summary: ''
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: get_transfers_v1_deliveries_package_{id}_requiredlabtestbatches
+      operationId: GetTransferDeliveryPackageByIdRequiredLabTestBatches
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       responses:
         200:
           description: Ok
@@ -2638,13 +3552,18 @@ paths:
     get:
       tags:
       - Transfers
-      operationId: GetTransferDeliveries
+      summary: ''
+      description: 'Please note: that the {id} parameter above represents a Shipment Plan ID.</br><b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: get_transfers_v1_{id}_deliveries
+      operationId: GetTransferByIdDeliveries
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       responses:
         200:
           description: Ok
@@ -2652,6 +3571,10 @@ paths:
     get:
       tags:
       - Transfers
+      summary: ''
+      description: '<b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: get_transfers_v1_incoming
       operationId: GetTransferIncoming
       parameters:
       - type: string
@@ -2659,14 +3582,17 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -2674,6 +3600,10 @@ paths:
     get:
       tags:
       - Transfers
+      summary: ''
+      description: '<b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: get_transfers_v1_outgoing
       operationId: GetTransferOutgoing
       parameters:
       - type: string
@@ -2681,14 +3611,17 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
@@ -2696,6 +3629,10 @@ paths:
     get:
       tags:
       - Transfers
+      summary: ''
+      description: '<b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: get_transfers_v1_rejected
       operationId: GetTransferRejected
       parameters:
       - type: string
@@ -2703,6 +3640,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2710,6 +3648,10 @@ paths:
     get:
       tags:
       - Transfers
+      summary: ''
+      description: '<b>Permissions Required</b>: Transfer Templates'
+      externalDocs:
+        x-doc-key: get_transfers_v1_templates
       operationId: GetTransferTemplates
       parameters:
       - type: string
@@ -2717,20 +3659,27 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
         description: The last modified start timestamp
+        format: date-time
       - type: string
         name: lastModifiedEnd
         in: query
         description: The last modified end timestamp
+        format: date-time
       responses:
         200:
           description: Ok
     post:
       tags:
       - Transfers
+      summary: ''
+      description: '<b>Permissions Required</b>: Transfer Templates'
+      externalDocs:
+        x-doc-key: post_transfers_v1_templates
       operationId: PostTransferTemplates
       parameters:
       - type: string
@@ -2738,12 +3687,17 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     put:
       tags:
       - Transfers
+      summary: ''
+      description: '<b>Permissions Required</b>: Transfer Templates'
+      externalDocs:
+        x-doc-key: put_transfers_v1_templates
       operationId: PutTransferTemplates
       parameters:
       - type: string
@@ -2751,6 +3705,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2758,13 +3713,18 @@ paths:
     get:
       tags:
       - Transfers
-      operationId: GetTransferTemplateDeliveryPackages
+      summary: ''
+      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: get_transfers_v1_templates_deliveries_{id}_packages
+      operationId: GetTransferTemplateDeliveryByIdPackages
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       responses:
         200:
           description: Ok
@@ -2772,13 +3732,18 @@ paths:
     get:
       tags:
       - Transfers
-      operationId: GetTransferTemplateDeliveryTransporters
+      summary: ''
+      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfer Templates'
+      externalDocs:
+        x-doc-key: get_transfers_v1_templates_deliveries_{id}_transporters
+      operationId: GetTransferTemplateDeliveryByIdTransporters
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       responses:
         200:
           description: Ok
@@ -2786,13 +3751,18 @@ paths:
     get:
       tags:
       - Transfers
-      operationId: GetTransferTemplateDeliveryTransporterDetails
+      summary: ''
+      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfer Templates'
+      externalDocs:
+        x-doc-key: get_transfers_v1_templates_deliveries_{id}_transporters_details
+      operationId: GetTransferTemplateDeliveryByIdTransporterDetails
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       responses:
         200:
           description: Ok
@@ -2800,13 +3770,18 @@ paths:
     get:
       tags:
       - Transfers
-      operationId: GetTransferTemplateDeliveries
+      summary: ''
+      description: '<b>Permissions Required</b>: Transfer Templates'
+      externalDocs:
+        x-doc-key: get_transfers_v1_templates_{id}_deliveries
+      operationId: GetTransferTemplateByIdDeliveries
       parameters:
       - type: integer
         name: id
         in: path
         required: true
         description: Route parameter id
+        format: int64
       responses:
         200:
           description: Ok
@@ -2814,6 +3789,10 @@ paths:
     get:
       tags:
       - Transfers
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_transfers_v1_types
       operationId: GetTransferTypes
       parameters:
       - type: string
@@ -2821,6 +3800,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2828,6 +3808,10 @@ paths:
     post:
       tags:
       - Transfers
+      summary: ''
+      description: '<b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: post_transfers_v1_external_incoming
       operationId: PostTransferExternalIncoming
       parameters:
       - type: string
@@ -2835,12 +3819,17 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
     put:
       tags:
       - Transfers
+      summary: ''
+      description: '<b>Permissions Required</b>: Transfers'
+      externalDocs:
+        x-doc-key: put_transfers_v1_external_incoming
       operationId: PutTransferExternalIncoming
       parameters:
       - type: string
@@ -2848,6 +3837,7 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
       responses:
         200:
           description: Ok
@@ -2855,166 +3845,11 @@ paths:
     get:
       tags:
       - UnitsOfMeasure
-      operationId: GetUnitsofmeasureActive
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_unitsofmeasure_v1_active
+      operationId: GetUnitOfMeasureActive
       responses:
         200:
           description: Ok
-definitions:
-  PostHarvestCreatePackagesRequest:
-    additionalProperties: {}
-  PostHarvestCreatePackageTestingRequest:
-    additionalProperties: {}
-  PostHarvestFinishRequest:
-    additionalProperties: {}
-  PostHarvestRemovewasteRequest:
-    additionalProperties: {}
-  PostHarvestUnfinishRequest:
-    additionalProperties: {}
-  PutHarvestMoveRequest:
-    additionalProperties: {}
-  PutHarvestRenameRequest:
-    additionalProperties: {}
-  PostItemCreateRequest:
-    additionalProperties: {}
-  PostItemPhotoRequest:
-    additionalProperties: {}
-  PostItemUpdateRequest:
-    additionalProperties: {}
-  PostLabtestRecordRequest:
-    additionalProperties: {}
-  PutLabtestLabtestdocumentRequest:
-    additionalProperties: {}
-  PutLabtestResultReleaseRequest:
-    additionalProperties: {}
-  PostLocationCreateRequest:
-    additionalProperties: {}
-  PostLocationUpdateRequest:
-    additionalProperties: {}
-  PostPackageAdjustRequest:
-    additionalProperties: {}
-  PostPackageChangeItemRequest:
-    additionalProperties: {}
-  PostPackageChangeLocationsRequest:
-    additionalProperties: {}
-  PostPackageCreateRequest:
-    additionalProperties: {}
-  PostPackageCreatePlantingsRequest:
-    additionalProperties: {}
-  PostPackageCreateTestingRequest:
-    additionalProperties: {}
-  PostPackageFinishRequest:
-    additionalProperties: {}
-  PostPackageRemediateRequest:
-    additionalProperties: {}
-  PostPackageUnfinishRequest:
-    additionalProperties: {}
-  PutPackageChangeNoteRequest:
-    additionalProperties: {}
-  PostPatientCheckinsRequest:
-    additionalProperties: {}
-  PutPatientCheckinsRequest:
-    additionalProperties: {}
-  PostPatientAddRequest:
-    additionalProperties: {}
-  PostPatientUpdateRequest:
-    additionalProperties: {}
-  DeletePlantbatchesRequest:
-    additionalProperties: {}
-  PostPlantbatchAdditivesRequest:
-    additionalProperties: {}
-  PostPlantbatchAdjustRequest:
-    additionalProperties: {}
-  PostPlantbatchChangegrowthphaseRequest:
-    additionalProperties: {}
-  PostPlantbatchCreatepackagesRequest:
-    additionalProperties: {}
-  PostPlantbatchCreateplantingsRequest:
-    additionalProperties: {}
-  PostPlantbatchCreatePackageFrommotherplantRequest:
-    additionalProperties: {}
-  PostPlantbatchSplitRequest:
-    additionalProperties: {}
-  PostPlantbatchWasteRequest:
-    additionalProperties: {}
-  PutPlantbatchMoveplantbatchesRequest:
-    additionalProperties: {}
-  DeletePlantsRequest:
-    additionalProperties: {}
-  PostPlantAdditivesRequest:
-    additionalProperties: {}
-  PostPlantAdditiveBylocationRequest:
-    additionalProperties: {}
-  PostPlantChangegrowthphasesRequest:
-    additionalProperties: {}
-  PostPlantCreatePlantbatchPackagesRequest:
-    additionalProperties: {}
-  PostPlantCreatePlantingsRequest:
-    additionalProperties: {}
-  PostPlantHarvestplantsRequest:
-    additionalProperties: {}
-  PostPlantManicureplantsRequest:
-    additionalProperties: {}
-  PostPlantMoveplantsRequest:
-    additionalProperties: {}
-  PostPlantWasteRequest:
-    additionalProperties: {}
-  PostProcessingAdjustRequest:
-    additionalProperties: {}
-  PostProcessingCreatepackagesRequest:
-    additionalProperties: {}
-  PostProcessingJobtypesRequest:
-    additionalProperties: {}
-  PostProcessingStartRequest:
-    additionalProperties: {}
-  PutProcessingFinishRequest:
-    additionalProperties: {}
-  PutProcessingJobtypesRequest:
-    additionalProperties: {}
-  PutProcessingUnfinishRequest:
-    additionalProperties: {}
-  PostSaleReceiptsRequest:
-    additionalProperties: {}
-  PostSaleTransactionsRequest:
-    additionalProperties: {}
-  PutSaleDeliveryHubAcceptRequest:
-    additionalProperties: {}
-  PutSaleDeliveryHubDepartRequest:
-    additionalProperties: {}
-  PutSaleDeliveryHubVerifyidRequest:
-    additionalProperties: {}
-  PutSaleReceiptsRequest:
-    additionalProperties: {}
-  PutSaleTransactionsRequest:
-    additionalProperties: {}
-  PostSaleDeliveriesRequest:
-    additionalProperties: {}
-  PostSaleDeliveryRetailerRequest:
-    additionalProperties: {}
-  PostSaleDeliveryRetailerDepartRequest:
-    additionalProperties: {}
-  PostSaleDeliveryRetailerEndRequest:
-    additionalProperties: {}
-  PostSaleDeliveryRetailerRestockRequest:
-    additionalProperties: {}
-  PostSaleDeliveryRetailerSaleRequest:
-    additionalProperties: {}
-  PutSaleDeliveriesRequest:
-    additionalProperties: {}
-  PutSaleDeliveryCompleteRequest:
-    additionalProperties: {}
-  PutSaleDeliveryHubRequest:
-    additionalProperties: {}
-  PutSaleDeliveryRetailerRequest:
-    additionalProperties: {}
-  PostStrainCreateRequest:
-    additionalProperties: {}
-  PostStrainUpdateRequest:
-    additionalProperties: {}
-  PostTransferExternalIncomingRequest:
-    additionalProperties: {}
-  PostTransferTemplatesRequest:
-    additionalProperties: {}
-  PutTransferExternalIncomingRequest:
-    additionalProperties: {}
-  PutTransferTemplatesRequest:
-    additionalProperties: {}

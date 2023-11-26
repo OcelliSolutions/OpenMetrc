@@ -1,0 +1,85 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#"  #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ assembly name="Newtonsoft.Json" #>
+<#@ import namespace="Newtonsoft.Json" #>
+<#@ import namespace="Newtonsoft.Json.Linq" #>
+<#@ output extension=".md" #>
+<#
+//Debugger.Launch();
+var file = this.Host.ResolvePath(@"../../../state-summaries.json");
+var stateSummaries = JArray.Parse(File.ReadAllText(file));
+var states = GetDistinctStates();
+var firstState = true;
+if (stateSummaries == null) #> **TODO: state-summaries.json was not found**
+<#
+    var sections = GetDistinctSections();
+#>
+# METRC State &amp; Endpoint Coverage
+
+The table below details all of the states that METRC is deployed into. Not every state has every endpoint (or section for that matter). This is generated automatically via scraping scripts. 
+All endpoints should be mapped automatically in the NuGet package and OpenApi docs.
+
+<#
+        foreach(var section in sections)
+        {
+#>
+| **<#= section #>** | **<#= string.Join("** | **",states) #>** |
+<#
+    if(firstState){
+#>
+| --- | <#= string.Concat(Enumerable.Repeat(" --- |", states.Count()))#>
+<#
+        firstState = false;
+    }
+            var endpoints = GetDistinctEndpoints(section.ToString());
+            foreach(var endpoint in endpoints)
+            {
+                var hasStates = GetEndpointStates(endpoint.ToString());
+#>
+| <#= endpoint #> | <#= string.Join(" | ", hasStates) #> |
+<#      }
+    }
+#>
+<#
+
+IEnumerable<string> GetDistinctStates(){
+    return (from ss in stateSummaries
+            where ss["Sections"].Count() > 1
+            select ss["State"].ToString().ToUpper()).Distinct().OrderBy(e => e);
+}
+
+IEnumerable<string> GetDistinctSections(){
+    return (from ss in stateSummaries
+            from s in ss["Sections"]
+            select s["Name"].ToString()).Distinct().OrderBy(e => e);
+}
+
+IEnumerable<string> GetDistinctEndpoints(string section){
+    return (from ss in stateSummaries
+            from s in ss["Sections"]
+            from e in s["Endpoints"]
+            where s["Name"].ToString() == section
+            where e.ToString().Contains("_v2")
+            select e.ToString()).Distinct().OrderBy(e => e);
+}
+
+IEnumerable<string> GetEndpointStates(string endpoint){
+    var hasStates = stateSummaries.Where(ss => ss["Sections"].Any(s => s["Endpoints"].Any(e => e.ToString() == endpoint)))
+        .Select(ss => ss["State"]);
+    var allStates = GetDistinctStates();
+    var map = new List<string>();
+    foreach(var state in allStates)
+    {
+        if(hasStates.Contains(state.ToLower()))
+            map.Add("x");
+        else 
+            map.Add("");
+    }
+    return map;
+}
+#>

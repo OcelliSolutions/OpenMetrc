@@ -2018,7 +2018,14 @@
   },
   {
     "State": "ky",
-    "Sections": []
+    "Sections": [
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v1_active"
+        ]
+      }
+    ]
   },
   {
     "State": "la",
@@ -4588,16 +4595,16 @@
       {
         "Name": "PatientCheckIns",
         "Endpoints": [
-          "get_patientcheckins_v1_locations",
-          "get_patientcheckins_v1",
-          "post_patientcheckins_v1",
-          "put_patientcheckins_v1",
-          "delete_patientcheckins_v1_id",
-          "get_patientcheckins_v2_locations",
-          "get_patientcheckins_v2",
-          "post_patientcheckins_v2",
-          "put_patientcheckins_v2",
-          "delete_patientcheckins_v2_id"
+          "get_patient-checkins_v1_locations",
+          "get_patient-checkins_v1",
+          "post_patient-checkins_v1",
+          "put_patient-checkins_v1",
+          "delete_patient-checkins_v1_id",
+          "get_patient-checkins_v2_locations",
+          "get_patient-checkins_v2",
+          "post_patient-checkins_v2",
+          "put_patient-checkins_v2",
+          "delete_patient-checkins_v2_id"
         ]
       },
       {

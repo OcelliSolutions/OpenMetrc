@@ -1,0 +1,89 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PackageId>Ocelli.OpenMETRC</PackageId>
+		<Company>Code Cooper LLC</Company>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<Authors>Jason Cooper</Authors>
+		<Description>Using OpenAPI standards, create an interface for the METRC platform's APIs.</Description>
+		<PackageProjectUrl>https://github.com/codecooper/OpenMetrc</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>openapi swagger metrc ocelli</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>app_icon_128_128.jpg</PackageIcon>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="..\..\app_icon_128_128.jpg">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+    <OpenApiReference Include="../../open-metrc-swagger-v2.yaml" CodeGenerator="NSwagCSharp" Namespace="OpenMetrc.V2" ClassName="{controller}Client" Link="OpenAPIs/open-metrc-swagger-v2.yaml" OutputPath="MetrcV2Client.cs">
+      <Options>/OperationGenerationMode:MultipleClientsFromFirstTagAndOperationId /GenerateClientInterfaces:true /GenerateOptionalPropertiesAsNullable:true /GenerateNullableReferenceTypes:true /DateType:System.DateTime /GenerateDataAnnotations </Options>
+    </OpenApiReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="8.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="NSwag.ApiDescription.Client" Version="13.20.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Data\MetrcEndpoints.cs">
+			<DependentUpon>MetrcEndpoints.tt</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Data\MetrcEndpoints.tt">
+			<LastGenOutput>MetrcEndpoints.cs</LastGenOutput>
+			<Generator>TextTemplatingFileGenerator</Generator>
+		</None>
+		<None Update="Data\MetrcEndpointsSummary.md">
+			<DependentUpon>MetrcEndpointsSummary.tt</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</None>
+		<None Update="Data\MetrcEndpointsSummary.tt">
+			<LastGenOutput>MetrcEndpointsSummary.md</LastGenOutput>
+			<Generator>TextTemplatingFileGenerator</Generator>
+		</None>
+		<None Update="icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Update="readme.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Update="readme.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+</Project>

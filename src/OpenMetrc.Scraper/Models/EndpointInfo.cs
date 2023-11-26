@@ -1,6 +1,7 @@
 ﻿namespace OpenMetrc.Scraper.Models;
 internal class EndpointInfo
 {
+    public string ReferenceId { get; set; } = null!;
     public string OperationId { get; set; } = null!;
     public string HttpMethod { get; set; } = null!;
     public string Url { get; set; } = null!;

@@ -7,6 +7,13 @@ using System.Text.RegularExpressions;
 namespace OpenMetrc.Scraper;
 internal static class StateService
 {
+    // This ensures that any states that have gone offline or have removed endpoints are taken care of
+    internal static void DeleteReferenceDocuments()
+    {
+        // Ensure the directory exists
+        Directory.Delete("../../../Reference", true);
+    }
+
     internal static async Task<StateSummary> ProcessState(string state)
     {
         var stateSummary = new StateSummary(state);
@@ -15,7 +22,8 @@ internal static class StateService
 
         var htmlDoc = new HtmlDocument();
         htmlDoc.LoadHtml(content);
-        var regex = new Regex("(?:[^a-z0-9_]|(?<=['\"])s)",
+
+        var regex = new Regex("(?:[^a-z0-9_-]|(?<=['\"])s)",
             RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Compiled);
         var versions = new List<string>() { "version-1-collapse", "version-2-collapse" };
 

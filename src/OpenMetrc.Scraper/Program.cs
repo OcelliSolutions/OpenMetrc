@@ -13,7 +13,7 @@ var stateSummaries = new ConcurrentBag<StateSummary>();
 double stateCounter = 0;
 var consoleLock = new object();
 var errors = new ConcurrentBag<Exception>();
-
+/*
 StateService.DeleteReferenceDocuments();
 
 Parallel.ForEach(states, (state) =>
@@ -50,7 +50,7 @@ if (!errors.IsEmpty)
 }
 
 await StateService.WriteStateSummary(stateSummaries.ToList()); // Convert ConcurrentBag to List
-
+*/
 
 var v1Document = OpenApiService.CreateOpenApiDocument("../../../Reference", "v1");
 await OpenApiService.WriteOpenApiDocument(v1Document);
@@ -59,6 +59,7 @@ await OpenApiService.WriteOpenApiDocument(v2Document);
 
 
 await OpenApiService.CreateController(v1Document, "V1");
+await OpenApiService.CreateController(v2Document, "V2");
 
 Console.WriteLine($@"Summary: 
 States Found: {stateSummaries.Count}");
