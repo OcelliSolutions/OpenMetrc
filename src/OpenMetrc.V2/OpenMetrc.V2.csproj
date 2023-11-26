@@ -6,7 +6,7 @@
 		<Nullable>enable</Nullable>
 		<PackageId>OpenMETRC.V2</PackageId>
 		<Company>Code Cooper LLC</Company>
-		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<!--<PackageReadmeFile>readme.md</PackageReadmeFile>-->
 		<Authors>Jason Cooper</Authors>
 		<Description>Using OpenAPI standards, create an interface for the METRC platform's APIs.</Description>
 		<PackageProjectUrl>https://github.com/codecooper/OpenMetrc</PackageProjectUrl>
@@ -14,6 +14,7 @@
 		<PackageTags>openapi swagger metrc</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIcon>app_icon_128_128.jpg</PackageIcon>
+		<Title>OpenMETRC V2</Title>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\..\app_icon_128_128.jpg">
