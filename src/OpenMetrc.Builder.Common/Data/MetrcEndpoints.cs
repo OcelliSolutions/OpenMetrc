@@ -622,7 +622,7 @@ public static class MetrcEndpointExtensions
             MetrcEndpoint.get_transfers_v2_templates_outgoing_deliveries_id_transporters_details => new[] {"ca","co","dc","gu","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
             MetrcEndpoint.get_transfers_v2_templates_outgoing_id_deliveries => new[] {"ca","co","dc","gu","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
             MetrcEndpoint.get_transfers_v2_types => new[] {"ca","co","dc","gu","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
-            MetrcEndpoint.get_unitsofmeasure_v1_active => new[] {"ak","al","ca","co","dc","ga","gu","il","ky","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
+            MetrcEndpoint.get_unitsofmeasure_v1_active => new[] {"ak","al","ca","co","dc","gu","il","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
             MetrcEndpoint.get_unitsofmeasure_v2_active => new[] {"ca","co","dc","gu","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
             MetrcEndpoint.get_unitsofmeasure_v2_inactive => new[] {"ca","co","dc","gu","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
             MetrcEndpoint.get_wastemethods_v2 => new[] {"gu","nj","ri"},

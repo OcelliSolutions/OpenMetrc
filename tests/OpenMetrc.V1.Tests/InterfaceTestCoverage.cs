@@ -86,10 +86,10 @@ public class InterfaceTestCoverage
         var enumValues = Enum.GetValues(typeof(MetrcEndpoint)).Cast<MetrcEndpoint>();
         var incorrectlyUsedEnums = enumValues
             .Where(ev => ev.ToString().Contains("v1"))
-            .Where(ev => usedEnumsCount.GetValueOrDefault(ev) != 2)
+            .Where(ev => usedEnumsCount.GetValueOrDefault(ev) != 1)
             .ToList();
 
         Assert.True(!incorrectlyUsedEnums.Any(),
-            $"The following enum values are not correctly used (should be used exactly twice): {string.Join(", ", incorrectlyUsedEnums)}");
+            $"The following enum values are not correctly used (should be used exactly once): {string.Join(", ", incorrectlyUsedEnums)}");
     }
 }

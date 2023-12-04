@@ -50,6 +50,7 @@ public class ProduceResponseTypeModelProvider : IApplicationModelProvider
 
         //these will never return a response code, however, it makes exception handling easier if they have a nullable response instead of none at all
         AddProducesResponseTypeAttribute(action, returnType, StatusCodes.Status401Unauthorized);
+        AddProducesResponseTypeAttribute(action, typeof(void), StatusCodes.Status401Unauthorized);
         AddProducesResponseTypeAttribute(action, typeof(void), StatusCodes.Status503ServiceUnavailable);
     }
 

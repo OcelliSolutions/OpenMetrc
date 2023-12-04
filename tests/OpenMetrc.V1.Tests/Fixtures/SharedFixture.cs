@@ -96,20 +96,25 @@ public class SharedFixture : IDisposable
         catch (AggregateException ex)
         {
             ex.Handle(ie => {
-                if (ie is ApiException<ErrorResponse> apiException)
+                switch (ie)
                 {
-                    if (apiException.StatusCode is StatusCodes.Status401Unauthorized
-                        or StatusCodes.Status503ServiceUnavailable)
+                    case ApiException<ErrorResponse> { StatusCode: StatusCodes.Status401Unauthorized or StatusCodes.Status503ServiceUnavailable }:
                         throw new TestExceptionWrapper(null, null, ex.InnerException, true);
-                    throw new TestExceptionWrapper(apiException.Result?.Message ?? apiException.Message,
-                        apiException.Response,
-                        ex.InnerException);
+                    case ApiException<ErrorResponse> apiExceptionErrorResponse:
+                        throw new TestExceptionWrapper(apiExceptionErrorResponse.Result?.Message ?? apiExceptionErrorResponse.Message,
+                            apiExceptionErrorResponse.Response,
+                            ex.InnerException);
+                    case ApiException { StatusCode: StatusCodes.Status401Unauthorized or StatusCodes.Status503ServiceUnavailable }:
+                        throw new TestExceptionWrapper(null, null, ex.InnerException, true);
+                    case ApiException apiException:
+                        throw new TestExceptionWrapper(apiException.Message,
+                            apiException.Response,
+                            ex.InnerException);
+                    case TimeoutException timeoutException:
+                        throw new TestExceptionWrapper(timeoutException.Message, null, null, unavailable: true);
+                    default:
+                        throw ie;
                 }
-
-                if (ie is TimeoutException timeoutException)
-                    throw new TestExceptionWrapper(timeoutException.Message, null, null, unavailable: true);
-
-                throw ie;
             });
             throw;
         }

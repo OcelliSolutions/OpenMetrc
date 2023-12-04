@@ -90,47 +90,47 @@ public partial class MetrcService : IMetrcService
             {
                 Timeout = _openMetrcConfig.HttpTimeout
             };
-            //MetrcClients.TryAdd(MetrcClientKey, new MetrcClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            //MetrcClients.TryAdd(MetrcClientKey, new MetrcClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             var byteArray = Encoding.ASCII.GetBytes($"{_openMetrcConfig.SoftwareApiKey}:{_openMetrcConfig.UserApiKey}");
             HttpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             HttpClient.Timeout = TimeSpan.FromMinutes(3);
             CaregiverClients.TryAdd(MetrcClientKey,
-                new CaregiverClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new CaregiverClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             EmployeeClients.TryAdd(MetrcClientKey,
-                new EmployeeClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new EmployeeClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             FacilityClients.TryAdd(MetrcClientKey,
-                new FacilityClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new FacilityClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             HarvestClients.TryAdd(MetrcClientKey,
-                new HarvestClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new HarvestClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             ItemClients.TryAdd(MetrcClientKey,
-                new ItemClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new ItemClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             LabTestClients.TryAdd(MetrcClientKey,
-                new LabTestClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new LabTestClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             LocationClients.TryAdd(MetrcClientKey,
-                new LocationClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new LocationClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             PackageClients.TryAdd(MetrcClientKey,
-                new PackageClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new PackageClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             PatientCheckInClients.TryAdd(MetrcClientKey,
-                new PatientCheckInClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new PatientCheckInClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             PatientClients.TryAdd(MetrcClientKey,
-                new PatientClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new PatientClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             PatientStatusClients.TryAdd(MetrcClientKey,
-                new PatientStatusClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new PatientStatusClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             PlantClients.TryAdd(MetrcClientKey,
-                new PlantClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new PlantClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             PlantBatchClients.TryAdd(MetrcClientKey,
-                new PlantBatchClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new PlantBatchClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             ProcessingClients.TryAdd(MetrcClientKey,
-                new ProcessingClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new ProcessingClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             SaleClients.TryAdd(MetrcClientKey,
-                new SaleClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new SaleClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             StrainClients.TryAdd(MetrcClientKey,
-                new StrainClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new StrainClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             TransferClients.TryAdd(MetrcClientKey,
-                new TransferClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new TransferClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             UnitOfMeasureClients.TryAdd(MetrcClientKey,
-                new UnitOfMeasureClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+                new UnitOfMeasureClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
         }
     }
 

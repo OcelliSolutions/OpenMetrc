@@ -110,12 +110,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /employees/v1:
@@ -175,12 +169,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /facilities/v1:
@@ -235,12 +223,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/harvests/v1/{id}':
@@ -304,12 +286,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /harvests/v1/active:
@@ -384,12 +360,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /harvests/v1/onhold:
@@ -464,12 +434,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /harvests/v1/inactive:
@@ -544,12 +508,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /harvests/v1/waste/types:
@@ -603,12 +561,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /harvests/v1/create/packages:
@@ -672,12 +624,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -751,12 +697,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -830,12 +770,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -909,12 +843,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -988,12 +916,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -1067,12 +989,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -1146,12 +1062,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -1225,12 +1135,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
     delete:
@@ -1286,12 +1190,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -1362,12 +1260,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /items/v1/inactive:
@@ -1428,12 +1320,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /items/v1/categories:
@@ -1493,12 +1379,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /items/v1/brands:
@@ -1559,12 +1439,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/items/v1/photo/{id}':
@@ -1628,12 +1502,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /items/v1/create:
@@ -1696,12 +1564,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -1774,12 +1636,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -1854,12 +1710,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '400':
@@ -1919,12 +1769,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /labtests/v1/types:
@@ -1978,12 +1822,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /labtests/v1/results:
@@ -2049,12 +1887,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /labtests/v1/record:
@@ -2117,12 +1949,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -2195,12 +2021,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -2273,12 +2093,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -2356,12 +2170,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/locations/v1/{id}':
@@ -2425,12 +2233,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
     delete:
@@ -2486,12 +2288,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -2562,12 +2358,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /locations/v1/types:
@@ -2628,12 +2418,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /locations/v1/create:
@@ -2696,12 +2480,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -2774,12 +2552,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -2853,12 +2625,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/packages/v1/{label}':
@@ -2921,12 +2687,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /packages/v1/active:
@@ -3003,12 +2763,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /packages/v1/onhold:
@@ -3085,12 +2839,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /packages/v1/inactive:
@@ -3167,12 +2915,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /packages/v1/types:
@@ -3224,12 +2966,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /packages/v1/adjust/reasons:
@@ -3289,12 +3025,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /packages/v1/create:
@@ -3357,12 +3087,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -3435,12 +3159,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -3513,12 +3231,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -3591,12 +3303,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -3669,12 +3375,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -3747,12 +3447,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -3825,12 +3519,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -3903,12 +3591,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -3981,12 +3663,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -4059,12 +3735,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -4138,12 +3808,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
     delete:
@@ -4199,12 +3863,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -4275,12 +3933,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /patients/v1/add:
@@ -4343,12 +3995,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -4421,12 +4067,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -4490,12 +4130,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /patient-checkins/v1:
@@ -4567,12 +4201,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
     post:
@@ -4634,12 +4262,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -4711,12 +4333,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -4783,12 +4399,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -4865,12 +4475,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plants/v1/additives/types:
@@ -4922,12 +4526,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/plants/v1/{id}':
@@ -4991,12 +4589,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/plants/v1/{label}':
@@ -5059,12 +4651,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plants/v1/vegetative:
@@ -5141,12 +4727,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plants/v1/flowering:
@@ -5223,12 +4803,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plants/v1/onhold:
@@ -5305,12 +4879,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plants/v1/inactive:
@@ -5387,12 +4955,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plants/v1/additives:
@@ -5469,12 +5031,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
     post:
@@ -5537,12 +5093,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -5611,12 +5161,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plants/v1/waste/reasons:
@@ -5676,12 +5220,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plants/v1/additives/bylocation:
@@ -5745,12 +5283,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -5823,12 +5355,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -5901,12 +5427,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -5979,12 +5499,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -6057,12 +5571,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -6135,12 +5643,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -6213,12 +5715,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -6291,12 +5787,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -6369,12 +5859,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -6438,12 +5922,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/plantbatches/v1/{id}':
@@ -6507,12 +5985,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plantbatches/v1/active:
@@ -6589,12 +6061,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plantbatches/v1/inactive:
@@ -6671,12 +6137,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plantbatches/v1/types:
@@ -6728,12 +6188,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plantbatches/v1:
@@ -6798,12 +6252,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '400':
@@ -6871,12 +6319,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /plantbatches/v1/waste:
@@ -6939,12 +6381,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -7017,12 +6453,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -7096,12 +6526,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -7174,12 +6598,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -7256,12 +6674,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -7334,12 +6746,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -7412,12 +6818,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -7490,12 +6890,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -7568,12 +6962,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -7647,12 +7035,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
     delete:
@@ -7708,12 +7090,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -7798,12 +7174,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /processing/v1/inactive:
@@ -7878,12 +7248,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /processing/v1/createpackages:
@@ -7948,12 +7312,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '400':
@@ -8026,12 +7384,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '400':
@@ -8102,12 +7454,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -8180,12 +7526,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -8258,12 +7598,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -8348,12 +7682,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /processing/v1/jobtypes/inactive:
@@ -8428,12 +7756,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /processing/v1/jobtypes:
@@ -8498,12 +7820,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '400':
@@ -8573,12 +7889,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -8645,12 +7955,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -8721,12 +8025,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /processing/v1/jobtypes/categories:
@@ -8785,12 +8083,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /sales/v1/customertypes:
@@ -8842,12 +8134,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /sales/v1/patientregistration/locations:
@@ -8901,12 +8187,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/sales/v1/deliveries/{id}':
@@ -8970,12 +8250,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
     delete:
@@ -9031,12 +8305,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -9138,12 +8406,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /sales/v1/deliveries/inactive:
@@ -9235,12 +8497,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /sales/v1/deliveries/returnreasons:
@@ -9300,12 +8556,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /sales/v1/counties:
@@ -9359,12 +8609,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /sales/v1/paymenttypes:
@@ -9422,12 +8666,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/sales/v1/receipts/{id}':
@@ -9491,12 +8729,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
     delete:
@@ -9552,12 +8784,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -9659,12 +8885,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /sales/v1/receipts/inactive:
@@ -9756,12 +8976,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /sales/v1/deliveries:
@@ -9824,12 +9038,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -9901,12 +9109,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -9979,12 +9181,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -10056,12 +9252,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -10134,12 +9324,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -10212,12 +9396,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -10290,12 +9468,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -10368,12 +9540,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -10446,12 +9612,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -10539,12 +9699,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /sales/v1/deliveries/retailer/inactive:
@@ -10622,12 +9776,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/sales/v1/deliveries/retailer/{id}':
@@ -10691,12 +9839,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
     delete:
@@ -10752,12 +9894,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -10830,12 +9966,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -10907,12 +10037,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -10985,12 +10109,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -11063,12 +10181,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -11141,12 +10253,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -11219,12 +10325,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -11295,12 +10395,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/sales/v1/transactions/{salesDateStart}/{salesDateEnd}':
@@ -11377,12 +10471,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/sales/v1/transactions/{date}':
@@ -11454,12 +10542,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -11540,12 +10622,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -11619,12 +10695,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
     delete:
@@ -11680,12 +10750,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -11756,12 +10820,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /strains/v1/create:
@@ -11824,12 +10882,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -11902,12 +10954,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -11993,12 +11039,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /transfers/v1/outgoing:
@@ -12074,12 +11114,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /transfers/v1/rejected:
@@ -12139,12 +11173,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/transfers/v1/{id}/deliveries':
@@ -12206,12 +11234,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/transfers/v1/deliveries/{id}/transporters':
@@ -12273,12 +11295,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/transfers/v1/deliveries/{id}/transporters/details':
@@ -12340,12 +11356,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/transfers/v1/deliveries/{id}/packages':
@@ -12407,12 +11417,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/transfers/v1/deliveries/{id}/packages/wholesale':
@@ -12474,12 +11478,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/transfers/v1/deliveries/package/{id}/requiredlabtestbatches':
@@ -12541,12 +11539,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /transfers/v1/deliveries/packages/states:
@@ -12598,12 +11590,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /transfers/v1/types:
@@ -12663,12 +11649,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   /transfers/v1/external/incoming:
@@ -12731,12 +11711,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -12808,12 +11782,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -12880,12 +11848,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -12971,12 +11933,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
     post:
@@ -13038,12 +11994,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -13115,12 +12065,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -13192,12 +12136,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/transfers/v1/templates/deliveries/{id}/transporters':
@@ -13259,12 +12197,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/transfers/v1/templates/deliveries/{id}/transporters/details':
@@ -13326,12 +12258,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/transfers/v1/templates/deliveries/{id}/packages':
@@ -13393,12 +12319,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
   '/transfers/v1/templates/{id}':
@@ -13455,12 +12375,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
         '200':
@@ -13524,12 +12438,6 @@ paths:
                 nullable: true
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
         '503':
           description: Server Error
 components:

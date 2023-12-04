@@ -353,7 +353,7 @@ static class MetrcEndpointExtensions
         MetrcEndpoint.get_transfers_v1_templates_deliveries_id_transporters_details => new[] {"ak","ca","co","dc","gu","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
         MetrcEndpoint.get_transfers_v1_templates_id_deliveries => new[] {"ak","ca","co","dc","gu","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
         MetrcEndpoint.get_transfers_v1_types => new[] {"ak","ca","co","dc","gu","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
-        MetrcEndpoint.get_unitsofmeasure_v1_active => new[] {"ak","al","ca","co","dc","ga","gu","il","ky","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
+        MetrcEndpoint.get_unitsofmeasure_v1_active => new[] {"ak","al","ca","co","dc","gu","il","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
         MetrcEndpoint.post_harvests_v1_create_packages => new[] {"ak","ca","co","dc","gu","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
         MetrcEndpoint.post_harvests_v1_create_packages_testing => new[] {"ak","ca","co","dc","gu","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},
         MetrcEndpoint.post_harvests_v1_finish => new[] {"ak","ca","co","dc","gu","la","ma","md","me","mi","mn","mo","ms","mt","nj","nv","oh","ok","or","ri","sd","wv"},

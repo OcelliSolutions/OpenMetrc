@@ -8,6 +8,7 @@ public partial class MetrcService : ILabTestClient
             ? Task.FromResult(new StringMetrcWrapper())
             : LabTestClient.GetLabTestStatesAsync(cancellationToken);
 
+    [MapsToApi(MetrcEndpoint.get_labtests_v2_batches)]
     Task<LabTestBatchMetrcWrapper> ILabTestClient.GetLabTestBatchesAsync(int? pageNumber, int? pageSize, CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new LabTestBatchMetrcWrapper())

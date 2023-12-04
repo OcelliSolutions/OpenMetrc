@@ -65,7 +65,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -161,8 +161,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -330,7 +330,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -416,8 +416,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -588,7 +588,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -672,8 +672,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -941,7 +941,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -1037,8 +1037,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -1153,8 +1153,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -1269,8 +1269,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -1385,8 +1385,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -1487,8 +1487,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -1595,8 +1595,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -1714,8 +1714,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -1833,8 +1833,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -1952,8 +1952,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -2071,8 +2071,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -2190,8 +2190,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -2309,8 +2309,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -2570,7 +2570,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -2666,8 +2666,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -2771,8 +2771,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -2890,8 +2890,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -2998,8 +2998,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -3106,8 +3106,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -3214,8 +3214,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -3331,8 +3331,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -3438,8 +3438,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -3556,8 +3556,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -3679,8 +3679,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -3904,7 +3904,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -3989,8 +3989,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -4091,8 +4091,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -4202,8 +4202,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -4309,8 +4309,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -4427,8 +4427,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -4545,8 +4545,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -4669,8 +4669,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -4883,7 +4883,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -4979,8 +4979,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -5084,8 +5084,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -5203,8 +5203,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -5311,8 +5311,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -5418,8 +5418,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -5536,8 +5536,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -5857,7 +5857,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -5953,8 +5953,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -6070,8 +6070,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -6188,8 +6188,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -6306,8 +6306,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -6424,8 +6424,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -6530,8 +6530,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -6637,8 +6637,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -6744,8 +6744,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -6862,8 +6862,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -6980,8 +6980,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -7098,8 +7098,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -7216,8 +7216,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -7334,8 +7334,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -7452,8 +7452,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -7570,8 +7570,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -7688,8 +7688,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -7806,8 +7806,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -8022,7 +8022,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -8118,8 +8118,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -8223,8 +8223,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -8342,8 +8342,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -8449,8 +8449,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -8567,8 +8567,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -8780,7 +8780,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -8861,8 +8861,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -8976,8 +8976,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -9083,8 +9083,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -9201,8 +9201,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -9317,8 +9317,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -9499,7 +9499,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -9591,8 +9591,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -9942,7 +9942,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -10027,8 +10027,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -10144,8 +10144,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -10261,8 +10261,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -10379,8 +10379,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -10497,8 +10497,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -10615,8 +10615,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -10733,8 +10733,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -10851,8 +10851,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -10959,8 +10959,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -11082,8 +11082,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -11189,8 +11189,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -11297,8 +11297,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -11415,8 +11415,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -11533,8 +11533,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -11651,8 +11651,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -11769,8 +11769,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -11887,8 +11887,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -12005,8 +12005,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -12123,8 +12123,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -12241,8 +12241,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -12354,8 +12354,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -12644,7 +12644,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -12740,8 +12740,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -12858,8 +12858,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -12976,8 +12976,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -13082,8 +13082,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -13194,8 +13194,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -13307,8 +13307,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -13414,8 +13414,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -13532,8 +13532,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -13651,8 +13651,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -13769,8 +13769,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -13891,8 +13891,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -14009,8 +14009,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -14127,8 +14127,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -14245,8 +14245,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -14363,8 +14363,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -14673,7 +14673,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -14769,8 +14769,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -14874,8 +14874,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -15001,8 +15001,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -15117,8 +15117,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -15229,8 +15229,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -15347,8 +15347,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -15460,8 +15460,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -15578,8 +15578,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -15696,8 +15696,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -15823,8 +15823,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -15939,8 +15939,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -16051,8 +16051,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -16164,8 +16164,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -16280,8 +16280,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -16399,8 +16399,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -16511,8 +16511,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -16997,7 +16997,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -17082,8 +17082,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -17184,8 +17184,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -17301,8 +17301,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -17406,8 +17406,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -17544,8 +17544,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -17671,8 +17671,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -17778,8 +17778,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -17880,8 +17880,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -17991,8 +17991,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -18108,8 +18108,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -18213,8 +18213,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -18351,8 +18351,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -18478,8 +18478,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -18585,8 +18585,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -18703,8 +18703,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -18821,8 +18821,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -18939,8 +18939,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -19057,8 +19057,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -19175,8 +19175,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -19293,8 +19293,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -19411,8 +19411,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -19529,8 +19529,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -19657,8 +19657,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -19774,8 +19774,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -19891,8 +19891,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -19996,8 +19996,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -20114,8 +20114,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -20232,8 +20232,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -20350,8 +20350,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -20468,8 +20468,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -20586,8 +20586,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -20704,8 +20704,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -20823,8 +20823,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -20941,8 +20941,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -21054,8 +21054,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -21178,8 +21178,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -21394,7 +21394,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -21490,8 +21490,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -21595,8 +21595,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -21714,8 +21714,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -21821,8 +21821,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -21939,8 +21939,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -22305,7 +22305,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -22401,8 +22401,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -22518,8 +22518,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -22625,8 +22625,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -22732,8 +22732,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -22839,8 +22839,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -22946,8 +22946,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -23053,8 +23053,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -23160,8 +23160,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -23267,8 +23267,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -23373,8 +23373,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -23480,8 +23480,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -23587,8 +23587,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -23705,8 +23705,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -23821,8 +23821,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -23949,8 +23949,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -24056,8 +24056,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -24174,8 +24174,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -24292,8 +24292,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -24399,8 +24399,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -24506,8 +24506,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -24613,8 +24613,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -24718,8 +24718,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)
@@ -24898,7 +24898,7 @@ namespace OpenMetrc.V1
             set { _baseUrl = value; }
         }
 
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -24979,8 +24979,8 @@ namespace OpenMetrc.V1
                         else
                         if (status_ == 401)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResponse?>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            throw new ApiException<ErrorResponse?>("Unauthorized", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 503)

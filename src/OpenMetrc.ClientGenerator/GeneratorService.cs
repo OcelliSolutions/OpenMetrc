@@ -21,6 +21,7 @@ internal static class GeneratorService
             GenerateClientInterfaces = true,
             GenerateOptionalParameters = true,
             AdditionalNamespaceUsages = new[] { "System.Text.Json" },
+            ExposeJsonSerializerSettings = true,
             CSharpGeneratorSettings =
             {
                 Namespace = $"OpenMetrc.{version}",

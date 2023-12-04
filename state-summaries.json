@@ -1495,14 +1495,7 @@
   },
   {
     "State": "ga",
-    "Sections": [
-      {
-        "Name": "UnitsOfMeasure",
-        "Endpoints": [
-          "get_unitsofmeasure_v1_active"
-        ]
-      }
-    ]
+    "Sections": []
   },
   {
     "State": "gu",
@@ -2018,14 +2011,7 @@
   },
   {
     "State": "ky",
-    "Sections": [
-      {
-        "Name": "UnitsOfMeasure",
-        "Endpoints": [
-          "get_unitsofmeasure_v1_active"
-        ]
-      }
-    ]
+    "Sections": []
   },
   {
     "State": "la",

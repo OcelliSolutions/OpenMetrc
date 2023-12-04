@@ -19,13 +19,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0">
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.1-rc1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.1-rc1">
       <TreatAsUsed>true</TreatAsUsed>
     </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.1-rc1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\nuget\Swashbuckle.AspNetCore.Annotations\Swashbuckle.AspNetCore.Annotations.csproj" />
-    <ProjectReference Include="..\..\nuget\Swashbuckle.AspNetCore.SwaggerUI\Swashbuckle.AspNetCore.SwaggerUI.csproj" />
     <ProjectReference Include="..\OpenMetrc.Builder.Common\OpenMetrc.Builder.Common.csproj" />
   </ItemGroup>
 

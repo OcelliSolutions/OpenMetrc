@@ -18,7 +18,7 @@ public class EndpointCoverage
         var usedEnumsCount = new Dictionary<MetrcEndpoint, int>();
 
         // Get the assembly containing the controllers
-        var assembly = Assembly.Load("OpenMetrc.Builder");
+        var assembly = Assembly.Load("OpenMetrc.V1.Builder");
 
         // Find all classes that are controllers
         var controllerTypes = assembly.GetTypes()
@@ -40,6 +40,7 @@ public class EndpointCoverage
 
         var enumValues = Enum.GetValues(typeof(MetrcEndpoint)).Cast<MetrcEndpoint>();
         var incorrectlyUsedEnums = enumValues
+            .Where(ev => ev.ToString().Contains("_v1"))
             .Where(ev => usedEnumsCount.GetValueOrDefault(ev) != 1)
             .ToList();
 
