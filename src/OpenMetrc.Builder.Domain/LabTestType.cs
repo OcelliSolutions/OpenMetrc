@@ -10,5 +10,6 @@ public class LabTestType
     public string? LabTestResultMode { get; set; }
     public double? LabTestResultMinimum { get; set; }
     public double? LabTestResultMaximum { get; set; }
+    public int? LabTestResultExpirationDays { get; set; }
     public string? DependencyMode { get; set; }
 }

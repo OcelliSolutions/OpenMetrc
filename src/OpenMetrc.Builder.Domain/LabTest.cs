@@ -20,4 +20,5 @@ public class LabTest
     public string? TestComment { get; set; }
     public bool? TestInformationalOnly { get; set; }
     public DateTime? LabTestDetailRevokedDate { get; set; }
+    public DateTime? ExpirationDateTime { get; set; }
 }

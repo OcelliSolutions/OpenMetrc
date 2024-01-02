@@ -3,6 +3,3 @@
 public class PostPlantMovePlantsRequest : PlantMovePlantsRequest
 {
 }
-public class PutPlantLocationRequest : PlantMovePlantsRequest
-{
-}

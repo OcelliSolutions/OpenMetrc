@@ -3,6 +3,3 @@
 public class PostTransferTemplatesRequest : CreateTransferRequest
 {
 }
-public class PostTransferTemplateOutgoingRequest : CreateTransferRequest
-{
-}

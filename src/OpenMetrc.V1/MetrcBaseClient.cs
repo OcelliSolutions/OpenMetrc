@@ -26500,17 +26500,17 @@ namespace OpenMetrc.V1
         [System.Text.Json.Serialization.JsonPropertyName("productImages")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public System.Collections.Generic.ICollection<Photo>? ProductImages { get; set; } = default!;
+        public System.Collections.Generic.ICollection<ProductImage>? ProductImages { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("labelImages")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public System.Collections.Generic.ICollection<Photo>? LabelImages { get; set; } = default!;
+        public System.Collections.Generic.ICollection<LabelImage>? LabelImages { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("packagingImages")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public System.Collections.Generic.ICollection<Photo>? PackagingImages { get; set; } = default!;
+        public System.Collections.Generic.ICollection<PackagingImage>? PackagingImages { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("isExpirationDateRequired")]
 
@@ -26551,6 +26551,26 @@ namespace OpenMetrc.V1
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public string? PackagingPhotoDescription { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("hasExpirationDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? HasExpirationDate { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("hasSellByDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? HasSellByDate { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("hasUseByDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? HasUseByDate { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("ProductPDFDocuments")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public System.Collections.Generic.ICollection<ProductPdfDocument>? ProductPDFDocuments { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
@@ -26752,6 +26772,11 @@ namespace OpenMetrc.V1
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public bool? CanBeRevised { get; set; } = default!;
 
+        [System.Text.Json.Serialization.JsonPropertyName("RequiresProductPDFDocuments")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? RequiresProductPDFDocuments { get; set; } = default!;
+
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
@@ -26896,6 +26921,12 @@ namespace OpenMetrc.V1
         [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})")]
         public DateOnly? LabTestDetailRevokedDate { get; set; } = default!;
 
+        [System.Text.Json.Serialization.JsonPropertyName("expirationDateTime")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})")]
+        public DateOnly? ExpirationDateTime { get; set; } = default!;
+
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
@@ -26988,10 +27019,35 @@ namespace OpenMetrc.V1
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public double? LabTestResultMaximum { get; set; } = default!;
 
+        [System.Text.Json.Serialization.JsonPropertyName("labTestResultExpirationDays")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public int? LabTestResultExpirationDays { get; set; } = default!;
+
         [System.Text.Json.Serialization.JsonPropertyName("dependencyMode")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public string? DependencyMode { get; set; } = default!;
+
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
+
+        [System.Text.Json.Serialization.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v10.0.0.0))")]
+    public partial class LabelImage
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("fileSystemId")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public long? FileSystemId { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
@@ -27454,6 +27510,26 @@ namespace OpenMetrc.V1
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v10.0.0.0))")]
+    public partial class PackagingImage
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("fileSystemId")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public long? FileSystemId { get; set; } = default!;
+
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
+
+        [System.Text.Json.Serialization.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v10.0.0.0))")]
     public partial class Patient
     {
 
@@ -27863,6 +27939,11 @@ namespace OpenMetrc.V1
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public bool? IsOnTrip { get; set; } = default!;
 
+        [System.Text.Json.Serialization.JsonPropertyName("tagTypeMax")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public int? TagTypeMax { get; set; } = default!;
+
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
@@ -28113,6 +28194,24 @@ namespace OpenMetrc.V1
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public bool? IsOnHold { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("expirationDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})")]
+        public DateOnly? ExpirationDate { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("sellByDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})")]
+        public DateOnly? SellByDate { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("useByDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})")]
+        public DateOnly? UseByDate { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
@@ -31823,6 +31922,46 @@ namespace OpenMetrc.V1
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v10.0.0.0))")]
+    public partial class ProductImage
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("fileSystemId")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public long? FileSystemId { get; set; } = default!;
+
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
+
+        [System.Text.Json.Serialization.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v10.0.0.0))")]
+    public partial class ProductPdfDocument
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("fileSystemId")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public long? FileSystemId { get; set; } = default!;
+
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
+
+        [System.Text.Json.Serialization.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v10.0.0.0))")]
     public partial class PutHarvestMoveRequest
     {
 
@@ -33431,6 +33570,11 @@ namespace OpenMetrc.V1
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public string? IdentificationMethod { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("externalReceiptNumber")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public string? ExternalReceiptNumber { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("totalPackages")]
 

@@ -3,6 +3,3 @@
 public class PostPlantManicurePlantsRequest : PlantManicurePlantsRequest
 {
 }
-public class PostPlantManicureRequest : PlantManicurePlantsRequest
-{
-}

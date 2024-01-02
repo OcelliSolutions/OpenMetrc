@@ -283,7 +283,8 @@ internal partial class OpenApiService
             { "unitsofmeasure", "units_of_measure" },
             { "harvestedplants", "harvested_plants" },
             { "tradesample", "trade_sample" },
-            { "wastemethod", "waste_method" }
+            { "wastemethod", "waste_method" },
+            { "usebydate", "use_by_date" }
         };
 
         foreach (var pair in stringReplacement)

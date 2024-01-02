@@ -616,6 +616,14 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PostPackageAdjust([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PostPackageAdjustRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
+        /// This endpoint allows you to set the final quantity for a package.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: View Packages • Manage Packages Inventory
+        /// </remarks>
+        /// <param name="licenseNumber">The license number of the facility for which to record the list of adjustments.</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpPut, Microsoft.AspNetCore.Mvc.Route("packages/v2/adjust")]
+        public abstract System.Threading.Tasks.Task PutPackageAdjust([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutPackageAdjustRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
+
+        /// <remarks>
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Immature Plants • Manage Immature Plants • View Packages • Manage Packages Inventory
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record the list of new plantings.</param>
@@ -718,6 +726,14 @@ namespace OpenMetrc.V2.Builder.Controllers
         /// <returns>Ok</returns>
         [Microsoft.AspNetCore.Mvc.HttpPut, Microsoft.AspNetCore.Mvc.Route("packages/v2/unfinish")]
         public abstract System.Threading.Tasks.Task PutPackageUnfinish([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutPackageUnfinishRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
+
+        /// <remarks>
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Packages • Create/Submit/Discontinue Packages
+        /// </remarks>
+        /// <param name="licenseNumber">The license number of the facility for which to update list of changed items.</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpPut, Microsoft.AspNetCore.Mvc.Route("packages/v2/usebydate")]
+        public abstract System.Threading.Tasks.Task PutPackageUseByDate([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutPackageUseByDateRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
     }
 
@@ -1528,6 +1544,15 @@ namespace OpenMetrc.V2.Builder.Controllers
         /// <remarks>
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
         /// </remarks>
+        /// <param name="externalNumber">Route parameter externalNumber</param>
+        /// <param name="licenseNumber">If specified, the External Sales Receipt Number will be validated against the specified License Number. If not specified, the External Sales Receipt Number will be validated against all of the User's current Facilities. Please note that if the External Sales Receipt Number is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("sales/v2/receipts/external/{externalNumber}")]
+        public abstract System.Threading.Tasks.Task GetSaleReceiptExternal(string externalNumber, [Microsoft.AspNetCore.Mvc.FromQuery] string? licenseNumber = null);
+
+        /// <remarks>
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive receipts.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
         /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
@@ -1987,6 +2012,100 @@ namespace OpenMetrc.V2.Builder.Controllers
         /// <returns>Ok</returns>
         [Microsoft.AspNetCore.Mvc.HttpPut, Microsoft.AspNetCore.Mvc.Route("transfers/v2/external/incoming")]
         public abstract System.Threading.Tasks.Task PutTransferExternalIncoming([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutTransferExternalIncomingRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v10.0.0.0))")]
+
+    public abstract class TransportersControllerBase : Microsoft.AspNetCore.Mvc.ControllerBase
+    {
+        /// <remarks>
+        /// Please note: The {id} parameter above represents a Driver Id.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transporters
+        /// </remarks>
+        /// <param name="id">Route parameter id</param>
+        /// <param name="licenseNumber">The license number of the facility for which to archive a driver.</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpDelete, Microsoft.AspNetCore.Mvc.Route("transporters/v2/drivers/{id}")]
+        public abstract System.Threading.Tasks.Task DeleteTransporterDriverById(long id, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
+
+        /// <remarks>
+        /// Please note: The {id} parameter above represents a Driver Id.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transporters
+        /// </remarks>
+        /// <param name="id">Route parameter id</param>
+        /// <param name="licenseNumber">The license number of the facility for which to return a driver.</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("transporters/v2/drivers/{id}")]
+        public abstract System.Threading.Tasks.Task GetTransporterDriverById(long id, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
+
+        /// <remarks>
+        /// Please note: The {id} parameter above represents a Vehicle Id.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transporters
+        /// </remarks>
+        /// <param name="id">Route parameter id</param>
+        /// <param name="licenseNumber">The license number for which to archive a vehicle</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpDelete, Microsoft.AspNetCore.Mvc.Route("transporters/v2/vehicles/{id}")]
+        public abstract System.Threading.Tasks.Task DeleteTransporterVehicleById(long id, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
+
+        /// <remarks>
+        /// Please note: The {id} parameter above represents a Vehicle Id.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transporters
+        /// </remarks>
+        /// <param name="id">Route parameter id</param>
+        /// <param name="licenseNumber">The license number of the facility for which to return a vehicle.</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("transporters/v2/vehicles/{id}")]
+        public abstract System.Threading.Tasks.Task GetTransporterVehicleById(long id, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
+
+        /// <remarks>
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transporters
+        /// </remarks>
+        /// <param name="licenseNumber">The license number of the facility for which to return the list of drivers.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("transporters/v2/drivers")]
+        public abstract System.Threading.Tasks.Task GetTransporterDrivers([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null);
+
+        /// <remarks>
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transporters
+        /// </remarks>
+        /// <param name="licenseNumber">The license number of the facility for which to create a driver.</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("transporters/v2/drivers")]
+        public abstract System.Threading.Tasks.Task PostTransporterDrivers([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PostTransporterDriversRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
+
+        /// <remarks>
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transporters
+        /// </remarks>
+        /// <param name="licenseNumber">The license number of the facility for which to update a driver(s).</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpPut, Microsoft.AspNetCore.Mvc.Route("transporters/v2/drivers")]
+        public abstract System.Threading.Tasks.Task PutTransporterDrivers([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutTransporterDriversRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
+
+        /// <remarks>
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transporters
+        /// </remarks>
+        /// <param name="licenseNumber">The license number of the facility for which to return the list of vehicles.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("transporters/v2/vehicles")]
+        public abstract System.Threading.Tasks.Task GetTransporterVehicles([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null);
+
+        /// <remarks>
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transporters
+        /// </remarks>
+        /// <param name="licenseNumber">The license number of the facility for which to create a vehicle.</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("transporters/v2/vehicles")]
+        public abstract System.Threading.Tasks.Task PostTransporterVehicles([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PostTransporterVehiclesRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] string data);
+
+        /// <remarks>
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transporters
+        /// </remarks>
+        /// <param name="licenseNumber">The license number of the facility for which to update a vehicle(s).</param>
+        /// <returns>Ok</returns>
+        [Microsoft.AspNetCore.Mvc.HttpPut, Microsoft.AspNetCore.Mvc.Route("transporters/v2/vehicles")]
+        public abstract System.Threading.Tasks.Task PutTransporterVehicles([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutTransporterVehiclesRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] string data);
 
     }
 

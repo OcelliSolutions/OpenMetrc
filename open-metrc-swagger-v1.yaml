@@ -13261,19 +13261,19 @@ components:
           type: array
           items:
             oneOf:
-              - $ref: '#/components/schemas/Photo'
+              - $ref: '#/components/schemas/ProductImage'
           nullable: true
         labelImages:
           type: array
           items:
             oneOf:
-              - $ref: '#/components/schemas/Photo'
+              - $ref: '#/components/schemas/LabelImage'
           nullable: true
         packagingImages:
           type: array
           items:
             oneOf:
-              - $ref: '#/components/schemas/Photo'
+              - $ref: '#/components/schemas/PackagingImage'
           nullable: true
         isExpirationDateRequired:
           type: boolean
@@ -13299,6 +13299,21 @@ components:
           nullable: true
         packagingPhotoDescription:
           type: string
+          nullable: true
+        hasExpirationDate:
+          type: boolean
+          nullable: true
+        hasSellByDate:
+          type: boolean
+          nullable: true
+        hasUseByDate:
+          type: boolean
+          nullable: true
+        ProductPDFDocuments:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/ProductPdfDocument'
           nullable: true
       additionalProperties: { }
     ItemBrand:
@@ -13410,6 +13425,9 @@ components:
         canBeRevised:
           type: boolean
           nullable: true
+        RequiresProductPDFDocuments:
+          type: boolean
+          nullable: true
       additionalProperties: { }
     JobTypeAttribute:
       type: object
@@ -13493,6 +13511,11 @@ components:
           type: string
           format: date
           nullable: true
+        expirationDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
       additionalProperties: { }
     LabTestResult:
       required:
@@ -13545,8 +13568,20 @@ components:
           type: number
           format: double
           nullable: true
+        labTestResultExpirationDays:
+          type: integer
+          format: int32
+          nullable: true
         dependencyMode:
           type: string
+          nullable: true
+      additionalProperties: { }
+    LabelImage:
+      type: object
+      properties:
+        fileSystemId:
+          type: integer
+          format: int64
           nullable: true
       additionalProperties: { }
     License:
@@ -13816,6 +13851,14 @@ components:
           type: boolean
           nullable: true
       additionalProperties: { }
+    PackagingImage:
+      type: object
+      properties:
+        fileSystemId:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: { }
     Patient:
       required:
         - patientId
@@ -14063,6 +14106,10 @@ components:
         isOnTrip:
           type: boolean
           nullable: true
+        tagTypeMax:
+          type: integer
+          format: int32
+          nullable: true
       additionalProperties: { }
     PlantAdditive:
       type: object
@@ -14225,6 +14272,21 @@ components:
           nullable: true
         isOnHold:
           type: boolean
+          nullable: true
+        expirationDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        sellByDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        useByDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
           nullable: true
       additionalProperties: { }
     PlantBatchWasteReason:
@@ -16299,6 +16361,22 @@ components:
           type: string
           nullable: true
       additionalProperties: { }
+    ProductImage:
+      type: object
+      properties:
+        fileSystemId:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: { }
+    ProductPdfDocument:
+      type: object
+      properties:
+        fileSystemId:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: { }
     PutHarvestMoveRequest:
       type: object
       properties:
@@ -17241,6 +17319,9 @@ components:
           type: string
           nullable: true
         identificationMethod:
+          type: string
+          nullable: true
+        externalReceiptNumber:
           type: string
           nullable: true
         totalPackages:

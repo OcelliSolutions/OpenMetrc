@@ -3,7 +3,3 @@
 public class PostPatientUpdateRequest : UpdatePatientRequest
 {
 }
-
-public class PutPatientsRequest : UpdatePatientRequest
-{
-}

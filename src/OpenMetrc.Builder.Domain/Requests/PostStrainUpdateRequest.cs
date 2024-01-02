@@ -3,6 +3,3 @@
 public class PostStrainUpdateRequest : UpdateStrainRequest
 {
 }
-public class PutStrainsRequest : UpdateStrainRequest
-{
-}

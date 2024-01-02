@@ -3,6 +3,3 @@
 public class PutPlantBatchMovePlantBatchesRequest : PlantBatchMovePlantBatchesRequest
 {
 }
-public class PutPlantBatchLocationRequest : PlantBatchMovePlantBatchesRequest
-{
-}

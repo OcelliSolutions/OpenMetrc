@@ -1486,6 +1486,24 @@ paths:
       responses:
         200:
           description: Ok
+    put:
+      tags:
+      - Packages
+      summary: ''
+      description: 'This endpoint allows you to set the final quantity for a package.</br><b>Permissions Required</b>: View Packages • Manage Packages Inventory'
+      externalDocs:
+        x-doc-key: put_packages_v2_adjust
+      operationId: PutPackageAdjust
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to record the list of adjustments.
+        format: ''
+      responses:
+        200:
+          description: Ok
   /packages/v2/plantings:
     post:
       tags:
@@ -1729,6 +1747,25 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to update list of unfinish packages.
+        format: ''
+      responses:
+        200:
+          description: Ok
+  /packages/v2/usebydate:
+    put:
+      tags:
+      - Packages
+      summary: ''
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages'
+      externalDocs:
+        x-doc-key: put_packages_v2_usebydate
+      operationId: PutPackageUseByDate
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to update list of changed items.
         format: ''
       responses:
         200:
@@ -3754,6 +3791,30 @@ paths:
       responses:
         200:
           description: Ok
+  /sales/v2/receipts/external/{externalNumber}:
+    get:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: get_sales_v2_receipts_external_{externalNumber}
+      operationId: GetSaleReceiptExternal
+      parameters:
+      - type: string
+        name: externalNumber
+        in: path
+        required: true
+        description: Route parameter externalNumber
+        format: ''
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the External Sales Receipt Number will be validated against the specified License Number. If not specified, the External Sales Receipt Number will be validated against all of the User's current Facilities. Please note that if the External Sales Receipt Number is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
+      responses:
+        200:
+          description: Ok
   /sales/v2/receipts/inactive:
     get:
       tags:
@@ -4939,6 +5000,246 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to update external incoming shipment plans.
+        format: ''
+      responses:
+        200:
+          description: Ok
+  /transporters/v2/drivers/{id}:
+    delete:
+      tags:
+      - Transporters
+      summary: ''
+      description: 'Please note: The {id} parameter above represents a Driver Id.</br><b>Permissions Required</b>: Manage Transporters'
+      externalDocs:
+        x-doc-key: delete_transporters_v2_drivers_{id}
+      operationId: DeleteTransporterDriverById
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+        format: int64
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to archive a driver.
+        format: ''
+      responses:
+        200:
+          description: Ok
+    get:
+      tags:
+      - Transporters
+      summary: ''
+      description: 'Please note: The {id} parameter above represents a Driver Id.</br><b>Permissions Required</b>: Transporters'
+      externalDocs:
+        x-doc-key: get_transporters_v2_drivers_{id}
+      operationId: GetTransporterDriverById
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+        format: int64
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return a driver.
+        format: ''
+      responses:
+        200:
+          description: Ok
+  /transporters/v2/vehicles/{id}:
+    delete:
+      tags:
+      - Transporters
+      summary: ''
+      description: 'Please note: The {id} parameter above represents a Vehicle Id.</br><b>Permissions Required</b>: Manage Transporters'
+      externalDocs:
+        x-doc-key: delete_transporters_v2_vehicles_{id}
+      operationId: DeleteTransporterVehicleById
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+        format: int64
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number for which to archive a vehicle
+        format: ''
+      responses:
+        200:
+          description: Ok
+    get:
+      tags:
+      - Transporters
+      summary: ''
+      description: 'Please note: The {id} parameter above represents a Vehicle Id.</br><b>Permissions Required</b>: Transporters'
+      externalDocs:
+        x-doc-key: get_transporters_v2_vehicles_{id}
+      operationId: GetTransporterVehicleById
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+        format: int64
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return a vehicle.
+        format: ''
+      responses:
+        200:
+          description: Ok
+  /transporters/v2/drivers:
+    get:
+      tags:
+      - Transporters
+      summary: ''
+      description: '<b>Permissions Required</b>: Transporters'
+      externalDocs:
+        x-doc-key: get_transporters_v2_drivers
+      operationId: GetTransporterDrivers
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of drivers.
+        format: ''
+      - type: integer
+        name: pageNumber
+        in: query
+        description: The number of the data page from which to return data.
+        format: ''
+      - type: integer
+        name: pageSize
+        in: query
+        description: The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.
+        format: ''
+      responses:
+        200:
+          description: Ok
+    post:
+      tags:
+      - Transporters
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Transporters'
+      externalDocs:
+        x-doc-key: post_transporters_v2_drivers
+      operationId: PostTransporterDrivers
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to create a driver.
+        format: ''
+      responses:
+        200:
+          description: Ok
+    put:
+      tags:
+      - Transporters
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Transporters'
+      externalDocs:
+        x-doc-key: put_transporters_v2_drivers
+      operationId: PutTransporterDrivers
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to update a driver(s).
+        format: ''
+      responses:
+        200:
+          description: Ok
+  /transporters/v2/vehicles:
+    get:
+      tags:
+      - Transporters
+      summary: ''
+      description: '<b>Permissions Required</b>: Transporters'
+      externalDocs:
+        x-doc-key: get_transporters_v2_vehicles
+      operationId: GetTransporterVehicles
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of vehicles.
+        format: ''
+      - type: integer
+        name: pageNumber
+        in: query
+        description: The number of the data page from which to return data.
+        format: ''
+      - type: integer
+        name: pageSize
+        in: query
+        description: The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.
+        format: ''
+      responses:
+        200:
+          description: Ok
+    post:
+      tags:
+      - Transporters
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Transporters'
+      externalDocs:
+        x-doc-key: post_transporters_v2_vehicles
+      operationId: PostTransporterVehicles
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to create a vehicle.
+        format: ''
+      - type: string
+        name: data
+        in: query
+        required: true
+        description: ''
+        format: ''
+      responses:
+        200:
+          description: Ok
+    put:
+      tags:
+      - Transporters
+      summary: ''
+      description: '<b>Permissions Required</b>: Manage Transporters'
+      externalDocs:
+        x-doc-key: put_transporters_v2_vehicles
+      operationId: PutTransporterVehicles
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to update a vehicle(s).
+        format: ''
+      - type: string
+        name: data
+        in: query
+        required: true
+        description: ''
         format: ''
       responses:
         200:

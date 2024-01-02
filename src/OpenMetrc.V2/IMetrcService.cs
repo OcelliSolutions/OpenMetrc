@@ -19,6 +19,7 @@ public interface IMetrcService
     IStrainClient Strains { get; }
     ITagClient Tags { get; }
     ITransferClient Transfers { get; }
+    ITransporterClient Transporters { get; }
     IUnitOfMeasureClient UnitOfMeasures { get; }
     IWasteMethodClient WasteMethods { get; }
 }

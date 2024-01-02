@@ -203,6 +203,7 @@ All endpoints should be mapped automatically in the NuGet package and OpenApi do
 | post_transfers_v1_templates | x | x | x | x | x | x | x | x | x | x |  | x | x | x | x | x | x | x | x | x | x | x |
 | put_transfers_v1_external_incoming | x | x | x | x | x | x | x | x | x | x |  | x | x | x | x | x | x | x | x | x | x | x |
 | put_transfers_v1_templates | x | x | x | x | x | x | x | x | x | x |  | x | x | x | x | x | x | x | x | x | x | x |
+| **Transporters** | **AK** | **CA** | **CO** | **DC** | **GU** | **LA** | **MA** | **MD** | **ME** | **MI** | **MN** | **MO** | **MS** | **MT** | **NJ** | **NV** | **OH** | **OK** | **OR** | **RI** | **SD** | **WV** |
 | **UnitsOfMeasure** | **AK** | **CA** | **CO** | **DC** | **GU** | **LA** | **MA** | **MD** | **ME** | **MI** | **MN** | **MO** | **MS** | **MT** | **NJ** | **NV** | **OH** | **OK** | **OR** | **RI** | **SD** | **WV** |
 | get_unitsofmeasure_v1_active | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | **WasteMethods** | **AK** | **CA** | **CO** | **DC** | **GU** | **LA** | **MA** | **MD** | **ME** | **MI** | **MN** | **MO** | **MS** | **MT** | **NJ** | **NV** | **OH** | **OK** | **OR** | **RI** | **SD** | **WV** |

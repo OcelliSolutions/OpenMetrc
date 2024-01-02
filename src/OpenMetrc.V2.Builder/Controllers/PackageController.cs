@@ -109,6 +109,11 @@ public class PackageController : PackagesControllerBase
         [Required] List<PutPackageDonationUnflagRequest> request,
         [Required] string licenseNumber) => Task.CompletedTask;
 
+    /// <inheritdoc cref="PackagesControllerBase.PutPackageAdjust" />
+    [MapsToApi(MetrcEndpoint.put_packages_v2_adjust)]
+    public override Task PutPackageAdjust([Required] List<PutPackageAdjustRequest> request,
+        [Required] string licenseNumber) => Task.CompletedTask;
+
     /// <inheritdoc cref="PackagesControllerBase.PostPackagePlantings" />
     [MapsToApi(MetrcEndpoint.post_packages_v2_plantings)]
     public override Task PostPackagePlantings(
@@ -173,5 +178,10 @@ public class PackageController : PackagesControllerBase
     [MapsToApi(MetrcEndpoint.put_packages_v2_unfinish)]
     public override Task PutPackageUnfinish(
         [Required] List<PutPackageUnfinishRequest> request,
+        [Required] string licenseNumber) => Task.CompletedTask;
+
+    /// <inheritdoc cref="PackagesControllerBase.PutPackageUseByDate" />
+    [MapsToApi(MetrcEndpoint.put_packages_v2_usebydate)]
+    public override Task PutPackageUseByDate([Required] List<PutPackageUseByDateRequest> request,
         [Required] string licenseNumber) => Task.CompletedTask;
 }

@@ -371,12 +371,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -520,6 +522,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -626,6 +629,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -780,12 +798,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -951,6 +971,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -1057,6 +1078,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -1219,12 +1255,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -1375,6 +1413,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -1481,6 +1520,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -1654,12 +1708,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -1862,6 +1918,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -1968,6 +2025,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       },
       {
@@ -2163,12 +2235,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -2300,6 +2374,7 @@
           "get_sales_v2_customertypes",
           "get_sales_v2_patientregistration_locations",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_receipts",
@@ -2391,6 +2466,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -2545,12 +2635,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -2709,6 +2801,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -2815,6 +2908,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -2969,12 +3077,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -3125,6 +3235,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -3231,6 +3342,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -3385,12 +3511,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -3534,6 +3662,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -3640,6 +3769,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -3794,12 +3938,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -3950,6 +4096,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -4056,6 +4203,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -4210,12 +4372,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -4332,6 +4496,7 @@
           "get_sales_v2_customertypes",
           "get_sales_v2_patientregistration_locations",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_receipts",
@@ -4411,6 +4576,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -4565,12 +4745,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -4736,6 +4918,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -4842,6 +5025,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -5003,12 +5201,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -5174,6 +5374,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -5280,6 +5481,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -5434,12 +5650,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -5605,6 +5823,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -5711,6 +5930,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -5888,12 +6122,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -6096,6 +6332,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -6202,6 +6439,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       },
       {
@@ -6366,12 +6618,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -6530,6 +6784,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -6636,6 +6891,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -6794,12 +7064,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -6916,6 +7188,7 @@
           "get_sales_v2_customertypes",
           "get_sales_v2_patientregistration_locations",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_receipts",
@@ -7007,6 +7280,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -7161,12 +7449,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -7298,6 +7588,7 @@
           "get_sales_v2_customertypes",
           "get_sales_v2_patientregistration_locations",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_receipts",
@@ -7389,6 +7680,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -7543,12 +7849,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -7729,6 +8037,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -7835,6 +8144,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -8004,12 +8328,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -8212,6 +8538,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -8318,6 +8645,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       },
       {
@@ -8489,12 +8831,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -8660,6 +9004,7 @@
           "get_sales_v2_counties",
           "get_sales_v2_paymenttypes",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_deliveries",
@@ -8766,6 +9111,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]
@@ -8952,12 +9312,14 @@
           "post_packages_v2_plantings",
           "put_packages_v2_donation_flag",
           "put_packages_v2_donation_unflag",
+          "put_packages_v2_usebydate",
           "put_packages_v2_item",
           "put_packages_v2_note",
           "put_packages_v2_location",
           "put_packages_v2_labtests_required",
           "put_packages_v2_tradesample_flag",
           "put_packages_v2_tradesample_unflag",
+          "put_packages_v2_adjust",
           "post_packages_v2_adjust",
           "put_packages_v2_remediate",
           "put_packages_v2_finish",
@@ -9096,6 +9458,7 @@
           "get_sales_v2_customertypes",
           "get_sales_v2_patientregistration_locations",
           "get_sales_v2_receipts_id",
+          "get_sales_v2_receipts_external_externalNumber",
           "get_sales_v2_receipts_active",
           "get_sales_v2_receipts_inactive",
           "post_sales_v2_receipts",
@@ -9187,6 +9550,21 @@
         "Endpoints": [
           "get_tags_v2_plant_available",
           "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
         ]
       }
     ]

@@ -35,4 +35,5 @@ public class Plant
     public DateTimeOffset LastModified { get; set; }
     public int? GroupTagTypeMax { get; set; }
     public bool? IsOnTrip { get; set; }
+    public int? TagTypeMax { get; set; }
 }

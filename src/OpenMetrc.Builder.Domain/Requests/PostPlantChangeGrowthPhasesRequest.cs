@@ -3,6 +3,3 @@
 public class PostPlantChangeGrowthPhasesRequest : PlantChangeGrowthPhasesRequest
 {
 }
-public class PutPlantGrowthPhaseRequest : PlantChangeGrowthPhasesRequest
-{
-}

@@ -1,6 +1,6 @@
 ﻿namespace OpenMetrc.V2;
 
-public partial class MetrcService : ISaleClient
+partial class MetrcService : ISaleClient
 {
     [MapsToApi(MetrcEndpoint.get_sales_v2_customertypes)]
     Task<StringMetrcWrapper> ISaleClient.GetSaleCustomerTypesAsync(CancellationToken cancellationToken) =>
@@ -215,6 +215,14 @@ public partial class MetrcService : ISaleClient
             ? Task.FromResult(new SaleReceiptMetrcWrapper())
             : SaleClient.GetSaleReceiptActiveAsync(licenseNumber, pageNumber, pageSize, salesDateStart, salesDateEnd, lastModifiedStart,
                 lastModifiedEnd, cancellationToken);
+
+    [MapsToApi(MetrcEndpoint.get_sales_v2_receipts_external_externalNumber)]
+    Task<SaleReceiptMetrcWrapper> ISaleClient.GetSaleReceiptExternalAsync(string externalNumber, string? licenseNumber = null,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.FromResult(new SaleReceiptMetrcWrapper())
+            : SaleClient.GetSaleReceiptExternalAsync(externalNumber, licenseNumber, cancellationToken);
+
     [MapsToApi(MetrcEndpoint.get_sales_v2_receipts_inactive)]
     Task<SaleReceiptMetrcWrapper> ISaleClient.GetSaleReceiptInactiveAsync(string licenseNumber,
         int? pageNumber, int? pageSize,

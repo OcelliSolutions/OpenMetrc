@@ -3,6 +3,3 @@
 public class PostPlantHarvestPlantsRequest : PlantHarvestPlantsRequest
 {
 }
-public class PutPlantHarvestRequest : PlantHarvestPlantsRequest
-{
-}

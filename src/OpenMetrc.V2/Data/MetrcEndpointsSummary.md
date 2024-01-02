@@ -73,6 +73,7 @@ All endpoints should be mapped automatically in the NuGet package and OpenApi do
 | post_packages_v2_adjust |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | post_packages_v2_plantings |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | post_packages_v2_testing |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| put_packages_v2_adjust |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | put_packages_v2_donation_flag |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | put_packages_v2_donation_unflag |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | put_packages_v2_finish |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
@@ -84,6 +85,7 @@ All endpoints should be mapped automatically in the NuGet package and OpenApi do
 | put_packages_v2_tradesample_flag |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | put_packages_v2_tradesample_unflag |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | put_packages_v2_unfinish |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| put_packages_v2_usebydate |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | **PatientCheckIns** | **AK** | **CA** | **CO** | **DC** | **GU** | **LA** | **MA** | **MD** | **ME** | **MI** | **MN** | **MO** | **MS** | **MT** | **NJ** | **NV** | **OH** | **OK** | **OR** | **RI** | **SD** | **WV** |
 | delete_patient-checkins_v2_id |  |  |  |  |  |  |  |  |  |  |  | x |  |  |  |  |  |  |  |  |  |  |
 | get_patient-checkins_v2 |  |  |  |  |  |  |  |  |  |  |  | x |  |  |  |  |  |  |  |  |  |  |
@@ -175,6 +177,7 @@ All endpoints should be mapped automatically in the NuGet package and OpenApi do
 | get_sales_v2_patientregistration_locations |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | get_sales_v2_paymenttypes |  | x | x | x | x |  | x | x | x | x |  | x | x | x | x | x |  |  | x | x | x |  |
 | get_sales_v2_receipts_active |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| get_sales_v2_receipts_external_externalNumber |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | get_sales_v2_receipts_id |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | get_sales_v2_receipts_inactive |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | post_sales_v2_deliveries |  | x | x | x | x |  | x | x | x | x |  | x | x | x | x | x |  |  | x | x | x |  |
@@ -228,6 +231,17 @@ All endpoints should be mapped automatically in the NuGet package and OpenApi do
 | post_transfers_v2_templates_outgoing |  | x | x | x | x | x | x | x | x | x |  | x | x | x | x | x | x | x | x | x | x | x |
 | put_transfers_v2_external_incoming |  | x | x | x | x | x | x | x | x | x |  | x | x | x | x | x | x | x | x | x | x | x |
 | put_transfers_v2_templates_outgoing |  | x | x | x | x | x | x | x | x | x |  | x | x | x | x | x | x | x | x | x | x | x |
+| **Transporters** | **AK** | **CA** | **CO** | **DC** | **GU** | **LA** | **MA** | **MD** | **ME** | **MI** | **MN** | **MO** | **MS** | **MT** | **NJ** | **NV** | **OH** | **OK** | **OR** | **RI** | **SD** | **WV** |
+| delete_transporters_v2_drivers_id |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| delete_transporters_v2_vehicles_id |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| get_transporters_v2_drivers |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| get_transporters_v2_drivers_id |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| get_transporters_v2_vehicles |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| get_transporters_v2_vehicles_id |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| post_transporters_v2_drivers |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| post_transporters_v2_vehicles |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| put_transporters_v2_drivers |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
+| put_transporters_v2_vehicles |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | **UnitsOfMeasure** | **AK** | **CA** | **CO** | **DC** | **GU** | **LA** | **MA** | **MD** | **ME** | **MI** | **MN** | **MO** | **MS** | **MT** | **NJ** | **NV** | **OH** | **OK** | **OR** | **RI** | **SD** | **WV** |
 | get_unitsofmeasure_v2_active |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |
 | get_unitsofmeasure_v2_inactive |  | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x | x |

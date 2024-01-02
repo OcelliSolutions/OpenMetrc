@@ -3,6 +3,3 @@
 public class PutTransferTemplatesRequest : UpdateTransferRequest
 {
 }
-public class PutTransferTemplateOutgoingRequest : UpdateTransferRequest
-{
-}

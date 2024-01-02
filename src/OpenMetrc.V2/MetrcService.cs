@@ -26,6 +26,7 @@ public partial class MetrcService : IMetrcService
     internal static ConcurrentDictionary<string, IStrainClient> StrainClients = new();
     internal static ConcurrentDictionary<string, ITagClient> TagClients = new();
     internal static ConcurrentDictionary<string, ITransferClient> TransferClients = new();
+    internal static ConcurrentDictionary<string, ITransporterClient> TransporterClients = new();
     internal static ConcurrentDictionary<string, IUnitOfMeasureClient> UnitOfMeasureClients = new();
     internal static ConcurrentDictionary<string, IWasteMethodClient> WasteMethodClients = new();
 
@@ -71,6 +72,7 @@ public partial class MetrcService : IMetrcService
     protected IStrainClient StrainClient => StrainClients[MetrcClientKey];
     protected ITagClient TagClient => TagClients[MetrcClientKey];
     protected ITransferClient TransferClient => TransferClients[MetrcClientKey];
+    protected ITransporterClient TransporterClient => TransporterClients[MetrcClientKey];
     protected IUnitOfMeasureClient UnitOfMeasureClient => UnitOfMeasureClients[MetrcClientKey];
     protected IWasteMethodClient WasteMethodClient => WasteMethodClients[MetrcClientKey];
 
@@ -134,6 +136,8 @@ public partial class MetrcService : IMetrcService
                 new TagClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
             TransferClients.TryAdd(MetrcClientKey,
                 new TransferClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
+            TransporterClients.TryAdd(MetrcClientKey,
+                new TransporterClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
             UnitOfMeasureClients.TryAdd(MetrcClientKey,
                 new UnitOfMeasureClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false });
             WasteMethodClients.TryAdd(MetrcClientKey,
@@ -160,6 +164,7 @@ public partial class MetrcService : IMetrcService
     public IStrainClient Strains => this;
     public ITagClient Tags => this;
     public ITransferClient Transfers => this;
+    public ITransporterClient Transporters => this;
     public IUnitOfMeasureClient UnitOfMeasures => this;
     public IWasteMethodClient WasteMethods => this;
 

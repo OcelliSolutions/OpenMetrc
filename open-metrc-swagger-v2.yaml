@@ -4372,6 +4372,151 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
+  /packages/v2/adjust:
+    put:
+      tags:
+        - Package
+      description: 'This endpoint allows you to set the final quantity for a package.</br><b>Permissions Required</b>: View Packages • Manage Packages Inventory'
+      operationId: PutPackageAdjust
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to record the list of adjustments.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PutPackageAdjustRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PutPackageAdjustRequest'
+        required: true
+      responses:
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+    post:
+      tags:
+        - Package
+      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory'
+      operationId: PostPackageAdjust
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to record the list of adjustments.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PostPackageAdjustRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PostPackageAdjustRequest'
+        required: true
+      responses:
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
   /packages/v2/plantings:
     post:
       tags:
@@ -4737,79 +4882,6 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
-  /packages/v2/adjust:
-    post:
-      tags:
-        - Package
-      description: '<b>Permissions Required</b>: View Packages • Manage Packages Inventory'
-      operationId: PostPackageAdjust
-      parameters:
-        - name: licenseNumber
-          in: query
-          description: The license number of the facility for which to record the list of adjustments.
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/PostPackageAdjustRequest'
-          application/*+json:
-            schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/PostPackageAdjustRequest'
-        required: true
-      responses:
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
-        '500':
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
-        '401':
-          description: Unauthorized
-        '503':
-          description: Server Error
-        '200':
-          description: Success
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-                nullable: true
   /packages/v2/remediate:
     put:
       tags:
@@ -5127,6 +5199,79 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/PutPackageUnfinishRequest'
+        required: true
+      responses:
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+  /packages/v2/usebydate:
+    put:
+      tags:
+        - Package
+      description: '<b>Permissions Required</b>: View Packages • Create/Submit/Discontinue Packages'
+      operationId: PutPackageUseByDate
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to update list of changed items.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PutPackageUseByDateRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PutPackageUseByDateRequest'
         required: true
       responses:
         '403':
@@ -10909,6 +11054,68 @@ paths:
           description: Unauthorized
         '503':
           description: Server Error
+  '/sales/v2/receipts/external/{externalNumber}':
+    get:
+      tags:
+        - Sale
+      description: '<b>Permissions Required</b>: Sales'
+      operationId: GetSaleReceiptExternal
+      parameters:
+        - name: externalNumber
+          in: path
+          description: Route parameter externalNumber
+          required: true
+          schema:
+            type: string
+        - name: licenseNumber
+          in: query
+          description: 'If specified, the External Sales Receipt Number will be validated against the specified License Number. If not specified, the External Sales Receipt Number will be validated against all of the User''s current Facilities. Please note that if the External Sales Receipt Number is not valid for the specified License Number, a 401 Unauthorized status will be returned.'
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SaleReceiptMetrcWrapper'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
   /sales/v2/receipts/inactive:
     get:
       tags:
@@ -14738,6 +14945,700 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/ErrorResponse'
                 nullable: true
+  /transporters/v2/drivers:
+    get:
+      tags:
+        - Transporter
+      description: '<b>Permissions Required</b>: Transporters'
+      operationId: GetTransporterDrivers
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return the list of drivers.
+          required: true
+          schema:
+            type: string
+        - name: pageNumber
+          in: query
+          description: The number of the data page from which to return data.
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          description: The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/TransporterDriverMetrcWrapper'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+    post:
+      tags:
+        - Transporter
+      description: '<b>Permissions Required</b>: Manage Transporters'
+      operationId: PostTransporterDrivers
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to create a driver.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PostTransporterDriversRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PostTransporterDriversRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+    put:
+      tags:
+        - Transporter
+      description: '<b>Permissions Required</b>: Manage Transporters'
+      operationId: PutTransporterDrivers
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to update a driver(s).
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PutTransporterDriversRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PutTransporterDriversRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+  '/transporters/v2/drivers/{id}':
+    get:
+      tags:
+        - Transporter
+      description: 'Please note: The {id} parameter above represents a Driver Id.</br><b>Permissions Required</b>: Transporters'
+      operationId: GetTransporterDriverById
+      parameters:
+        - name: id
+          in: path
+          description: Route parameter id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return a driver.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/TransporterDriver'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+    delete:
+      tags:
+        - Transporter
+      description: 'Please note: The {id} parameter above represents a Driver Id.</br><b>Permissions Required</b>: Manage Transporters'
+      operationId: DeleteTransporterDriverById
+      parameters:
+        - name: id
+          in: path
+          description: Route parameter id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to archive a driver.
+          required: true
+          schema:
+            type: string
+      responses:
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+  /transporters/v2/vehicles:
+    get:
+      tags:
+        - Transporter
+      description: '<b>Permissions Required</b>: Transporters'
+      operationId: GetTransporterVehicles
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return the list of vehicles.
+          required: true
+          schema:
+            type: string
+        - name: pageNumber
+          in: query
+          description: The number of the data page from which to return data.
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          description: The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/TransporterVehicleMetrcWrapper'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+    post:
+      tags:
+        - Transporter
+      description: '<b>Permissions Required</b>: Manage Transporters'
+      operationId: PostTransporterVehicles
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to create a vehicle.
+          required: true
+          schema:
+            type: string
+        - name: data
+          in: query
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PostTransporterVehiclesRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PostTransporterVehiclesRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+    put:
+      tags:
+        - Transporter
+      description: '<b>Permissions Required</b>: Manage Transporters'
+      operationId: PutTransporterVehicles
+      parameters:
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to update a vehicle(s).
+          required: true
+          schema:
+            type: string
+        - name: data
+          in: query
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PutTransporterVehiclesRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PutTransporterVehiclesRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+  '/transporters/v2/vehicles/{id}':
+    get:
+      tags:
+        - Transporter
+      description: 'Please note: The {id} parameter above represents a Vehicle Id.</br><b>Permissions Required</b>: Transporters'
+      operationId: GetTransporterVehicleById
+      parameters:
+        - name: id
+          in: path
+          description: Route parameter id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: licenseNumber
+          in: query
+          description: The license number of the facility for which to return a vehicle.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/TransporterVehicle'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+    delete:
+      tags:
+        - Transporter
+      description: 'Please note: The {id} parameter above represents a Vehicle Id.</br><b>Permissions Required</b>: Manage Transporters'
+      operationId: DeleteTransporterVehicleById
+      parameters:
+        - name: id
+          in: path
+          description: Route parameter id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: licenseNumber
+          in: query
+          description: The license number for which to archive a vehicle
+          required: true
+          schema:
+            type: string
+      responses:
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
+        '401':
+          description: Unauthorized
+        '503':
+          description: Server Error
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+                nullable: true
   /unitsofmeasure/v2/active:
     get:
       tags:
@@ -15960,19 +16861,19 @@ components:
           type: array
           items:
             oneOf:
-              - $ref: '#/components/schemas/Photo'
+              - $ref: '#/components/schemas/ProductImage'
           nullable: true
         labelImages:
           type: array
           items:
             oneOf:
-              - $ref: '#/components/schemas/Photo'
+              - $ref: '#/components/schemas/LabelImage'
           nullable: true
         packagingImages:
           type: array
           items:
             oneOf:
-              - $ref: '#/components/schemas/Photo'
+              - $ref: '#/components/schemas/PackagingImage'
           nullable: true
         isExpirationDateRequired:
           type: boolean
@@ -15998,6 +16899,21 @@ components:
           nullable: true
         packagingPhotoDescription:
           type: string
+          nullable: true
+        hasExpirationDate:
+          type: boolean
+          nullable: true
+        hasSellByDate:
+          type: boolean
+          nullable: true
+        hasUseByDate:
+          type: boolean
+          nullable: true
+        ProductPDFDocuments:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/ProductPdfDocument'
           nullable: true
       additionalProperties: { }
     ItemBrand:
@@ -16145,6 +17061,9 @@ components:
           type: boolean
           nullable: true
         canBeRevised:
+          type: boolean
+          nullable: true
+        RequiresProductPDFDocuments:
           type: boolean
           nullable: true
       additionalProperties: { }
@@ -16344,6 +17263,11 @@ components:
           type: string
           format: date
           nullable: true
+        expirationDateTime:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
       additionalProperties: { }
     LabTestBatch:
       type: object
@@ -16485,6 +17409,10 @@ components:
           type: number
           format: double
           nullable: true
+        labTestResultExpirationDays:
+          type: integer
+          format: int32
+          nullable: true
         dependencyMode:
           type: string
           nullable: true
@@ -16525,6 +17453,14 @@ components:
         totalPages:
           type: integer
           format: int32
+          nullable: true
+      additionalProperties: { }
+    LabelImage:
+      type: object
+      properties:
+        fileSystemId:
+          type: integer
+          format: int64
           nullable: true
       additionalProperties: { }
     License:
@@ -17246,6 +18182,14 @@ components:
           format: int32
           nullable: true
       additionalProperties: { }
+    PackagingImage:
+      type: object
+      properties:
+        fileSystemId:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: { }
     Patient:
       required:
         - patientId
@@ -17645,6 +18589,10 @@ components:
         isOnTrip:
           type: boolean
           nullable: true
+        tagTypeMax:
+          type: integer
+          format: int32
+          nullable: true
       additionalProperties: { }
     PlantAdditive:
       type: object
@@ -17845,6 +18793,21 @@ components:
           nullable: true
         isOnHold:
           type: boolean
+          nullable: true
+        expirationDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        sellByDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        useByDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
           nullable: true
       additionalProperties: { }
     PlantBatchMetrcWrapper:
@@ -19658,6 +20621,32 @@ components:
               - $ref: '#/components/schemas/ExternalDestination'
           nullable: true
       additionalProperties: { }
+    PostTransporterDriversRequest:
+      type: object
+      properties:
+        employeeId:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        driversLicenseNumber:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    PostTransporterVehiclesRequest:
+      type: object
+      properties:
+        make:
+          type: string
+          nullable: true
+        model:
+          type: string
+          nullable: true
+        licensePlateNumber:
+          type: string
+          nullable: true
+      additionalProperties: { }
     Processing:
       type: object
       properties:
@@ -19779,6 +20768,22 @@ components:
           format: double
         unitOfMeasure:
           type: string
+          nullable: true
+      additionalProperties: { }
+    ProductImage:
+      type: object
+      properties:
+        fileSystemId:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: { }
+    ProductPdfDocument:
+      type: object
+      properties:
+        fileSystemId:
+          type: integer
+          format: int64
           nullable: true
       additionalProperties: { }
     PutHarvestFinishRequest:
@@ -20011,6 +21016,31 @@ components:
           type: integer
           format: int64
       additionalProperties: { }
+    PutPackageAdjustRequest:
+      required:
+        - label
+      type: object
+      properties:
+        label:
+          minLength: 1
+          type: string
+        quantity:
+          type: number
+          format: double
+        unitOfMeasure:
+          type: string
+          nullable: true
+        adjustmentReason:
+          type: string
+          nullable: true
+        adjustmentDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+        reasonNote:
+          type: string
+          nullable: true
+      additionalProperties: { }
     PutPackageDonationFlagRequest:
       type: object
       properties:
@@ -20121,6 +21151,28 @@ components:
       properties:
         label:
           type: string
+          nullable: true
+      additionalProperties: { }
+    PutPackageUseByDateRequest:
+      type: object
+      properties:
+        label:
+          type: string
+          nullable: true
+        expirationDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        sellByDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        useByDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
           nullable: true
       additionalProperties: { }
     PutPatientCheckInsRequest:
@@ -20858,6 +21910,38 @@ components:
           type: integer
           format: int64
       additionalProperties: { }
+    PutTransporterDriversRequest:
+      type: object
+      properties:
+        employeeId:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        driversLicenseNumber:
+          type: string
+          nullable: true
+        id:
+          type: integer
+          format: int64
+      additionalProperties: { }
+    PutTransporterVehiclesRequest:
+      type: object
+      properties:
+        make:
+          type: string
+          nullable: true
+        model:
+          type: string
+          nullable: true
+        licensePlateNumber:
+          type: string
+          nullable: true
+        id:
+          type: integer
+          format: int64
+      additionalProperties: { }
     RequiredLabTestBatch:
       type: object
       properties:
@@ -21302,6 +22386,9 @@ components:
           type: string
           nullable: true
         identificationMethod:
+          type: string
+          nullable: true
+        externalReceiptNumber:
           type: string
           nullable: true
         totalPackages:
@@ -21818,6 +22905,13 @@ components:
           format: int64
           nullable: true
         groupTagTypeName:
+          type: string
+          nullable: true
+        tagTypeId:
+          type: integer
+          format: int64
+          nullable: true
+        tagInventoryTypeName:
           type: string
           nullable: true
         maxGroupSize:
@@ -22774,6 +23868,122 @@ components:
           items:
             oneOf:
               - $ref: '#/components/schemas/TransferType'
+          nullable: true
+        total:
+          type: integer
+          format: int32
+          nullable: true
+        totalRecords:
+          type: integer
+          format: int32
+          nullable: true
+        pageSize:
+          type: integer
+          format: int32
+          nullable: true
+        recordsOnPage:
+          type: integer
+          format: int32
+          nullable: true
+        page:
+          type: integer
+          format: int32
+          nullable: true
+        currentPage:
+          type: integer
+          format: int32
+          nullable: true
+        totalPages:
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: { }
+    TransporterDriver:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        facilityId:
+          type: integer
+          format: int64
+          nullable: true
+        employeeId:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        driversLicenseNumber:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    TransporterDriverMetrcWrapper:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/TransporterDriver'
+          nullable: true
+        total:
+          type: integer
+          format: int32
+          nullable: true
+        totalRecords:
+          type: integer
+          format: int32
+          nullable: true
+        pageSize:
+          type: integer
+          format: int32
+          nullable: true
+        recordsOnPage:
+          type: integer
+          format: int32
+          nullable: true
+        page:
+          type: integer
+          format: int32
+          nullable: true
+        currentPage:
+          type: integer
+          format: int32
+          nullable: true
+        totalPages:
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: { }
+    TransporterVehicle:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        facilityId:
+          type: integer
+          format: int64
+          nullable: true
+        make:
+          type: string
+          nullable: true
+        model:
+          type: string
+          nullable: true
+        licensePlateNumber:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    TransporterVehicleMetrcWrapper:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/TransporterVehicle'
           nullable: true
         total:
           type: integer

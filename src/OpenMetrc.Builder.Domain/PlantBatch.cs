@@ -36,4 +36,7 @@ public class PlantBatch
     public DateTimeOffset LastModified { get; set; }
     public bool? IsOnTrip { get; set; }
     public bool? IsOnHold { get; set; }
+    public DateTime? ExpirationDate { get; set; }
+    public DateTime? SellByDate { get; set; }
+    public DateTime? UseByDate { get; set; }
 }

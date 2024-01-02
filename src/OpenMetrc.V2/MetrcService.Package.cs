@@ -129,6 +129,13 @@ public partial class MetrcService : IPackageClient
             ? Task.CompletedTask
             : PackageClient.PutPackageDonationUnflagAsync(licenseNumber, body, cancellationToken);
 
+    [MapsToApi(MetrcEndpoint.put_packages_v2_adjust)]
+    public Task PutPackageAdjustAsync(string licenseNumber, IEnumerable<PutPackageAdjustRequest> body,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.CompletedTask
+            : PackageClient.PutPackageAdjustAsync(licenseNumber, body, cancellationToken);
+
     [MapsToApi(MetrcEndpoint.put_packages_v2_item)]
     Task IPackageClient.PutPackageItemAsync(string licenseNumber, IEnumerable<PutPackageItemRequest> body,
         CancellationToken cancellationToken) =>
@@ -183,6 +190,13 @@ public partial class MetrcService : IPackageClient
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.CompletedTask
             : PackageClient.PutPackageUnfinishAsync(licenseNumber, body, cancellationToken);
+
+    [MapsToApi(MetrcEndpoint.put_packages_v2_unfinish)]
+    Task IPackageClient.PutPackageUseByDateAsync(string licenseNumber, IEnumerable<PutPackageUseByDateRequest> body,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
+            ? Task.CompletedTask
+            : PackageClient.PutPackageUseByDateAsync(licenseNumber, body, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.put_packages_v2_remediate)]
     Task IPackageClient.PutPackageRemediateAsync(string licenseNumber, IEnumerable<PutPackageRemediateRequest> body,

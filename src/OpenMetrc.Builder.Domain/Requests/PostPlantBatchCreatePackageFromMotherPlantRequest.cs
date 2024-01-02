@@ -3,6 +3,3 @@
 public class PostPlantBatchCreatePackageFromMotherPlantRequest : CreatePlantBatchPackagesRequest
 {
 }
-public class PostPlantBatchPackageFromMotherPlantRequest : CreatePlantBatchPackagesRequest
-{
-}

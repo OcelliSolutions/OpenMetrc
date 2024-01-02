@@ -10,6 +10,7 @@ public class SaleReceipt
     public string? PatientLicenseNumber { get; set; }
     public string? CaregiverLicenseNumber { get; set; }
     public string? IdentificationMethod { get; set; }
+    public string? ExternalReceiptNumber { get; set; }
     public int TotalPackages { get; set; }
     public double TotalPrice { get; set; }
     public ICollection<SaleReceiptTransaction>? Transactions { get; set; }

@@ -1,0 +1,79 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="sales">
+		Sales
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-mn.metrc.com/</code></h3>
+	<h3 id="get_sales_v2_receipts_external_{externalNumber}">GET /sales/v2/receipts/external/{externalNumber}</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Sales</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br><span class="text-muted"><em>optional</em></span></td><td>If specified, the External Sales Receipt Number will be validated against the specified License Number. If not specified, the External Sales Receipt Number will be validated against all of the User's current Facilities. Please note that if the External Sales Receipt Number is not valid for the specified License Number, a <code>401 Unauthorized</code> status will be returned.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /sales/v2/receipts/external/ABC-123?licenseNumber=123-ABC</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>[
+  {
+    "Id": 1,
+    "ReceiptNumber": null,
+    "ExternalReceiptNumber": "ABC-123",
+    "SalesDateTime": "2016-01-01T17:35:45.000",
+    "SalesCustomerType": "Consumer",
+    "PatientLicenseNumber": null,
+    "CaregiverLicenseNumber": null,
+    "IdentificationMethod": null,
+    "PatientRegistrationLocationId": null,
+    "TotalPackages": 0,
+    "TotalPrice": 0.0,
+    "Transactions": [],
+    "IsFinal": false,
+    "ArchivedDate": null,
+    "RecordedDateTime": "0001-01-01T00:00:00+00:00",
+    "RecordedByUserName": null,
+    "LastModified": "0001-01-01T00:00:00+00:00"
+  },
+  {
+    "Id": 2,
+    "ReceiptNumber": null,
+    "ExternalReceiptNumber": "ABC-124",
+    "SalesDateTime": "2016-01-02T17:37:23.000",
+    "SalesCustomerType": "Consumer",
+    "PatientLicenseNumber": null,
+    "CaregiverLicenseNumber": null,
+    "IdentificationMethod": null,
+    "PatientRegistrationLocationId": null,
+    "TotalPackages": 0,
+    "TotalPrice": 0.0,
+    "Transactions": [],
+    "IsFinal": false,
+    "ArchivedDate": null,
+    "RecordedDateTime": "0001-01-01T00:00:00+00:00",
+    "RecordedByUserName": null,
+    "LastModified": "0001-01-01T00:00:00+00:00"
+  }
+]</code></pre>
+</section>

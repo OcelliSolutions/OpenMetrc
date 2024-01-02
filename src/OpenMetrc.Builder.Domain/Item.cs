@@ -37,9 +37,9 @@ public class Item
     public string? Description { get; set; }
     public bool? IsUsed { get; set; }
     public string? PublicIngredients { get; set; }
-    public List<Photo>? ProductImages { get; set; }
-    public List<Photo>? LabelImages { get; set; }
-    public List<Photo>? PackagingImages { get; set; }
+    public List<ProductImage>? ProductImages { get; set; }
+    public List<LabelImage>? LabelImages { get; set; }
+    public List<PackagingImage>? PackagingImages { get; set; }
     public bool? IsExpirationDateRequired { get; set; }
     public bool? IsSellByDateRequired { get; set; }
     public bool? IsUseByDateRequired { get; set; }
@@ -48,4 +48,11 @@ public class Item
     public string? ProductPhotoDescription { get; set; }
     public string? LabelPhotoDescription { get; set; }
     public string? PackagingPhotoDescription { get; set; }
+
+    public bool? HasExpirationDate { get; set; }
+    public bool? HasSellByDate { get; set; }
+    public bool? HasUseByDate { get; set; }
+    
+    [JsonPropertyName("ProductPDFDocuments")]
+    public List<ProductPdfDocument>? ProductPdfDocuments { get; set; }
 }

@@ -80,6 +80,12 @@ public class SaleController : SalesControllerBase
         DateTimeOffset? lastModifiedStart = null,
         DateTimeOffset? lastModifiedEnd = null) => Task.CompletedTask;
 
+    /// <inheritdoc cref="SalesControllerBase.GetSaleReceiptExternal" />
+    [MapsToApi(MetrcEndpoint.get_sales_v2_receipts_external_externalNumber)]
+    [ProducesResponseType(typeof(MetrcWrapper<SaleReceipt>), StatusCodes.Status200OK)]
+    public override Task GetSaleReceiptExternal([Required] string externalNumber,
+        string? licenseNumber = null) => Task.CompletedTask;
+
     /// <inheritdoc cref="SalesControllerBase.GetSaleReceiptInactive" />
     [MapsToApi(MetrcEndpoint.get_sales_v2_receipts_inactive)]
     [ProducesResponseType(typeof(MetrcWrapper<SaleReceipt>), StatusCodes.Status200OK)]
