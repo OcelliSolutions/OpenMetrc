@@ -52,4 +52,9 @@ public class Package
     public string? SourcePackageLabels { get; set; }
     public bool? IsOnTrip { get; set; }
     public bool? IsOnRetailerDelivery { get; set; }
+    public bool? IsFinished { get; set; }
+    public DateOnly? ExpirationDate { get; set; }
+    public DateOnly? SellByDate { get; set; }
+    public DateOnly? UseByDate { get; set; }
+    public DateTimeOffset? LabTestingRecordedDate { get; set; }
 }

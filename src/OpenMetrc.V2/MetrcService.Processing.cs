@@ -18,22 +18,20 @@ public partial class MetrcService : IProcessingClient
             : ProcessingClient.DeleteProcessingByIdAsync(id, licenseNumber, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_processing_v2_active)]
-    Task<ProcessingMetrcWrapper> IProcessingClient.GetProcessingActiveAsync(string licenseNumber,
+    Task<ProcessingMetrcWrapper> IProcessingClient.GetProcessingActiveAsync(string licenseNumber, int? pageNumber, int? pageSize,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new ProcessingMetrcWrapper())
-            : ProcessingClient.GetProcessingActiveAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
-                cancellationToken);
+            : ProcessingClient.GetProcessingActiveAsync(licenseNumber, pageNumber, pageSize, lastModifiedStart, lastModifiedEnd, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_processing_v2_inactive)]
-    Task<ProcessingMetrcWrapper> IProcessingClient.GetProcessingInactiveAsync(string licenseNumber,
-        DateTimeOffset? lastModifiedStart,
-        DateTimeOffset? lastModifiedEnd, CancellationToken cancellationToken) =>
+    Task<ProcessingMetrcWrapper> IProcessingClient.GetProcessingInactiveAsync(string licenseNumber, int? pageNumber, int? pageSize,
+        DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd,
+        CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new ProcessingMetrcWrapper())
-            : ProcessingClient.GetProcessingInactiveAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
-                cancellationToken);
+            : ProcessingClient.GetProcessingInactiveAsync(licenseNumber, pageNumber, pageSize, lastModifiedStart, lastModifiedEnd, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_processing_v2_createpackages)]
     Task IProcessingClient.PostProcessingCreatePackagesAsync(string licenseNumber,
@@ -76,21 +74,23 @@ public partial class MetrcService : IProcessingClient
 
     [MapsToApi(MetrcEndpoint.get_processing_v2_jobtypes_active)]
     Task<ProcessingJobTypeMetrcWrapper> IProcessingClient.GetProcessingJobTypeActiveAsync(string licenseNumber,
+        int? pageNumber, int? pageSize,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new ProcessingJobTypeMetrcWrapper())
-            : ProcessingClient.GetProcessingJobTypeActiveAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
-                cancellationToken);
+            : ProcessingClient.GetProcessingJobTypeActiveAsync(licenseNumber, pageNumber, pageSize,
+                lastModifiedStart, lastModifiedEnd, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.get_processing_v2_jobtypes_inactive)]
     Task<ProcessingJobTypeMetrcWrapper> IProcessingClient.GetProcessingJobTypeInactiveAsync(string licenseNumber,
+        int? pageNumber, int? pageSize,
         DateTimeOffset? lastModifiedStart, DateTimeOffset? lastModifiedEnd,
         CancellationToken cancellationToken) =>
         !CheckEndpointAvailability(MethodBase.GetCurrentMethod())
             ? Task.FromResult(new ProcessingJobTypeMetrcWrapper())
-            : ProcessingClient.GetProcessingJobTypeInactiveAsync(licenseNumber, lastModifiedStart, lastModifiedEnd,
-                cancellationToken);
+            : ProcessingClient.GetProcessingJobTypeInactiveAsync(licenseNumber, pageNumber, pageSize,
+                lastModifiedStart, lastModifiedEnd, cancellationToken);
 
     [MapsToApi(MetrcEndpoint.post_processing_v2_jobtypes)]
     Task IProcessingClient.PostProcessingJobTypesAsync(string licenseNumber, IEnumerable<PostProcessingJobTypesRequest> body,

@@ -128,7 +128,7 @@ public partial class MetrcService : IMetrcService
             StrainClients.TryAdd(MetrcClientKey,
                 new StrainClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             TransferClients.TryAdd(MetrcClientKey,
-                new TransferClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
+                new TransferClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = true, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             UnitOfMeasureClients.TryAdd(MetrcClientKey,
                 new UnitOfMeasureClient(HttpClient) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
         }

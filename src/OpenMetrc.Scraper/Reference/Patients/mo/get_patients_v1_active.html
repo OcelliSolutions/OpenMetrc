@@ -1,0 +1,63 @@
+
+
+
+
+
+<section>
+	<div class="js-non-printable pull-right">
+		<button id="printable-method-documenation" class="btn btn-info" title="View printer-friendly version of this page." type="button"><span class="oi oi-print" aria-hidden="true"></span> This</button>
+		<button id="printable-documentation" class="btn btn-info" title="View printer-friendly version of the entire documentation." type="button"><span class="oi oi-print" aria-hidden="true"></span> All</button>
+	</div>
+
+	<h1 id="patients">
+		Patients
+	</h1>
+	<p class="lead"></p>
+
+	<h3>Server: <code>https://api-mo.metrc.com/</code></h3>
+	<h3 id="get_patients_v1_active">GET /patients/v1/active</h3>
+	<p></p>
+
+	<h4>Permissions Required</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>Manage Patients</strong></td></tr>
+		</tbody>
+	</table>
+
+	<h4>Parameters</h4>
+	<table class="table">
+		<tbody>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return the list of active patients.</td></tr>
+		</tbody>
+	</table>
+
+	<h4>Example Request</h4>
+	<pre>GET /patients/v1/active?licenseNumber=123-ABC</pre>
+
+	<h4>Example Response</h4>
+	<pre><code>[
+  {
+    "PatientId": 1,
+    "LicenseNumber": "000001",
+    "RegistrationDate": "2015-01-08",
+    "LicenseEffectiveStartDate": "2014-07-12",
+    "LicenseEffectiveEndDate": "2015-07-07",
+    "RecommendedPlants": 6,
+    "RecommendedSmokableQuantity": 2.0,
+    "HasSalesLimitExemption": false,
+    "OtherFacilitiesCount": 1
+  },
+  {
+    "PatientId": 2,
+    "LicenseNumber": "000002",
+    "RegistrationDate": "2015-01-08",
+    "LicenseEffectiveStartDate": "2014-07-12",
+    "LicenseEffectiveEndDate": "2015-07-07",
+    "RecommendedPlants": 6,
+    "RecommendedSmokableQuantity": 2.0,
+    "HasSalesLimitExemption": false,
+    "OtherFacilitiesCount": 1
+  }
+]</code></pre>
+</section>

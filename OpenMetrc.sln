@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		open-metrc-swagger-v2.yaml = open-metrc-swagger-v2.yaml
 		readme.md = readme.md
 		state-summaries.json = state-summaries.json
+		UpdateTextTemplates.ps1 = UpdateTextTemplates.ps1
 	EndProjectSection
 	ProjectSection(FolderGlobals) = preProject
 		C_5_4Users_4jason_4source_4repos_4open-metrc_4state-summaries_1json__JsonSchema = https://geojson.org/schema/GeoJSON.json

@@ -40,4 +40,5 @@ public class Facility
     [JsonPropertyName("License")]
     [Required]
     public License License { get; set; }
+    public bool? IsFinancialContact { get; set; }
 }

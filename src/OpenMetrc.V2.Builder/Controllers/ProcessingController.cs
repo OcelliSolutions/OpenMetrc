@@ -19,6 +19,7 @@ public class ProcessingController : ProcessingJobControllerBase
     [ProducesResponseType(typeof(MetrcWrapper<Processing>), StatusCodes.Status200OK)]
     public override Task GetProcessingActive(
         [Required] string licenseNumber,
+        int? pageNumber = null, int? pageSize = null,
         DateTimeOffset? lastModifiedStart = null,
         DateTimeOffset? lastModifiedEnd = null) => Task.CompletedTask;
 
@@ -27,6 +28,7 @@ public class ProcessingController : ProcessingJobControllerBase
     [ProducesResponseType(typeof(MetrcWrapper<Processing>), StatusCodes.Status200OK)]
     public override Task GetProcessingInactive(
         [Required] string licenseNumber,
+        int? pageNumber = null, int? pageSize = null,
         DateTimeOffset? lastModifiedStart = null,
         DateTimeOffset? lastModifiedEnd = null) => Task.CompletedTask;
 
@@ -77,6 +79,7 @@ public class ProcessingController : ProcessingJobControllerBase
     [ProducesResponseType(typeof(MetrcWrapper<ProcessingJobType>), StatusCodes.Status200OK)]
     public override Task GetProcessingJobTypeActive(
         [Required] string licenseNumber,
+        int? pageNumber = null, int? pageSize = null,
         DateTimeOffset? lastModifiedStart = null,
         DateTimeOffset? lastModifiedEnd = null) => Task.CompletedTask;
 
@@ -85,6 +88,7 @@ public class ProcessingController : ProcessingJobControllerBase
     [ProducesResponseType(typeof(MetrcWrapper<ProcessingJobType>), StatusCodes.Status200OK)]
     public override Task GetProcessingJobTypeInactive(
         [Required] string licenseNumber,
+        int? pageNumber = null, int? pageSize = null,
         DateTimeOffset? lastModifiedStart = null,
         DateTimeOffset? lastModifiedEnd = null) => Task.CompletedTask;
 

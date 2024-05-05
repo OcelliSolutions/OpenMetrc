@@ -28,12 +28,12 @@
 	<h4>Parameters</h4>
 	<table class="table">
 		<tbody>
-			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return the list of active processing jobs.</td></tr><tr><td><strong>lastModifiedStart</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified start timestamp</td></tr><tr><td><strong>lastModifiedEnd</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified end timestamp</td></tr>
+			<tr><td><strong>licenseNumber</strong><br></td><td>The license number of the facility for which to return the list of active processing jobs.</td></tr><tr><td><strong>pageNumber</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of the data page from which to return data.</td></tr><tr><td><strong>pageSize</strong><br><span class="text-muted"><em>optional</em></span><br></td><td>The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</td></tr><tr><td><strong>lastModifiedStart</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified start timestamp</td></tr><tr><td><strong>lastModifiedEnd</strong><br><span class="text-muted"><em>optional</em></span></td><td>The last modified end timestamp</td></tr>
 		</tbody>
 	</table>
 
 	<h4>Example Request</h4>
-	<pre>GET /processing/v2/active?licenseNumber=123-ABC&lastModifiedStart=2018-01-17T06:30:00Z&lastModifiedEnd=2018-01-17T17:30:00Z</pre>
+	<pre>GET /processing/v2/active?licenseNumber=123-ABC&lastModifiedStart=2018-01-17T06:30:00Z&lastModifiedEnd=2018-01-17T17:30:00Z&pageNumber=1&pageSize=10</pre>
 
 	<h4>Example Response</h4>
 	<pre><code>{
@@ -44,7 +44,7 @@
       "Number": "MN001",
       "JobTypeId": 1,
       "JobTypeName": null,
-      "StartDate": "2024-01-01",
+      "StartDate": "2024-05-04",
       "TotalCount": 0.0,
       "CountUnitOfMeasureId": 1,
       "CountUnitOfMeasureName": "Each",
@@ -80,7 +80,7 @@
       "Number": "MN003",
       "JobTypeId": 0,
       "JobTypeName": null,
-      "StartDate": "2024-01-01",
+      "StartDate": "2024-05-04",
       "TotalCount": 0.0,
       "CountUnitOfMeasureId": 1,
       "CountUnitOfMeasureName": "Each",

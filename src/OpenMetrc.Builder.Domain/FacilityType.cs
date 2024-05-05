@@ -83,4 +83,10 @@ public class FacilityType
     public bool? CanAdjustSourcePackagesWithPartials { get; set; }
     public bool? CanReportOperationalExceptions { get; set; }
     public bool? CanReportAdulteration { get; set; }
+    public bool? CanGenerateProductLabel { get; set; }
+    public bool? CanPrintProductLabel { get; set; }
+    public bool? CanReceiveAssociateProductLabel { get; set; }
+    public bool? CanViewSourcePackages { get; set; }
+    public bool? TaxExemptReportingFeesFacilityType { get; set; }
+    public bool? TaxExemptTagOrdersFacilityType { get; set; }
 }

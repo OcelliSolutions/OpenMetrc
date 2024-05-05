@@ -47,4 +47,5 @@ public class Transfer
     public DateTimeOffset? ActualReturnDepartureDateTime { get; set; }
     public DateTimeOffset? EstimatedReturnArrivalDateTime { get; set; }
     public DateTimeOffset? ActualReturnArrivalDateTime { get; set; }
+    public bool? IsVoided { get; set; }
 }

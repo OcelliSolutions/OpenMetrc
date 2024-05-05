@@ -14,8 +14,8 @@
 	</h1>
 	<p class="lead"></p>
 
-	<h3>Server: <code>https://api-il.metrc.com/</code></h3>
-	<h3 id="get_unitsofmeasure_v1_active">GET /unitsofmeasure/v1/active</h3>
+	<h3>Server: <code>https://api-al.metrc.com/</code></h3>
+	<h3 id="get_unitsofmeasure_v2_inactive">GET /unitsofmeasure/v2/inactive</h3>
 	<p></p>
 
 	<h4>Permissions Required</h4>
@@ -33,39 +33,14 @@
 	</table>
 
 	<h4>Example Request</h4>
-	<pre>GET /unitsofmeasure/v1/active</pre>
+	<pre>GET /unitsofmeasure/v2/inactive</pre>
 
 	<h4>Example Response</h4>
 	<pre><code>[
   {
-    "QuantityType": "CountBased",
-    "Name": "Each",
-    "Abbreviation": "ea"
-  },
-  {
     "QuantityType": "WeightBased",
-    "Name": "Ounces",
-    "Abbreviation": "oz"
-  },
-  {
-    "QuantityType": "WeightBased",
-    "Name": "Pounds",
-    "Abbreviation": "lb"
-  },
-  {
-    "QuantityType": "WeightBased",
-    "Name": "Grams",
-    "Abbreviation": "g"
-  },
-  {
-    "QuantityType": "WeightBased",
-    "Name": "Milligrams",
-    "Abbreviation": "mg"
-  },
-  {
-    "QuantityType": "WeightBased",
-    "Name": "Kilograms",
-    "Abbreviation": "kg"
+    "Name": "Tonns",
+    "Abbreviation": "t"
   }
 ]</code></pre>
 </section>

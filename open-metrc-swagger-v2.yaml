@@ -5,10 +5,12 @@ info:
   version: v2
 servers:
   - url: https://api-ak.metrc.com
+  - url: https://api-al.metrc.com
   - url: https://api-ca.metrc.com
   - url: https://api-co.metrc.com
   - url: https://api-dc.metrc.com
   - url: https://api-gu.metrc.com
+  - url: https://api-ky.metrc.com
   - url: https://api-la.metrc.com
   - url: https://api-ma.metrc.com
   - url: https://api-md.metrc.com
@@ -27,10 +29,12 @@ servers:
   - url: https://api-sd.metrc.com
   - url: https://api-wv.metrc.com
   - url: https://sandbox-api-ak.metrc.com
+  - url: https://sandbox-api-al.metrc.com
   - url: https://sandbox-api-ca.metrc.com
   - url: https://sandbox-api-co.metrc.com
   - url: https://sandbox-api-dc.metrc.com
   - url: https://sandbox-api-gu.metrc.com
+  - url: https://sandbox-api-ky.metrc.com
   - url: https://sandbox-api-la.metrc.com
   - url: https://sandbox-api-ma.metrc.com
   - url: https://sandbox-api-md.metrc.com
@@ -116,7 +120,7 @@ paths:
     get:
       tags:
         - Employee
-      description: '<b>Permissions Required</b>: Manage Employees'
+      description: '<b>Permissions Required</b>: Manage Employees • View Employees'
       operationId: GetEmployees
       parameters:
         - name: licenseNumber
@@ -9247,6 +9251,18 @@ paths:
           required: true
           schema:
             type: string
+        - name: pageNumber
+          in: query
+          description: The number of the data page from which to return data.
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          description: The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.
+          schema:
+            type: integer
+            format: int32
         - name: lastModifiedStart
           in: query
           description: The last modified start timestamp
@@ -9320,6 +9336,18 @@ paths:
           required: true
           schema:
             type: string
+        - name: pageNumber
+          in: query
+          description: The number of the data page from which to return data.
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          description: The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.
+          schema:
+            type: integer
+            format: int32
         - name: lastModifiedStart
           in: query
           description: The last modified start timestamp
@@ -9758,6 +9786,18 @@ paths:
           required: true
           schema:
             type: string
+        - name: pageNumber
+          in: query
+          description: The number of the data page from which to return data.
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          description: The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.
+          schema:
+            type: integer
+            format: int32
         - name: lastModifiedStart
           in: query
           description: The last modified start timestamp
@@ -9831,6 +9871,18 @@ paths:
           required: true
           schema:
             type: string
+        - name: pageNumber
+          in: query
+          description: The number of the data page from which to return data.
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          description: The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.
+          schema:
+            type: integer
+            format: int32
         - name: lastModifiedStart
           in: query
           description: The last modified start timestamp
@@ -10321,7 +10373,7 @@ paths:
     get:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales Delivery'
+      description: '<b>Permissions Required</b>: View Sales Delivery • Manage Sales Delivery'
       operationId: GetSaleDeliveryById
       parameters:
         - name: id
@@ -10383,7 +10435,7 @@ paths:
     delete:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales Delivery'
+      description: '<b>Permissions Required</b>: Manage Sales Delivery'
       operationId: DeleteSaleDeliveryById
       parameters:
         - name: id
@@ -10450,7 +10502,7 @@ paths:
     get:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales Delivery'
+      description: '<b>Permissions Required</b>: View Sales Delivery • Manage Sales Delivery'
       operationId: GetSaleDeliveryActive
       parameters:
         - name: licenseNumber
@@ -10551,7 +10603,7 @@ paths:
     get:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales Delivery'
+      description: '<b>Permissions Required</b>: View Sales Delivery • Manage Sales Delivery'
       operationId: GetSaleDeliveryInactive
       parameters:
         - name: licenseNumber
@@ -10771,7 +10823,7 @@ paths:
     get:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales Delivery'
+      description: '<b>Permissions Required</b>: View Sales Delivery • Manage Sales Delivery'
       operationId: GetSalePaymentTypes
       parameters:
         - name: licenseNumber
@@ -10828,7 +10880,7 @@ paths:
     get:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: View Sales • Manage Sales'
       operationId: GetSaleReceiptById
       parameters:
         - name: id
@@ -10890,7 +10942,7 @@ paths:
     delete:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: Manage Sales'
       operationId: DeleteSaleReceiptById
       parameters:
         - name: id
@@ -10957,7 +11009,7 @@ paths:
     get:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: View Sales • Manage Sales'
       operationId: GetSaleReceiptActive
       parameters:
         - name: licenseNumber
@@ -11058,7 +11110,7 @@ paths:
     get:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: View Sales • Manage Sales'
       operationId: GetSaleReceiptExternal
       parameters:
         - name: externalNumber
@@ -11120,7 +11172,7 @@ paths:
     get:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: View Sales • Manage Sales'
       operationId: GetSaleReceiptInactive
       parameters:
         - name: licenseNumber
@@ -11221,7 +11273,7 @@ paths:
     post:
       tags:
         - Sale
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales Delivery'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Sales Delivery'
       operationId: PostSaleDeliveries
       parameters:
         - name: licenseNumber
@@ -11293,7 +11345,7 @@ paths:
     put:
       tags:
         - Sale
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales Delivery'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Sales Delivery'
       operationId: PutSaleDeliveries
       parameters:
         - name: licenseNumber
@@ -11366,7 +11418,7 @@ paths:
     post:
       tags:
         - Sale
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Sales'
       operationId: PostSaleReceipts
       parameters:
         - name: licenseNumber
@@ -11438,7 +11490,7 @@ paths:
     put:
       tags:
         - Sale
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Sales'
       operationId: PutSaleReceipts
       parameters:
         - name: licenseNumber
@@ -11511,7 +11563,7 @@ paths:
     put:
       tags:
         - Sale
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales Delivery'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Sales Delivery'
       operationId: PutSaleDeliveryHub
       parameters:
         - name: licenseNumber
@@ -11657,7 +11709,7 @@ paths:
     put:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales Delivery'
+      description: '<b>Permissions Required</b>: Manage Sales Delivery'
       operationId: PutSaleDeliveryComplete
       parameters:
         - name: licenseNumber
@@ -11876,7 +11928,7 @@ paths:
     put:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: Manage Sales'
       operationId: PutSaleReceiptFinalize
       parameters:
         - name: licenseNumber
@@ -11949,7 +12001,7 @@ paths:
     put:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: Manage Sales'
       operationId: PutSaleReceiptUnfinalize
       parameters:
         - name: licenseNumber
@@ -12022,7 +12074,7 @@ paths:
     get:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Retailer Delivery'
+      description: '<b>Permissions Required</b>: View Retailer Delivery • Manage Retailer Delivery'
       operationId: GetSaleDeliveryRetailerActive
       parameters:
         - name: licenseNumber
@@ -12109,7 +12161,7 @@ paths:
     get:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Retailer Delivery'
+      description: '<b>Permissions Required</b>: View Retailer Delivery • Manage Retailer Delivery'
       operationId: GetSaleDeliveryRetailerInactive
       parameters:
         - name: licenseNumber
@@ -12196,7 +12248,7 @@ paths:
     get:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Retailer Delivery'
+      description: '<b>Permissions Required</b>: View Retailer Delivery • Manage Retailer Delivery'
       operationId: GetSaleDeliveryRetailerById
       parameters:
         - name: id
@@ -12258,7 +12310,7 @@ paths:
     delete:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Retailer Delivery'
+      description: '<b>Permissions Required</b>: Manage Retailer Delivery'
       operationId: DeleteSaleDeliveryRetailerById
       parameters:
         - name: id
@@ -12325,7 +12377,7 @@ paths:
     post:
       tags:
         - Sale
-      description: 'Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      description: 'Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Retailer Delivery'
       operationId: PostSaleDeliveryRetailer
       parameters:
         - name: licenseNumber
@@ -12397,7 +12449,7 @@ paths:
     put:
       tags:
         - Sale
-      description: 'Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      description: 'Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Retailer Delivery'
       operationId: PutSaleDeliveryRetailer
       parameters:
         - name: licenseNumber
@@ -12470,7 +12522,7 @@ paths:
     post:
       tags:
         - Sale
-      description: '<b>Permissions Required</b>: Retailer Delivery'
+      description: '<b>Permissions Required</b>: Manage Retailer Delivery'
       operationId: PostSaleDeliveryRetailerDepart
       parameters:
         - name: licenseNumber
@@ -12543,7 +12595,7 @@ paths:
     post:
       tags:
         - Sale
-      description: 'Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      description: 'Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Retailer Delivery'
       operationId: PostSaleDeliveryRetailerRestock
       parameters:
         - name: licenseNumber
@@ -12616,7 +12668,7 @@ paths:
     post:
       tags:
         - Sale
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Retailer Delivery'
       operationId: PostSaleDeliveryRetailerSale
       parameters:
         - name: licenseNumber
@@ -12689,7 +12741,7 @@ paths:
     post:
       tags:
         - Sale
-      description: 'Please note: The ActualArrivalDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      description: 'Please note: The ActualArrivalDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Retailer Delivery'
       operationId: PostSaleDeliveryRetailerEnd
       parameters:
         - name: licenseNumber
@@ -13310,7 +13362,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers • View Transfers'
       operationId: GetTransferIncoming
       parameters:
         - name: licenseNumber
@@ -13395,7 +13447,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers • View Transfers'
       operationId: GetTransferOutgoing
       parameters:
         - name: licenseNumber
@@ -13480,7 +13532,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers • View Transfers'
       operationId: GetTransferRejected
       parameters:
         - name: licenseNumber
@@ -13549,7 +13601,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers • View Transfers'
       operationId: GetTransferHub
       parameters:
         - name: licenseNumber
@@ -13634,7 +13686,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: 'Please note: The {id} parameter above represents a Transfer ID.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer ID.</br><b>Permissions Required</b>: Manage Transfers • View Transfers'
       operationId: GetTransferByIdDeliveries
       parameters:
         - name: id
@@ -13704,7 +13756,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfers • View Transfers'
       operationId: GetTransferDeliveryByIdTransporters
       parameters:
         - name: id
@@ -13774,7 +13826,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfers • View Transfers'
       operationId: GetTransferDeliveryByIdTransporterDetails
       parameters:
         - name: id
@@ -13844,7 +13896,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfers • View Transfers'
       operationId: GetTransferDeliveryByIdPackages
       parameters:
         - name: id
@@ -13914,7 +13966,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfers • View Transfers'
       operationId: GetTransferDeliveryByIdPackageWholesale
       parameters:
         - name: id
@@ -13984,7 +14036,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: 'Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfers • View Transfers'
       operationId: GetTransferDeliveryPackageByIdRequiredLabTestBatches
       parameters:
         - name: id
@@ -14173,7 +14225,7 @@ paths:
     post:
       tags:
         - Transfer
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers'
       operationId: PostTransferExternalIncoming
       parameters:
         - name: licenseNumber
@@ -14245,7 +14297,7 @@ paths:
     put:
       tags:
         - Transfer
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers'
       operationId: PutTransferExternalIncoming
       parameters:
         - name: licenseNumber
@@ -14318,7 +14370,7 @@ paths:
     delete:
       tags:
         - Transfer
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers'
       operationId: DeleteTransferExternalIncomingById
       parameters:
         - name: id
@@ -14385,7 +14437,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: '<b>Permissions Required</b>: Transfer Templates'
+      description: '<b>Permissions Required</b>: Manage Transfer Templates • View Transfer Templates'
       operationId: GetTransferTemplateOutgoing
       parameters:
         - name: licenseNumber
@@ -14469,7 +14521,7 @@ paths:
     post:
       tags:
         - Transfer
-      description: '<b>Permissions Required</b>: Transfer Templates'
+      description: '<b>Permissions Required</b>: Manage Transfer Templates'
       operationId: PostTransferTemplateOutgoing
       parameters:
         - name: licenseNumber
@@ -14541,7 +14593,7 @@ paths:
     put:
       tags:
         - Transfer
-      description: '<b>Permissions Required</b>: Transfer Templates'
+      description: '<b>Permissions Required</b>: Manage Transfer Templates'
       operationId: PutTransferTemplateOutgoing
       parameters:
         - name: licenseNumber
@@ -14614,7 +14666,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: '<b>Permissions Required</b>: Transfer Templates'
+      description: '<b>Permissions Required</b>: Manage Transfer Templates • View Transfer Templates'
       operationId: GetTransferTemplateOutgoingByIdDeliveries
       parameters:
         - name: id
@@ -14684,7 +14736,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfer Templates'
+      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfer Templates • View Transfer Templates'
       operationId: GetTransferTemplateOutgoingDeliveryByIdTransporters
       parameters:
         - name: id
@@ -14754,7 +14806,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfer Templates'
+      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfer Templates • View Transfer Templates'
       operationId: GetTransferTemplateOutgoingDeliveryByIdTransporterDetails
       parameters:
         - name: id
@@ -14812,7 +14864,7 @@ paths:
     get:
       tags:
         - Transfer
-      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfer Templates • View Transfer Templates'
       operationId: GetTransferTemplateOutgoingDeliveryByIdPackages
       parameters:
         - name: id
@@ -14882,7 +14934,7 @@ paths:
     delete:
       tags:
         - Transfer
-      description: '<b>Permissions Required</b>: Transfer Templates'
+      description: '<b>Permissions Required</b>: Manage Transfer Templates'
       operationId: DeleteTransferTemplateOutgoingById
       parameters:
         - name: id
@@ -16209,6 +16261,9 @@ components:
         License:
           oneOf:
             - $ref: '#/components/schemas/License'
+        isFinancialContact:
+          type: boolean
+          nullable: true
       additionalProperties: { }
     FacilityType:
       type: object
@@ -16457,6 +16512,24 @@ components:
           type: boolean
           nullable: true
         canReportAdulteration:
+          type: boolean
+          nullable: true
+        canGenerateProductLabel:
+          type: boolean
+          nullable: true
+        canPrintProductLabel:
+          type: boolean
+          nullable: true
+        canReceiveAssociateProductLabel:
+          type: boolean
+          nullable: true
+        canViewSourcePackages:
+          type: boolean
+          nullable: true
+        taxExemptReportingFeesFacilityType:
+          type: boolean
+          nullable: true
+        taxExemptTagOrdersFacilityType:
           type: boolean
           nullable: true
       additionalProperties: { }
@@ -16908,6 +16981,11 @@ components:
           nullable: true
         hasUseByDate:
           type: boolean
+          nullable: true
+        labTestBatchNames:
+          type: array
+          items:
+            type: string
           nullable: true
         ProductPDFDocuments:
           type: array
@@ -17416,6 +17494,10 @@ components:
         dependencyMode:
           type: string
           nullable: true
+        maxAllowedFailureCount:
+          type: integer
+          format: int32
+          nullable: true
       additionalProperties: { }
     LabTestTypeMetrcWrapper:
       type: object
@@ -17785,6 +17867,30 @@ components:
           nullable: true
         isOnRetailerDelivery:
           type: boolean
+          nullable: true
+        isFinished:
+          type: boolean
+          nullable: true
+        expirationDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        sellByDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        useByDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        labTestingRecordedDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
       additionalProperties: { }
     PackageAdjustReason:
@@ -23098,6 +23204,9 @@ components:
           type: string
           description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
           format: date-time
+          nullable: true
+        isVoided:
+          type: boolean
           nullable: true
       additionalProperties: { }
     TransferDelivery:

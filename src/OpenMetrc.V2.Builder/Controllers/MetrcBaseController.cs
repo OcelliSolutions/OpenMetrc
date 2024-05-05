@@ -45,7 +45,7 @@ namespace OpenMetrc.V2.Builder.Controllers
     public abstract class EmployeesControllerBase : Microsoft.AspNetCore.Mvc.ControllerBase
     {
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Employees
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Employees • View Employees
         /// </remarks>
         /// <param name="licenseNumber">The license number of the Facility under which to get the Employees.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1268,31 +1268,37 @@ namespace OpenMetrc.V2.Builder.Controllers
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of active processing jobs.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp</param>
         /// <param name="lastModifiedEnd">The last modified end timestamp</param>
         /// <returns>Ok</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("processing/v2/active")]
-        public abstract System.Threading.Tasks.Task GetProcessingActive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
+        public abstract System.Threading.Tasks.Task GetProcessingActive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive processing jobs.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp</param>
         /// <param name="lastModifiedEnd">The last modified end timestamp</param>
         /// <returns>Ok</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("processing/v2/inactive")]
-        public abstract System.Threading.Tasks.Task GetProcessingInactive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
+        public abstract System.Threading.Tasks.Task GetProcessingInactive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of active processing job types.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp</param>
         /// <param name="lastModifiedEnd">The last modified end timestamp</param>
         /// <returns>Ok</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("processing/v2/jobtypes/active")]
-        public abstract System.Threading.Tasks.Task GetProcessingJobTypeActive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
+        public abstract System.Threading.Tasks.Task GetProcessingJobTypeActive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
@@ -1314,11 +1320,13 @@ namespace OpenMetrc.V2.Builder.Controllers
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive processing job types.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp</param>
         /// <param name="lastModifiedEnd">The last modified end timestamp</param>
         /// <returns>Ok</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("processing/v2/jobtypes/inactive")]
-        public abstract System.Threading.Tasks.Task GetProcessingJobTypeInactive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
+        public abstract System.Threading.Tasks.Task GetProcessingJobTypeInactive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
@@ -1383,7 +1391,7 @@ namespace OpenMetrc.V2.Builder.Controllers
     public abstract class SalesControllerBase : Microsoft.AspNetCore.Mvc.ControllerBase
     {
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to void delivery.</param>
@@ -1392,7 +1400,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task DeleteSaleDeliveryById(long id, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales Delivery • Manage Sales Delivery
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">If specified, the Sales Delivery will be validated against the specified License Number. If not specified, the Sales Delivery will be validated against all of the User's current Facilities. Please note that if the Sales Delivery is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
@@ -1401,7 +1409,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetSaleDeliveryById(long id, [Microsoft.AspNetCore.Mvc.FromQuery] string? licenseNumber = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to void retailer delivery.</param>
@@ -1410,7 +1418,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task DeleteSaleDeliveryRetailerById(long id, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Retailer Delivery • Manage Retailer Delivery
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">If specified, the Sales Delivery will be validated against the specified License Number. If not specified, the Sales Delivery will be validated against all of the User's current Facilities. Please note that if the Sales Delivery is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
@@ -1419,7 +1427,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetSaleDeliveryRetailerById(long id, [Microsoft.AspNetCore.Mvc.FromQuery] string? licenseNumber = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to archive receipt.</param>
@@ -1428,7 +1436,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task DeleteSaleReceiptById(long id, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales • Manage Sales
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">If specified, the Sales Receipt will be validated against the specified License Number. If not specified, the Sales Receipt will be validated against all of the User's current Facilities. Please note that if the Sales Receipt is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
@@ -1451,7 +1459,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetSaleCustomerTypes();
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales Delivery • Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of active deliveries.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1465,7 +1473,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetSaleDeliveryActive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? salesDateStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? salesDateEnd = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales Delivery • Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive deliveries.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1479,7 +1487,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetSaleDeliveryInactive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? salesDateStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? salesDateEnd = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Retailer Delivery • Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return active retailer deliveries.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1491,7 +1499,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetSaleDeliveryRetailerActive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Retailer Delivery • Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return inactive retailer deliveries.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1520,7 +1528,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetSalePatientRegistrationLocations();
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales Delivery • Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of payment types.</param>
         /// <returns>Ok</returns>
@@ -1528,7 +1536,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetSalePaymentTypes([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales • Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of active receipts.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1542,7 +1550,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetSaleReceiptActive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? salesDateStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? salesDateEnd = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales • Manage Sales
         /// </remarks>
         /// <param name="externalNumber">Route parameter externalNumber</param>
         /// <param name="licenseNumber">If specified, the External Sales Receipt Number will be validated against the specified License Number. If not specified, the External Sales Receipt Number will be validated against all of the User's current Facilities. Please note that if the External Sales Receipt Number is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
@@ -1551,7 +1559,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetSaleReceiptExternal(string externalNumber, [Microsoft.AspNetCore.Mvc.FromQuery] string? licenseNumber = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales • Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive receipts.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1565,7 +1573,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetSaleReceiptInactive([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? salesDateStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? salesDateEnd = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record deliveries.</param>
         /// <returns>Ok</returns>
@@ -1573,7 +1581,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PostSaleDeliveries([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PostSaleDeliveriesRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update deliveries.</param>
         /// <returns>Ok</returns>
@@ -1581,7 +1589,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PutSaleDeliveries([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutSaleDeliveriesRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record retailer deliveries.</param>
         /// <returns>Ok</returns>
@@ -1589,7 +1597,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PostSaleDeliveryRetailer([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PostSaleDeliveryRetailerRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update retailer deliveries.</param>
         /// <returns>Ok</returns>
@@ -1597,7 +1605,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PutSaleDeliveryRetailer([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutSaleDeliveryRetailerRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record depart delivery.</param>
         /// <returns>Ok</returns>
@@ -1605,7 +1613,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PostSaleDeliveryRetailerDepart([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PostSaleDeliveryRetailerDepartRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// Please note: The ActualArrivalDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The ActualArrivalDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record end retailer deliveries.</param>
         /// <returns>Ok</returns>
@@ -1613,7 +1621,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PostSaleDeliveryRetailerEnd([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PostSaleDeliveryRetailerEndRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record restock retailer deliveries.</param>
         /// <returns>Ok</returns>
@@ -1621,7 +1629,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PostSaleDeliveryRetailerRestock([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PostSaleDeliveryRetailerRestockRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record sale from retailer delivery.</param>
         /// <returns>Ok</returns>
@@ -1629,7 +1637,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PostSaleDeliveryRetailerSale([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PostSaleDeliveryRetailerSaleRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record receipts.</param>
         /// <returns>Ok</returns>
@@ -1637,7 +1645,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PostSaleReceipts([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PostSaleReceiptsRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update receipts.</param>
         /// <returns>Ok</returns>
@@ -1645,7 +1653,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PutSaleReceipts([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutSaleReceiptsRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update deliveries completed.</param>
         /// <returns>Ok</returns>
@@ -1653,7 +1661,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PutSaleDeliveryComplete([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutSaleDeliveryCompleteRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update hub transporters.</param>
         /// <returns>Ok</returns>
@@ -1685,7 +1693,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PutSaleDeliveryHubVerifyId([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutSaleDeliveryHubVerifyIdRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update finalized receipts.</param>
         /// <returns>Ok</returns>
@@ -1693,7 +1701,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PutSaleReceiptFinalize([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutSaleReceiptFinalizeRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update unfinalized receipts.</param>
         /// <returns>Ok</returns>
@@ -1791,7 +1799,7 @@ namespace OpenMetrc.V2.Builder.Controllers
     public abstract class TransfersControllerBase : Microsoft.AspNetCore.Mvc.ControllerBase
     {
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to void the transfer.</param>
@@ -1800,7 +1808,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task DeleteTransferExternalIncomingById(long id, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to archive the template.</param>
@@ -1809,7 +1817,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task DeleteTransferTemplateOutgoingById(long id, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1819,7 +1827,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferDeliveryByIdPackages(long id, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null);
 
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1829,7 +1837,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferDeliveryByIdPackageWholesale(long id, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null);
 
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1839,7 +1847,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferDeliveryByIdTransporters(long id, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null);
 
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1856,7 +1864,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferDeliveryPackageStates();
 
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1866,7 +1874,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferDeliveryPackageByIdRequiredLabTestBatches(long id, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return shipment plans.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1878,7 +1886,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferHub([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer ID.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer ID.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1888,7 +1896,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferByIdDeliveries(long id, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return incoming transfers.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1900,7 +1908,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferIncoming([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return outgoing transfers.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1912,7 +1920,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferOutgoing([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return rejected transfers.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1922,7 +1930,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferRejected([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return outgoing shipment templates.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1934,7 +1942,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferTemplateOutgoing([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedStart = null, [Microsoft.AspNetCore.Mvc.FromQuery] System.DateTimeOffset? lastModifiedEnd = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to create a shipment template.</param>
         /// <returns>Ok</returns>
@@ -1942,7 +1950,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PostTransferTemplateOutgoing([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PostTransferTemplateOutgoingRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update shipment plan templates.</param>
         /// <returns>Ok</returns>
@@ -1950,7 +1958,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PutTransferTemplateOutgoing([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PutTransferTemplateOutgoingRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1960,7 +1968,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferTemplateOutgoingDeliveryByIdPackages(long id, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null);
 
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1970,7 +1978,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferTemplateOutgoingDeliveryByIdTransporters(long id, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null);
 
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <returns>Ok</returns>
@@ -1978,7 +1986,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferTemplateOutgoingDeliveryByIdTransporterDetails(long id);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -1998,7 +2006,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task GetTransferTypes([Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageNumber = null, [Microsoft.AspNetCore.Mvc.FromQuery] int? pageSize = null);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number for which to create a shipment plan.</param>
         /// <returns>Ok</returns>
@@ -2006,7 +2014,7 @@ namespace OpenMetrc.V2.Builder.Controllers
         public abstract System.Threading.Tasks.Task PostTransferExternalIncoming([System.ComponentModel.DataAnnotations.Required] List<OpenMetrc.Builder.Domain.Requests.PostTransferExternalIncomingRequest> request, [Microsoft.AspNetCore.Mvc.FromQuery] string licenseNumber);
 
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update external incoming shipment plans.</param>
         /// <returns>Ok</returns>

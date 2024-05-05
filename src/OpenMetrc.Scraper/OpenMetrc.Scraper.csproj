@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.54" />
-    <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.20.0" />
-    <PackageReference Include="NSwag.Core.Yaml" Version="13.20.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
+    <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.0.7" />
+    <PackageReference Include="NSwag.Core.Yaml" Version="14.0.7" />
     <PackageReference Include="PluralizeService.Core" Version="1.2.21147.2" />
   </ItemGroup>
 

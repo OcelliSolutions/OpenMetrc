@@ -296,7 +296,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Employees
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Employees • View Employees
         /// </remarks>
         /// <param name="licenseNumber">The license number of the Facility under which to get the Employees.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -343,7 +343,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Employees
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Employees • View Employees
         /// </remarks>
         /// <param name="licenseNumber">The license number of the Facility under which to get the Employees.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -18369,22 +18369,26 @@ namespace OpenMetrc.V2
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of active processing jobs.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp</param>
         /// <param name="lastModifiedEnd">The last modified end timestamp</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ProcessingMetrcWrapper> GetProcessingActiveAsync(string licenseNumber, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ProcessingMetrcWrapper> GetProcessingActiveAsync(string licenseNumber, int? pageNumber = null, int? pageSize = null, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive processing jobs.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp</param>
         /// <param name="lastModifiedEnd">The last modified end timestamp</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ProcessingMetrcWrapper> GetProcessingInactiveAsync(string licenseNumber, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ProcessingMetrcWrapper> GetProcessingInactiveAsync(string licenseNumber, int? pageNumber = null, int? pageSize = null, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
@@ -18436,22 +18440,26 @@ namespace OpenMetrc.V2
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of active processing job types.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp</param>
         /// <param name="lastModifiedEnd">The last modified end timestamp</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ProcessingJobTypeMetrcWrapper> GetProcessingJobTypeActiveAsync(string licenseNumber, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ProcessingJobTypeMetrcWrapper> GetProcessingJobTypeActiveAsync(string licenseNumber, int? pageNumber = null, int? pageSize = null, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive processing job types.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp</param>
         /// <param name="lastModifiedEnd">The last modified end timestamp</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ProcessingJobTypeMetrcWrapper> GetProcessingJobTypeInactiveAsync(string licenseNumber, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ProcessingJobTypeMetrcWrapper> GetProcessingJobTypeInactiveAsync(string licenseNumber, int? pageNumber = null, int? pageSize = null, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
@@ -18774,11 +18782,13 @@ namespace OpenMetrc.V2
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of active processing jobs.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp</param>
         /// <param name="lastModifiedEnd">The last modified end timestamp</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ProcessingMetrcWrapper> GetProcessingActiveAsync(string licenseNumber, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ProcessingMetrcWrapper> GetProcessingActiveAsync(string licenseNumber, int? pageNumber = null, int? pageSize = null, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (licenseNumber == null)
                 throw new System.ArgumentNullException("licenseNumber");
@@ -18786,6 +18796,14 @@ namespace OpenMetrc.V2
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/processing/v2/active?");
             urlBuilder_.Append(System.Uri.EscapeDataString("licenseNumber") + "=").Append(System.Uri.EscapeDataString(ConvertToString(licenseNumber, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (pageNumber != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("pageNumber") + "=").Append(System.Uri.EscapeDataString(ConvertToString(pageNumber, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (pageSize != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("pageSize") + "=").Append(System.Uri.EscapeDataString(ConvertToString(pageSize, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
             if (lastModifiedStart != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("lastModifiedStart") + "=").Append(System.Uri.EscapeDataString(lastModifiedStart.Value.ToString("s", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -18896,11 +18914,13 @@ namespace OpenMetrc.V2
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive processing jobs.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp</param>
         /// <param name="lastModifiedEnd">The last modified end timestamp</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ProcessingMetrcWrapper> GetProcessingInactiveAsync(string licenseNumber, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ProcessingMetrcWrapper> GetProcessingInactiveAsync(string licenseNumber, int? pageNumber = null, int? pageSize = null, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (licenseNumber == null)
                 throw new System.ArgumentNullException("licenseNumber");
@@ -18908,6 +18928,14 @@ namespace OpenMetrc.V2
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/processing/v2/inactive?");
             urlBuilder_.Append(System.Uri.EscapeDataString("licenseNumber") + "=").Append(System.Uri.EscapeDataString(ConvertToString(licenseNumber, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (pageNumber != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("pageNumber") + "=").Append(System.Uri.EscapeDataString(ConvertToString(pageNumber, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (pageSize != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("pageSize") + "=").Append(System.Uri.EscapeDataString(ConvertToString(pageSize, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
             if (lastModifiedStart != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("lastModifiedStart") + "=").Append(System.Uri.EscapeDataString(lastModifiedStart.Value.ToString("s", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -19613,11 +19641,13 @@ namespace OpenMetrc.V2
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of active processing job types.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp</param>
         /// <param name="lastModifiedEnd">The last modified end timestamp</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ProcessingJobTypeMetrcWrapper> GetProcessingJobTypeActiveAsync(string licenseNumber, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ProcessingJobTypeMetrcWrapper> GetProcessingJobTypeActiveAsync(string licenseNumber, int? pageNumber = null, int? pageSize = null, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (licenseNumber == null)
                 throw new System.ArgumentNullException("licenseNumber");
@@ -19625,6 +19655,14 @@ namespace OpenMetrc.V2
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/processing/v2/jobtypes/active?");
             urlBuilder_.Append(System.Uri.EscapeDataString("licenseNumber") + "=").Append(System.Uri.EscapeDataString(ConvertToString(licenseNumber, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (pageNumber != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("pageNumber") + "=").Append(System.Uri.EscapeDataString(ConvertToString(pageNumber, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (pageSize != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("pageSize") + "=").Append(System.Uri.EscapeDataString(ConvertToString(pageSize, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
             if (lastModifiedStart != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("lastModifiedStart") + "=").Append(System.Uri.EscapeDataString(lastModifiedStart.Value.ToString("s", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -19735,11 +19773,13 @@ namespace OpenMetrc.V2
         /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Processing Job
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive processing job types.</param>
+        /// <param name="pageNumber">The number of the data page from which to return data.</param>
+        /// <param name="pageSize">The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp</param>
         /// <param name="lastModifiedEnd">The last modified end timestamp</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ProcessingJobTypeMetrcWrapper> GetProcessingJobTypeInactiveAsync(string licenseNumber, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ProcessingJobTypeMetrcWrapper> GetProcessingJobTypeInactiveAsync(string licenseNumber, int? pageNumber = null, int? pageSize = null, DateTimeOffset? lastModifiedStart = null, DateTimeOffset? lastModifiedEnd = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (licenseNumber == null)
                 throw new System.ArgumentNullException("licenseNumber");
@@ -19747,6 +19787,14 @@ namespace OpenMetrc.V2
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/processing/v2/jobtypes/inactive?");
             urlBuilder_.Append(System.Uri.EscapeDataString("licenseNumber") + "=").Append(System.Uri.EscapeDataString(ConvertToString(licenseNumber, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (pageNumber != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("pageNumber") + "=").Append(System.Uri.EscapeDataString(ConvertToString(pageNumber, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (pageSize != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("pageSize") + "=").Append(System.Uri.EscapeDataString(ConvertToString(pageSize, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
             if (lastModifiedStart != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("lastModifiedStart") + "=").Append(System.Uri.EscapeDataString(lastModifiedStart.Value.ToString("s", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -20553,7 +20601,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales Delivery • Manage Sales Delivery
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">If specified, the Sales Delivery will be validated against the specified License Number. If not specified, the Sales Delivery will be validated against all of the User's current Facilities. Please note that if the Sales Delivery is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
@@ -20563,7 +20611,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to void delivery.</param>
@@ -20573,7 +20621,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales Delivery • Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of active deliveries.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -20588,7 +20636,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales Delivery • Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive deliveries.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -20622,7 +20670,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales Delivery • Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of payment types.</param>
         /// <returns>Success</returns>
@@ -20631,7 +20679,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales • Manage Sales
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">If specified, the Sales Receipt will be validated against the specified License Number. If not specified, the Sales Receipt will be validated against all of the User's current Facilities. Please note that if the Sales Receipt is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
@@ -20641,7 +20689,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to archive receipt.</param>
@@ -20651,7 +20699,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales • Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of active receipts.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -20666,7 +20714,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales • Manage Sales
         /// </remarks>
         /// <param name="externalNumber">Route parameter externalNumber</param>
         /// <param name="licenseNumber">If specified, the External Sales Receipt Number will be validated against the specified License Number. If not specified, the External Sales Receipt Number will be validated against all of the User's current Facilities. Please note that if the External Sales Receipt Number is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
@@ -20676,7 +20724,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales • Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive receipts.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -20691,7 +20739,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record deliveries.</param>
         /// <returns>Success</returns>
@@ -20700,7 +20748,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update deliveries.</param>
         /// <returns>Success</returns>
@@ -20709,7 +20757,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record receipts.</param>
         /// <returns>Success</returns>
@@ -20718,7 +20766,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update receipts.</param>
         /// <returns>Success</returns>
@@ -20727,7 +20775,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update hub transporters.</param>
         /// <returns>Success</returns>
@@ -20745,7 +20793,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update deliveries completed.</param>
         /// <returns>Success</returns>
@@ -20772,7 +20820,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update finalized receipts.</param>
         /// <returns>Success</returns>
@@ -20781,7 +20829,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update unfinalized receipts.</param>
         /// <returns>Success</returns>
@@ -20790,7 +20838,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Retailer Delivery • Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return active retailer deliveries.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp.</param>
@@ -20803,7 +20851,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Retailer Delivery • Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return inactive retailer deliveries.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp.</param>
@@ -20816,7 +20864,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Retailer Delivery • Manage Retailer Delivery
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">If specified, the Sales Delivery will be validated against the specified License Number. If not specified, the Sales Delivery will be validated against all of the User's current Facilities. Please note that if the Sales Delivery is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
@@ -20826,7 +20874,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to void retailer delivery.</param>
@@ -20836,7 +20884,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record retailer deliveries.</param>
         /// <returns>Success</returns>
@@ -20845,7 +20893,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update retailer deliveries.</param>
         /// <returns>Success</returns>
@@ -20854,7 +20902,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record depart delivery.</param>
         /// <returns>Success</returns>
@@ -20863,7 +20911,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record restock retailer deliveries.</param>
         /// <returns>Success</returns>
@@ -20872,7 +20920,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record sale from retailer delivery.</param>
         /// <returns>Success</returns>
@@ -20881,7 +20929,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The ActualArrivalDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The ActualArrivalDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record end retailer deliveries.</param>
         /// <returns>Success</returns>
@@ -21138,7 +21186,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales Delivery • Manage Sales Delivery
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">If specified, the Sales Delivery will be validated against the specified License Number. If not specified, the Sales Delivery will be validated against all of the User's current Facilities. Please note that if the Sales Delivery is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
@@ -21255,7 +21303,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to void delivery.</param>
@@ -21372,7 +21420,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales Delivery • Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of active deliveries.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -21514,7 +21562,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales Delivery • Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive deliveries.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -21884,7 +21932,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales Delivery • Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of payment types.</param>
         /// <returns>Success</returns>
@@ -21996,7 +22044,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales • Manage Sales
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">If specified, the Sales Receipt will be validated against the specified License Number. If not specified, the Sales Receipt will be validated against all of the User's current Facilities. Please note that if the Sales Receipt is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
@@ -22113,7 +22161,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to archive receipt.</param>
@@ -22230,7 +22278,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales • Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of active receipts.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -22372,7 +22420,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales • Manage Sales
         /// </remarks>
         /// <param name="externalNumber">Route parameter externalNumber</param>
         /// <param name="licenseNumber">If specified, the External Sales Receipt Number will be validated against the specified License Number. If not specified, the External Sales Receipt Number will be validated against all of the User's current Facilities. Please note that if the External Sales Receipt Number is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
@@ -22489,7 +22537,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Sales • Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return the list of inactive receipts.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -22631,7 +22679,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record deliveries.</param>
         /// <returns>Success</returns>
@@ -22750,7 +22798,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update deliveries.</param>
         /// <returns>Success</returns>
@@ -22869,7 +22917,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record receipts.</param>
         /// <returns>Success</returns>
@@ -22988,7 +23036,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update receipts.</param>
         /// <returns>Success</returns>
@@ -23107,7 +23155,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update hub transporters.</param>
         /// <returns>Success</returns>
@@ -23345,7 +23393,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update deliveries completed.</param>
         /// <returns>Success</returns>
@@ -23702,7 +23750,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update finalized receipts.</param>
         /// <returns>Success</returns>
@@ -23821,7 +23869,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Sales
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Sales
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update unfinalized receipts.</param>
         /// <returns>Success</returns>
@@ -23940,7 +23988,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Retailer Delivery • Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return active retailer deliveries.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp.</param>
@@ -24072,7 +24120,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Retailer Delivery • Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return inactive retailer deliveries.</param>
         /// <param name="lastModifiedStart">The last modified start timestamp.</param>
@@ -24204,7 +24252,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: View Retailer Delivery • Manage Retailer Delivery
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">If specified, the Sales Delivery will be validated against the specified License Number. If not specified, the Sales Delivery will be validated against all of the User's current Facilities. Please note that if the Sales Delivery is not valid for the specified License Number, a 401 Unauthorized status will be returned.</param>
@@ -24321,7 +24369,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to void retailer delivery.</param>
@@ -24438,7 +24486,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record retailer deliveries.</param>
         /// <returns>Success</returns>
@@ -24557,7 +24605,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update retailer deliveries.</param>
         /// <returns>Success</returns>
@@ -24676,7 +24724,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record depart delivery.</param>
         /// <returns>Success</returns>
@@ -24795,7 +24843,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record restock retailer deliveries.</param>
         /// <returns>Success</returns>
@@ -24914,7 +24962,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record sale from retailer delivery.</param>
         /// <returns>Success</returns>
@@ -25033,7 +25081,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The ActualArrivalDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Retailer Delivery
+        /// Please note: The ActualArrivalDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Retailer Delivery
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to record end retailer deliveries.</param>
         /// <returns>Success</returns>
@@ -26558,7 +26606,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return incoming transfers.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26571,7 +26619,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return outgoing transfers.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26584,7 +26632,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return rejected transfers.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26595,7 +26643,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return shipment plans.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26608,7 +26656,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer ID.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer ID.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26619,7 +26667,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26630,7 +26678,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26641,7 +26689,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26652,7 +26700,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26663,7 +26711,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26693,7 +26741,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number for which to create a shipment plan.</param>
         /// <returns>Success</returns>
@@ -26702,7 +26750,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update external incoming shipment plans.</param>
         /// <returns>Success</returns>
@@ -26711,7 +26759,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to void the transfer.</param>
@@ -26721,7 +26769,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return outgoing shipment templates.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26734,7 +26782,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to create a shipment template.</param>
         /// <returns>Success</returns>
@@ -26743,7 +26791,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update shipment plan templates.</param>
         /// <returns>Success</returns>
@@ -26752,7 +26800,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26763,7 +26811,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26774,7 +26822,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <returns>Success</returns>
@@ -26783,7 +26831,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26794,7 +26842,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to archive the template.</param>
@@ -26840,7 +26888,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return incoming transfers.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -26972,7 +27020,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return outgoing transfers.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -27104,7 +27152,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return rejected transfers.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -27226,7 +27274,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return shipment plans.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -27358,7 +27406,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer ID.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer ID.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -27480,7 +27528,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -27602,7 +27650,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -27724,7 +27772,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -27846,7 +27894,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -27968,7 +28016,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers • View Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -28318,7 +28366,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number for which to create a shipment plan.</param>
         /// <returns>Success</returns>
@@ -28437,7 +28485,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update external incoming shipment plans.</param>
         /// <returns>Success</returns>
@@ -28556,7 +28604,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfers
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to void the transfer.</param>
@@ -28673,7 +28721,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to return outgoing shipment templates.</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -28805,7 +28853,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to create a shipment template.</param>
         /// <returns>Success</returns>
@@ -28924,7 +28972,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates
         /// </remarks>
         /// <param name="licenseNumber">The license number of the facility for which to update shipment plan templates.</param>
         /// <returns>Success</returns>
@@ -29043,7 +29091,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -29165,7 +29213,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -29287,7 +29335,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <returns>Success</returns>
@@ -29398,7 +29446,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Transfers
+        /// Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.&lt;/br&gt;&lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates • View Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="pageNumber">The number of the data page from which to return data.</param>
@@ -29520,7 +29568,7 @@ namespace OpenMetrc.V2
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <remarks>
-        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Transfer Templates
+        /// &lt;b&gt;Permissions Required&lt;/b&gt;: Manage Transfer Templates
         /// </remarks>
         /// <param name="id">Route parameter id</param>
         /// <param name="licenseNumber">The license number of the facility for which to archive the template.</param>
@@ -32507,6 +32555,11 @@ namespace OpenMetrc.V2
         [System.ComponentModel.DataAnnotations.Required]
         public License License { get; set; } = new License();
 
+        [System.Text.Json.Serialization.JsonPropertyName("isFinancialContact")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? IsFinancialContact { get; set; } = default!;
+
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
@@ -32926,6 +32979,36 @@ namespace OpenMetrc.V2
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public bool? CanReportAdulteration { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("canGenerateProductLabel")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? CanGenerateProductLabel { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("canPrintProductLabel")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? CanPrintProductLabel { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("canReceiveAssociateProductLabel")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? CanReceiveAssociateProductLabel { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("canViewSourcePackages")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? CanViewSourcePackages { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("taxExemptReportingFeesFacilityType")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? TaxExemptReportingFeesFacilityType { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("taxExemptTagOrdersFacilityType")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? TaxExemptTagOrdersFacilityType { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
@@ -33615,6 +33698,11 @@ namespace OpenMetrc.V2
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public bool? HasUseByDate { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("labTestBatchNames")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public System.Collections.Generic.ICollection<string>? LabTestBatchNames { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("ProductPDFDocuments")]
 
@@ -34433,6 +34521,11 @@ namespace OpenMetrc.V2
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public string? DependencyMode { get; set; } = default!;
 
+        [System.Text.Json.Serialization.JsonPropertyName("maxAllowedFailureCount")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public int? MaxAllowedFailureCount { get; set; } = default!;
+
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
@@ -35026,6 +35119,39 @@ namespace OpenMetrc.V2
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public bool? IsOnRetailerDelivery { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("isFinished")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? IsFinished { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("expirationDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})")]
+        public DateOnly? ExpirationDate { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("sellByDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})")]
+        public DateOnly? SellByDate { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("useByDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})")]
+        public DateOnly? UseByDate { get; set; } = default!;
+
+        /// <summary>
+        /// The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("labTestingRecordedDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z")]
+        public DateTimeOffset? LabTestingRecordedDate { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
@@ -44183,6 +44309,11 @@ namespace OpenMetrc.V2
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z")]
         public DateTimeOffset? ActualReturnArrivalDateTime { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("isVoided")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? IsVoided { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 

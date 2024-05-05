@@ -12,4 +12,5 @@ public class LabTestType
     public double? LabTestResultMaximum { get; set; }
     public int? LabTestResultExpirationDays { get; set; }
     public string? DependencyMode { get; set; }
+    public int? MaxAllowedFailureCount { get; set; }
 }

@@ -5,10 +5,12 @@ info:
   version: v1
 servers:
   - url: https://api-ak.metrc.com
+  - url: https://api-al.metrc.com
   - url: https://api-ca.metrc.com
   - url: https://api-co.metrc.com
   - url: https://api-dc.metrc.com
   - url: https://api-gu.metrc.com
+  - url: https://api-ky.metrc.com
   - url: https://api-la.metrc.com
   - url: https://api-ma.metrc.com
   - url: https://api-md.metrc.com
@@ -27,10 +29,12 @@ servers:
   - url: https://api-sd.metrc.com
   - url: https://api-wv.metrc.com
   - url: https://sandbox-api-ak.metrc.com
+  - url: https://sandbox-api-al.metrc.com
   - url: https://sandbox-api-ca.metrc.com
   - url: https://sandbox-api-co.metrc.com
   - url: https://sandbox-api-dc.metrc.com
   - url: https://sandbox-api-gu.metrc.com
+  - url: https://sandbox-api-ky.metrc.com
   - url: https://sandbox-api-la.metrc.com
   - url: https://sandbox-api-ma.metrc.com
   - url: https://sandbox-api-md.metrc.com
@@ -12743,6 +12747,9 @@ components:
         License:
           oneOf:
             - $ref: '#/components/schemas/License'
+        isFinancialContact:
+          type: boolean
+          nullable: true
       additionalProperties: { }
     FacilityType:
       type: object
@@ -12991,6 +12998,24 @@ components:
           type: boolean
           nullable: true
         canReportAdulteration:
+          type: boolean
+          nullable: true
+        canGenerateProductLabel:
+          type: boolean
+          nullable: true
+        canPrintProductLabel:
+          type: boolean
+          nullable: true
+        canReceiveAssociateProductLabel:
+          type: boolean
+          nullable: true
+        canViewSourcePackages:
+          type: boolean
+          nullable: true
+        taxExemptReportingFeesFacilityType:
+          type: boolean
+          nullable: true
+        taxExemptTagOrdersFacilityType:
           type: boolean
           nullable: true
       additionalProperties: { }
@@ -13309,6 +13334,11 @@ components:
         hasUseByDate:
           type: boolean
           nullable: true
+        labTestBatchNames:
+          type: array
+          items:
+            type: string
+          nullable: true
         ProductPDFDocuments:
           type: array
           items:
@@ -13575,6 +13605,10 @@ components:
         dependencyMode:
           type: string
           nullable: true
+        maxAllowedFailureCount:
+          type: integer
+          format: int32
+          nullable: true
       additionalProperties: { }
     LabelImage:
       type: object
@@ -13830,6 +13864,30 @@ components:
           nullable: true
         isOnRetailerDelivery:
           type: boolean
+          nullable: true
+        isFinished:
+          type: boolean
+          nullable: true
+        expirationDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        sellByDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        useByDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})'
+          type: string
+          format: date
+          nullable: true
+        labTestingRecordedDate:
+          pattern: '([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z'
+          type: string
+          description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+          format: date-time
           nullable: true
       additionalProperties: { }
     PackageAdjustReason:
@@ -17905,6 +17963,9 @@ components:
           type: string
           description: The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
           format: date-time
+          nullable: true
+        isVoided:
+          type: boolean
           nullable: true
       additionalProperties: { }
     TransferDelivery:

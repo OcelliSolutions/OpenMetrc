@@ -52,7 +52,8 @@ public class Item
     public bool? HasExpirationDate { get; set; }
     public bool? HasSellByDate { get; set; }
     public bool? HasUseByDate { get; set; }
-    
+    public ICollection<string>? LabTestBatchNames { get; set; }
+
     [JsonPropertyName("ProductPDFDocuments")]
     public List<ProductPdfDocument>? ProductPdfDocuments { get; set; }
 }

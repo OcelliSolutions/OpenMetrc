@@ -206,9 +206,32 @@
     "State": "al",
     "Sections": [
       {
+        "Name": "Tags",
+        "Endpoints": [
+          "get_tags_v2_plant_available",
+          "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "Transporters",
+        "Endpoints": [
+          "get_transporters_v2_drivers",
+          "get_transporters_v2_drivers_id",
+          "post_transporters_v2_drivers",
+          "put_transporters_v2_drivers",
+          "delete_transporters_v2_drivers_id",
+          "get_transporters_v2_vehicles",
+          "get_transporters_v2_vehicles_id",
+          "post_transporters_v2_vehicles",
+          "put_transporters_v2_vehicles",
+          "delete_transporters_v2_vehicles_id"
+        ]
+      },
+      {
         "Name": "UnitsOfMeasure",
         "Endpoints": [
-          "get_unitsofmeasure_v1_active"
+          "get_unitsofmeasure_v2_active",
+          "get_unitsofmeasure_v2_inactive"
         ]
       }
     ]
@@ -2064,14 +2087,7 @@
   },
   {
     "State": "il",
-    "Sections": [
-      {
-        "Name": "UnitsOfMeasure",
-        "Endpoints": [
-          "get_unitsofmeasure_v1_active"
-        ]
-      }
-    ]
+    "Sections": []
   },
   {
     "State": "in",
@@ -2083,7 +2099,22 @@
   },
   {
     "State": "ky",
-    "Sections": []
+    "Sections": [
+      {
+        "Name": "Tags",
+        "Endpoints": [
+          "get_tags_v2_plant_available",
+          "get_tags_v2_package_available"
+        ]
+      },
+      {
+        "Name": "UnitsOfMeasure",
+        "Endpoints": [
+          "get_unitsofmeasure_v2_active",
+          "get_unitsofmeasure_v2_inactive"
+        ]
+      }
+    ]
   },
   {
     "State": "la",
@@ -4783,6 +4814,21 @@
         ]
       },
       {
+        "Name": "Patients",
+        "Endpoints": [
+          "get_patients_v1_id",
+          "get_patients_v1_active",
+          "post_patients_v1_add",
+          "post_patients_v1_update",
+          "delete_patients_v1_id",
+          "get_patients_v2_id",
+          "get_patients_v2_active",
+          "post_patients_v2",
+          "put_patients_v2",
+          "delete_patients_v2_id"
+        ]
+      },
+      {
         "Name": "PlantBatches",
         "Endpoints": [
           "get_plantbatches_v1_id",
@@ -5776,6 +5822,43 @@
         ]
       },
       {
+        "Name": "ProcessingJob",
+        "Endpoints": [
+          "get_processing_v1_id",
+          "get_processing_v1_active",
+          "get_processing_v1_inactive",
+          "post_processing_v1_createpackages",
+          "post_processing_v1_start",
+          "post_processing_v1_adjust",
+          "put_processing_v1_finish",
+          "put_processing_v1_unfinish",
+          "delete_processing_v1_id",
+          "get_processing_v1_jobtypes_active",
+          "get_processing_v1_jobtypes_inactive",
+          "post_processing_v1_jobtypes",
+          "put_processing_v1_jobtypes",
+          "delete_processing_v1_jobtypes_id",
+          "get_processing_v1_jobtypes_attributes",
+          "get_processing_v1_jobtypes_categories",
+          "get_processing_v2_id",
+          "get_processing_v2_active",
+          "get_processing_v2_inactive",
+          "get_processing_v2_jobtypes_active",
+          "get_processing_v2_jobtypes_inactive",
+          "get_processing_v2_jobtypes_attributes",
+          "get_processing_v2_jobtypes_categories",
+          "post_processing_v2_createpackages",
+          "post_processing_v2_start",
+          "post_processing_v2_adjust",
+          "post_processing_v2_jobtypes",
+          "put_processing_v2_finish",
+          "put_processing_v2_unfinish",
+          "put_processing_v2_jobtypes",
+          "delete_processing_v2_jobtypes_id",
+          "delete_processing_v2_id"
+        ]
+      },
+      {
         "Name": "Sales",
         "Endpoints": [
           "get_sales_v1_customertypes",
@@ -6734,6 +6817,43 @@
           "post_plants_v2_waste",
           "get_plants_v2_waste_methods_all",
           "put_plants_v2_split"
+        ]
+      },
+      {
+        "Name": "ProcessingJob",
+        "Endpoints": [
+          "get_processing_v1_id",
+          "get_processing_v1_active",
+          "get_processing_v1_inactive",
+          "post_processing_v1_createpackages",
+          "post_processing_v1_start",
+          "post_processing_v1_adjust",
+          "put_processing_v1_finish",
+          "put_processing_v1_unfinish",
+          "delete_processing_v1_id",
+          "get_processing_v1_jobtypes_active",
+          "get_processing_v1_jobtypes_inactive",
+          "post_processing_v1_jobtypes",
+          "put_processing_v1_jobtypes",
+          "delete_processing_v1_jobtypes_id",
+          "get_processing_v1_jobtypes_attributes",
+          "get_processing_v1_jobtypes_categories",
+          "get_processing_v2_id",
+          "get_processing_v2_active",
+          "get_processing_v2_inactive",
+          "get_processing_v2_jobtypes_active",
+          "get_processing_v2_jobtypes_inactive",
+          "get_processing_v2_jobtypes_attributes",
+          "get_processing_v2_jobtypes_categories",
+          "post_processing_v2_createpackages",
+          "post_processing_v2_start",
+          "post_processing_v2_adjust",
+          "post_processing_v2_jobtypes",
+          "put_processing_v2_finish",
+          "put_processing_v2_unfinish",
+          "put_processing_v2_jobtypes",
+          "delete_processing_v2_jobtypes_id",
+          "delete_processing_v2_id"
         ]
       },
       {

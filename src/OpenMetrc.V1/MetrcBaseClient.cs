@@ -25663,6 +25663,11 @@ namespace OpenMetrc.V1
         [System.ComponentModel.DataAnnotations.Required]
         public License License { get; set; } = new License();
 
+        [System.Text.Json.Serialization.JsonPropertyName("isFinancialContact")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? IsFinancialContact { get; set; } = default!;
+
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
@@ -26082,6 +26087,36 @@ namespace OpenMetrc.V1
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public bool? CanReportAdulteration { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("canGenerateProductLabel")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? CanGenerateProductLabel { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("canPrintProductLabel")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? CanPrintProductLabel { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("canReceiveAssociateProductLabel")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? CanReceiveAssociateProductLabel { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("canViewSourcePackages")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? CanViewSourcePackages { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("taxExemptReportingFeesFacilityType")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? TaxExemptReportingFeesFacilityType { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("taxExemptTagOrdersFacilityType")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? TaxExemptTagOrdersFacilityType { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
@@ -26567,6 +26602,11 @@ namespace OpenMetrc.V1
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public bool? HasUseByDate { get; set; } = default!;
 
+        [System.Text.Json.Serialization.JsonPropertyName("labTestBatchNames")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public System.Collections.Generic.ICollection<string>? LabTestBatchNames { get; set; } = default!;
+
         [System.Text.Json.Serialization.JsonPropertyName("ProductPDFDocuments")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
@@ -27029,6 +27069,11 @@ namespace OpenMetrc.V1
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public string? DependencyMode { get; set; } = default!;
 
+        [System.Text.Json.Serialization.JsonPropertyName("maxAllowedFailureCount")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public int? MaxAllowedFailureCount { get; set; } = default!;
+
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
@@ -27457,6 +27502,39 @@ namespace OpenMetrc.V1
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public bool? IsOnRetailerDelivery { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("isFinished")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? IsFinished { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("expirationDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})")]
+        public DateOnly? ExpirationDate { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("sellByDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})")]
+        public DateOnly? SellByDate { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("useByDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})")]
+        public DateOnly? UseByDate { get; set; } = default!;
+
+        /// <summary>
+        /// The date is in ISO 8601 date format yyyy-mm-ddThh:mm:ssZ.
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("labTestingRecordedDate")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z")]
+        public DateTimeOffset? LabTestingRecordedDate { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
@@ -34551,6 +34629,11 @@ namespace OpenMetrc.V1
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         [System.ComponentModel.DataAnnotations.RegularExpression(@"([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z")]
         public DateTimeOffset? ActualReturnArrivalDateTime { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("isVoided")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool? IsVoided { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 

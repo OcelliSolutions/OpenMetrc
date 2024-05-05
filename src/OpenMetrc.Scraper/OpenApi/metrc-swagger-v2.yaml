@@ -33,7 +33,7 @@ paths:
       tags:
       - Employees
       summary: ''
-      description: '<b>Permissions Required</b>: Manage Employees'
+      description: '<b>Permissions Required</b>: Manage Employees • View Employees'
       externalDocs:
         x-doc-key: get_employees_v2_
       operationId: GetEmployees
@@ -3068,6 +3068,16 @@ paths:
         required: true
         description: The license number of the facility for which to return the list of active processing jobs.
         format: ''
+      - type: integer
+        name: pageNumber
+        in: query
+        description: The number of the data page from which to return data.
+        format: ''
+      - type: integer
+        name: pageSize
+        in: query
+        description: The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
@@ -3097,6 +3107,16 @@ paths:
         required: true
         description: The license number of the facility for which to return the list of inactive processing jobs.
         format: ''
+      - type: integer
+        name: pageNumber
+        in: query
+        description: The number of the data page from which to return data.
+        format: ''
+      - type: integer
+        name: pageSize
+        in: query
+        description: The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.
+        format: ''
       - type: string
         name: lastModifiedStart
         in: query
@@ -3125,6 +3145,16 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of active processing job types.
+        format: ''
+      - type: integer
+        name: pageNumber
+        in: query
+        description: The number of the data page from which to return data.
+        format: ''
+      - type: integer
+        name: pageSize
+        in: query
+        description: The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.
         format: ''
       - type: string
         name: lastModifiedStart
@@ -3192,6 +3222,16 @@ paths:
         in: query
         required: true
         description: The license number of the facility for which to return the list of inactive processing job types.
+        format: ''
+      - type: integer
+        name: pageNumber
+        in: query
+        description: The number of the data page from which to return data.
+        format: ''
+      - type: integer
+        name: pageSize
+        in: query
+        description: The number of records to return per page. Pagination is currently disabled by default. You can enable pagination on this query by specifying a value that does not exceed 20.
         format: ''
       - type: string
         name: lastModifiedStart
@@ -3343,7 +3383,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales Delivery'
+      description: '<b>Permissions Required</b>: Manage Sales Delivery'
       externalDocs:
         x-doc-key: delete_sales_v2_deliveries_{id}
       operationId: DeleteSaleDeliveryById
@@ -3367,7 +3407,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales Delivery'
+      description: '<b>Permissions Required</b>: View Sales Delivery • Manage Sales Delivery'
       externalDocs:
         x-doc-key: get_sales_v2_deliveries_{id}
       operationId: GetSaleDeliveryById
@@ -3391,7 +3431,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Retailer Delivery'
+      description: '<b>Permissions Required</b>: Manage Retailer Delivery'
       externalDocs:
         x-doc-key: delete_sales_v2_deliveries_retailer_{id}
       operationId: DeleteSaleDeliveryRetailerById
@@ -3415,7 +3455,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Retailer Delivery'
+      description: '<b>Permissions Required</b>: View Retailer Delivery • Manage Retailer Delivery'
       externalDocs:
         x-doc-key: get_sales_v2_deliveries_retailer_{id}
       operationId: GetSaleDeliveryRetailerById
@@ -3439,7 +3479,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: Manage Sales'
       externalDocs:
         x-doc-key: delete_sales_v2_receipts_{id}
       operationId: DeleteSaleReceiptById
@@ -3463,7 +3503,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: View Sales • Manage Sales'
       externalDocs:
         x-doc-key: get_sales_v2_receipts_{id}
       operationId: GetSaleReceiptById
@@ -3511,7 +3551,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales Delivery'
+      description: '<b>Permissions Required</b>: View Sales Delivery • Manage Sales Delivery'
       externalDocs:
         x-doc-key: get_sales_v2_deliveries_active
       operationId: GetSaleDeliveryActive
@@ -3560,7 +3600,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales Delivery'
+      description: '<b>Permissions Required</b>: View Sales Delivery • Manage Sales Delivery'
       externalDocs:
         x-doc-key: get_sales_v2_deliveries_inactive
       operationId: GetSaleDeliveryInactive
@@ -3609,7 +3649,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Retailer Delivery'
+      description: '<b>Permissions Required</b>: View Retailer Delivery • Manage Retailer Delivery'
       externalDocs:
         x-doc-key: get_sales_v2_deliveries_retailer_active
       operationId: GetSaleDeliveryRetailerActive
@@ -3648,7 +3688,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Retailer Delivery'
+      description: '<b>Permissions Required</b>: View Retailer Delivery • Manage Retailer Delivery'
       externalDocs:
         x-doc-key: get_sales_v2_deliveries_retailer_inactive
       operationId: GetSaleDeliveryRetailerInactive
@@ -3728,7 +3768,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales Delivery'
+      description: '<b>Permissions Required</b>: View Sales Delivery • Manage Sales Delivery'
       externalDocs:
         x-doc-key: get_sales_v2_paymenttypes
       operationId: GetSalePaymentTypes
@@ -3747,7 +3787,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: View Sales • Manage Sales'
       externalDocs:
         x-doc-key: get_sales_v2_receipts_active
       operationId: GetSaleReceiptActive
@@ -3796,7 +3836,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: View Sales • Manage Sales'
       externalDocs:
         x-doc-key: get_sales_v2_receipts_external_{externalNumber}
       operationId: GetSaleReceiptExternal
@@ -3820,7 +3860,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: View Sales • Manage Sales'
       externalDocs:
         x-doc-key: get_sales_v2_receipts_inactive
       operationId: GetSaleReceiptInactive
@@ -3869,7 +3909,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales Delivery'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Sales Delivery'
       externalDocs:
         x-doc-key: post_sales_v2_deliveries
       operationId: PostSaleDeliveries
@@ -3887,7 +3927,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales Delivery'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Sales Delivery'
       externalDocs:
         x-doc-key: put_sales_v2_deliveries
       operationId: PutSaleDeliveries
@@ -3906,7 +3946,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: 'Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      description: 'Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Retailer Delivery'
       externalDocs:
         x-doc-key: post_sales_v2_deliveries_retailer
       operationId: PostSaleDeliveryRetailer
@@ -3924,7 +3964,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: 'Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      description: 'Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Retailer Delivery'
       externalDocs:
         x-doc-key: put_sales_v2_deliveries_retailer
       operationId: PutSaleDeliveryRetailer
@@ -3943,7 +3983,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Retailer Delivery'
+      description: '<b>Permissions Required</b>: Manage Retailer Delivery'
       externalDocs:
         x-doc-key: post_sales_v2_deliveries_retailer_depart
       operationId: PostSaleDeliveryRetailerDepart
@@ -3962,7 +4002,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: 'Please note: The ActualArrivalDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      description: 'Please note: The ActualArrivalDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Retailer Delivery'
       externalDocs:
         x-doc-key: post_sales_v2_deliveries_retailer_end
       operationId: PostSaleDeliveryRetailerEnd
@@ -3981,7 +4021,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: 'Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      description: 'Please note: The DateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Retailer Delivery'
       externalDocs:
         x-doc-key: post_sales_v2_deliveries_retailer_restock
       operationId: PostSaleDeliveryRetailerRestock
@@ -4000,7 +4040,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Retailer Delivery'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Retailer Delivery'
       externalDocs:
         x-doc-key: post_sales_v2_deliveries_retailer_sale
       operationId: PostSaleDeliveryRetailerSale
@@ -4019,7 +4059,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Sales'
       externalDocs:
         x-doc-key: post_sales_v2_receipts
       operationId: PostSaleReceipts
@@ -4037,7 +4077,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Sales'
       externalDocs:
         x-doc-key: put_sales_v2_receipts
       operationId: PutSaleReceipts
@@ -4056,7 +4096,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales Delivery'
+      description: '<b>Permissions Required</b>: Manage Sales Delivery'
       externalDocs:
         x-doc-key: put_sales_v2_deliveries_complete
       operationId: PutSaleDeliveryComplete
@@ -4075,7 +4115,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales Delivery'
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without the time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be in Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Manage Sales Delivery'
       externalDocs:
         x-doc-key: put_sales_v2_deliveries_hub
       operationId: PutSaleDeliveryHub
@@ -4151,7 +4191,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: Manage Sales'
       externalDocs:
         x-doc-key: put_sales_v2_receipts_finalize
       operationId: PutSaleReceiptFinalize
@@ -4170,7 +4210,7 @@ paths:
       tags:
       - Sales
       summary: ''
-      description: '<b>Permissions Required</b>: Sales'
+      description: '<b>Permissions Required</b>: Manage Sales'
       externalDocs:
         x-doc-key: put_sales_v2_receipts_unfinalize
       operationId: PutSaleReceiptUnfinalize
@@ -4380,7 +4420,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers'
       externalDocs:
         x-doc-key: delete_transfers_v2_external_incoming_{id}
       operationId: DeleteTransferExternalIncomingById
@@ -4405,7 +4445,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: '<b>Permissions Required</b>: Transfer Templates'
+      description: '<b>Permissions Required</b>: Manage Transfer Templates'
       externalDocs:
         x-doc-key: delete_transfers_v2_templates_outgoing_{id}
       operationId: DeleteTransferTemplateOutgoingById
@@ -4430,7 +4470,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfers • View Transfers'
       externalDocs:
         x-doc-key: get_transfers_v2_deliveries_{id}_packages
       operationId: GetTransferDeliveryByIdPackages
@@ -4459,7 +4499,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfers • View Transfers'
       externalDocs:
         x-doc-key: get_transfers_v2_deliveries_{id}_packages_wholesale
       operationId: GetTransferDeliveryByIdPackageWholesale
@@ -4488,7 +4528,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfers • View Transfers'
       externalDocs:
         x-doc-key: get_transfers_v2_deliveries_{id}_transporters
       operationId: GetTransferDeliveryByIdTransporters
@@ -4517,7 +4557,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfers • View Transfers'
       externalDocs:
         x-doc-key: get_transfers_v2_deliveries_{id}_transporters_details
       operationId: GetTransferDeliveryByIdTransporterDetails
@@ -4558,7 +4598,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: 'Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer Delivery Package ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfers • View Transfers'
       externalDocs:
         x-doc-key: get_transfers_v2_deliveries_package_{id}_requiredlabtestbatches
       operationId: GetTransferDeliveryPackageByIdRequiredLabTestBatches
@@ -4587,7 +4627,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers • View Transfers'
       externalDocs:
         x-doc-key: get_transfers_v2_hub
       operationId: GetTransferHub
@@ -4626,7 +4666,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: 'Please note: The {id} parameter above represents a Transfer ID.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer ID.</br><b>Permissions Required</b>: Manage Transfers • View Transfers'
       externalDocs:
         x-doc-key: get_transfers_v2_{id}_deliveries
       operationId: GetTransferByIdDeliveries
@@ -4655,7 +4695,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers • View Transfers'
       externalDocs:
         x-doc-key: get_transfers_v2_incoming
       operationId: GetTransferIncoming
@@ -4694,7 +4734,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers • View Transfers'
       externalDocs:
         x-doc-key: get_transfers_v2_outgoing
       operationId: GetTransferOutgoing
@@ -4733,7 +4773,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers • View Transfers'
       externalDocs:
         x-doc-key: get_transfers_v2_rejected
       operationId: GetTransferRejected
@@ -4762,7 +4802,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: '<b>Permissions Required</b>: Transfer Templates'
+      description: '<b>Permissions Required</b>: Manage Transfer Templates • View Transfer Templates'
       externalDocs:
         x-doc-key: get_transfers_v2_templates_outgoing
       operationId: GetTransferTemplateOutgoing
@@ -4800,7 +4840,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: '<b>Permissions Required</b>: Transfer Templates'
+      description: '<b>Permissions Required</b>: Manage Transfer Templates'
       externalDocs:
         x-doc-key: post_transfers_v2_templates_outgoing
       operationId: PostTransferTemplateOutgoing
@@ -4818,7 +4858,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: '<b>Permissions Required</b>: Transfer Templates'
+      description: '<b>Permissions Required</b>: Manage Transfer Templates'
       externalDocs:
         x-doc-key: put_transfers_v2_templates_outgoing
       operationId: PutTransferTemplateOutgoing
@@ -4837,7 +4877,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfers'
+      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfer Templates • View Transfer Templates'
       externalDocs:
         x-doc-key: get_transfers_v2_templates_outgoing_deliveries_{id}_packages
       operationId: GetTransferTemplateOutgoingDeliveryByIdPackages
@@ -4866,7 +4906,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfer Templates'
+      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfer Templates • View Transfer Templates'
       externalDocs:
         x-doc-key: get_transfers_v2_templates_outgoing_deliveries_{id}_transporters
       operationId: GetTransferTemplateOutgoingDeliveryByIdTransporters
@@ -4895,7 +4935,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Transfer Templates'
+      description: 'Please note: The {id} parameter above represents a Transfer Template Delivery ID, not a Manifest Number.</br><b>Permissions Required</b>: Manage Transfer Templates • View Transfer Templates'
       externalDocs:
         x-doc-key: get_transfers_v2_templates_outgoing_deliveries_{id}_transporters_details
       operationId: GetTransferTemplateOutgoingDeliveryByIdTransporterDetails
@@ -4914,7 +4954,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: '<b>Permissions Required</b>: Transfer Templates'
+      description: '<b>Permissions Required</b>: Manage Transfer Templates • View Transfer Templates'
       externalDocs:
         x-doc-key: get_transfers_v2_templates_outgoing_{id}_deliveries
       operationId: GetTransferTemplateOutgoingByIdDeliveries
@@ -4972,7 +5012,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers'
       externalDocs:
         x-doc-key: post_transfers_v2_external_incoming
       operationId: PostTransferExternalIncoming
@@ -4990,7 +5030,7 @@ paths:
       tags:
       - Transfers
       summary: ''
-      description: '<b>Permissions Required</b>: Transfers'
+      description: '<b>Permissions Required</b>: Manage Transfers'
       externalDocs:
         x-doc-key: put_transfers_v2_external_incoming
       operationId: PutTransferExternalIncoming
