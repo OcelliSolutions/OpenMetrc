@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Text;
+using OpenMetrc.V1.Handlers;
 
 namespace OpenMetrc.V1;
 
@@ -79,17 +80,22 @@ public partial class MetrcService : IMetrcService
 
             var baseUrl =
                 $@"https://{OpenMetrcConfig.SubDomain}.metrc.com";
-            HttpClient = new HttpClient(new RateLimitHttpMessageHandler
+            var httpClientHandler = new HttpClientHandler();
+            var rateLimitHandler = new RateLimitHttpMessageHandler
             {
-                InnerHandler = new HttpClientHandler(),
+                InnerHandler = httpClientHandler,
                 CallsPerSecondPerFacility = _openMetrcConfig.CallsPerSecondPerFacility,
                 CallsPerSecondPerIntegrator = _openMetrcConfig.CallsPerSecondPerIntegrator,
                 ConcurrentCallsPerSecondPerFacility = _openMetrcConfig.ConcurrentCallsPerSecondPerFacility,
                 ConcurrentCallsPerSecondPerIntegrator = _openMetrcConfig.ConcurrentCallsPerSecondPerIntegrator,
-            })
+            };
+            var exponentialBackoffHandler = new ExponentialBackoffHandler(rateLimitHandler);
+
+            HttpClient = new HttpClient(exponentialBackoffHandler)
             {
                 Timeout = _openMetrcConfig.HttpTimeout
             };
+
             //MetrcClients.TryAdd(MetrcClientKey, new MetrcClient(client) { BaseUrl = baseUrl, ReadResponseAsString = false, JsonSerializerSettings = { PropertyNameCaseInsensitive = true }});
             var byteArray = Encoding.ASCII.GetBytes($"{_openMetrcConfig.SoftwareApiKey}:{_openMetrcConfig.UserApiKey}");
             HttpClient.DefaultRequestHeaders.Authorization =
