@@ -13420,10 +13420,12 @@ components:
           type: boolean
           nullable: true
         requiresLabelPhotos:
-          type: boolean
+          type: integer
+          format: int32
           nullable: true
         requiresPackagingPhotos:
-          type: boolean
+          type: integer
+          format: int32
           nullable: true
         canContainSeeds:
           type: boolean
@@ -13435,7 +13437,8 @@ components:
           type: boolean
           nullable: true
         requiresProductPhotos:
-          type: boolean
+          type: integer
+          format: int32
           nullable: true
         canBeDestroyed:
           type: boolean

@@ -22,12 +22,12 @@ public class ItemCategory
     public bool? RequiresIngredients { get; set; }
     public bool? RequiresDescription { get; set; }
     public bool? RequiresProductPhoto { get; set; }
-    public bool? RequiresLabelPhotos { get; set; }
-    public bool? RequiresPackagingPhotos { get; set; }
+    public int? RequiresLabelPhotos { get; set; }
+    public int? RequiresPackagingPhotos { get; set; }
     public bool? CanContainSeeds { get; set; }
     public bool? CanBeRemediated { get; set; }
     public bool? RequiresPublicIngredients { get; set; }
-    public bool? RequiresProductPhotos { get; set; }
+    public int? RequiresProductPhotos { get; set; }
     public bool? CanBeDestroyed { get; set; }
     public bool? RequiresAllergens { get; set; }
     public bool? RequiresProductPhotoDescription { get; set; }
