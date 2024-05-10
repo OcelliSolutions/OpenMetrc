@@ -27496,7 +27496,7 @@ namespace OpenMetrc.V1
         public bool? CanBeRevised { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("RequiresProductPDFDocuments")]
-        public bool? RequiresProductPDFDocuments { get; set; } = default!;
+        public int? RequiresProductPDFDocuments { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 

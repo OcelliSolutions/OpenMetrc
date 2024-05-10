@@ -35,5 +35,5 @@ public class ItemCategory
     public bool? RequiresPackagingPhotoDescription { get; set; }
     public bool? CanBeRevised { get; set; }
     [JsonPropertyName("RequiresProductPDFDocuments")]
-    public bool? RequiresProductPdfDocuments { get; set; }
+    public int? RequiresProductPdfDocuments { get; set; }
 }

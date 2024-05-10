@@ -13459,7 +13459,8 @@ components:
           type: boolean
           nullable: true
         RequiresProductPDFDocuments:
-          type: boolean
+          type: integer
+          format: int32
           nullable: true
       additionalProperties: { }
     JobTypeAttribute:
