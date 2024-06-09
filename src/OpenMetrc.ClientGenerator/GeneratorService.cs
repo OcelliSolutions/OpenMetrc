@@ -21,7 +21,9 @@ internal static class GeneratorService
             GenerateClientInterfaces = true,
             GenerateOptionalParameters = true,
             AdditionalNamespaceUsages = new[] { "System.Text.Json" },
-            ExposeJsonSerializerSettings = true,
+            ExposeJsonSerializerSettings = false,
+            GenerateUpdateJsonSerializerSettingsMethod = true,
+            ClientBaseClass = "MetrcBaseClient",
             CSharpGeneratorSettings =
             {
                 Namespace = $"OpenMetrc.{version}",
@@ -32,7 +34,8 @@ internal static class GeneratorService
                 GenerateDataAnnotations = true,
                 ClassStyle = CSharpClassStyle.Poco,
                 DateType = "DateOnly",
-                DateTimeType = "DateTimeOffset"
+                DateTimeType = "DateTimeOffset",
+                JsonSerializerSettingsTransformationMethod = "DefaultJsonSerializerSettings",
             }
         };
 

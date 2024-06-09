@@ -89,4 +89,6 @@ public class FacilityType
     public bool? CanViewSourcePackages { get; set; }
     public bool? TaxExemptReportingFeesFacilityType { get; set; }
     public bool? TaxExemptTagOrdersFacilityType { get; set; }
+    public bool? CanDownloadProductLabel { get; set; }
+    public int? RestrictWholesalePriceEditDays { get; set; }
 }

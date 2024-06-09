@@ -4,7 +4,6 @@ info:
   description: This document is created and maintained by the community and is designed to be a non-state specific specification. Please refer to your regions documentation for specific details and deviations. https://api-<state/province code>.metrc.com/documentation.Please keep in mind that there are rate limits and other terms of use enforced by Franwell (METRC). This document is only designed to give developers a standard used for code generation and testing.
   version: v2
 servers:
-  - url: https://api-ak.metrc.com
   - url: https://api-al.metrc.com
   - url: https://api-ca.metrc.com
   - url: https://api-co.metrc.com
@@ -28,7 +27,6 @@ servers:
   - url: https://api-ri.metrc.com
   - url: https://api-sd.metrc.com
   - url: https://api-wv.metrc.com
-  - url: https://sandbox-api-ak.metrc.com
   - url: https://sandbox-api-al.metrc.com
   - url: https://sandbox-api-ca.metrc.com
   - url: https://sandbox-api-co.metrc.com
@@ -16532,6 +16530,13 @@ components:
         taxExemptTagOrdersFacilityType:
           type: boolean
           nullable: true
+        canDownloadProductLabel:
+          type: boolean
+          nullable: true
+        restrictWholesalePriceEditDays:
+          type: integer
+          format: int32
+          nullable: true
       additionalProperties: { }
     Harvest:
       required:
@@ -17147,6 +17152,9 @@ components:
         RequiresProductPDFDocuments:
           type: integer
           format: int32
+          nullable: true
+        labTestBatchNames:
+          type: string
           nullable: true
       additionalProperties: { }
     ItemCategoryMetrcWrapper:

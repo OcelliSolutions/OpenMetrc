@@ -36,4 +36,5 @@ public class ItemCategory
     public bool? CanBeRevised { get; set; }
     [JsonPropertyName("RequiresProductPDFDocuments")]
     public int? RequiresProductPdfDocuments { get; set; }
+    public string? LabTestBatchNames { get; set; }
 }

@@ -9,9 +9,11 @@ namespace OpenMetrc.Scraper;
 internal static class StateService
 {
     // This ensures that any states that have gone offline or have removed endpoints are taken care of
-    internal static void DeleteReferenceDocuments() =>
-        // Ensure the directory exists
-        Directory.Delete("../../../Reference", true);
+    internal static void DeleteReferenceDocuments()
+    {
+        if(Directory.Exists("../../../Reference"))
+            Directory.Delete("../../../Reference", true);
+    }
 
     internal static async Task<StateSummary> ProcessState(string state)
     {

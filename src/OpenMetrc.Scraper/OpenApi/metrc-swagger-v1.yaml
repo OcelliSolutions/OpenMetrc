@@ -2473,349 +2473,6 @@ paths:
       responses:
         200:
           description: Ok
-  /sales/v1/receipts/{id}:
-    delete:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: delete_sales_v1_receipts_{id}
-      operationId: DeleteSaleReceiptById
-      parameters:
-      - type: integer
-        name: id
-        in: path
-        required: true
-        description: Route parameter id
-        format: int64
-      - type: string
-        name: licenseNumber
-        in: query
-        required: true
-        description: ''
-        format: ''
-      responses:
-        200:
-          description: Ok
-    get:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: get_sales_v1_receipts_{id}
-      operationId: GetSaleReceiptById
-      parameters:
-      - type: integer
-        name: id
-        in: path
-        required: true
-        description: Route parameter id
-        format: int64
-      - type: string
-        name: licenseNumber
-        in: query
-        description: If specified, the Sales Receipt will be validated against the specified License Number. If not specified, the Sales Receipt will be validated against all of the User's current Facilities. Please note that if the Sales Receipt is not valid for the specified License Number, a 401 Unauthorized status will be returned.
-        format: ''
-      responses:
-        200:
-          description: Ok
-  /sales/v1/customertypes:
-    get:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: <i>none</i>'
-      externalDocs:
-        x-doc-key: get_sales_v1_customertypes
-      operationId: GetSaleCustomerTypes
-      responses:
-        200:
-          description: Ok
-  /sales/v1/patientregistration/locations:
-    get:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: '
-      externalDocs:
-        x-doc-key: get_sales_v1_patientregistration_locations
-      operationId: GetSalePatientRegistrationLocations
-      responses:
-        200:
-          description: Ok
-  /sales/v1/receipts/active:
-    get:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: get_sales_v1_receipts_active
-      operationId: GetSaleReceiptActive
-      parameters:
-      - type: string
-        name: licenseNumber
-        in: query
-        required: true
-        description: ''
-        format: ''
-      - type: string
-        name: salesDateStart
-        in: query
-        description: The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.
-        format: date-time
-      - type: string
-        name: salesDateEnd
-        in: query
-        description: The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.
-        format: date-time
-      - type: string
-        name: lastModifiedStart
-        in: query
-        description: The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.
-        format: date-time
-      - type: string
-        name: lastModifiedEnd
-        in: query
-        description: The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.
-        format: date-time
-      responses:
-        200:
-          description: Ok
-  /sales/v1/receipts/inactive:
-    get:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: get_sales_v1_receipts_inactive
-      operationId: GetSaleReceiptInactive
-      parameters:
-      - type: string
-        name: licenseNumber
-        in: query
-        required: true
-        description: ''
-        format: ''
-      - type: string
-        name: salesDateStart
-        in: query
-        description: The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.
-        format: date-time
-      - type: string
-        name: salesDateEnd
-        in: query
-        description: The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.
-        format: date-time
-      - type: string
-        name: lastModifiedStart
-        in: query
-        description: The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.
-        format: date-time
-      - type: string
-        name: lastModifiedEnd
-        in: query
-        description: The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.
-        format: date-time
-      responses:
-        200:
-          description: Ok
-  /sales/v1/transactions:
-    get:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: get_sales_v1_transactions
-      operationId: GetSaleTransactions
-      parameters:
-      - type: string
-        name: licenseNumber
-        in: query
-        required: true
-        description: The license number of the facility for which to return the list of dates with sales transactions.
-        format: ''
-      responses:
-        200:
-          description: Ok
-  /sales/v1/transactions/{salesDateStart}/{salesDateEnd}:
-    get:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: get_sales_v1_transactions_{salesDateStart}_{salesDateEnd}
-      operationId: GetSaleTransactionByDateRange
-      parameters:
-      - type: string
-        name: salesDateStart
-        in: path
-        required: true
-        description: Route parameter salesDateStart
-        format: date
-      - type: string
-        name: salesDateEnd
-        in: path
-        required: true
-        description: Route parameter salesDateEnd
-        format: date
-      - type: string
-        name: licenseNumber
-        in: query
-        required: true
-        description: The license number of the facility for which to return the list of sales transactions for the specified date range.
-        format: ''
-      responses:
-        200:
-          description: Ok
-  /sales/v1/receipts:
-    post:
-      tags:
-      - Sales
-      summary: ''
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: post_sales_v1_receipts
-      operationId: PostSaleReceipts
-      parameters:
-      - type: string
-        name: licenseNumber
-        in: query
-        required: true
-        description: ''
-        format: ''
-      responses:
-        200:
-          description: Ok
-    put:
-      tags:
-      - Sales
-      summary: ''
-      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: put_sales_v1_receipts
-      operationId: PutSaleReceipts
-      parameters:
-      - type: string
-        name: licenseNumber
-        in: query
-        required: true
-        description: ''
-        format: ''
-      responses:
-        200:
-          description: Ok
-  /sales/v1/transactions/{date}:
-    post:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: post_sales_v1_transactions_{date}
-      operationId: PostSaleTransactions
-      parameters:
-      - type: string
-        name: date
-        in: path
-        required: true
-        description: Route parameter date
-        format: date
-      - type: string
-        name: licenseNumber
-        in: query
-        required: true
-        description: The license number of the facility for which to append the sales transactions on the specified date.
-        format: ''
-      responses:
-        200:
-          description: Ok
-    put:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: put_sales_v1_transactions_{date}
-      operationId: PutSaleTransactions
-      parameters:
-      - type: string
-        name: date
-        in: path
-        required: true
-        description: Route parameter date
-        format: date
-      - type: string
-        name: licenseNumber
-        in: query
-        required: true
-        description: The license number of the facility for which to update the sales transactions on the specified date.
-        format: ''
-      responses:
-        200:
-          description: Ok
-  /sales/v1/deliveries/hub/accept:
-    put:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: put_sales_v1_deliveries_hub_accept
-      operationId: PutSaleDeliveryHubAccept
-      parameters:
-      - type: string
-        name: licenseNumber
-        in: query
-        required: true
-        description: ''
-        format: ''
-      responses:
-        200:
-          description: Ok
-  /sales/v1/deliveries/hub/depart:
-    put:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: put_sales_v1_deliveries_hub_depart
-      operationId: PutSaleDeliveryHubDepart
-      parameters:
-      - type: string
-        name: licenseNumber
-        in: query
-        required: true
-        description: ''
-        format: ''
-      responses:
-        200:
-          description: Ok
-  /sales/v1/deliveries/hub/verifyID:
-    put:
-      tags:
-      - Sales
-      summary: ''
-      description: '<b>Permissions Required</b>: Sales'
-      externalDocs:
-        x-doc-key: put_sales_v1_deliveries_hub_verifyID
-      operationId: PutSaleDeliveryHubVerifyId
-      parameters:
-      - type: string
-        name: licenseNumber
-        in: query
-        required: true
-        description: ''
-        format: ''
-      responses:
-        200:
-          description: Ok
   /sales/v1/deliveries/{id}:
     delete:
       tags:
@@ -2912,6 +2569,54 @@ paths:
       responses:
         200:
           description: Ok
+  /sales/v1/receipts/{id}:
+    delete:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: delete_sales_v1_receipts_{id}
+      operationId: DeleteSaleReceiptById
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+        format: int64
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+        format: ''
+      responses:
+        200:
+          description: Ok
+    get:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: get_sales_v1_receipts_{id}
+      operationId: GetSaleReceiptById
+      parameters:
+      - type: integer
+        name: id
+        in: path
+        required: true
+        description: Route parameter id
+        format: int64
+      - type: string
+        name: licenseNumber
+        in: query
+        description: If specified, the Sales Receipt will be validated against the specified License Number. If not specified, the Sales Receipt will be validated against all of the User's current Facilities. Please note that if the Sales Receipt is not valid for the specified License Number, a 401 Unauthorized status will be returned.
+        format: ''
+      responses:
+        200:
+          description: Ok
   /sales/v1/counties:
     get:
       tags:
@@ -2921,6 +2626,18 @@ paths:
       externalDocs:
         x-doc-key: get_sales_v1_counties
       operationId: GetSaleCounties
+      responses:
+        200:
+          description: Ok
+  /sales/v1/customertypes:
+    get:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: <i>none</i>'
+      externalDocs:
+        x-doc-key: get_sales_v1_customertypes
+      operationId: GetSaleCustomerTypes
       responses:
         200:
           description: Ok
@@ -3079,6 +2796,18 @@ paths:
       responses:
         200:
           description: Ok
+  /sales/v1/patientregistration/locations:
+    get:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: '
+      externalDocs:
+        x-doc-key: get_sales_v1_patientregistration_locations
+      operationId: GetSalePatientRegistrationLocations
+      responses:
+        200:
+          description: Ok
   /sales/v1/paymenttypes:
     get:
       tags:
@@ -3094,6 +2823,134 @@ paths:
         in: query
         required: true
         description: ''
+        format: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/receipts/active:
+    get:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: get_sales_v1_receipts_active
+      operationId: GetSaleReceiptActive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+        format: ''
+      - type: string
+        name: salesDateStart
+        in: query
+        description: The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+        format: date-time
+      - type: string
+        name: salesDateEnd
+        in: query
+        description: The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+        format: date-time
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+        format: date-time
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+        format: date-time
+      responses:
+        200:
+          description: Ok
+  /sales/v1/receipts/inactive:
+    get:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: get_sales_v1_receipts_inactive
+      operationId: GetSaleReceiptInactive
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+        format: ''
+      - type: string
+        name: salesDateStart
+        in: query
+        description: The sales date start timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+        format: date-time
+      - type: string
+        name: salesDateEnd
+        in: query
+        description: The sales date end timestamp. If specified, also specifying any of the last modified parameters will result in an error.
+        format: date-time
+      - type: string
+        name: lastModifiedStart
+        in: query
+        description: The last modified start timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+        format: date-time
+      - type: string
+        name: lastModifiedEnd
+        in: query
+        description: The last modified end timestamp. If specified, also specifying any of the sales date parameters will result in an error.
+        format: date-time
+      responses:
+        200:
+          description: Ok
+  /sales/v1/transactions:
+    get:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: get_sales_v1_transactions
+      operationId: GetSaleTransactions
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of dates with sales transactions.
+        format: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/transactions/{salesDateStart}/{salesDateEnd}:
+    get:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: get_sales_v1_transactions_{salesDateStart}_{salesDateEnd}
+      operationId: GetSaleTransactionByDateRange
+      parameters:
+      - type: string
+        name: salesDateStart
+        in: path
+        required: true
+        description: Route parameter salesDateStart
+        format: date
+      - type: string
+        name: salesDateEnd
+        in: path
+        required: true
+        description: Route parameter salesDateEnd
+        format: date
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to return the list of sales transactions for the specified date range.
         format: ''
       responses:
         200:
@@ -3248,6 +3105,92 @@ paths:
       responses:
         200:
           description: Ok
+  /sales/v1/receipts:
+    post:
+      tags:
+      - Sales
+      summary: ''
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: post_sales_v1_receipts
+      operationId: PostSaleReceipts
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+        format: ''
+      responses:
+        200:
+          description: Ok
+    put:
+      tags:
+      - Sales
+      summary: ''
+      description: 'Please note: The SalesDateTime field must be the actual date and time of the transaction without time zone. This date/time must already be in the same time zone as the Facility recording the sales. For example, if the Facility is in Pacific Time, then this time must be Pacific Standard (or Daylight Savings) Time and not in UTC.</br><b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: put_sales_v1_receipts
+      operationId: PutSaleReceipts
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+        format: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/transactions/{date}:
+    post:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: post_sales_v1_transactions_{date}
+      operationId: PostSaleTransactions
+      parameters:
+      - type: string
+        name: date
+        in: path
+        required: true
+        description: Route parameter date
+        format: date
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to append the sales transactions on the specified date.
+        format: ''
+      responses:
+        200:
+          description: Ok
+    put:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: put_sales_v1_transactions_{date}
+      operationId: PutSaleTransactions
+      parameters:
+      - type: string
+        name: date
+        in: path
+        required: true
+        description: Route parameter date
+        format: date
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: The license number of the facility for which to update the sales transactions on the specified date.
+        format: ''
+      responses:
+        200:
+          description: Ok
   /sales/v1/deliveries/complete:
     put:
       tags:
@@ -3276,6 +3219,63 @@ paths:
       externalDocs:
         x-doc-key: put_sales_v1_deliveries_hub
       operationId: PutSaleDeliveryHub
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+        format: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/hub/accept:
+    put:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: put_sales_v1_deliveries_hub_accept
+      operationId: PutSaleDeliveryHubAccept
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+        format: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/hub/depart:
+    put:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: put_sales_v1_deliveries_hub_depart
+      operationId: PutSaleDeliveryHubDepart
+      parameters:
+      - type: string
+        name: licenseNumber
+        in: query
+        required: true
+        description: ''
+        format: ''
+      responses:
+        200:
+          description: Ok
+  /sales/v1/deliveries/hub/verifyID:
+    put:
+      tags:
+      - Sales
+      summary: ''
+      description: '<b>Permissions Required</b>: Sales'
+      externalDocs:
+        x-doc-key: put_sales_v1_deliveries_hub_verifyID
+      operationId: PutSaleDeliveryHubVerifyId
       parameters:
       - type: string
         name: licenseNumber

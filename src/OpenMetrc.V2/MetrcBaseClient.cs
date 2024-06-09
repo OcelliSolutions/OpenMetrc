@@ -42,7 +42,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class CaregiverClient : ICaregiverClient
+    public partial class CaregiverClient : MetrcBaseClient, ICaregiverClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -55,13 +55,13 @@ namespace OpenMetrc.V2
         public CaregiverClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -77,7 +77,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -334,7 +334,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmployeeClient : IEmployeeClient
+    public partial class EmployeeClient : MetrcBaseClient, IEmployeeClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -347,13 +347,13 @@ namespace OpenMetrc.V2
         public EmployeeClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -369,7 +369,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -631,7 +631,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FacilityClient : IFacilityClient
+    public partial class FacilityClient : MetrcBaseClient, IFacilityClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -644,13 +644,13 @@ namespace OpenMetrc.V2
         public FacilityClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -666,7 +666,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -1052,7 +1052,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class HarvestClient : IHarvestClient
+    public partial class HarvestClient : MetrcBaseClient, IHarvestClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -1065,13 +1065,13 @@ namespace OpenMetrc.V2
         public HarvestClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -1087,7 +1087,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -3241,7 +3241,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ItemClient : IItemClient
+    public partial class ItemClient : MetrcBaseClient, IItemClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -3254,13 +3254,13 @@ namespace OpenMetrc.V2
         public ItemClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -3276,7 +3276,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -5098,7 +5098,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class LabTestClient : ILabTestClient
+    public partial class LabTestClient : MetrcBaseClient, ILabTestClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -5111,13 +5111,13 @@ namespace OpenMetrc.V2
         public LabTestClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -5133,7 +5133,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -6307,7 +6307,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class LocationClient : ILocationClient
+    public partial class LocationClient : MetrcBaseClient, ILocationClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -6320,13 +6320,13 @@ namespace OpenMetrc.V2
         public LocationClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -6342,7 +6342,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -7626,7 +7626,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PackageClient : IPackageClient
+    public partial class PackageClient : MetrcBaseClient, IPackageClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -7639,13 +7639,13 @@ namespace OpenMetrc.V2
         public PackageClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -7661,7 +7661,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -11353,7 +11353,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PatientClient : IPatientClient
+    public partial class PatientClient : MetrcBaseClient, IPatientClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -11366,13 +11366,13 @@ namespace OpenMetrc.V2
         public PatientClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -11388,7 +11388,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -12176,7 +12176,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PatientCheckInClient : IPatientCheckInClient
+    public partial class PatientCheckInClient : MetrcBaseClient, IPatientCheckInClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -12189,13 +12189,13 @@ namespace OpenMetrc.V2
         public PatientCheckInClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -12211,7 +12211,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -12950,7 +12950,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PatientStatusClient : IPatientStatusClient
+    public partial class PatientStatusClient : MetrcBaseClient, IPatientStatusClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -12963,13 +12963,13 @@ namespace OpenMetrc.V2
         public PatientStatusClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -12985,7 +12985,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -13476,7 +13476,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PlantClient : IPlantClient
+    public partial class PlantClient : MetrcBaseClient, IPlantClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -13489,13 +13489,13 @@ namespace OpenMetrc.V2
         public PlantClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -13511,7 +13511,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -16940,7 +16940,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PlantBatchClient : IPlantBatchClient
+    public partial class PlantBatchClient : MetrcBaseClient, IPlantBatchClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -16953,13 +16953,13 @@ namespace OpenMetrc.V2
         public PlantBatchClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -16975,7 +16975,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -19390,7 +19390,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ProcessingClient : IProcessingClient
+    public partial class ProcessingClient : MetrcBaseClient, IProcessingClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -19403,13 +19403,13 @@ namespace OpenMetrc.V2
         public ProcessingClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -19425,7 +19425,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -21918,7 +21918,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SaleClient : ISaleClient
+    public partial class SaleClient : MetrcBaseClient, ISaleClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -21931,13 +21931,13 @@ namespace OpenMetrc.V2
         public SaleClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -21953,7 +21953,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -26537,7 +26537,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class StrainClient : IStrainClient
+    public partial class StrainClient : MetrcBaseClient, IStrainClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -26550,13 +26550,13 @@ namespace OpenMetrc.V2
         public StrainClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -26572,7 +26572,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -27470,7 +27470,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TagClient : ITagClient
+    public partial class TagClient : MetrcBaseClient, ITagClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -27483,13 +27483,13 @@ namespace OpenMetrc.V2
         public TagClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -27505,7 +27505,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -28101,7 +28101,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TransferClient : ITransferClient
+    public partial class TransferClient : MetrcBaseClient, ITransferClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -28114,13 +28114,13 @@ namespace OpenMetrc.V2
         public TransferClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -28136,7 +28136,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -31278,7 +31278,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TransporterClient : ITransporterClient
+    public partial class TransporterClient : MetrcBaseClient, ITransporterClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -31291,13 +31291,13 @@ namespace OpenMetrc.V2
         public TransporterClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -31313,7 +31313,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -32699,7 +32699,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class UnitOfMeasureClient : IUnitOfMeasureClient
+    public partial class UnitOfMeasureClient : MetrcBaseClient, IUnitOfMeasureClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -32712,13 +32712,13 @@ namespace OpenMetrc.V2
         public UnitOfMeasureClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -32734,7 +32734,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -33086,7 +33086,7 @@ namespace OpenMetrc.V2
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class WasteMethodClient : IWasteMethodClient
+    public partial class WasteMethodClient : MetrcBaseClient, IWasteMethodClient
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -33099,13 +33099,13 @@ namespace OpenMetrc.V2
         public WasteMethodClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api-ak.metrc.com";
+            BaseUrl = "https://api-al.metrc.com";
             _httpClient = httpClient;
         }
 
         private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new System.Text.Json.JsonSerializerOptions();
+            var settings = DefaultJsonSerializerSettings(new System.Text.Json.JsonSerializerOptions());
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -33121,7 +33121,7 @@ namespace OpenMetrc.V2
             }
         }
 
-        public System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _settings.Value; } }
 
         static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
@@ -34149,6 +34149,12 @@ namespace OpenMetrc.V2
         [System.Text.Json.Serialization.JsonPropertyName("taxExemptTagOrdersFacilityType")]
         public bool? TaxExemptTagOrdersFacilityType { get; set; } = default!;
 
+        [System.Text.Json.Serialization.JsonPropertyName("canDownloadProductLabel")]
+        public bool? CanDownloadProductLabel { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("restrictWholesalePriceEditDays")]
+        public int? RestrictWholesalePriceEditDays { get; set; } = default!;
+
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
@@ -34795,6 +34801,9 @@ namespace OpenMetrc.V2
 
         [System.Text.Json.Serialization.JsonPropertyName("RequiresProductPDFDocuments")]
         public int? RequiresProductPDFDocuments { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("labTestBatchNames")]
+        public string? LabTestBatchNames { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
